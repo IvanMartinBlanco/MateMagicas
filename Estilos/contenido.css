@@ -1,0 +1,358 @@
+/** ESTILOS GENERALES **/
+
+
+/* Estilo para el contenido */
+.nav-interno {
+    /* Definimos como se va a ordenar y desplegar*/
+	width: 100%;
+	top: 0;
+	/* Definimos las características visuales*/
+	background-color: RGB(240, 240, 240);
+}
+
+
+/* Estilo para nav interno */
+.nav-button {
+	/* Definimos como se va a ordenar y desplegar*/
+	display: grid;
+	grid-template-columns: 25% 25% 25% 25%;
+	margin-top: 1em;
+	/* Definimos el tamaño */
+	padding: 5px;
+	width: 60%;
+}
+
+
+/* Estilo para los botones del nav interno */
+.nav-interno a {
+	/* Definimos el tamaño */
+	padding: 5px 10px;
+	/* Definimos las características visuales*/
+	background-color: black;
+	color: white;
+	border-radius: 50px;
+	cursor: pointer;
+	text-decoration: none;
+	color: white;
+	-webkit-appearance: button;
+	-moz-appearance: button;
+	appearance: button;
+}
+
+
+/* Estilo para los botones del nav interno cuando tienen el foco*/
+.nav-interno .miga-pan {
+	/* Definimos las características visuales*/	
+	background-color: white;
+	color: black;
+}
+
+/* Estilo para los títulos de nivel 2*/
+h2 {
+	/* Definimos como se va a ordenar y desplegar*/	
+	margin: 1.5em auto -2em auto;
+	/* Definimos el tamaño */	
+	width: 100%;
+	/* Definimos las características visuales*/		
+	text-align: center;
+	color: #666;
+}
+
+
+/* Estilo para los formularios*/
+form {
+	/* Definimos como se va a ordenar y desplegar*/	
+	margin-top: 4em;
+	display: flex;
+	flex-direction: column;
+	text-align: center;	
+	/* Definimos las características visuales*/			
+	color: black;
+}
+
+
+/* Estilo para el botón de los formularios*/
+form button {
+	/* Definimos el tamaño */	
+	padding: 0.5em 1em;	
+	/* Definimos las características visuales*/
+	background-color: RGB(180, 0, 0);
+	color: white;
+	border: none;
+	font-weight: bold;
+}
+
+
+/* Estilo para el botón de los formularios*/
+form button:active {
+	/* Definimos las características visuales*/	
+	background-color: RGB(210, 0, 0);
+}
+
+
+/* Estilo para la sección hoteles*/
+.hoteles {
+	/* Definimos el tamaño */		
+	width: 100%;
+}
+
+
+/* Estilo para los artículos de la sección hoteles*/
+.hoteles article div {
+	/* Definimos como se va a ordenar y desplegar*/		
+	display: grid;
+	grid-template-columns: 20% 30% 50%;
+	grid-template-rows: auto;
+	margin-top: 4em;	
+	/* Definimos el tamaño */		
+	width: 80%;
+	padding: 1.5em 0.5em 0.5em 0.5em;	
+	/* Definimos las características visuales*/		
+	background-color: white;
+}
+
+
+/* Estilo para la cabecera de la sección hoteles*/
+.hoteles article div header {
+	/* Definimos como se va a ordenar y desplegar*/		
+	display: flex;
+	/* Definimos las características visuales*/			
+	background-color: white;
+	color: #666;
+	font-size: 150%;
+}
+
+
+/* Estilo para las imágenes de los artículos de la sección hoteles*/
+.hoteles article div img {
+	/* Definimos como se va a ordenar y desplegar*/		
+	grid-column-start: 2;
+	/* Definimos el tamaño */	
+	width: 20em;
+}
+
+
+/* Estilo para el apartado de la descripción de los hoteles*/
+.hoteles article {
+	/* Definimos las características visuales*/			
+	color: #666;
+}
+
+
+/* Estilo para el título de la descripción de los hoteles*/
+.hoteles article dt {
+	/* Definimos como se va a ordenar y desplegar*/			
+	margin-left: 1em;
+	/* Definimos las características visuales*/			
+	color: #666;
+	font-weight: bold;	
+}
+
+
+/* Estilo para la descripción de los hoteles*/
+.hoteles article div dd {
+	/* Definimos como se va a ordenar y desplegar*/			
+	margin: 5px 3em 1em 3em;
+	/* Definimos las características visuales*/		
+	color: #666;
+}
+
+
+/* Estilo para el apartado de los idiomas de los hoteles*/
+.hoteles article div p {
+	/* Definimos como se va a ordenar y desplegar*/			
+	margin-left: 1em;
+	/* Definimos las características visuales*/		
+	font-weight: bold;
+	color: #666;
+}
+
+/* Estilo para el apartado span de los párrafos de los hoteles*/
+.hoteles article div p span {
+	/* Definimos las características visuales*/			
+	font-weight: normal;
+	color: #666;
+}
+
+
+/* Estilo para el apartado pie de los hoteles*/
+.hoteles footer {
+	/* Definimos como se va a ordenar y desplegar*/		
+	margin-top: 0rem;
+	/* Definimos el tamaño */
+	padding: 10px 0em 1em 1em;
+	width: 80%;
+	/* Definimos las características visuales*/		
+	background-color: white;
+}
+
+
+/* Estilo para el apartado pie de los hoteles*/
+.hoteles footer dt,
+.hoteles footer dd {
+	/* Definimos como se va a ordenar y desplegar*/		
+	margin: 0rem;
+	/* Definimos el tamaño */	
+	padding-top: 0px;
+}
+
+
+/* Estilo para la zona de precios */
+.precios {
+	/* Definimos como se va a ordenar y desplegar*/
+	display: flex;
+	flex-wrap: wrap;
+	margin: 2em 0 3em;		
+	/* Definimos el tamaño*/
+	width: 100%;
+	padding: 3em 0em;
+	/* Definimos las características visuales*/		
+	color: #666;	
+}
+
+
+/* Estilo para la zona de precios */
+.precios h2 {
+	/* Definimos el tamaño*/
+	margin: 1.5em auto auto auto;
+}
+
+
+/* Estilo para la tabla de la zona de precios */
+.precios table,
+td,
+th {
+	/* Definimos las características visuales*/	
+	border: solid 1px black;
+	border-collapse: collapse;
+	text-align: center;
+}
+
+/* Estilo para el mensaje previo de la tabla */
+caption {
+	/* Definimos el tamaño */
+	margin: 20px auto;	
+	/* Definimos las características visuales*/		
+	font-weight: bold;
+
+}
+
+
+/* Estilo para la sección formulario */
+.formulario {
+	/* Definimos como se va a ordenar y desplegar*/	
+	display: flex;
+	margin-top: 4em;
+	/* Definimos el tamaño*/	
+	padding: 0;
+	width: 30%;	
+	/* Definimos las características visuales*/		
+	border: solid 1px black;
+	border-collapse: collapse;
+	text-align: center;
+}
+
+
+/* Estilo para el formulario de la sección formulario*/
+.formulario form {
+	/* Definimos el tamaño*/
+	margin: 1em;
+}
+
+
+/* Estilo para el formulario de la sección formulario*/
+.formulario form div {
+	/* Definimos el tamaño*/
+	margin: 0.5em 0em 0em 0em;
+}
+
+/* Estilo para el mensaje de ayuda de los formularios*/
+input::placeholder {
+	/* Definimos las características visuales*/		
+	color: black;
+}
+
+/* Estilo para los campos inválidos*/
+input:invalid {
+	/* Definimos las características visuales*/		
+	background-color: #FF9999;
+}
+
+/* Estilo para los campos válidos*/
+input:valid {
+	/* Definimos las características visuales*/			
+	background-color: #BDECB6;
+}
+
+/* Estilo para poner negritas*/
+.negrita {
+	/* Definimos las características visuales*/		
+	font-weight: bold;
+}
+
+
+/** ESTILOS CUANDO LA PÁGINA SE REPRODUCE MÁS PEQUEÑA DE 768PX**/
+@media (max-width:768px) {
+	/* Estilo para el navegador interno en la versión móvil*/	
+	.nav-interno {
+		/* Definimos como se va a ordenar y desplegar*/	
+		margin-top: 3em;
+	}
+	
+	/* Estilo para los botones del nav interno en versión móvil*/
+	.nav-button {
+		/* Definimos como se va a ordenar y desplegar*/	
+		display: grid;
+		grid-template-columns: 25% 25% 25% 25%;
+		/* Definimos el tamaño*/		
+		padding: 5px;
+		width: 100%;	
+		/* Definimos las características visuales*/			
+		font-size: 90%;
+	}
+	
+	/* Estilo para los articulos de la sección hoteles en versión móvil*/	
+	.hoteles article div {
+		/* Definimos el tamaño*/		
+		width: 100%;
+	}
+	
+	/* Estilo para los artículos de la sección hoteles*/
+	.hoteles article div {
+		/* Definimos como se va a ordenar y desplegar*/			
+		display: grid;
+		grid-template-columns: 50% 50%;
+		grid-template-rows: auto;
+		margin-top: 4em;		
+		/* Definimos el tamaño*/		
+		width: 100%;
+		padding: 1.5em 0.5em 0.5em 0.5em;		
+		/* Definimos las características visuales*/			
+		background-color: white;
+	}
+	/* Estilo para las imágenes de los artículos de la sección hoteles en la versión móvil*/
+	.hoteles article div img {
+		/* Definimos como se va a ordenar y desplegar*/			
+		grid-column-start: 1;
+		margin-left: 5px;		
+		/* Definimos el tamaño*/		
+		width: 20em;
+	}
+	/* Estilo para el apartado pie de los hoteles*/
+	.hoteles footer {
+		/* Definimos el tamaño*/		
+		width: 100%;
+	}
+	/* Estilo para la zona de precios */
+	.precios {
+		/* Definimos el tamaño*/
+		margin: 1em 0 1em;
+	}
+	/* Estilo para la sección formulario */
+	.formulario {
+		/* Definimos como se va a ordenar y desplegar*/			
+		margin-bottom: 5em;		
+		/* Definimos el tamaño*/		
+		width: 100%;
+	}
+}

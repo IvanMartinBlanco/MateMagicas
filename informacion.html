@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es">
+   <!-- Cabecera del documento -->
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Viajelandia</title>
+      <!-- Link a la hoja de estilos -->
+      <link href="Estilos/estilos.css" type="text/css" rel="stylesheet" />
+      <link href="Estilos/contenido.css" type="text/css" rel="stylesheet" />
+      <script type="text/javascript" src="Recursos/js/contenidos.js"></script>
+   </head>
+   <!-- Cuerpo de la web -->
+   <body>
+      <!-- Cabecera de la web -->
+      <header>
+         <a href="index.html">
+         <img src="Recursos/imagenes/logo.png" alt="Logotipo de Viajelandia" />
+         </a>
+         <div class="nombre">
+            <h1>Viajelandia</h1>
+         </div>
+         <div class="acceso">
+            <p>Identifícate:</p>
+            <img src="Recursos/imagenes/avatar.png" alt="Acceso a socios" />
+         </div>
+      </header>
+      <!-- Menú de navegación -->
+      <nav>
+         <!-- Menú textual -->
+         <ul class="nav-texto">
+            <li>
+               <a href="https://www.juntadeandalucia.es/educacion/eaprendizaje/" target="_blank">Ofertas</a>
+            </li>
+            <li>
+               <a href="#">Hoteles</a>
+               <ul>
+                  <li><a href="informacion.html" target="_blank">Información</a></li>
+                  <li><a href="https://www.educacionyfp.gob.es/portada.html" target="_blank">Contratación de servicios</a></li>
+               </ul>
+            </li>
+            <li><a href="https://www.is4k.es/" target="_blank">Ciudades históricas</a></li>
+            <li><a href="https://www.osi.es/es" target="_blank">Fines de semanas activos</a></li>
+         </ul>
+         <!-- Menú hamburguesa -->
+         <ul class="nav-mov">
+            <input type="checkbox" id="ham">
+            <label for="ham"> ☰ </label>
+            <li>
+               <a href="https://www.juntadeandalucia.es/educacion/eaprendizaje/" target="_blank">Ofertas</a>
+            </li>
+            <li>
+               <a href="#">Hoteles</a>
+               <ul>
+                  <li><a href="informacion.html" target="_blank">Información</a></li>
+                  <li><a href="https://www.educacionyfp.gob.es/portada.html" target="_blank">Contratación de servicios</a></li>
+               </ul>
+            </li>
+            <li><a href="https://www.is4k.es/" target="_blank">Ciudades históricas</a></li>
+            <li><a href="https://www.osi.es/es" target="_blank">Fines de semanas activos</a></li>
+         </ul>
+      </nav>
+      <!-- Zona de contenido -->
+      <main>
+         <!-- Menú interno -->
+         <section class="nav-interno">
+            <!-- Botones -->
+            <div class="nav-button">
+              <a href="#buscador" id="boton_bus" >Buscador de hoteles</a>
+               <a href="#hoteles" id="boton_hot" >Información de Hoteles</a>
+               <a href="#precios" id="boton_pre" >Tabla de precios</a>
+               <a href="#formulario" id="boton_for" >Formulario</a>
+            </div>
+         </section>
+         <!-- Buscador -->
+         <section class="buscador" id="buscador">
+            <h2>Buscador de hoteles</h2>
+            <!-- Formulario -->
+            <form autocomplete="on" validate>
+               <fieldset>
+                  <br>
+                  <legend>Buscador de hoteles</legend>
+                  <label for="provincia"><span class="negrita">P</span>rovincia:</label>
+                  <select id="provincia" acceskey="P" tabindex="1">
+                     <optgroup label="Andalucía">
+                        <option>Granada</option>
+                        <option>Almería</option>
+                        <option>Málaga</option>
+                     </optgroup>
+                     <optgroup label="Castilla la Mancha">
+                        <option>Albacete</option>
+                        <option>Cuenca</option>
+                        <option>Guadalajara</option>
+                     </optgroup>
+                  </select>
+                  <br>
+                  <br>
+                  <label for="fecha-entrada">Fecha de <span class="negrita">e</span>ntrada: (Obligatorio)</label>
+                  <input type="date" id="fecha-entrada" min="2022-01-31" max="2022-12-31" acceskey="E" title="Introduzca la fecha de entrada, que debe estar contenida entre el 31 de enero y el 31 de diciembre de 2022" tabindex="2" required>
+                  <br>
+                  <br>
+                  <label for="fecha-salida">Fecha de <span class="negrita">s</span>alida: (Obligatorio)</label>
+                  <input type="date" id="fecha-salida" min="2022-02-01" max="2023-01-01" acceskey="S" title="Introduzca la fecha de salida, que debe estar contenida entre el 01 de febrero y el 01 de enero de 2023" tabindex="2" required>
+                  <br>
+                  <br>
+                  <button tabindex="3" type="submit">Buscar</button>
+                  <br>
+                  <br>
+               </fieldset>
+            </form>
+         </section>
+                  <!-- Hoteles -->
+                  <section class="hoteles" id="hoteles">
+                     <h2>Hoteles</h2>
+                     <article>
+                        <div>
+                        <header>
+                           <h3>Hotel Saray</h3>
+                        </header>
+                        <img src="Recursos/imagenes/informacion/saray.jpg" alt="Imagen de hotel Saray" />
+                        <span>
+                        <dl>
+                           <dt>Descripción:</dt>
+                           <dd>El Hotel Saray se encuentra a menos de 10 minutos a pie del centro histórico de Granada y cuenta con una piscina al aire libre de temporada con terrazas y jardines con encanto. Las habitaciones son modernas y disponen de aire acondicionado, conexión Wi-Fi gratuita y TV de pantalla plana con canales vía satélite.</dd>
+                       </dl>
+                       <p>Idiomas: <span lang="es">Español</span>, <span lang="en">English</span>, <span lang="de">German</span>.</p>
+                     </span>
+                  </div>
+                     <aside>
+                     <footer>
+                        <dl>
+                           <dt>Reseña:</dt>
+                           <dd>(Splinter)</dd>
+                           <dd>Muy bonito y muy tranquilo, aceptan tortugas.</dd>
+                           <dd>5/5</dd>
+                        </dl>
+                     </footer>
+                  </aside>
+               </article>
+
+                     <article>
+                        <div>
+                        <header>
+                           <h3>Holiday Inn Express Málaga Airport</h3>
+                        </header>
+                        <img src="Recursos/imagenes/informacion/ihg.jpg" alt="Imagen de hotel Saray" />
+                        <span>
+                        <dl>
+                           <dt>Descripción:</dt>
+                           <dd>El Holiday Inn Express Málaga es el hotel más cercano al aeropuerto internacional de Málaga. Ofrece aparcamiento gratuito y habitaciones modernas con TV vía satélite y set gratuito de té y café.</dd>
+                       </dl>
+                       <p>Idiomas: <span lang="es">Español</span>, <span lang="ja">日本</span>, <span lang="pt">Português</span>.</p>
+                     </span>
+                  </div>
+                     <aside>
+                     <footer>
+                        <dl>
+                           <dt>Reseña:</dt>
+                           <dd>(Gollum)</dd>
+                           <dd>Es horrible, me perdieron el anillo y no han hecho nada por encontrarlo, Gollum.</dd>
+                           <dd>0/5</dd>
+                        </dl>
+                     </footer>
+                  </aside>
+               </article>
+
+                     <article>
+                        <div>
+                        <header>
+                           <h3>Elba Almeria Business & Convention Hotel</h3>
+                        </header>
+                        <img src="Recursos/imagenes/informacion/Elba.jpg" alt="Imagen de hotel Elba" />
+                        <span>
+                        <dl>
+                           <dt>Descripción:</dt>
+                           <dd>El Elba Almería es un hotel moderno y está situado enfrente del centro comercial Mediterráneo, en Almería. Las habitaciones presentan una buena relación calidad precio y cuentan con aire acondicionado, WiFi gratuita y TV vía satélite.</dd>
+                       </dl>
+                       <p>Idiomas: <span lang="es">Español</span>, <span lang="fr">Français</span>, <span lang="it">Italiano</span>.</p>
+                     </span>
+                  </div>
+                     <aside>
+                     <footer>
+                        <dl>
+                           <dt>Reseña:</dt>
+                           <dd>(Will Smith)</dd>
+                           <dd>Muy chulas las habitaciones, pero no funcionaba bien la tele y me perdí El príncipe de Bel-Air.</dd>
+                           <dd>3/5</dd>
+                        </dl>
+                     </footer>
+                  </aside>
+               </article>
+                  </section>
+
+                           <!-- Tabla de precios -->
+         <section class="precios" id="precios">
+            <h2>Precios</h2>
+            <!-- tabla -->
+           
+    <table>
+      <caption>Tabla con los precios de los hoteles.</caption>
+      <!-- Mostramos la cabecera de la tabla con la etiqueta thead-->
+      <thead>
+          <tr>
+              <th id="hotel" scope="col">Hotel</th>
+              <th id="localidad" scope="col">Localidad</th>
+              <th id="precio_ind" scope="col">Precio de habitación individual</th>
+              <th id="precio_doble" scope="col">Precio de habitación doble</th>
+              <th id="precio_parking" scope="col">Precio de parking</th>
+          </tr>
+      </thead>
+      <!-- Mostramos el contenido de la tabla con la etiqueta tbody -->
+      <tbody>
+          <tr>
+              <th scope="row">Saray</th>
+              <td headers="Hotel Localidad">Granada</td>
+              <td headers="Hotel Precio_ind">80€</td>
+              <td headers="Hotel Precio_doble">120€</td>
+              <td headers="Hotel Precio_parking">15€</td>
+          </tr>
+          <tr>
+            <th scope="row">Holiday Inn Express Málaga Airport</th>
+            <td headers="Hotel Localidad">Málaga</td>
+            <td headers="Hotel Precio_ind">60€</td>
+            <td headers="Hotel Precio_doble">80€</td>
+            <td headers="Hotel Precio_parking">30€</td>
+        </tr>
+        <tr>
+         <th scope="row">Elba Almeria Business & Convention Hotel</th>
+         <td headers="Hotel Localidad">Almería</td>
+         <td headers="Hotel Precio_ind">90€</td>
+         <td headers="Hotel Precio_doble">150€</td>
+         <td headers="Hotel Precio_parking">60€</td>
+     </tr>
+      </tbody>
+      <!-- Mostramos los totales dentro de la etiqueta tfoot-->
+      <tfoot>
+          <tr>
+              <th scope="row">Media</th>
+              <td headers="Hotel Localidad">&nbsp;</td>
+              <td headers="Hotel Precio_ind">76.66€</td>
+              <td headers="Hotel Precio_doble">116.66€</td>
+              <td headers="Hotel Precio_parking">35€</td>
+          </tr>
+      </tfoot>
+  </table>
+         </section>
+         <h2>Formulario de contacto</h2>
+           <!-- Tabla de precios -->
+              <section class="formulario" id="formulario">
+
+                            <!-- Formulario -->
+                            <form action="" autocomplete="on" validate>
+                              <fieldset>
+                                  <legend>Datos Personales</legend>
+                                  <label for="nombre"><span class="negrita">N</span>ombre y apellidos: (Obligatorio)</label>
+                                  <input id="nombre" name="nombre" minlength="6" maxlength="30" acceskey="N" placeholder="Nombre y apellidos" title="Introduzca su nombre y sus apellidos, máximo 30 caracteres." tabindex="4" required>
+                                  <br>
+                                  <br>
+                      
+                                  <label for="codigo"><span class="negrita">C</span>ódigo web: (Obligatorio)</label>
+                                  <input id="codigo" name="codigo" pattern="[0-9]{5}[a-zA-ZÀ-ÿ\u00f1\u00d1]{3}"  acceskey="C" placeholder="Código" title="Código de identificación en la web, debe tener 5 dígitos y 3 letras." tabindex="5" size="6" required> 
+                                  <span class="mensaje"> </span>
+                                  <br>
+                                  <br>
+                      
+                              </fieldset>
+                      
+                              <fieldset>
+                                  <legend>Recibir información</legend>
+                                  <label for="estaciones"></label>Con ofertas en la/s estación/es (se puede seleccionar más de una):</label><br>
+                                  <label for="primavera"><input name="estaciones" id="primavera" acceskey="R" type="checkbox"  title="Marque si quiere hoteles con ofertas en primavera." tabindex="6"> P<span class="negrita">r</span>imavera</label>
+                                  <label for="verano"><input name="estaciones" id="verano" acceskey="V" type="checkbox"  title="Marque si quiere hoteles con ofertas en verano." tabindex="7"> <span class="negrita">V</span>erano</label>
+                                  <label for="otoño"><input name="estaciones" id="otoño" acceskey="O" type="checkbox"  title="Marque si quiere hoteles con ofertas en otoño." tabindex="8"> <span class="negrita">O</span>toño</label>
+                                  <label for="invierno"><input name="estaciones" id="invierno" acceskey="I" type="checkbox"  title="Marque si quiere hoteles con ofertas en invierno." tabindex="9"> <span class="negrita">I</span>nvierno</label>
+                                  <br>
+                                  <br>
+                                  <label for="evento">Cuando se realicen en la provincia eventos (seleccionar solo uno):</label><br>
+                                  <label for="gastro"><input id="gastro" name="evento" acceskey="G" type="radio"  title="Marque si quiere que en la provincia se estén realizando eventos Gastronómicos." tabindex="10"> <span class="negrita">G</span>astronómicos </label>
+                                  <label for="deportivo"><input id="deportivo" name="evento" acceskey="D" type="radio"  title="Marque si quiere que en la provincia se estén realizando eventos Deportivos." > <span class="negrita">D</span>eportivos</label>
+                                  <br>
+                                  <label for="cultura"><input id="cultura" name="evento" acceskey="U" type="radio"  title="Marque si quiere que en la provincia se estén realizando eventos Culturales." > C<span class="negrita">u</span>lturales </label>
+                                  <label for="musica"><input id="musica" name="evento" acceskey="M" type="radio"  title="Marque si quiere que en la provincia se estén realizando eventos Musicales." > <span class="negrita">M</span>úsicales</label>
+                                  <br>
+                                  <br>
+                                  <label for="precio">Cuando el Prec<span class="negrita">i</span>o de habitación por persona esté por debajo de:</label>
+                                  <input id="precio" name="precio" type="number"  acceskey="I" placeholder="Precio máximo" title="Introduzca el precio máximo al que le interesaría ir al hotel."  tabindex="11">
+                                  <br>
+                                  <br>
+                              </fieldset>
+                              <div>
+                              <button tabindex="12" type="submit">Enviar</button>
+                              <button tabindex="13">Cancelar</button>
+                           </div>
+                          </form>       
+              </section>
+      </main>
+      <!-- Pié de la página -->
+      <footer>
+         <p>
+            Viajelanda S.L.
+         </p>
+         <p>
+            Email: Viajelandia@ejercicio2dedaw.com
+         </p>
+         <p>
+            Teléfono: 666668210
+         </p>
+         <!-- Redes sociales -->
+         <div class="redes-sociales">
+            <img src="Recursos/imagenes/redes/facebook.png" alt="Icono de Facebook" />
+            <img src="Recursos/imagenes/redes/twitter.png" alt="Icono de Facebook" />
+            <img src="Recursos/imagenes/redes/instagram.png" alt="Icono de Facebook" />
+         </div>
+         <p class="copy">Iván Martín Blanco &COPY; 2021</p>
+      </footer>
+   </body>
+</html>

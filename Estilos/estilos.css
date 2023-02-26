@@ -1,0 +1,596 @@
+/** ESTILOS GENERALES **/
+/* Fuente RobotoMono importada desde la API de Google */
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100&display=swap");
+/* Fuente DancingScript, descargada e importada de forma local */
+@font-face {
+  font-family: "Dancing";
+  src: url("../Recursos/Dancing_Script/DancingScript-VariableFont_wght.ttf");
+}
+/* Estilo base para todo tipo de elementos */
+* {
+  /* Definimos como se va a ordenar y desplegar*/
+  margin: auto;
+  /* Definimos las características visuales*/
+  font-family: "Roboto";
+}
+/* Estilo para los span */
+span {
+  /* Definimos las características visuales*/
+  color: black;
+}
+/* Estilo para el cuerpo de las páginas */
+body {
+  /* Definimos el tamaño */
+  width: 100%;
+  /* Definimos las características visuales*/
+  color: white;
+  background-color: RGB(240, 240, 240);
+}
+/** ESTILOS GENERALES DE LA CABECERA**/
+/* Estilo para la cabecera de las páginas */
+header {
+  /* Definimos como se va a ordenar y desplegar*/
+  display: grid;
+  grid-template-columns: 10% 80% 10%;
+  /* Definimos las características visuales*/
+  background-color: red;
+}
+header a img {
+  /* Definimos como se va a ordenar y desplegar*/
+  max-height: 90px;
+  width: auto;
+  padding: 5px;
+}
+.nombre {
+  /* Definimos las características visuales*/
+  font-size: 200%;
+}
+.acceso {
+  /* Definimos donde se va a colocar y como se va a desplegar*/
+  display: flex;
+}
+.acceso img {
+  /* Definimos como se va a ordenar y desplegar*/
+  max-height: 50px;
+  width: auto;
+}
+.acceso p {
+  /* Definimos como se va a ordenar y desplegar*/
+  margin-right: 0.5em;
+  margin-left: -2.5em;
+}
+/** ESTILOS DEL MENÚ**/
+/* Estilo para el menú de las páginas */
+nav {
+  /* Definimos las características visuales*/
+  background-color: RGB(180, 0, 0);
+  line-height: 2rem;
+}
+/* Estilo para la lista del menú */
+nav ul {
+  /* Definimos como se va a ordenar y desplegar*/
+  display: flex;
+  padding: 0;
+  /* Definimos las características visuales*/
+  list-style: none;
+}
+/* Estilo para cada elemento de la lista del menú */
+nav ul li {
+  /* Definimos el tamaño */
+  width: 100%;
+}
+/* Estilo para cada enlace dentro de una lista */
+nav ul li a {
+  /* Definimos como se va a ordenar y desplegar*/
+  display: flex;
+  justify-content: center;
+  /* Definimos las características visuales*/
+  text-decoration: none;
+  color: white;
+}
+/* Estilo para cada enlace de segundo nivel dentro de una lista */
+nav ul li ul {
+  /* Definimos como se va a ordenar y desplegar*/
+  display: none;
+}
+/* Estilo para cada enlace de segundo nivel dentro de una lista cuando se pasa por encima del primer nivel */
+nav ul li:hover ul {
+  /* Definimos como se va a ordenar y desplegar*/
+  position: absolute;
+  display: block;
+  /* Definimos las características visuales*/
+  background-color: RGB(180, 0, 0);
+  line-height: 2rem;
+  /* Definimos el tamaño */
+  width: 25%;
+}
+/* Estilo para cada enlace dentro de una lista cuando el ratón pasa por encima */
+nav ul li a:hover {
+  /* Definimos las características visuales*/
+  background-color: RGB(210, 0, 0);
+}
+/* Estilo para cada imagen dentro de una lista */
+nav ul li img {
+  /* Definimos como se va a ordenar y desplegar*/
+  display: flex;
+  justify-content: center;
+  padding: 3px 0px 3px 0px;
+}
+/* Estilo para cada imagen dentro de una lista cuando el ratón pasa por encima */
+nav ul li img:hover {
+  /* Definimos las características visuales*/
+  background-color: RGB(210, 0, 0);
+}
+/** ESTILOS GENERALES DEL CONTENIDO**/
+/* Estilo general para la zona de promoción */
+.promocion {
+  /* Definimos como se va a ordenar y desplegar*/
+  display: grid;
+  grid-template-columns: 40% 60%;
+  margin-top: 4em;
+  margin-left: 3em;
+  /* Definimos las características visuales*/
+  text-align: center;
+  color: #666;
+}
+/* Estilo para el título principal de los artículos de la zona de promoción */
+.promocion article h1 {
+  /* Definimos como se va a ordenar y desplegar*/
+  grid-column: 1;
+  /* Definimos las características visuales*/
+  font-size: 400%;
+  text-shadow: rgba(0, 0, 0, 0.298039) 2px 2px;
+  color: red;
+}
+/* Estilo para el título secundario de los artículos de la zona de promoción */
+.promocion article h2 {
+  /* Definimos las características visuales*/
+  font-size: 200%;
+  text-shadow: rgba(0, 0, 0, 0.298039) 2px 2px;
+  color: red;
+}
+/* Estilo para el título secundario de los artículos de la zona de promoción */
+.promocion aside {
+  /* Definimos como se va a ordenar y desplegar*/
+  display: grid;
+  grid-template-columns: 50% 50%;
+  column-gap: 10px;
+  row-gap: 10px;
+}
+/* Estilo general para las imágenes de la zona de promoción */
+.promocion aside a img {
+  /* Definimos las características visuales*/
+  max-height: 200px;
+  box-shadow: -5px -5px 5px 1px rgb(13, 0, 0, 0.6);
+}
+/* Estilo para las imágenes de abajo de la zona de promoción */
+.promocion .abajo {
+  /* Definimos las características visuales*/
+  box-shadow: 6px 6px 4px 2px rgb(100, 0, 0, 0.4);
+}
+/* Estilo general para la zona de ofertas */
+.ofertas {
+  /* Definimos como se va a ordenar y desplegar*/
+  display: grid;
+  margin-top: 4em;
+  /* Definimos las características visuales*/
+  text-align: center;
+  background: black;
+}
+/* Estilo para el título de la zona de ofertas */
+.ofertas h1 {
+  /* Definimos como se va a ordenar y desplegar*/
+  grid-column: 2;
+  /* Definimos las características visuales*/
+  font-size: 400%;
+  text-shadow: rgba(0, 0, 0, 0.298039) 2px 2px;
+  color: white;
+}
+/* Estilo para los apartados de la zona de ofertas */
+.ofertas div {
+  /* Definimos el tamaño*/
+  width: 100%;
+  height: 100%;
+  /* Definimos como se va a ordenar y desplegar*/
+  display: grid;
+  grid-column: 1/4;
+  grid-row: 2;
+  row-gap: 0.8em;
+  padding-bottom: 4em;
+  /* Definimos las características visuales*/
+  background-image: url("../Recursos/imagenes/rebajas.jpg");
+  background-size: 60% 100%;
+}
+/* Estilo para las secciones principales de los apartados de la zona de ofertas */
+.ofertas div section {
+  /* Definimos el tamaño*/
+  width: 100%;
+  height: 100%;
+  /* Definimos como se va a ordenar y desplegar*/
+  display: grid;
+  grid-column: 1/4;
+  grid-template-columns: 33.33% 33.33% 33.33%;
+}
+/* Estilo para los añadidos de los apartados de la zona de ofertas */
+.ofertas div aside {
+  /* Definimos el tamaño*/
+  width: 100%;
+  height: 100%;
+  /* Definimos como se va a ordenar y desplegar*/
+  display: grid;
+  grid-column: 1/4;
+  grid-template-columns: 33.33% 33.33% 33.33%;
+}
+/* Estilo para los artículos de la zona de ofertas */
+.ofertas article {
+  /* Definimos como se va a ordenar y desplegar*/
+  margin-top: 2em;
+  padding: 5px 20px 0px 20px;
+  /* Definimos las características visuales*/
+  background-color: white;
+  border: solid black;
+  border-radius: 20%;
+  height: 90%;
+  color: #666;
+}
+/* Estilo para los artículos de la zona de ofertas en una posición impar */
+.ofertas article:nth-child(odd) {
+  /* Definimos las características visuales*/
+  border: outset 3.5px darkblue;
+}
+/* Estilo para las imágenes de la zona de ofertas */
+.ofertas article img {
+  /* Definimos como se va a ordenar y desplegar*/
+  margin-top: 10px;
+  /* Definimos las características visuales*/
+  border: solid black;
+  border-radius: 20%;
+}
+/* Estilo general para la zona de servicios */
+.servicios {
+  /* Definimos como se va a ordenar y desplegar*/
+  display: grid;
+  grid-template-columns: 50% 50%;
+  margin-top: 6em;
+  align-content: space-around;
+  /* Definimos las características visuales*/
+  text-align: center;
+  color: #666;
+}
+/* Estilo para los artículos de la zona de servicios */
+.servicios article {
+  /* Definimos el tamaño*/
+  width: 70%;
+  /* Definimos como se va a ordenar y desplegar*/
+  margin-top: 2em;
+  padding-bottom: 20px;
+  /* Definimos las características visuales*/
+  border: solid black;
+  background-color: rgba(184, 183, 143, 0.2);
+}
+/* Estilo para los artículos de la zona de servicios en las posiciones pares */
+.servicios article:nth-child(even) {
+  /* Definimos las características visuales*/
+  background-color: rgba(158, 175, 184, 0.3);
+}
+/* Estilo para las imágenes de los artículos de la zona de servicios */
+.servicios article img {
+  /* Definimos el tamaño*/
+  width: 90%;
+  /* Definimos como se va a ordenar y desplegar*/
+  margin: 10px 0px 10px 0px;
+  /* Definimos las características visuales*/
+  border-radius: 20%;
+}
+/* Estilo para los títulos principales de los artículos de la zona de servicios */
+.servicios article h1 {
+  /* Definimos como se va a ordenar y desplegar*/
+  padding: 10px;
+  /* Definimos las características visuales*/
+  font-size: 200%;
+}
+/* Estilo para los títulos secundarios de los artículos de la zona de servicios */
+.servicios article h3 {
+  /* Definimos el tamaño*/
+  width: 70%;
+  /* Definimos como se va a ordenar y desplegar*/
+  padding: 30px;
+  /* Definimos las características visuales*/
+  font-family: "Roboto Mono", monospace;
+  background-color: RGB(180, 0, 0);
+  color: white;
+}
+/* Estilo general para la zona footer */
+footer {
+  /* Definimos como se va a ordenar y desplegar*/
+  margin-top: 4em;
+  padding: 2em 2em 0.2em 2em;
+  /* Definimos las características visuales*/
+  text-align: center;
+  line-height: 30px;
+  background-color: black;
+}
+/* Estilo para el copy */
+.copy {
+  /* Definimos las características visuales*/
+  text-align: right;
+  font-size: 10px;
+  color: white;
+}
+/* Estilo para las redes sociales de la zona footer */
+.redes-sociales {
+  /* Definimos el tamaño*/
+  height: 30px;
+  /* Definimos como se va a ordenar y desplegar*/
+  display: flex;
+  /* Definimos las características visuales*/
+  justify-content: center;
+}
+/* Estilo para las imágenes de las redes sociales de la zona footer */
+.redes-sociales img {
+  /* Definimos el tamaño*/
+  height: 30px;
+  /* Definimos como se va a ordenar y desplegar*/
+  margin: 10px;
+}
+/* Estilo para las imágenes que no se tocan con el ratón de las redes sociales de la zona footer cuando se pasa el ratón por encima de otra imagen*/
+.redes-sociales:hover img:not(:hover) {
+  /* Definimos las características visuales*/
+  filter: blur(2px);
+}
+/* Estilo para las imágenes de las redes sociales de la zona footer cuando se pasa el ratón por encima */
+.redes-sociales img:hover {
+  /* Definimos el tamaño*/
+  height: 40px;
+  /* Definimos como se va a ordenar y desplegar*/
+  margin: 10px;
+  /* Definimos las características visuales*/
+  cursor: pointer;
+}
+
+/** ESTILOS CUANDO LA PÁGINA SE REPRODUCE MÁS PEQUEÑA DE 768PX**/
+@media (max-width: 768px) {
+  /* Estilo para la zona de promoción */
+  .promocion {
+    /* Definimos como se va a ordenar y desplegar*/
+    display: block;
+  }
+  /* Estilo para las imágenes de los añadidos de la zona de promoción */
+  .promocion aside a img {
+    /* Definimos el tamaño*/
+    width: 35%;
+  }
+  /* Estilo para las ofertas */
+  .ofertas {
+    /* Definimos como se va a ordenar y desplegar*/
+    display: block;
+    margin-top: 1.5em;
+  }
+  /* Estilo para los artículos de las ofertas */
+  .ofertas article {
+    /* Definimos el tamaño*/
+    width: 60%;
+    height: 90%;
+    /* Definimos como se va a ordenar y desplegar*/
+    margin-top: 2em;
+    /* Definimos las características visuales*/
+    background-color: white;
+    border: solid black;
+    border-radius: 20%;
+  }
+  /* Estilo para los apartados de las ofertas */
+  .ofertas div {
+    /* Definimos el tamaño*/
+    width: 100%;
+    height: 100%;
+    /* Definimos como se va a ordenar y desplegar*/
+    display: block;
+    padding: 0.1em 0px 2em 0px;
+    /* Definimos las características visuales*/
+    background-image: url("../Recursos/imagenes/rebajas.jpg");
+    background-size: 100% 50%;
+  }
+  /* Estilo para la zona de las ofertas principales */
+  .ofertas div .ofertas-principales {
+    /* Definimos como se va a ordenar y desplegar*/
+    display: block;
+  }
+  /* Estilo para los artículos de la zona de ofertas secundarias */
+  .ofertas-secundarias article {
+    /* Definimos como se va a ordenar y desplegar*/
+    display: none;
+  }
+  /* Estilo para la zona de servicios */
+  .servicios {
+    /* Definimos como se va a ordenar y desplegar*/
+    display: block;
+    margin-top: 0em;
+    /* Definimos las características visuales*/
+    color: white;
+  }
+  /* Estilo para los artículos de la zona de servicios */
+  .servicios article {
+    /* Definimos el tamaño*/
+    width: 100%;
+    /* Definimos como se va a ordenar y desplegar*/
+    margin-top: 0em;
+    padding-bottom: 20px;
+    /* Definimos las características visuales*/
+    border-top: solid black;
+    background-color: rgba(184, 183, 143, 1);
+  }
+  /* Estilo para los artículos de la zona de servicios en una posición par */
+  .servicios article:nth-child(even) {
+    /* Definimos las características visuales*/
+    background-color: rgba(158, 175, 184, 1);
+  }
+  /* Estilo para la zona de footer */
+  footer {
+    /* Definimos como se va a ordenar y desplegar*/
+    margin-top: 0em;
+    padding: 1em 2em 0.2em 2em;
+    /* Definimos las características visuales*/
+    text-align: center;
+    line-height: 25px;
+    background-color: black;
+  }
+  /* Estilo para el copy */
+  .copy {
+    /* Definimos como se va a ordenar y desplegar*/
+    padding-top: 10px;
+  }
+  /* Estilo para la zona del menú */
+  .nav-texto {
+    /* Definimos como se va a ordenar y desplegar*/
+    display: none;
+  }
+  /* Estilo para el nombre de la web */
+  .nombre {
+    /* Definimos el tamaño*/
+    width: 100%;
+    /* Definimos como se va a ordenar y desplegar*/
+    font-size: 120%;
+  }
+  /* Estilo para el título del nombre de la web */
+  .nombre h1 {
+    /* Definimos las características visuales*/
+    text-align: left;
+  }
+  /* Estilo para la cabecera */
+  header {
+    /* Definimos como se va a ordenar y desplegar*/
+    grid-template-columns: 15% 65% 20%;
+  }
+  /* Estilo para las imágenes de la cabecera */
+  header a img {
+    /* Definimos el tamaño*/
+    width: auto;
+    max-height: 50px;
+    /* Definimos como se va a ordenar y desplegar*/
+    padding: 5px;
+  }
+  /* Estilo para las imágenes de la zona de acceso en la cabecera */
+  .acceso img {
+    /* Definimos el tamaño*/
+    width: auto;
+    max-height: 30px;
+  }
+  /* Estilo para la zona de promoción */
+  .promocion {
+    /* Definimos como se va a ordenar y desplegar*/
+    margin: 0;
+    margin-top: 2em;
+    /* Definimos las características visuales*/
+    text-align: center;
+    color: #666;
+  }
+  /* Estilo para los artículos de la zona de promoción */
+  .promocion article {
+    /* Definimos como se va a ordenar y desplegar*/
+    margin-bottom: 1.5em;
+  }
+  /* Estilo para los añadidos de la zona de promoción */
+  .promocion aside {
+    /* Definimos como se va a ordenar y desplegar*/
+    display: block;
+  }
+  /* Estilo para las imágenes de los añadidos de la zona de promoción */
+  .promocion aside a img {
+    /* Definimos el tamaño*/
+    max-height: 120px;
+    /* Definimos como se va a ordenar y desplegar*/
+    margin: 2px;
+  }
+  /* Estilo para los títulos de los artículos de la zona de promoción */
+  .promocion article h1 {
+    /* Definimos las características visuales*/
+    font-size: 250%;
+  }
+  /* Estilo para la zona del menú en dispositivos móviles*/
+  nav ul {
+    /* Definimos como se va a ordenar y desplegar*/
+    display: block;
+    position: absolute;
+    /* Estilo para el menú de las páginas */
+
+    /* Definimos las características visuales*/
+    background-color: RGB(180, 0, 0);
+    line-height: 2rem;
+  }
+  /* Estilo para el menú en móvil */
+  .nav-mov {
+    /* Definimos como se va a ordenar y desplegar*/
+    width: 100%;
+  }
+  /* Estilo para cada enlace dentro de una lista en la versión móvil*/
+  nav ul li a {
+    /* Definimos como se va a ordenar y desplegar*/
+    justify-content: left;
+    padding-left: 15px;
+    /* Definimos las características visuales*/
+    text-decoration: none;
+    color: white;
+  }
+  /* Estilo para el checkbox del menú */
+  .nav-mov input {
+    /* Definimos como se va a ordenar y desplegar*/
+    display: none;
+  }
+
+  /* Estilo para la imagen del menú */
+  .nav-mov label {
+    /* Definimos como se va a ordenar y desplegar*/
+    display: inline-block;
+    padding-left: 15px;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    font-weight: bold;
+  }
+
+  /* Estilo para la zona del menú cuando no está pulsado el botón */
+  .nav-mov :not(input:checked) ~ li {
+    /* Definimos como se va a ordenar y desplegar*/
+    display: none;
+  }
+  /* Estilo para la zona del menú cuando está pulsado el botón */
+  .nav-mov input:checked ~ li {
+    /* Definimos como se va a ordenar y desplegar*/
+    display: block;
+  }
+  /* Estilo para la zona del segundo menú cuando está pulsado el botón */
+  .nav-mov input:checked ~ li ul li {
+    /* Definimos como se va a ordenar y desplegar*/
+    display: block;
+  }
+
+  /* Estilo para los enlaces de la zona del segundo menú */
+  nav ul li ul li a {
+    /* Definimos como se va a ordenar y desplegar*/
+    padding-left: 2em;
+  }
+  /* Estilo para cada enlace de segundo nivel dentro de una lista cuando se pasa por encima del primer nivel */
+  nav ul li:hover ul {
+    /* Definimos como se va a ordenar y desplegar*/
+    position: relative;
+    display: block;
+    /* Definimos las características visuales*/
+    background-color: rgb(80, 0, 0);
+    line-height: 2rem;
+    /* Definimos el tamaño */
+    width: 100%;
+  }
+}
+/** ESTILOS CUANDO LA PÁGINA SE REPRODUCE MÁS GRANDE DE 768PX**/
+@media (min-width: 769px) {
+  /* Estilo para la zona del menú */
+  .nav-mov {
+    /* Definimos como se va a ordenar y desplegar*/
+    display: none;
+  }
+  /* Estilo para el botón de hamburguesa */
+  #ham {
+    /* Definimos como se va a ordenar y desplegar*/
+    display: none;
+  }
+}
