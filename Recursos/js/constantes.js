@@ -1,5 +1,5 @@
 // Sección de constantes compartidas por todas las páginas
-const NOMBRE_SITIO = "Mi Sitio Web";
+const TITULO_PAGINA = "Mi Sitio Web";
 const DERECHOS_RESERVADOS = "© 2023 Todos los derechos reservados.";
 const POLITICA_PRIVACIDAD = "Política de Privacidad";
 const TERMINOS_CONDICIONES = "Términos y Condiciones";
