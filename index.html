@@ -8,7 +8,7 @@
       <!-- Link a la hoja de estilos -->
       <link href="Styles/styles.css" type="text/css" rel="stylesheet" />
       <!-- Links a los archivos JS -->
-      <script type="text/javascript" src="Resources/js/constants.js"></script>
+      <script type="module" src="Resources/js/users.js"></script>
    </head>
    <!-- Cuerpo de la web -->
    <body>
@@ -17,12 +17,12 @@
          <a href="index.html">
          <img src="Resources/images/logoMates.png" alt="Logotipo de MateMágicas" />
          </a>
-         <div class="nombre">
+         <div class="name">
             <h1>MateMágicas</h1>
          </div>
-         <div class="acceso">
-            <p>Identifícate:</p>
-            <img src="Resources/images/avatar.png" alt="Acceso a socios" />
+         <div class="access" onclick="window.location.href='https://www.ejemplo.com'">
+            <img id="avatar" alt="Acceso a socios o registro" />
+            <p id="login"></p>
          </div>
       </header>
       <!-- Menú de navegación -->

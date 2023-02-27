@@ -1,3 +1,5 @@
+import { user } from './users.js';
+
 //Carga solamente cuando ya se haya creado el DOM.
 document.addEventListener("DOMContentLoaded", function(event) {
 

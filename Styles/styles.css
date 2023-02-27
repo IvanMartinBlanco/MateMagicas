@@ -31,34 +31,42 @@ body {
 header {
   /* Definimos como se va a ordenar y desplegar*/
   display: grid;
-  grid-template-columns: 10% 80% 10%;
+  grid-template-columns: 5% 85% 10%;
   /* Definimos las características visuales*/
   background-color: #8052FF;
   ;
 }
 header a img {
   /* Definimos como se va a ordenar y desplegar*/
+  justify-self: start;
   max-height: 90px;
   width: auto;
   padding: 5px;
 }
-.nombre {
+.name {
+  /* Definimos como se va a ordenar y desplegar*/
+  padding-left: 5%;
   /* Definimos las características visuales*/
   font-size: 200%;
 }
-.acceso {
+.access {
   /* Definimos donde se va a colocar y como se va a desplegar*/
-  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
 }
-.acceso img {
+.access img {
   /* Definimos como se va a ordenar y desplegar*/
   max-height: 50px;
   width: auto;
+  padding-right: 10px;
+
 }
-.acceso p {
-  /* Definimos como se va a ordenar y desplegar*/
-  margin-right: 0.5em;
-  margin-left: -2.5em;
+.access p {
+  /* Definimos las características visuales */
+  font-size: 90%;
 }
 /** ESTILOS DEL MENÚ**/
 /* Estilo para el menú de las páginas */
@@ -446,14 +454,14 @@ footer {
     display: none;
   }
   /* Estilo para el nombre de la web */
-  .nombre {
+  .name {
     /* Definimos el tamaño*/
     width: 100%;
     /* Definimos como se va a ordenar y desplegar*/
     font-size: 120%;
   }
   /* Estilo para el título del nombre de la web */
-  .nombre h1 {
+  .name h1 {
     /* Definimos las características visuales*/
     text-align: left;
   }
@@ -471,7 +479,7 @@ footer {
     padding: 5px;
   }
   /* Estilo para las imágenes de la zona de acceso en la cabecera */
-  .acceso img {
+  .access img {
     /* Definimos el tamaño*/
     width: auto;
     max-height: 30px;
