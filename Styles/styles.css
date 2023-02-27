@@ -33,7 +33,8 @@ header {
   display: grid;
   grid-template-columns: 10% 80% 10%;
   /* Definimos las características visuales*/
-  background-color: red;
+  background-color: #8052FF;
+  ;
 }
 header a img {
   /* Definimos como se va a ordenar y desplegar*/
@@ -63,7 +64,7 @@ header a img {
 /* Estilo para el menú de las páginas */
 nav {
   /* Definimos las características visuales*/
-  background-color: RGB(180, 0, 0);
+  background-color: #6938EF;
   line-height: 2rem;
 }
 /* Estilo para la lista del menú */
@@ -99,7 +100,7 @@ nav ul li:hover ul {
   position: absolute;
   display: block;
   /* Definimos las características visuales*/
-  background-color: RGB(180, 0, 0);
+  background-color: #6938EF;
   line-height: 2rem;
   /* Definimos el tamaño */
   width: 25%;
@@ -107,7 +108,7 @@ nav ul li:hover ul {
 /* Estilo para cada enlace dentro de una lista cuando el ratón pasa por encima */
 nav ul li a:hover {
   /* Definimos las características visuales*/
-  background-color: RGB(210, 0, 0);
+  background-color: #6E46DB;
 }
 /* Estilo para cada imagen dentro de una lista */
 nav ul li img {
@@ -198,7 +199,7 @@ nav ul li img:hover {
   row-gap: 0.8em;
   padding-bottom: 4em;
   /* Definimos las características visuales*/
-  background-image: url("../Recursos/imagenes/rebajas.jpg");
+  background-image: url("../Resources/images/rebajas.jpg");
   background-size: 60% 100%;
 }
 /* Estilo para las secciones principales de los apartados de la zona de ofertas */
@@ -387,7 +388,7 @@ footer {
     display: block;
     padding: 0.1em 0px 2em 0px;
     /* Definimos las características visuales*/
-    background-image: url("../Recursos/imagenes/rebajas.jpg");
+    background-image: url("../Resources/images/rebajas.jpg");
     background-size: 100% 50%;
   }
   /* Estilo para la zona de las ofertas principales */
