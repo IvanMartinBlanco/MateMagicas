@@ -8,11 +8,11 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
 	setUser({ name: "Iván", surname: "Martín", image:"Resources/images/logo.png" });
 	function setRegistered(){
-		registeredUser=true;
+		registeredUser=false;
 	}
 	setRegistered();
 	accessText();
-	const imageUrl = user.image ? user.image : "./Resources/Images/avatar.png";
+	const imageUrl = user.image && registeredUser ? user.image : "./Resources/Images/avatar.png";
 	const myImage = document.getElementById("avatar");
 	myImage.src=imageUrl;
 	//Función que define el texto que se muestra en el acceso

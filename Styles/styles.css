@@ -23,7 +23,7 @@ body {
   /* Definimos el tamaño */
   width: 100%;
   /* Definimos las características visuales*/
-  color: white;
+  color: #5E30DB;
   background-color: RGB(240, 240, 240);
 }
 /** ESTILOS GENERALES DE LA CABECERA**/
@@ -34,7 +34,7 @@ header {
   grid-template-columns: 5% 85% 10%;
   /* Definimos las características visuales*/
   background-color: #8052FF;
-  ;
+  color: white;
 }
 header a img {
   /* Definimos como se va a ordenar y desplegar*/
@@ -116,7 +116,7 @@ nav ul li:hover ul {
 /* Estilo para cada enlace dentro de una lista cuando el ratón pasa por encima */
 nav ul li a:hover {
   /* Definimos las características visuales*/
-  background-color: #6E46DB;
+  background-color: #8052FF;
 }
 /* Estilo para cada imagen dentro de una lista */
 nav ul li img {
@@ -132,7 +132,7 @@ nav ul li img:hover {
 }
 /** ESTILOS GENERALES DEL CONTENIDO**/
 /* Estilo general para la zona de promoción */
-.promocion {
+.promo {
   /* Definimos como se va a ordenar y desplegar*/
   display: grid;
   grid-template-columns: 40% 60%;
@@ -177,26 +177,21 @@ nav ul li img:hover {
   /* Definimos las características visuales*/
   box-shadow: 6px 6px 4px 2px rgb(100, 0, 0, 0.4);
 }
-/* Estilo general para la zona de ofertas */
-.ofertas {
+/* Estilo general para la zona de primaria */
+.primary {
   /* Definimos como se va a ordenar y desplegar*/
   display: grid;
   margin-top: 4em;
   /* Definimos las características visuales*/
   text-align: center;
-  background: black;
 }
-/* Estilo para el título de la zona de ofertas */
-.ofertas h1 {
+/* Estilo para el título de la zona de primaria */
+.primary h2 {
   /* Definimos como se va a ordenar y desplegar*/
   grid-column: 2;
-  /* Definimos las características visuales*/
-  font-size: 400%;
-  text-shadow: rgba(0, 0, 0, 0.298039) 2px 2px;
-  color: white;
 }
-/* Estilo para los apartados de la zona de ofertas */
-.ofertas div {
+/* Estilo para los apartados de la zona de primaria */
+.primary div {
   /* Definimos el tamaño*/
   width: 100%;
   height: 100%;
@@ -206,12 +201,9 @@ nav ul li img:hover {
   grid-row: 2;
   row-gap: 0.8em;
   padding-bottom: 4em;
-  /* Definimos las características visuales*/
-  background-image: url("../Resources/images/rebajas.jpg");
-  background-size: 60% 100%;
 }
-/* Estilo para las secciones principales de los apartados de la zona de ofertas */
-.ofertas div section {
+/* Estilo para las secciones principales de los apartados de la zona de primaria */
+.primary div section {
   /* Definimos el tamaño*/
   width: 100%;
   height: 100%;
@@ -220,8 +212,8 @@ nav ul li img:hover {
   grid-column: 1/4;
   grid-template-columns: 33.33% 33.33% 33.33%;
 }
-/* Estilo para los añadidos de los apartados de la zona de ofertas */
-.ofertas div aside {
+/* Estilo para los añadidos de los apartados de la zona de primaria */
+.primary div aside {
   /* Definimos el tamaño*/
   width: 100%;
   height: 100%;
@@ -230,8 +222,8 @@ nav ul li img:hover {
   grid-column: 1/4;
   grid-template-columns: 33.33% 33.33% 33.33%;
 }
-/* Estilo para los artículos de la zona de ofertas */
-.ofertas article {
+/* Estilo para los artículos de la zona de primaria */
+.primary article {
   /* Definimos como se va a ordenar y desplegar*/
   margin-top: 2em;
   padding: 5px 20px 0px 20px;
@@ -242,13 +234,13 @@ nav ul li img:hover {
   height: 90%;
   color: #666;
 }
-/* Estilo para los artículos de la zona de ofertas en una posición impar */
-.ofertas article:nth-child(odd) {
+/* Estilo para los artículos de la zona de primaria en una posición impar */
+.primary article:nth-child(odd) {
   /* Definimos las características visuales*/
   border: outset 3.5px darkblue;
 }
-/* Estilo para las imágenes de la zona de ofertas */
-.ofertas article img {
+/* Estilo para las imágenes de la zona de primaria */
+.primary article img {
   /* Definimos como se va a ordenar y desplegar*/
   margin-top: 10px;
   /* Definimos las características visuales*/
@@ -369,14 +361,14 @@ footer {
     /* Definimos el tamaño*/
     width: 35%;
   }
-  /* Estilo para las ofertas */
-  .ofertas {
+  /* Estilo para las primaria */
+  .primary {
     /* Definimos como se va a ordenar y desplegar*/
     display: block;
     margin-top: 1.5em;
   }
-  /* Estilo para los artículos de las ofertas */
-  .ofertas article {
+  /* Estilo para los artículos de las primaria */
+  .primary article {
     /* Definimos el tamaño*/
     width: 60%;
     height: 90%;
@@ -387,8 +379,8 @@ footer {
     border: solid black;
     border-radius: 20%;
   }
-  /* Estilo para los apartados de las ofertas */
-  .ofertas div {
+  /* Estilo para los apartados de las primaria */
+  .primary div {
     /* Definimos el tamaño*/
     width: 100%;
     height: 100%;
@@ -399,15 +391,10 @@ footer {
     background-image: url("../Resources/images/rebajas.jpg");
     background-size: 100% 50%;
   }
-  /* Estilo para la zona de las ofertas principales */
-  .ofertas div .ofertas-principales {
+  /* Estilo para la zona de los cursos de primaria */
+  .primary div .branch {
     /* Definimos como se va a ordenar y desplegar*/
     display: block;
-  }
-  /* Estilo para los artículos de la zona de ofertas secundarias */
-  .ofertas-secundarias article {
-    /* Definimos como se va a ordenar y desplegar*/
-    display: none;
   }
   /* Estilo para la zona de servicios */
   .servicios {
