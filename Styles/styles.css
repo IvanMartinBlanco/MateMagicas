@@ -177,7 +177,7 @@ nav ul li img:hover {
   /* Definimos las características visuales*/
   box-shadow: 6px 6px 4px 2px rgb(100, 0, 0, 0.4);
 }
-/* Estilo general para la zona de primaria */
+/* Estilo general para las ramas */
 .primary {
   /* Definimos como se va a ordenar y desplegar*/
   display: grid;
@@ -185,12 +185,12 @@ nav ul li img:hover {
   /* Definimos las características visuales*/
   text-align: center;
 }
-/* Estilo para el título de la zona de primaria */
+/* Estilo para el título de las ramas */
 .primary h2 {
   /* Definimos como se va a ordenar y desplegar*/
   grid-column: 2;
 }
-/* Estilo para los apartados de la zona de primaria */
+/* Estilo para los apartados de las ramas */
 .primary div {
   /* Definimos el tamaño*/
   width: 100%;
@@ -202,7 +202,7 @@ nav ul li img:hover {
   row-gap: 0.8em;
   padding-bottom: 4em;
 }
-/* Estilo para las secciones principales de los apartados de la zona de primaria */
+/* Estilo para las secciones principales de los apartados de las ramas */
 .primary div section {
   /* Definimos el tamaño*/
   width: 100%;
@@ -212,7 +212,7 @@ nav ul li img:hover {
   grid-column: 1/4;
   grid-template-columns: 33.33% 33.33% 33.33%;
 }
-/* Estilo para los añadidos de los apartados de la zona de primaria */
+/* Estilo para los añadidos de los apartados de las ramas */
 .primary div aside {
   /* Definimos el tamaño*/
   width: 100%;
@@ -222,7 +222,7 @@ nav ul li img:hover {
   grid-column: 1/4;
   grid-template-columns: 33.33% 33.33% 33.33%;
 }
-/* Estilo para los artículos de la zona de primaria */
+/* Estilo para los artículos de las ramas */
 .primary article {
   /* Definimos como se va a ordenar y desplegar*/
   margin-top: 2em;
@@ -234,18 +234,29 @@ nav ul li img:hover {
   height: 90%;
   color: #666;
 }
-/* Estilo para los artículos de la zona de primaria en una posición impar */
+/* Estilo para los artículos de las ramas en una posición impar */
 .primary article:nth-child(odd) {
   /* Definimos las características visuales*/
   border: outset 3.5px darkblue;
 }
-/* Estilo para las imágenes de la zona de primaria */
+/* Estilo para las imágenes de las ramas */
 .primary article img {
   /* Definimos como se va a ordenar y desplegar*/
   margin-top: 10px;
   /* Definimos las características visuales*/
   border: solid black;
   border-radius: 20%;
+}
+/* Estilo para el subtítulo de los artículos de las ramas */
+.primary article h4{
+  /* Definimos como se va a ordenar y desplegar*/
+  width: 50%;
+  margin-top: 1em;
+}
+/* Estilo para los párrafos de los artículos de las ramas */
+.primary article p{
+  /* Definimos como se va a ordenar y desplegar*/
+  width: 50%;
 }
 /* Estilo general para la zona de servicios */
 .servicios {
@@ -361,13 +372,13 @@ footer {
     /* Definimos el tamaño*/
     width: 35%;
   }
-  /* Estilo para las primaria */
+  /* Estilo para primaria */
   .primary {
     /* Definimos como se va a ordenar y desplegar*/
     display: block;
     margin-top: 1.5em;
   }
-  /* Estilo para los artículos de las primaria */
+  /* Estilo para los artículos de primaria */
   .primary article {
     /* Definimos el tamaño*/
     width: 60%;
@@ -379,7 +390,7 @@ footer {
     border: solid black;
     border-radius: 20%;
   }
-  /* Estilo para los apartados de las primaria */
+  /* Estilo para los apartados de primaria */
   .primary div {
     /* Definimos el tamaño*/
     width: 100%;
@@ -396,6 +407,11 @@ footer {
     /* Definimos como se va a ordenar y desplegar*/
     display: block;
   }
+    /* Estilo para la zona de las fichas de primaria */
+    .primary .branch {
+      /* Definimos como se va a ordenar y desplegar*/
+      display: block;
+    }
   /* Estilo para la zona de servicios */
   .servicios {
     /* Definimos como se va a ordenar y desplegar*/
