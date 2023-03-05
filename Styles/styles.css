@@ -1,6 +1,6 @@
 /** ESTILOS GENERALES **/
-/* Fuente RobotoMono importada desde la API de Google */
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100&display=swap");
+/* Fuente Yusei Magic importada desde la API de Google */
+@import url("https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap");
 /* Fuente DancingScript, descargada e importada de forma local */
 @font-face {
   font-family: "Dancing";
@@ -11,7 +11,7 @@
   /* Definimos como se va a ordenar y desplegar*/
   margin: auto;
   /* Definimos las características visuales*/
-  font-family: "Roboto";
+  font-family: "Yusei Magic";
 }
 /* Estilo para los span */
 span {
@@ -178,7 +178,7 @@ nav ul li img:hover {
   box-shadow: 6px 6px 4px 2px rgb(100, 0, 0, 0.4);
 }
 /* Estilo general para las ramas */
-.primary {
+.level {
   /* Definimos como se va a ordenar y desplegar*/
   display: grid;
   margin-top: 4em;
@@ -186,15 +186,12 @@ nav ul li img:hover {
   text-align: center;
 }
 /* Estilo para el título de las ramas */
-.primary h2 {
+.level h2 {
   /* Definimos como se va a ordenar y desplegar*/
   grid-column: 2;
 }
 /* Estilo para los apartados de las ramas */
-.primary div {
-  /* Definimos el tamaño*/
-  width: 100%;
-  height: 100%;
+.level div {
   /* Definimos como se va a ordenar y desplegar*/
   display: grid;
   grid-column: 1/4;
@@ -203,60 +200,84 @@ nav ul li img:hover {
   padding-bottom: 4em;
 }
 /* Estilo para las secciones principales de los apartados de las ramas */
-.primary div section {
-  /* Definimos el tamaño*/
-  width: 100%;
-  height: 100%;
-  /* Definimos como se va a ordenar y desplegar*/
-  display: grid;
-  grid-column: 1/4;
-  grid-template-columns: 33.33% 33.33% 33.33%;
-}
-/* Estilo para los añadidos de los apartados de las ramas */
-.primary div aside {
-  /* Definimos el tamaño*/
-  width: 100%;
-  height: 100%;
+.branch {
   /* Definimos como se va a ordenar y desplegar*/
   display: grid;
   grid-column: 1/4;
   grid-template-columns: 33.33% 33.33% 33.33%;
 }
 /* Estilo para los artículos de las ramas */
-.primary article {
+.branch article {
   /* Definimos como se va a ordenar y desplegar*/
-  margin-top: 2em;
-  padding: 5px 20px 0px 20px;
+  max-width: 300px;
+  margin: 2em 4em;
+  padding: 10px 0px;
+  position: relative;
   /* Definimos las características visuales*/
   background-color: white;
-  border: solid black;
   border-radius: 20%;
-  height: 90%;
+  height: auto;
   color: #666;
-}
-/* Estilo para los artículos de las ramas en una posición impar */
-.primary article:nth-child(odd) {
-  /* Definimos las características visuales*/
-  border: outset 3.5px darkblue;
+  box-shadow: -1px 3px 9px #282c38;
 }
 /* Estilo para las imágenes de las ramas */
-.primary article img {
+.branch article img {
   /* Definimos como se va a ordenar y desplegar*/
-  margin-top: 10px;
+  margin: 10px 0px 20px;
   /* Definimos las características visuales*/
-  border: solid black;
   border-radius: 20%;
 }
 /* Estilo para el subtítulo de los artículos de las ramas */
-.primary article h4{
+.branch article h3 {
+  position: relative; /* agregar posición relativa para usar las posiciones absolutas */
+  width: 100%;
+  right:10px;
+  padding: 10px 10px;
+  font-size: 140%;
+  color: white;
+  background-image: linear-gradient(#DBCD30, #8f8303);
+  border-radius: 10%;
+    box-shadow: -1px 3px 9px #282c38;
+}
+
+.branch article h3::before,
+.branch article h3::after {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  border: 20px solid transparent;
+  top: 4px;
+}
+
+.branch article h3::before {
+  left: -35px; /* ajuste horizontal para que esté alineado con el texto */
+  border-right-color: #8f8303;
+  border-top-color: #8f8303;
+  border-bottom-color: #8f8303;
+}
+
+.branch article h3::after {
+  right: -35px; /* ajuste horizontal para que esté alineado con el texto */
+  border-left-color: #8f8303;
+  border-top-color: #8f8303;
+  border-bottom-color: #8f8303;
+}
+
+/* Estilo para el subtítulo de los artículos de las ramas */
+.branch article h4{
   /* Definimos como se va a ordenar y desplegar*/
-  width: 50%;
-  margin-top: 1em;
+  width: 100%;
+  margin: 1em auto;
 }
 /* Estilo para los párrafos de los artículos de las ramas */
-.primary article p{
+.branch article p{
   /* Definimos como se va a ordenar y desplegar*/
-  width: 50%;
+  display: inline-block;
+  max-width: 80%;
+  margin: 5px 0px 10px 0px;
+  text-align: center;
 }
 /* Estilo general para la zona de servicios */
 .servicios {
