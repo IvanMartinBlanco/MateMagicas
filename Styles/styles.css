@@ -268,7 +268,7 @@ nav ul li img:hover {
 /* Estilo para el subtítulo de los artículos de las ramas */
 .branch article h4{
   /* Definimos como se va a ordenar y desplegar*/
-  width: 100%;
+  width: 90%;
   margin: 1em auto;
 }
 /* Estilo para los párrafos de los artículos de las ramas */
