@@ -1,124 +1,197 @@
 <!DOCTYPE html>
 <html lang="es">
-   <!-- Cabecera del documento -->
-   <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>index</title>
-      <!-- Link a la hoja de estilos -->
-      <link href="Styles/styles.css" type="text/css" rel="stylesheet" />
-      <!-- Links a los archivos JS -->
-      <script type="module" src="Resources/js/users.js"></script>
-   </head>
-   <!-- Cuerpo de la web -->
-   <body>
-      <!-- Cabecera de la web -->
-      <header>
-         <a href="index.html">
+<!-- Cabecera del documento -->
+
+<head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>index</title>
+   <!-- Link a la hoja de estilos -->
+   <link href="Styles/styles.css" type="text/css" rel="stylesheet" />
+   <!-- Links a los archivos JS -->
+   <script type="module" src="Resources/js/users.js"></script>
+</head>
+<!-- Cuerpo de la web -->
+
+<body>
+   <!-- Cabecera de la web -->
+   <header>
+      <a href="index.html">
          <img src="Resources/images/logoMates.png" alt="Logotipo de MateMágicas" />
-         </a>
-         <div class="name">
-            <h1>MateMágicas</h1>
+      </a>
+      <div class="name">
+         <h1>MateMágicas</h1>
+      </div>
+      <div class="access" onclick="window.location.href='https://www.ejemplo.com'">
+         <img id="avatar" alt="Acceso a socios o registro" />
+         <p id="login"></p>
+      </div>
+   </header>
+   <!-- Menú de navegación -->
+   <nav>
+      <!-- Menú textual -->
+      <ul class="nav-texto">
+         <li>
+            <a href="https://www.juntadeandalucia.es/educacion/eaprendizaje/" target="_blank">Ofertas</a>
+         </li>
+         <li><a href="#">Hoteles</a>
+            <ul>
+               <li><a href="informacion.html" target="_blank">Información</a></li>
+               <li><a href="https://www.educacionyfp.gob.es/portada.html" target="_blank">Contratación de servicios</a>
+               </li>
+            </ul>
+         </li>
+         <li><a href="https://www.is4k.es/" target="_blank">Ciudades históricas</a></li>
+         <li><a href="https://www.osi.es/es" target="_blank">Fines de semanas activos</a></li>
+      </ul>
+      <!-- Menú hamburguesa -->
+      <ul class="nav-mov">
+         <input type="checkbox" id="ham">
+         <label for="ham"> ☰ </label>
+         <li>
+            <a href="https://www.juntadeandalucia.es/educacion/eaprendizaje/" target="_blank">Ofertas</a>
+         </li>
+         <li><a href="#">Hoteles</a>
+            <ul>
+               <li><a href="informacion.html" target="_blank">Información</a></li>
+               <li><a href="https://www.educacionyfp.gob.es/portada.html" target="_blank">Contratación de servicios</a>
+               </li>
+            </ul>
+         </li>
+         <li><a href="https://www.is4k.es/" target="_blank">Ciudades históricas</a></li>
+         <li><a href="https://www.osi.es/es" target="_blank">Fines de semanas activos</a></li>
+      </ul>
+   </nav>
+   <!-- Zona de contenido -->
+   <main>
+      <!-- Bloque de primaria -->
+      <section class="level">
+         <h2 class="name">Primaria</h2>
+         <div>
+            <!-- Bloque de ramas de las matemáticas para primaria -->
+            <section class="branch">
+               <article>
+                  <img src="Resources/images/numeros.jpg" alt="Números para primaria" />
+                  <h3>Números</h3>
+                  <h4><span>Aprende todo sobre tus amigos los números</span></h4>
+                  <p>Podrás aprender sobre números enteros, fracciones, decimales, números romanos ¡y mucho más!</p>
+               </article>
+               <article>
+                  <img src="Resources/images/figuras.jpg" alt="Fíguras para primaria" />
+                  <h3>Figuras</h3>
+                  <h4><span>Aprende todo sobre tus amigas las figuras</span></h4>
+                  <p>Podrás aprender sobre puntos, rectas, figuras planas, mediciones ¡y mucho más!</p>
+               </article>
+               <article>
+                  <img src="Resources/images/simbolos.jpg" alt="Símbolos matemáticos para primaria" />
+                  <h3>Cálculo</h3>
+                  <h4><span>Aprende todo sobre tus amigos los cálculos matemáticos</span></h4>
+                  <p>Podrás aprender sobre sumas, restas, multiplicaciones, divisiones ¡y mucho más!</p>
+               </article>
+            </section>
          </div>
-         <div class="access" onclick="window.location.href='https://www.ejemplo.com'">
-            <img id="avatar" alt="Acceso a socios o registro" />
-            <p id="login"></p>
+      </section>
+      <!-- Bloque de secundaria -->
+      <section class="level">
+         <h2 class="name">Secundaria</h2>
+         <div>
+            <!-- Bloque de ramas de las matemáticas para secundaria -->
+            <section class="branch">
+               <article>
+                  <img src="Resources/images/numeros.jpg" alt="Números para primaria" />
+                  <h3>Números</h3>
+                  <h4><span>Aprende todo sobre tus amigas las figuras</span></h4>
+                  <p>Podrás aprender sobre números enteros, fracciones, decimales, números romanos ¡y mucho más!</p>
+               </article>
+               <article>
+                  <img src="Resources/images/figuras.jpg" alt="Fíguras para primaria" />
+                  <h3>Álgebra</h3>
+                  <h4><span>Aprende todo sobre tus amigos los números</span></h4>
+                  <p>Podrás aprender sobre puntos, rectas, figuras planas, mediciones ¡y mucho más!</p>
+               </article>
+               <article>
+                  <img src="Resources/images/simbolos.jpg" alt="Símbolos matemáticos para primaria" />
+                  <h3>Cálculo</h3>
+                  <h4><span>Aprende todo sobre tus amigos los cálculos matemáticos</span></h4>
+                  <p>Podrás aprender sobre sumas, restas, multiplicaciones, divisiones ¡y mucho más!</p>
+               </article>
+            </section>
          </div>
-      </header>
-      <!-- Menú de navegación -->
-      <nav>
-         <!-- Menú textual -->
-         <ul class="nav-texto">
-            <li>
-               <a href="https://www.juntadeandalucia.es/educacion/eaprendizaje/" target="_blank">Ofertas</a>
-            </li>
-            <li><a href="#">Hoteles</a>
-               <ul>
-                  <li><a href="informacion.html" target="_blank">Información</a></li>
-                  <li><a href="https://www.educacionyfp.gob.es/portada.html" target="_blank">Contratación de servicios</a></li>
-               </ul>
-            </li>
-            <li><a href="https://www.is4k.es/" target="_blank">Ciudades históricas</a></li>
-            <li><a href="https://www.osi.es/es" target="_blank">Fines de semanas activos</a></li>
-         </ul>
-         <!-- Menú hamburguesa -->
-         <ul class="nav-mov">
-               <input type="checkbox" id="ham">
-               <label for="ham"> ☰ </label>
-            <li>
-               <a href="https://www.juntadeandalucia.es/educacion/eaprendizaje/" target="_blank">Ofertas</a>
-            </li>
-            <li><a href="#">Hoteles</a>
-               <ul>
-                  <li><a href="informacion.html" target="_blank">Información</a></li>
-                  <li><a href="https://www.educacionyfp.gob.es/portada.html" target="_blank">Contratación de servicios</a></li>
-               </ul>
-            </li>
-            <li><a href="https://www.is4k.es/" target="_blank">Ciudades históricas</a></li>
-            <li><a href="https://www.osi.es/es" target="_blank">Fines de semanas activos</a></li>
-         </ul>
-      </nav>
-      <!-- Zona de contenido -->
-      <main>
-         <!-- Bloque de primaria -->
-         <section class="level">
-            <h2 class="name">Primaria</h2>
-            <div>
-               <!-- Bloque de ofertas principales -->
-               <section class="branch">
-                  <article>
-                     <img src="Resources/images/numeros.jpg" alt="Números para primaria" />
-                     <h3>Números</h3>
-                     <h4><span>Aprende todo sobre tus amigos los números</span></h4>
-                     <p>Podrás aprender sobre números enteros, fracciones, decimales, números romanos ¡y mucho más!</p>
-                  </article>
-                  <article>
-                     <img src="Resources/images/figuras.jpg" alt="Fíguras para primaria" />
-                     <h3>Figuras</h3>
-                     <h4><span>Aprende todo sobre tus amigos los números</span></h4>
-                     <p>Podrás aprender sobre números enteros, fracciones, decimales, números romanos ¡y mucho más!</p>
-                  </article>
-                  <article>
-                     <img src="Resources/images/simbolos.jpg" alt="Símbolos matemáticos para primaria" />
-                     <h3>Cálculo</h3>
-                     <h4><span>Aprende todo sobre tus amigos los números</span></h4>
-                     <p>Podrás aprender sobre números enteros, fracciones, decimales, números romanos ¡y mucho más!</p>
-                  </article>
-               </section>
-            </div>
-         </section>
-         <!-- Bloque de servicios -->
-         <section class="servicios">
-            <article>
-               <h1>Seguro de viaje</h1>
-               <img src="Resources/images/salvavidas.jpg" alt="Salvavidas que representa los seguros" />
-               <h3>Aseguramos tus viajes para que solo tengas que preocuparte en disfrutar.</h3>
-            </article>
-            <article>
-               <h1>Vehículos de alquiler</h1>
-               <img src="Resources/images/coche.jpg" alt="Coche de alquiler" />
-               <h3>Disfruta de la independencia y la comodidad de elegir el destino.</h3>
-            </article>
-         </section>
-      </main>
-      <!-- Pié de la página -->
-      <footer>
-         <p>
-            Viajelanda S.L.
-         </p>
-         <p>
-            Email: Viajelandia@ejercicio2dedaw.com
-         </p>
-         <p>
-            Teléfono: 666668210
-         </p>
-         <!-- Redes sociales -->
-         <div class="redes-sociales">
-            <img src="Resources/images/redes/facebook.png" alt="Icono de Facebook" />
-            <img src="Resources/images/redes/twitter.png" alt="Icono de Facebook" />
-            <img src="Resources/images/redes/instagram.png" alt="Icono de Facebook" />
+      </section>
+      <!-- Bloque de bachillerato -->
+      <section class="level">
+         <h2 class="name">Bachillerato</h2>
+         <div>
+            <!-- Bloque de ramas de las matemáticas para bachillerato -->
+            <section class="branch">
+               <article>
+                  <img src="Resources/images/numeros.jpg" alt="Números para primaria" />
+                  <h3>Números</h3>
+                  <h4><span>Aprende todo sobre tus amigas las figuras</span></h4>
+                  <p>Podrás aprender sobre números enteros, fracciones, decimales, números romanos ¡y mucho más!</p>
+               </article>
+               <article>
+                  <img src="Resources/images/figuras.jpg" alt="Fíguras para primaria" />
+                  <h3>Figuras</h3>
+                  <h4><span>Aprende todo sobre tus amigos los números</span></h4>
+                  <p>Podrás aprender sobre números enteros, fracciones, decimales, números romanos ¡y mucho más!</p>
+               </article>
+               <article>
+                  <img src="Resources/images/simbolos.jpg" alt="Símbolos matemáticos para primaria" />
+                  <h3>Cálculo</h3>
+                  <h4><span>Aprende todo sobre tus amigos los números</span></h4>
+                  <p>Podrás aprender sobre números enteros, fracciones, decimales, números romanos ¡y mucho más!</p>
+               </article>
+            </section>
          </div>
-         <p class="copy">Iván Martín Blanco &COPY; 2021</p>
-      </footer>
-   </body>
+      </section>
+      <!-- Bloque de avanzadas -->
+      <section class="level">
+         <h2 class="name">Avanzadas</h2>
+         <div>
+            <!-- Bloque de ramas de las matemáticas avanzadas -->
+            <section class="branch">
+               <article>
+                  <img src="Resources/images/numeros.jpg" alt="Números para primaria" />
+                  <h3>Números</h3>
+                  <h4><span>Aprende todo sobre tus amigas las figuras</span></h4>
+                  <p>Podrás aprender sobre números enteros, fracciones, decimales, números romanos ¡y mucho más!</p>
+               </article>
+               <article>
+                  <img src="Resources/images/figuras.jpg" alt="Fíguras para primaria" />
+                  <h3>Figuras</h3>
+                  <h4><span>Aprende todo sobre tus amigos los números</span></h4>
+                  <p>Podrás aprender sobre números enteros, fracciones, decimales, números romanos ¡y mucho más!</p>
+               </article>
+               <article>
+                  <img src="Resources/images/simbolos.jpg" alt="Símbolos matemáticos para primaria" />
+                  <h3>Cálculo</h3>
+                  <h4><span>Aprende todo sobre tus amigos los números</span></h4>
+                  <p>Podrás aprender sobre números enteros, fracciones, decimales, números romanos ¡y mucho más!</p>
+               </article>
+            </section>
+         </div>
+      </section>
+   </main>
+   <!-- Pié de la página -->
+   <footer>
+      <p>
+         Matemágicas
+      </p>
+      <p>
+         Email: matemagicas@gmail.com
+      </p>
+      <p>
+         Teléfono: 658796459
+      </p>
+      <!-- Redes sociales -->
+      <div class="redes-sociales">
+         <img src="Resources/images/redes/facebook.png" alt="Icono de Facebook" />
+         <img src="Resources/images/redes/twitter.png" alt="Icono de Twitter" />
+         <img src="Resources/images/redes/instagram.png" alt="Icono de Instagram" />
+      </div>
+      <p class="copy">Iván Martín Blanco &COPY; 2023</p>
+   </footer>
+</body>
+
 </html>
