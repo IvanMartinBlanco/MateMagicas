@@ -1,11 +1,6 @@
 /** ESTILOS GENERALES **/
 /* Fuente Yusei Magic importada desde la API de Google */
 @import url("https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap");
-/* Fuente DancingScript, descargada e importada de forma local */
-@font-face {
-  font-family: "Dancing";
-  src: url("../Recursos/Dancing_Script/DancingScript-VariableFont_wght.ttf");
-}
 /* Estilo base para todo tipo de elementos */
 * {
   /* Definimos como se va a ordenar y desplegar*/
@@ -131,52 +126,6 @@ nav ul li img:hover {
   background-color: RGB(210, 0, 0);
 }
 /** ESTILOS GENERALES DEL CONTENIDO**/
-/* Estilo general para la zona de promoción */
-.promo {
-  /* Definimos como se va a ordenar y desplegar*/
-  display: grid;
-  grid-template-columns: 40% 60%;
-  margin-top: 4em;
-  margin-left: 3em;
-  /* Definimos las características visuales*/
-  text-align: center;
-  color: #666;
-}
-/* Estilo para el título principal de los artículos de la zona de promoción */
-.promocion article h1 {
-  /* Definimos como se va a ordenar y desplegar*/
-  grid-column: 1;
-  /* Definimos las características visuales*/
-  font-size: 400%;
-  text-shadow: rgba(0, 0, 0, 0.298039) 2px 2px;
-  color: red;
-}
-/* Estilo para el título secundario de los artículos de la zona de promoción */
-.promocion article h2 {
-  /* Definimos las características visuales*/
-  font-size: 200%;
-  text-shadow: rgba(0, 0, 0, 0.298039) 2px 2px;
-  color: red;
-}
-/* Estilo para el título secundario de los artículos de la zona de promoción */
-.promocion aside {
-  /* Definimos como se va a ordenar y desplegar*/
-  display: grid;
-  grid-template-columns: 50% 50%;
-  column-gap: 10px;
-  row-gap: 10px;
-}
-/* Estilo general para las imágenes de la zona de promoción */
-.promocion aside a img {
-  /* Definimos las características visuales*/
-  max-height: 200px;
-  box-shadow: -5px -5px 5px 1px rgb(13, 0, 0, 0.6);
-}
-/* Estilo para las imágenes de abajo de la zona de promoción */
-.promocion .abajo {
-  /* Definimos las características visuales*/
-  box-shadow: 6px 6px 4px 2px rgb(100, 0, 0, 0.4);
-}
 /* Estilo general para las ramas */
 .level {
   /* Definimos como se va a ordenar y desplegar*/
@@ -279,60 +228,6 @@ nav ul li img:hover {
   margin: 5px 0px 10px 0px;
   text-align: center;
 }
-/* Estilo general para la zona de servicios */
-.servicios {
-  /* Definimos como se va a ordenar y desplegar*/
-  display: grid;
-  grid-template-columns: 50% 50%;
-  margin-top: 6em;
-  align-content: space-around;
-  /* Definimos las características visuales*/
-  text-align: center;
-  color: #666;
-}
-/* Estilo para los artículos de la zona de servicios */
-.servicios article {
-  /* Definimos el tamaño*/
-  width: 70%;
-  /* Definimos como se va a ordenar y desplegar*/
-  margin-top: 2em;
-  padding-bottom: 20px;
-  /* Definimos las características visuales*/
-  border: solid black;
-  background-color: rgba(184, 183, 143, 0.2);
-}
-/* Estilo para los artículos de la zona de servicios en las posiciones pares */
-.servicios article:nth-child(even) {
-  /* Definimos las características visuales*/
-  background-color: rgba(158, 175, 184, 0.3);
-}
-/* Estilo para las imágenes de los artículos de la zona de servicios */
-.servicios article img {
-  /* Definimos el tamaño*/
-  width: 90%;
-  /* Definimos como se va a ordenar y desplegar*/
-  margin: 10px 0px 10px 0px;
-  /* Definimos las características visuales*/
-  border-radius: 20%;
-}
-/* Estilo para los títulos principales de los artículos de la zona de servicios */
-.servicios article h1 {
-  /* Definimos como se va a ordenar y desplegar*/
-  padding: 10px;
-  /* Definimos las características visuales*/
-  font-size: 200%;
-}
-/* Estilo para los títulos secundarios de los artículos de la zona de servicios */
-.servicios article h3 {
-  /* Definimos el tamaño*/
-  width: 70%;
-  /* Definimos como se va a ordenar y desplegar*/
-  padding: 30px;
-  /* Definimos las características visuales*/
-  font-family: "Roboto Mono", monospace;
-  background-color: RGB(180, 0, 0);
-  color: white;
-}
 /* Estilo general para la zona footer */
 footer {
   /* Definimos como se va a ordenar y desplegar*/
@@ -355,6 +250,7 @@ footer {
   grid-column: 1 / -1;
   text-align: left;
   margin-bottom: 20px;
+  font-size: 120%;
 }
 /* Estilo para el título de los enlaces del footer */
 .footer-links h2{

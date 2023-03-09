@@ -1,0 +1,38 @@
+.game{
+	text-align: center;
+  margin-top: 2em;
+}
+.game select{
+	margin-bottom: 1em;
+}
+.game-zone{
+  width: 500px; 
+  height: 500px; 
+  border: 1px solid black;
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+}
+.game-zone h1{
+  font-size: 200%;
+  margin: 0; 
+  padding: 0; 
+  text-align: center; /* Centra el texto horizontalmente */
+  display: flex; /* Alinea verticalmente el contenido */
+  align-items: center; /* Alinea el contenido verticalmente */
+}
+.game-level {
+  width: 300px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto; /* Centrado horizontal */
+}
+/** ESTILOS CUANDO LA PÁGINA SE REPRODUCE MÁS PEQUEÑA DE 768PX**/
+@media (max-width: 768px) {
+  
+}
+/** ESTILOS CUANDO LA PÁGINA SE REPRODUCE MÁS GRANDE DE 768PX**/
+@media (min-width: 769px) {
+
+}
