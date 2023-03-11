@@ -10,8 +10,8 @@
    <link rel="shortcut icon" href="Resources/images/logoMates.png" />
    <!-- Link a la hoja de estilos general-->
    <link href="Styles/styles.css" type="text/css" rel="stylesheet" />
-      <!-- Link a la hoja de estilos del login-->
-      <link href="Styles/login.css" type="text/css" rel="stylesheet" />
+   <!-- Link a la hoja de estilos del login-->
+   <link href="Styles/register.css" type="text/css" rel="stylesheet" />
    <!-- Links a los archivos JS -->
    <script type="module" src="Resources/js/users.js"></script>
 </head>
@@ -67,17 +67,50 @@
    </nav>
    <!-- Zona de contenido -->
    <main>
-      <!-- Formulario de login -->
-      <section class="login">
-         <h2>Iniciar sesión</h2>
-  <form>
-    <label for="email">Correo electrónico:</label>
-    <input type="email" id="email" name="email" required>
-    <label for="password">Contraseña:</label>
-    <input type="password" id="password" name="password" required>
-    <button type="submit">Iniciar sesión</button>
-  </form>
-  <p>¿No tienes una cuenta? <a href="#">Regístrate</a></p>
+      <!-- Formulario de registro de usuario -->
+      <section class="register">
+         <h2>Registro de usuario</h2>
+         <form>
+            <div class="user-name">
+               <label for="user-name">Nombre:</label>
+               <input type="text" id="user-name" name="user-name" required>
+            </div>
+            <div class="surnames">
+               <label for="surnames">Apellidos:</label>
+               <input type="text" id="surnames" name="surnames" required>
+            </div>
+            <div class="age">
+               <label for="age">Edad:</label>
+               <input type="number" id="age" name="age" required>
+            </div>
+            <div class="email">
+               <label for="email">Correo electrónico:</label>
+               <input type="email" id="email" name="email" required>
+            </div>
+            <div class="email-repeat">
+               <label for="email-repeat">Repetir correo electrónico:</label>
+               <input type="email" id="email-repeat" name="email-repeat" required>
+            </div>
+            <div class="password">
+               <label for="password">Contraseña:</label>
+               <input type="password" id="password" name="password" required>
+            </div>
+            <div class="password-repeat">
+               <label for="password-repeat">Repetir contraseña:</label>
+               <input type="password" id="password-repeat" name="password-repeat" required>
+            </div>
+            <div class="tutor">
+               <label for="tutor">Código de tutor:</label>
+               <input type="text" id="tutor" name="tutor">
+            </div>
+            <div class="course">
+               <label for="course">Curso:</label>
+               <input type="text" id="course" name="course">
+            </div>
+            <div class="button-container">
+               <button type="submit">Registrarse</button>
+            </div>
+         </form>
       </section>
    </main>
    <!-- Pié de la página -->

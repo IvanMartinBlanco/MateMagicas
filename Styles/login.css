@@ -30,7 +30,6 @@
 
 .login button {
   background-color: #DBCD30;
-  color: white;
   border: none;
   border-radius: 5px;
   padding: 10px;
@@ -40,6 +39,7 @@
 
 .login button:hover {
   background-color: #8f8303;
+  color: white;
 }
 
 .login p {

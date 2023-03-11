@@ -1,0 +1,124 @@
+.register {
+  width: 75%;
+  margin: 50px auto auto auto;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+}
+
+.register h2 {
+  margin: 0 auto 25px auto;
+}
+
+.register form {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 10px;
+}
+
+.register label {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.register input {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+}
+.button-container {
+  grid-column: 1/5;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.button-container button {
+  width: 100%;
+}
+.register button {
+  background-color: #DBCD30;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.register button:hover {
+  background-color: #8f8303;
+  color: white;
+}
+
+.register p {
+  margin-top: 20px;
+}
+
+#user-name{
+  width: 60%;
+}
+.surnames{
+  grid-column: 2 / span 2;
+  width: calc(100% + 10%);
+}
+#surnames{
+  width: 75%;
+}
+.age{
+  text-align: right;
+}
+#age{
+  width: 40px;
+}
+.email{
+  grid-column: span 2;
+  width: 100%;
+}
+#email{
+  width: 50%;
+}
+.email-repeat{
+  grid-column: 3 / span 2;
+  width: 100%;
+}
+#email-repeat{
+  width: 50%;
+}
+.password{
+  grid-column: span 2;
+  width: 100%;
+}
+#password{
+  width: 30%;
+}
+.password-repeat{
+  grid-column: 3 / span 2;
+  width: 100%;
+}
+#password-repeat{
+  width: 30%;
+}
+.tutor{
+  grid-column: span 2;
+  width: 100%;
+}
+#tutor{
+  width: 30%;
+}
+.course{
+  grid-column: 3 / span 2;
+  width: 100%;
+}
+#course{
+  width: 30%;
+}
+/** ESTILOS CUANDO LA PÁGINA SE REPRODUCE MÁS PEQUEÑA DE 768PX**/
+@media (max-width: 768px) {
+  
+}
+/** ESTILOS CUANDO LA PÁGINA SE REPRODUCE MÁS GRANDE DE 768PX**/
+@media (min-width: 769px) {
+
+}
