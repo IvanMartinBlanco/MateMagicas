@@ -1,5 +1,5 @@
 .register {
-  width: 75%;
+  width: 850px;
   margin: 50px auto auto auto;
   border: 2px solid #ccc;
   border-radius: 10px;
@@ -12,14 +12,16 @@
 }
 
 .register form {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
 }
 
 .register label {
   font-weight: bold;
   margin-top: 10px;
+  width: 25%;
 }
 
 .register input {
@@ -27,11 +29,11 @@
   border-radius: 5px;
   border: 1px solid #ccc;
   margin-top: 5px;
+  width: 75%;
 }
 .button-container {
-  grid-column: 1/5;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   margin-top: 20px;
 }
 
@@ -55,36 +57,35 @@
 .register p {
   margin-top: 20px;
 }
-
+.user-name{
+  width: 330px;
+}
 #user-name{
-  width: 60%;
+  width: 200px;
 }
 .surnames{
-  grid-column: 2 / span 2;
-  width: calc(100% + 10%);
+  width: 350px;
 }
 #surnames{
-  width: 75%;
+  width: 260px;
 }
 .age{
-  text-align: right;
+  width: 170PX;
 }
 #age{
   width: 40px;
 }
 .email{
-  grid-column: span 2;
-  width: 100%;
+  width: 370px;
 }
 #email{
-  width: 50%;
+  width: 175px;
 }
 .email-repeat{
-  grid-column: 3 / span 2;
-  width: 100%;
+  width: 450px;
 }
 #email-repeat{
-  width: 50%;
+  width: 175px;
 }
 .password{
   grid-column: span 2;
