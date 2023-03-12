@@ -1,0 +1,27 @@
+.student {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  height: 200px;
+  margin: 50px auto auto auto;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #8052FF;
+  color: white;
+}
+
+.student h2 {
+  margin-top: 0;
+}
+.student hr {
+  width: 100%;
+}
+/** ESTILOS CUANDO LA PÁGINA SE REPRODUCE MÁS PEQUEÑA DE 768PX**/
+@media (max-width: 768px) {
+  
+}
+/** ESTILOS CUANDO LA PÁGINA SE REPRODUCE MÁS GRANDE DE 768PX**/
+@media (min-width: 769px) {
+
+}

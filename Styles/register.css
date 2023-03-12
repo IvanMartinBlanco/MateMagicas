@@ -16,12 +16,12 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
+  row-gap: 20px;
 }
 
 .register label {
   font-weight: bold;
   margin-top: 10px;
-  width: 25%;
 }
 
 .register input {
@@ -29,7 +29,6 @@
   border-radius: 5px;
   border: 1px solid #ccc;
   margin-top: 5px;
-  width: 75%;
 }
 .button-container {
   display: flex;
@@ -67,7 +66,7 @@
   width: 350px;
 }
 #surnames{
-  width: 260px;
+  width: 250px;
 }
 .age{
   width: 170PX;
@@ -88,32 +87,40 @@
   width: 175px;
 }
 .password{
-  grid-column: span 2;
-  width: 100%;
+  width: 355px;
+}
+.password label{
+  margin-right: 55px;
 }
 #password{
-  width: 30%;
+  width: 175px;
 }
 .password-repeat{
-  grid-column: 3 / span 2;
-  width: 100%;
+  width: 435px;
+}
+.password-repeat label{
+  margin-right: 55px;
 }
 #password-repeat{
-  width: 30%;
+  width: 175px;
 }
 .tutor{
-  grid-column: span 2;
-  width: 100%;
+  width: 345px;
+}
+.tutor label{
+  margin-right: 20px;
 }
 #tutor{
-  width: 30%;
+  width: 175px;
 }
 .course{
-  grid-column: 3 / span 2;
-  width: 100%;
+  width: 425px;
+}
+.course label{
+  margin-right: 153px;
 }
 #course{
-  width: 30%;
+  width: 175px;
 }
 /** ESTILOS CUANDO LA PÁGINA SE REPRODUCE MÁS PEQUEÑA DE 768PX**/
 @media (max-width: 768px) {
