@@ -1,0 +1,55 @@
+.delete-tutor {
+  width: 400px;
+  margin: 50px auto auto auto;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+}
+
+.delete-tutor h2 {
+  margin-top: 0;
+}
+
+.delete-tutor form {
+  display: flex;
+  flex-direction: column;
+}
+
+.delete-tutor label {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.delete-tutor input {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+}
+
+.delete-tutor button {
+  background-color: #DBCD30;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.delete-tutor button:hover {
+  background-color: #8f8303;
+  color: white;
+}
+
+.delete-tutor p {
+  margin-top: 20px;
+}
+/** ESTILOS CUANDO LA PÁGINA SE REPRODUCE MÁS PEQUEÑA DE 768PX**/
+@media (max-width: 768px) {
+  
+}
+/** ESTILOS CUANDO LA PÁGINA SE REPRODUCE MÁS GRANDE DE 768PX**/
+@media (min-width: 769px) {
+
+}

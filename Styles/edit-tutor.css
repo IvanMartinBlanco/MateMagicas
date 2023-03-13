@@ -1,4 +1,4 @@
-.register {
+.edit-tutor {
   width: 850px;
   margin: 50px auto auto auto;
   border: 2px solid #ccc;
@@ -7,11 +7,11 @@
   text-align: center;
 }
 
-.register h2 {
+.edit-tutor h2 {
   margin: 0 auto 25px auto;
 }
 
-.register form {
+.edit-tutor form {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -19,12 +19,12 @@
   row-gap: 20px;
 }
 
-.register label {
+.edit-tutor label {
   font-weight: bold;
   margin-top: 10px;
 }
 
-.register input {
+.edit-tutor input {
   padding: 5px;
   border-radius: 5px;
   border: 1px solid #ccc;
@@ -34,10 +34,12 @@
   display: flex;
   justify-content: flex-start;
   margin-top: 20px;
-  width: 850px
 }
 
-.register button {
+.button-container button {
+  width: 100%;
+}
+.edit-tutor button {
   background-color: #DBCD30;
   border: none;
   border-radius: 5px;
@@ -46,12 +48,12 @@
   cursor: pointer;
 }
 
-.register button:hover {
+.edit-tutor button:hover {
   background-color: #8f8303;
   color: white;
 }
 
-.register p {
+.edit-tutor p {
   margin-top: 20px;
 }
 .user-name{
@@ -77,6 +79,7 @@
 }
 #email{
   width: 175px;
+  background: lightgray;
 }
 .email-repeat{
   width: 450px;
@@ -102,23 +105,8 @@
 #password-repeat{
   width: 175px;
 }
-.rol{
-  width: 300;
-}
-.rol label{
-  margin-left: 5px;
-}
-#rol{
-  width: 187px;
-  padding: 5px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  margin-top: 5px;
-  margin-left: 20px;
-}
 .tutor{
-  width: 388px;
-  margin-left: 0px;
+  width: 345px;
 }
 .tutor label{
   margin-right: 20px;
@@ -130,7 +118,6 @@
   width: 425px;
 }
 .course label{
-  margin-left: 2px;
   margin-right: 153px;
 }
 #course{

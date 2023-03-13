@@ -5,13 +5,13 @@
 <head>
    <meta charset="UTF-8" />
    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <title>index</title>
+   <title>administrator</title>
    <!-- Link a la imagen de la pestaña -->
    <link rel="shortcut icon" href="Resources/images/logoMates.png" />
    <!-- Link a la hoja de estilos general-->
    <link href="Styles/styles.css" type="text/css" rel="stylesheet" />
-   <!-- Link a la hoja de estilos del login-->
-   <link href="Styles/register.css" type="text/css" rel="stylesheet" />
+      <!-- Link a la hoja de estilos del administrator-->
+      <link href="Styles/administrator.css" type="text/css" rel="stylesheet" />
    <!-- Links a los archivos JS -->
    <script type="module" src="Resources/js/users.js"></script>
 </head>
@@ -28,7 +28,7 @@
       </div>
       <div class="access" onclick="window.location.href='https://www.ejemplo.com'">
          <img id="avatar" alt="Acceso a socios o registro" />
-         <p id="login"></p>
+         <p id="administrator"></p>
       </div>
    </header>
    <!-- Menú de navegación -->
@@ -67,58 +67,15 @@
    </nav>
    <!-- Zona de contenido -->
    <main>
-      <!-- Formulario de registro de usuario -->
-      <section class="register">
-         <h2>Registro de usuario</h2>
-         <form>
-            <div class="user-name">
-               <label for="user-name">Nombre:</label>
-               <input type="text" id="user-name" name="user-name" required>
-            </div>
-            <div class="surnames">
-               <label for="surnames">Apellidos:</label>
-               <input type="text" id="surnames" name="surnames" required>
-            </div>
-            <div class="age">
-               <label for="age">Edad:</label>
-               <input type="number" id="age" name="age" required>
-            </div>
-            <div class="email">
-               <label for="email">Correo electrónico:</label>
-               <input type="email" id="email" name="email" required>
-            </div>
-            <div class="email-repeat">
-               <label for="email-repeat">Repetir correo electrónico:</label>
-               <input type="email" id="email-repeat" name="email-repeat" required>
-            </div>
-            <div class="password">
-               <label for="password">Contraseña:</label>
-               <input type="password" id="password" name="password" required>
-            </div>
-            <div class="password-repeat">
-               <label for="password-repeat">Repetir contraseña:</label>
-               <input type="password" id="password-repeat" name="password-repeat" required>
-            </div>
-            <div class="rol">
-               <label for="rol">Tipo de usuario:</label>
-               <select id="rol" name="rol" id="rol">
-                  <option value="alumno">Alumno</option>
-                  <option value="tutor">Tutor</option>
-                  <option value="administrador">Administrador</option>
-               </select>
-            </div>
-            <div class="course">
-               <label for="course">Curso:</label>
-               <input type="text" id="course" name="course">
-            </div>
-            <div class="tutor">
-               <label for="tutor">Código de tutor:</label>
-               <input type="text" id="tutor" name="tutor">
-            </div>
-            <div class="button-container">
-               <button type="submit">Registrarse</button>
-            </div>
-         </form>
+      <!-- Opciones de administrator -->
+      <section class="administrator">
+         <h2>Administrator</h2>
+         <hr>
+    <a>Crear ejercicio</a>
+    <a>Modificar ejercicio</a>
+    <a>Eliminar ejercicio</a>
+    <a>Eliminar tutor</a>
+    <a>Eliminar alumno</a>
       </section>
    </main>
    <!-- Pié de la página -->

@@ -1,4 +1,4 @@
-.register {
+.create-student {
   width: 850px;
   margin: 50px auto auto auto;
   border: 2px solid #ccc;
@@ -7,11 +7,11 @@
   text-align: center;
 }
 
-.register h2 {
+.create-student h2 {
   margin: 0 auto 25px auto;
 }
 
-.register form {
+.create-student form {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -19,12 +19,12 @@
   row-gap: 20px;
 }
 
-.register label {
+.create-student label {
   font-weight: bold;
   margin-top: 10px;
 }
 
-.register input {
+.create-student input {
   padding: 5px;
   border-radius: 5px;
   border: 1px solid #ccc;
@@ -37,7 +37,7 @@
   width: 850px
 }
 
-.register button {
+.create-student button {
   background-color: #DBCD30;
   border: none;
   border-radius: 5px;
@@ -46,12 +46,12 @@
   cursor: pointer;
 }
 
-.register button:hover {
+.create-student button:hover {
   background-color: #8f8303;
   color: white;
 }
 
-.register p {
+.create-student p {
   margin-top: 20px;
 }
 .user-name{
@@ -115,6 +115,7 @@
   border: 1px solid #ccc;
   margin-top: 5px;
   margin-left: 20px;
+  background: lightgray;
 }
 .tutor{
   width: 388px;
@@ -125,6 +126,7 @@
 }
 #tutor{
   width: 175px;
+  background: lightgray;
 }
 .course{
   width: 425px;

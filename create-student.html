@@ -11,7 +11,7 @@
    <!-- Link a la hoja de estilos general-->
    <link href="Styles/styles.css" type="text/css" rel="stylesheet" />
    <!-- Link a la hoja de estilos del login-->
-   <link href="Styles/register.css" type="text/css" rel="stylesheet" />
+   <link href="Styles/create-student.css" type="text/css" rel="stylesheet" />
    <!-- Links a los archivos JS -->
    <script type="module" src="Resources/js/users.js"></script>
 </head>
@@ -67,9 +67,9 @@
    </nav>
    <!-- Zona de contenido -->
    <main>
-      <!-- Formulario de registro de usuario -->
-      <section class="register">
-         <h2>Registro de usuario</h2>
+      <!-- Formulario de creación de usuario -->
+      <section class="create-student">
+         <h2>Creación de alumno</h2>
          <form>
             <div class="user-name">
                <label for="user-name">Nombre:</label>
@@ -101,7 +101,7 @@
             </div>
             <div class="rol">
                <label for="rol">Tipo de usuario:</label>
-               <select id="rol" name="rol" id="rol">
+               <select id="rol" name="rol" id="rol" disabled="disabled">
                   <option value="alumno">Alumno</option>
                   <option value="tutor">Tutor</option>
                   <option value="administrador">Administrador</option>
@@ -113,7 +113,7 @@
             </div>
             <div class="tutor">
                <label for="tutor">Código de tutor:</label>
-               <input type="text" id="tutor" name="tutor">
+               <input type="text" id="tutor" name="tutor" readonly>
             </div>
             <div class="button-container">
                <button type="submit">Registrarse</button>
