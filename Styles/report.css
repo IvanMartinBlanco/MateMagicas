@@ -1,20 +1,33 @@
-.report {
-  width: 400px;
-  margin: 50px auto auto auto;
-  border: 2px solid #ccc;
-  border-radius: 10px;
-  padding: 20px;
+/* Estilo general para las estadísticas */
+.statistics {
+  /* Definimos como se va a ordenar y desplegar*/
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  margin-top: 2em;
+  /* Definimos las características visuales*/
   text-align: center;
 }
 
-.report h2 {
+.statistics h2 {
   margin-top: 0;
+  grid-column: 2;
+  padding: 0px;
 }
 
-.report form {
-  display: flex;
-  flex-direction: column;
+.statistics-table{
+  margin-top: 2em;
+  grid-column: 2;
+  border: #6938EF 1px solid;
+ }
+
+.statistics-table td, th, caption{
+ border: #6938EF 1px solid;
 }
+
+.statistics-table caption{
+  border: #6938EF 1px solid;
+  font-weight: bold;
+ }
 
 .report label {
   font-weight: bold;

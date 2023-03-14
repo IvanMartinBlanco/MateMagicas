@@ -1,162 +1,213 @@
 <!DOCTYPE html>
 <html lang="es">
-<!-- Cabecera del documento -->
+  <!-- Cabecera del documento -->
 
-<head>
-   <meta charset="UTF-8" />
-   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <title>report</title>
-   <!-- Link a la imagen de la pestaña -->
-   <link rel="shortcut icon" href="Resources/images/logoMates.png" />
-   <!-- Link a la hoja de estilos general-->
-   <link href="Styles/styles.css" type="text/css" rel="stylesheet" />
-   <!-- Link a la hoja de estilos del report-->
-   <link href="Styles/report.css" type="text/css" rel="stylesheet" />
-   <!-- Links a los archivos JS -->
-   <script type="module" src="Resources/js/users.js"></script>
-</head>
-<!-- Cuerpo de la web -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>report</title>
+    <!-- Link a la imagen de la pestaña -->
+    <link rel="shortcut icon" href="Resources/images/logoMates.png" />
+    <!-- Link a la hoja de estilos general-->
+    <link href="Styles/styles.css" type="text/css" rel="stylesheet" />
+    <!-- Link a la hoja de estilos del report-->
+    <link href="Styles/report.css" type="text/css" rel="stylesheet" />
+    <!-- Links a los archivos JS -->
+    <script type="module" src="Resources/js/users.js"></script>
+  </head>
+  <!-- Cuerpo de la web -->
 
-<body>
-   <!-- Cabecera de la web -->
-   <header>
+  <body>
+    <!-- Cabecera de la web -->
+    <header>
       <a href="index.html">
-         <img src="Resources/images/logoMates.png" alt="Logotipo de MateMágicas" />
+        <img
+          src="Resources/images/logoMates.png"
+          alt="Logotipo de MateMágicas"
+        />
       </a>
       <div class="name">
-         <h1>MateMágicas</h1>
+        <h1>MateMágicas</h1>
       </div>
-      <div class="access" onclick="window.location.href='https://www.ejemplo.com'">
-         <img id="avatar" alt="Acceso a socios o registro" />
-         <p id="report"></p>
+      <div
+        class="access"
+        onclick="window.location.href='https://www.ejemplo.com'"
+      >
+        <img id="avatar" alt="Acceso a socios o registro" />
+        <p id="report"></p>
       </div>
-   </header>
-   <!-- Menú de navegación -->
-   <nav>
+    </header>
+    <!-- Menú de navegación -->
+    <nav>
       <!-- Menú textual -->
       <ul class="nav-text">
-         <li>
-            <a href="https://www.juntadeandalucia.es/educacion/eaprendizaje/" target="_blank">Primaria</a>
-         </li>
-         <li><a href="#">Secundaria</a>
-            <ul>
-               <li><a href="informacion.html" target="_blank">Información</a></li>
-               <li><a href="https://www.educacionyfp.gob.es/portada.html" target="_blank">Contratación de servicios</a>
-               </li>
-            </ul>
-         </li>
-         <li><a href="https://www.is4k.es/" target="_blank">Avanzadas</a></li>
+        <li>
+          <a
+            href="https://www.juntadeandalucia.es/educacion/eaprendizaje/"
+            target="_blank"
+            >Primaria</a
+          >
+        </li>
+        <li>
+          <a href="#">Secundaria</a>
+          <ul>
+            <li><a href="informacion.html" target="_blank">Información</a></li>
+            <li>
+              <a
+                href="https://www.educacionyfp.gob.es/portada.html"
+                target="_blank"
+                >Contratación de servicios</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li><a href="https://www.is4k.es/" target="_blank">Avanzadas</a></li>
       </ul>
       <!-- Menú hamburguesa -->
       <ul class="nav-mov">
-         <input type="checkbox" id="ham">
-         <label for="ham"> ☰ </label>
-         <li>
-            <a href="https://www.juntadeandalucia.es/educacion/eaprendizaje/" target="_blank">Ofertas</a>
-         </li>
-         <li><a href="#">Hoteles</a>
-            <ul>
-               <li><a href="informacion.html" target="_blank">Información</a></li>
-               <li><a href="https://www.educacionyfp.gob.es/portada.html" target="_blank">Contratación de servicios</a>
-               </li>
-            </ul>
-         </li>
-         <li><a href="https://www.is4k.es/" target="_blank">Ciudades históricas</a></li>
-         <li><a href="https://www.osi.es/es" target="_blank">Fines de semanas activos</a></li>
+        <input type="checkbox" id="ham" />
+        <label for="ham"> ☰ </label>
+        <li>
+          <a
+            href="https://www.juntadeandalucia.es/educacion/eaprendizaje/"
+            target="_blank"
+            >Ofertas</a
+          >
+        </li>
+        <li>
+          <a href="#">Hoteles</a>
+          <ul>
+            <li><a href="informacion.html" target="_blank">Información</a></li>
+            <li>
+              <a
+                href="https://www.educacionyfp.gob.es/portada.html"
+                target="_blank"
+                >Contratación de servicios</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.is4k.es/" target="_blank">Ciudades históricas</a>
+        </li>
+        <li>
+          <a href="https://www.osi.es/es" target="_blank"
+            >Fines de semanas activos</a
+          >
+        </li>
       </ul>
-   </nav>
-   <!-- Zona de contenido -->
-   <main>
+    </nav>
+    <!-- Zona de contenido -->
+    <main>
       <!-- Estadísticas de alumno -->
-      <table>
-         <tr>
-           <td rowspan="4" style="text-align: center; font-weight: bold; font-size: 20px;">Alumno</td>
-           <td colspan="3" style="text-align: center; font-weight: bold; font-size: 18px;">Primaria</td>
+      <section class="statistics">
+        <h2 class="name">Nombre del alumno</h2>
+        <table class="statistics-table">
+         <caption>Primaria</caption>
+         <thead>
+           <tr>
+            <th scope="col"></th>
+             <th scope="col">Nivel 1</th>
+             <th scope="col">Nivel 2</th>
+             <th scope="col">Nivel 3</th>
+           </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <th scope="row" colspan="4" class="table-course">Números</th>
+            </tr>
+           <tr>
+             <th scope="row" >Ejercicio1</th>
+             <td></td>
+             <td></td>
+             <td></td>
+
+           </tr>
+           <tr>
+            <th scope="row" >Ejercicio2</th>
+            <td></td>
+            <td></td>
+            <td></td>
+
+          </tr>
+          <tr>
+            <th scope="row" >Ejercicio3</th>
+            <td></td>
+            <td></td>
+            <td></td>
+
+          </tr>
+          <tr>
+            <th scope="row" colspan="4" class="table-course">Figuras</th>
          </tr>
-         <tr>
-           <td style="text-align: center; font-weight: bold; font-size: 16px;">Nivel 1</td>
-           <td style="text-align: center; font-weight: bold; font-size: 16px;">Nivel 2</td>
-           <td style="text-align: center; font-weight: bold; font-size: 16px;">Nivel 3</td>
-         </tr>
-         <tr>
-           <td>Ejercicio 1</td>
-           <td>Ejercicio 2</td>
-           <td>Ejercicio 3</td>
-         </tr>
-         <tr>
-           <td>Ejercicio 4</td>
-           <td>Ejercicio 5</td>
-           <td>Ejercicio 6</td>
-         </tr>
-         <tr>
-           <td colspan="3" style="text-align: center; font-weight: bold; font-size: 18px;">Secundaria</td>
-         </tr>
-         <tr>
-           <td style="text-align: center; font-weight: bold; font-size: 16px;">Nivel 1</td>
-           <td style="text-align: center; font-weight: bold; font-size: 16px;">Nivel 2</td>
-           <td style="text-align: center; font-weight: bold; font-size: 16px;">Nivel 3</td>
-         </tr>
-         <tr>
-           <td>Ejercicio 1</td>
-           <td>Ejercicio 2</td>
-           <td>Ejercicio 3</td>
-         </tr>
-         <tr>
-           <td>Ejercicio 4</td>
-           <td>Ejercicio 5</td>
-           <td>Ejercicio 6</td>
-         </tr>
-         <tr>
-           <td colspan="3" style="text-align: center; font-weight: bold; font-size: 18px;">Avanzadas</td>
-         </tr>
-         <tr>
-           <td style="text-align: center; font-weight: bold; font-size: 16px;">Nivel 1</td>
-           <td style="text-align: center; font-weight: bold; font-size: 16px;">Nivel 2</td>
-           <td style="text-align: center; font-weight: bold; font-size: 16px;">Nivel 3</td>
-         </tr>
-         <tr>
-           <td>Ejercicio 1</td>
-           <td>Ejercicio 2</td>
-           <td>Ejercicio 3</td>
-         </tr>
-         <tr>
-           <td>Ejercicio 4</td>
-           <td>Ejercicio 5</td>
-           <td>Ejercicio 6</td>
-         </tr>
+        <tr>
+          <th scope="row" >Ejercicio1</th>
+          <td></td>
+          <td></td>
+          <td></td>
+
+        </tr>
+        <tr>
+         <th scope="row" >Ejercicio2</th>
+         <td></td>
+         <td></td>
+         <td></td>
+
+       </tr>
+       <tr>
+         <th scope="row" >Ejercicio3</th>
+         <td></td>
+         <td></td>
+         <td></td>
+
+       </tr>
+       <tr>
+         <th scope="row" colspan="4" class="table-course">Cálculo</th>
+      </tr>
+     <tr>
+       <th scope="row" >Ejercicio1</th>
+       <td></td>
+       <td></td>
+       <td></td>
+
+     </tr>
+     <tr>
+      <th scope="row" >Ejercicio2</th>
+      <td></td>
+      <td></td>
+      <td></td>
+
+    </tr>
+    <tr>
+      <th scope="row" >Ejercicio3</th>
+      <td></td>
+      <td></td>
+      <td></td>
+
+    </tr>
+         </tbody>
        </table>
-   </main>
-   <!-- Pié de la página -->
-   <footer>
+      </section>
+    </main>
+    <!-- Pié de la página -->
+    <footer>
       <div class="footer-links">
-         <h2>
-            Enlaces de interés:
-         </h2>
-         <p>
-            Contacto
-         </p>
-         <p>
-            Sobre MateMágicas
-         </p>
-         <p>
-            Ayuda
-         </p>
-         <p>
-            Aviso de privacidad
-         </p>
-         <p>
-            Condiciones de Uso
-         </p>
-         <p>
-            Cookies
-         </p>
+        <h2>Enlaces de interés:</h2>
+        <p>Contacto</p>
+        <p>Sobre MateMágicas</p>
+        <p>Ayuda</p>
+        <p>Aviso de privacidad</p>
+        <p>Condiciones de Uso</p>
+        <p>Cookies</p>
       </div>
       <!-- Redes sociales -->
       <div class="rrss">
-         <img src="Resources/images/redes/linkedin.jpg" alt="Icono de LinkedIn" />
+        <img
+          src="Resources/images/redes/linkedin.jpg"
+          alt="Icono de LinkedIn"
+        />
       </div>
       <p class="copy">Iván Martín Blanco &COPY; 2023</p>
-   </footer>
-</body>
-
+    </footer>
+  </body>
 </html>
