@@ -5,13 +5,13 @@
 <head>
    <meta charset="UTF-8" />
    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <title>delete-student</title>
+   <title>add-work</title>
    <!-- Link a la imagen de la pestaña -->
    <link rel="shortcut icon" href="Resources/images/logoMates.png" />
    <!-- Link a la hoja de estilos general-->
    <link href="Styles/styles.css" type="text/css" rel="stylesheet" />
-      <!-- Link a la hoja de estilos del delete-student-->
-      <link href="Styles/delete-student.css" type="text/css" rel="stylesheet" />
+      <!-- Link a la hoja de estilos del add-work-->
+      <link href="Styles/add-work.css" type="text/css" rel="stylesheet" />
    <!-- Links a los archivos JS -->
    <script type="module" src="Resources/js/users.js"></script>
 </head>
@@ -28,7 +28,7 @@
       </div>
       <div class="access" onclick="window.location.href='https://www.ejemplo.com'">
          <img id="avatar" alt="Acceso a socios o registro" />
-         <p id="delete-student"></p>
+         <p id="login"></p>
       </div>
    </header>
    <!-- Menú de navegación -->
@@ -67,14 +67,14 @@
    </nav>
    <!-- Zona de contenido -->
    <main>
-      <!-- Formulario de delete-student -->
-      <section class="delete-student">
-         <h2>Borrar alumno</h2>
-         <p>Introduce el correo electrónico del alumno que quieres borrar.</p>
+      <!-- Formulario de add-work -->
+      <section class="add-work">
+         <h2>Añadir ejercicio</h2>
+         <p>Introduce el código del ejercicio que quieres añadir.</p>
   <form>
-    <label for="email">Correo electrónico:</label>
-    <input type="email" id="email" name="email" required>
-    <button type="submit">Borrar</button>
+    <label for="code">Código:</label>
+    <input type="code" id="code" name="code" required>
+    <button type="submit">Añadir</button>
   </form>
       </section>
    </main>

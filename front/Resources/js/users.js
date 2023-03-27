@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 		if (registeredUser) {
 			document.getElementById("login").textContent = user.name + " " + user.surname;
 		} else {
-			document.getElementById("login").textContent = REGISTRO;
+			document.getElementById("login").textContent = "Administrador 1";
 		}
 	}
 
