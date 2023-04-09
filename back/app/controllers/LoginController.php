@@ -1,6 +1,4 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
 // Importa el archivo de conexión a la base de datos
 require_once __DIR__ . '/../../tools/Connection.php';
 /**
@@ -141,4 +139,3 @@ class LoginController{
         ];
     }
 }
-

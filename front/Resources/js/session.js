@@ -13,7 +13,6 @@ export function getSessionData() {
   .then(data => {
     user.name = data.username;
     registeredUser = data.logged_in;
-    console.log(data)
   })
   .catch(error => console.error(error));
 }
