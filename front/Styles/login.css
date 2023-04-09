@@ -45,6 +45,11 @@
 .login p {
   margin-top: 20px;
 }
+
+#unauthorized{
+  color:red;
+  font-size: 80%;
+}
 /** ESTILOS CUANDO LA PÁGINA SE REPRODUCE MÁS PEQUEÑA DE 768PX**/
 @media (max-width: 768px) {
   

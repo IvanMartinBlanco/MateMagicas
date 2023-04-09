@@ -1,30 +1,23 @@
-import { REGISTRO } from './constants.js';
+import { user, registeredUser, getSessionData } from '../js/session.js';
 
-let user = {};
-let registeredUser = true;
+// Llamar a la función de sesión al cargar la página
+window.addEventListener('load', getSessionData);
+
 
 //Carga solamente cuando ya se haya creado el DOM.
 document.addEventListener("DOMContentLoaded", function (event) {
 
-	setUser({ name: "Iván", surname: "Martín", image:"Resources/images/logo.png" });
-	function setRegistered(){
-		registeredUser=false;
-	}
-	setRegistered();
-	accessText();
-	const imageUrl = user.image && registeredUser ? user.image : "./Resources/Images/avatar.png";
+
+	const imageUrl = user.image && registeredUser ? user.image : "../../../front/Resources/Images/avatar.png";
 	const myImage = document.getElementById("avatar");
 	myImage.src=imageUrl;
 	//Función que define el texto que se muestra en el acceso
-	function accessText() {
-		if (registeredUser) {
-			document.getElementById("login").textContent = user.name + " " + user.surname;
-		} else {
-			document.getElementById("login").textContent = "Administrador 1";
-		}
-	}
 
-	function setUser(data){
-		user=data;
-	}
+		  if (registeredUser) {
+			document.getElementById("login").textContent = user.name;
+		  } else {
+			document.getElementById("login").textContent = "Login/Register";
+		  }
+
+
 })
