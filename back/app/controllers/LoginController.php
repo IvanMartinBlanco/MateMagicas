@@ -30,7 +30,7 @@ class LoginController{
             'user_role' => $resultado['rol'], // Donde 'rol' es el rol del usuario
             'exp' => time() + (60 * 60 * 24), // El token expirará en 24 horas
         ];
-        file_put_contents(__DIR__.'/../../api_token.txt', json_encode([$token => $token_data]));
+        file_put_contents(__DIR__ . '/../../api_token.txt', json_encode([$token => $token_data]));
         // Devuelve el token en la respuesta
         $response = [
             'success' => true,
