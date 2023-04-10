@@ -46,18 +46,17 @@ header a img {
 }
 .access {
   /* Definimos donde se va a colocar y como se va a desplegar*/
+  display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
   text-align: center;
   cursor: pointer;
 }
+
 .access img {
   /* Definimos como se va a ordenar y desplegar*/
   max-height: 50px;
   width: auto;
-  padding-right: 10px;
-
 }
 .access p {
   /* Definimos las características visuales */
