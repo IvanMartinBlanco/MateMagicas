@@ -21,20 +21,20 @@ class LoginController{
     $resultado = $this->authenticate($username, $password);
     // Verifica las credenciales del usuario
     if (!isset($resultado['error'])) {
-        // Las credenciales son válidas, crea el token y lo guarda en un archivo
-        $token = bin2hex(random_bytes(64)); // Genera un token aleatorio
-        $token_data = [
-            'user_id' => $resultado['id'], // Donde 'id' es el ID del usuario
-            'user_role' => $resultado['rol'], // Donde 'rol' es el rol del usuario
-            'exp' => time() + (60 * 60 * 24), // El token expirará en 24 horas
-        ];
-        file_put_contents(__DIR__ . '/../../api_token.txt', json_encode([$token => $token_data]));
-        // Devuelve el token en la respuesta
-        $response = [
-            'success' => true,
-            'token' => $token,
-            'message' => 'Inicio de sesión exitoso'
-        ];
+ // Obtiene los datos del usuario
+    $id = $resultado['id'];
+    $name = $resultado['nombre'];
+    $rol = $resultado['rol'];
+
+    // Crea el arreglo de respuesta
+    $response = [
+        'success' => true,
+        'message' => 'Inicio de sesión exitoso',
+        'id' => $id,
+        'name' => $name,
+        'rol' => $rol
+    ];
+
         header('Content-Type: application/json');
         echo json_encode($response);
     } else {
@@ -56,8 +56,6 @@ class LoginController{
      */
     public function logout()
     {
-        session_destroy();
-
         // Devuelve una respuesta en formato JSON
         $response = [
             'success' => true,
@@ -66,6 +64,7 @@ class LoginController{
         header('Content-Type: application/json');
         echo json_encode($response);
     }
+
     /**
      * Verifica si un nombre de usuario y una contraseña son válidos y devuelve el rol del usuario.
      *
@@ -76,7 +75,7 @@ class LoginController{
      *
      * @return array|false Un arreglo asociativo que contiene la información del usuario si la autenticación es exitosa, o false si la autenticación falla.
      */
-    public function authenticate(string $username, string $password)
+    private function authenticate(string $username, string $password)
     {
         // Verifica que los parámetros no estén vacíos
         if (empty($username) || empty($password)) {
