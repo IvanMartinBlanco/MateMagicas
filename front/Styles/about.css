@@ -1,6 +1,25 @@
-.about h1{
-	font-size: 700%;
-  text-align: center;
+
+
+h1 {
+	margin: 0;
+	font-size: 28px;
+}
+
+.about {
+	background-color: #FFF;
+	box-shadow: 0 0 10px rgba(0,0,0,0.2);
+	padding: 1em;
+	max-width: 80%;
+  margin-bottom: 1.5em;
+}
+
+p, ul {
+	margin-bottom: 20px;
+}
+
+h2 {
+	font-size: 24px;
+	margin-bottom: 10px;
 }
 /** ESTILOS CUANDO LA PÁGINA SE REPRODUCE MÁS PEQUEÑA DE 768PX**/
 @media (max-width: 768px) {

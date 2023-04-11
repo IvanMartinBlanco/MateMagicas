@@ -264,6 +264,7 @@ footer {
 
 .footer-links li {
   margin: 0;
+  line-height: 1;
   padding: 5px 0; /* para dar espacio entre los elementos */
 }
 /* Estilo para el título de los enlaces del footer */
