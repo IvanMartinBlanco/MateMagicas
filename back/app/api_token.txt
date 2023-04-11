@@ -1,1 +1,0 @@
-{"4587603b1b7438631b5c490bf1f9a330f0a9c4fd30086f3e67e5b4af4997227c6d37a956804da7ca8fb8fa1de6bbb3477408f2acacd014cba6425bcabbcd7093":{"user_id":1,"user_role":"administrador","exp":1681089388}}

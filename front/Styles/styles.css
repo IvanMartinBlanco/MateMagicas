@@ -17,6 +17,7 @@ span {
 body {
   /* Definimos el tamaño */
   width: 100%;
+  height: 100%;
   /* Definimos las características visuales*/
   color: #5E30DB;
   background-color: RGB(240, 240, 240);
@@ -231,12 +232,11 @@ nav ul li img:hover {
 footer {
   /* Definimos como se va a ordenar y desplegar*/
   display: grid;
-  grid-template-columns: 33% 33% 17% 17%;
+  grid-template-columns: 33% 33% 15% 19%;
   grid-template-rows: auto 1fr;
   grid-gap: 20px;
   justify-content: center;
   align-items: center;
-  margin-top: 4em;
   padding: 2em 2em 0.2em 2em;
   /* Definimos las características visuales*/
   line-height: 30px;
@@ -256,14 +256,34 @@ footer {
   /* Definimos como se va a ordenar y desplegar*/
   margin-bottom: 1em;
 }
+.footer-links ul {
+  list-style: none; /* para quitar los puntos de la lista */
+  margin: 0;
+  padding: 0;
+}
+
+.footer-links li {
+  margin: 0;
+  padding: 5px 0; /* para dar espacio entre los elementos */
+}
+/* Estilo para el título de los enlaces del footer */
+footer a {
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+
+}
+footer a:hover {
+  text-decoration: underline; /* Agrega un subrayado cuando el ratón está encima */
+}
 /* Estilo para el copy */
 .copy {
   /* Definimos como se va a ordenar y desplegar*/
   grid-column: 4;
   grid-row: 2;
-  margin-right: 20px;
+  margin-right: 30px;
     /* Definimos las características visuales*/
-  font-size: 15px;
+  font-size: 14px;
   color: white;
 }
 /* Estilo para las redes sociales de la zona footer */
