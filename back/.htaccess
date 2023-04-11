@@ -1,0 +1,14 @@
+# Permitir solicitudes con cookies y cabeceras de autorización
+RewriteCond %{HTTP:Origin} ^http(s)?://(.+\.)?(127\.0\.0\.1|localhost)(:[0-9]+)?$
+RewriteRule .* - [E=HTTP_ORIGIN:%{HTTP:Origin}]
+Header set Access-Control-Allow-Origin %{HTTP_ORIGIN}e env=HTTP_ORIGIN
+Header set Access-Control-Allow-Credentials true
+Header set Access-Control-Allow-Headers "Content-Type, Authorization"
+Header set Access-Control-Allow-Methods "GET,POST,PUT,DELETE,OPTIONS"
+Header set Access-Control-Allow-Headers "Content-Type"
+RewriteEngine On
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ /web/back/public/index.php [QSA,L]
+
+

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- Cabecera del documento -->
+
+<head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>index</title>
+   <!-- Link a la imagen de la pestaña -->
+   <link rel="shortcut icon" href="Resources/images/logoMates.png" />
+   <!-- Link a la hoja de estilos general-->
+   <link href="Styles/styles.css" type="text/css" rel="stylesheet" />
+   <!-- Link a la hoja de estilos del login-->
+   <link href="Styles/register.css" type="text/css" rel="stylesheet" />
+   <!-- Links a los archivos JS -->
+   <script type="module" src="Resources/js/users.js"></script>
+</head>
+<!-- Cuerpo de la web -->
+
+<body>
+   <!-- Cabecera de la web -->
+   <header>
+      <a href="index.html">
+         <img src="Resources/images/logoMates.png" alt="Logotipo de MateMágicas" />
+      </a>
+      <div class="name">
+         <h1>MateMágicas</h1>
+      </div>
+      <div class="access" onclick="window.location.href='https://www.ejemplo.com'">
+         <img id="avatar" alt="Acceso a socios o registro" />
+         <p id="login"></p>
+      </div>
+   </header>
+   <!-- Menú de navegación -->
+   <nav>
+      <!-- Menú textual -->
+      <ul class="nav-text">
+         <li>
+            <a href="https://www.juntadeandalucia.es/educacion/eaprendizaje/" target="_blank">Primaria</a>
+         </li>
+         <li><a href="#">Secundaria</a>
+            <ul>
+               <li><a href="informacion.html" target="_blank">Información</a></li>
+               <li><a href="https://www.educacionyfp.gob.es/portada.html" target="_blank">Contratación de servicios</a>
+               </li>
+            </ul>
+         </li>
+         <li><a href="https://www.is4k.es/" target="_blank">Avanzadas</a></li>
+      </ul>
+      <!-- Menú hamburguesa -->
+      <ul class="nav-mov">
+         <input type="checkbox" id="ham">
+         <label for="ham"> ☰ </label>
+         <li>
+            <a href="https://www.juntadeandalucia.es/educacion/eaprendizaje/" target="_blank">Ofertas</a>
+         </li>
+         <li><a href="#">Hoteles</a>
+            <ul>
+               <li><a href="informacion.html" target="_blank">Información</a></li>
+               <li><a href="https://www.educacionyfp.gob.es/portada.html" target="_blank">Contratación de servicios</a>
+               </li>
+            </ul>
+         </li>
+         <li><a href="https://www.is4k.es/" target="_blank">Ciudades históricas</a></li>
+         <li><a href="https://www.osi.es/es" target="_blank">Fines de semanas activos</a></li>
+      </ul>
+   </nav>
+   <!-- Zona de contenido -->
+   <main>
+      <!-- Formulario de registro de usuario -->
+      <section class="register">
+         <h2>Registro de usuario</h2>
+         <form>
+            <div class="user-name">
+               <label for="user-name">Nombre:</label>
+               <input type="text" id="user-name" name="user-name" required>
+            </div>
+            <div class="surnames">
+               <label for="surnames">Apellidos:</label>
+               <input type="text" id="surnames" name="surnames" required>
+            </div>
+            <div class="age">
+               <label for="age">Edad:</label>
+               <input type="number" id="age" name="age" required>
+            </div>
+            <div class="email">
+               <label for="email">Correo electrónico:</label>
+               <input type="email" id="email" name="email" required>
+            </div>
+            <div class="email-repeat">
+               <label for="email-repeat">Repetir correo electrónico:</label>
+               <input type="email" id="email-repeat" name="email-repeat" required>
+            </div>
+            <div class="password">
+               <label for="password">Contraseña:</label>
+               <input type="password" id="password" name="password" required>
+            </div>
+            <div class="password-repeat">
+               <label for="password-repeat">Repetir contraseña:</label>
+               <input type="password" id="password-repeat" name="password-repeat" required>
+            </div>
+            <div class="rol">
+               <label for="rol">Tipo de usuario:</label>
+               <select id="rol" name="rol" id="rol">
+                  <option value="alumno">Alumno</option>
+                  <option value="tutor">Tutor</option>
+                  <option value="administrador">Administrador</option>
+               </select>
+            </div>
+            <div class="course">
+               <label for="course">Curso:</label>
+               <input type="text" id="course" name="course">
+            </div>
+            <div class="tutor">
+               <label for="tutor">Código de tutor:</label>
+               <input type="text" id="tutor" name="tutor">
+            </div>
+            <div class="button-container">
+               <button type="submit">Registrarse</button>
+            </div>
+         </form>
+      </section>
+   </main>
+   <!-- Pié de la página -->
+   <footer>
+      <div class="footer-links">
+         <h2>
+            Enlaces de interés:
+         </h2>
+         <p>
+            Contacto
+         </p>
+         <p>
+            Sobre MateMágicas
+         </p>
+         <p>
+            Ayuda
+         </p>
+         <p>
+            Aviso de privacidad
+         </p>
+         <p>
+            Condiciones de Uso
+         </p>
+         <p>
+            Cookies
+         </p>
+      </div>
+      <!-- Redes sociales -->
+      <div class="rrss">
+         <img src="Resources/images/redes/linkedin.jpg" alt="Icono de LinkedIn" />
+      </div>
+      <p class="copy">Iván Martín Blanco &COPY; 2023</p>
+   </footer>
+</body>
+
+</html>

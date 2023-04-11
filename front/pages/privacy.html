@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- Cabecera del documento -->
+
+<head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>index</title>
+   <!-- Link a la imagen de la pestaña -->
+   <link rel="shortcut icon" href="Resources/images/logoMates.png" />
+   <!-- Link a la hoja de estilos general-->
+   <link href="Styles/styles.css" type="text/css" rel="stylesheet" />
+      <!-- Link a la hoja de estilos del aviso de privacidad-->
+      <link href="Styles/privacy.css" type="text/css" rel="stylesheet" />
+   <!-- Links a los archivos JS -->
+   <script type="module" src="Resources/js/users.js"></script>
+</head>
+<!-- Cuerpo de la web -->
+
+<body>
+   <!-- Cabecera de la web -->
+   <header>
+      <a href="index.html">
+         <img src="Resources/images/logoMates.png" alt="Logotipo de MateMágicas" />
+      </a>
+      <div class="name">
+         <h1>MateMágicas</h1>
+      </div>
+      <div class="access" onclick="window.location.href='https://www.ejemplo.com'">
+         <img id="avatar" alt="Acceso a socios o registro" />
+         <p id="login"></p>
+      </div>
+   </header>
+   <!-- Menú de navegación -->
+   <nav>
+      <!-- Menú textual -->
+      <ul class="nav-text">
+         <li>
+            <a href="https://www.juntadeandalucia.es/educacion/eaprendizaje/" target="_blank">Primaria</a>
+         </li>
+         <li><a href="#">Secundaria</a>
+            <ul>
+               <li><a href="informacion.html" target="_blank">Información</a></li>
+               <li><a href="https://www.educacionyfp.gob.es/portada.html" target="_blank">Contratación de servicios</a>
+               </li>
+            </ul>
+         </li>
+         <li><a href="https://www.is4k.es/" target="_blank">Avanzadas</a></li>
+      </ul>
+      <!-- Menú hamburguesa -->
+      <ul class="nav-mov">
+         <input type="checkbox" id="ham">
+         <label for="ham"> ☰ </label>
+         <li>
+            <a href="https://www.juntadeandalucia.es/educacion/eaprendizaje/" target="_blank">Ofertas</a>
+         </li>
+         <li><a href="#">Hoteles</a>
+            <ul>
+               <li><a href="informacion.html" target="_blank">Información</a></li>
+               <li><a href="https://www.educacionyfp.gob.es/portada.html" target="_blank">Contratación de servicios</a>
+               </li>
+            </ul>
+         </li>
+         <li><a href="https://www.is4k.es/" target="_blank">Ciudades históricas</a></li>
+         <li><a href="https://www.osi.es/es" target="_blank">Fines de semanas activos</a></li>
+      </ul>
+   </nav>
+   <!-- Zona de contenido -->
+   <main>
+      <!-- Texto de Aviso de privacidad -->
+      <section class="privacy">
+         <h1>Texto donde se dará el Aviso de privacidad</h1>
+      </section>
+   </main>
+   <!-- Pié de la página -->
+   <footer>
+      <div class="footer-links">
+         <h2>
+            Enlaces de interés:
+         </h2>
+         <ul>
+            <li><a href="contact.html">Contacto</a></li>
+            <li><a href="about.html">Sobre MateMágicas</a></li>
+            <li><a href="help.html">Ayuda</a></li>
+            <li><a>Aviso de privacidad</a></li>
+            <li><a href="terms.html">Condiciones de Uso</a></li>
+            <li><a href="cookies.html">Cookies</a></li>
+         </ul>
+      </div>
+      <!-- Redes sociales -->
+      <div class="rrss">
+         <img src="Resources/images/redes/linkedin.jpg" alt="Icono de LinkedIn" />
+      </div>
+      <p class="copy">Iván Martín Blanco &COPY; 2023</p>
+   </footer>
+</body>
+
+</html>

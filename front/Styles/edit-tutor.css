@@ -1,0 +1,133 @@
+.edit-tutor {
+  width: 850px;
+  margin: 50px auto auto auto;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+}
+
+.edit-tutor h2 {
+  margin: 0 auto 25px auto;
+}
+
+.edit-tutor form {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  row-gap: 20px;
+}
+
+.edit-tutor label {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.edit-tutor input {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+}
+.button-container {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 20px;
+}
+
+.button-container button {
+  width: 100%;
+}
+.edit-tutor button {
+  background-color: #DBCD30;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.edit-tutor button:hover {
+  background-color: #8f8303;
+  color: white;
+}
+
+.edit-tutor p {
+  margin-top: 20px;
+}
+.user-name{
+  width: 330px;
+}
+#user-name{
+  width: 200px;
+}
+.surnames{
+  width: 350px;
+}
+#surnames{
+  width: 250px;
+}
+.age{
+  width: 170PX;
+}
+#age{
+  width: 40px;
+}
+.email{
+  width: 370px;
+}
+#email{
+  width: 175px;
+  background: lightgray;
+}
+.email-repeat{
+  width: 450px;
+}
+#email-repeat{
+  width: 175px;
+}
+.password{
+  width: 355px;
+}
+.password label{
+  margin-right: 55px;
+}
+#password{
+  width: 175px;
+}
+.password-repeat{
+  width: 435px;
+}
+.password-repeat label{
+  margin-right: 55px;
+}
+#password-repeat{
+  width: 175px;
+}
+.tutor{
+  width: 345px;
+}
+.tutor label{
+  margin-right: 20px;
+}
+#tutor{
+  width: 175px;
+}
+.course{
+  width: 425px;
+}
+.course label{
+  margin-right: 153px;
+}
+#course{
+  width: 175px;
+}
+/** ESTILOS CUANDO LA PÁGINA SE REPRODUCE MÁS PEQUEÑA DE 768PX**/
+@media (max-width: 768px) {
+  
+}
+/** ESTILOS CUANDO LA PÁGINA SE REPRODUCE MÁS GRANDE DE 768PX**/
+@media (min-width: 769px) {
+
+}
