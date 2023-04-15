@@ -1,6 +1,6 @@
 .game{
 	text-align: center;
-  margin-top: 2em;
+  margin: 50px auto;
 }
 .game select{
 	margin-bottom: 1em;

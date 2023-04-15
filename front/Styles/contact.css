@@ -2,7 +2,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 41.5vh;
+  min-height: 50vh;
 }
 .contact-info {
 	background-color: #FFF;
