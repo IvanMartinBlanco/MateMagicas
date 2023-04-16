@@ -1,7 +1,7 @@
-
 <?php
 require_once '../app/controllers/LoginController.php';
-require_once '../app/controllers/SessionController.php';
+require_once '../app/controllers/ConstantsController.php';
+
 // Definir rutas
 $login_routes = [
   '/' => ['GET', LoginController::class, 'index'],
@@ -9,21 +9,26 @@ $login_routes = [
   '/logout' => ['GET', LoginController::class, 'logout']
 ];
 
-$session_routes = [
-  '/session' => ['GET', SessionController::class, 'session']
+$constants_routes = [
+  '/help' => ['GET', ConstantsController::class, 'help'],
+  '/contact' => ['GET', ConstantsController::class, 'contact'],
+  '/about' => ['GET', ConstantsController::class, 'about'],
+  '/privacy' => ['GET', ConstantsController::class, 'privacy'],
+  '/terms' => ['GET', ConstantsController::class, 'terms'],
+  '/cookies' => ['GET', ConstantsController::class, 'cookies']
 ];
 
-$routes = array_merge($login_routes, $session_routes);
+$routes = array_merge($login_routes, $constants_routes);
 
 // Enrutamiento
 foreach ($routes as $url => $route) {
   $method = $route[0];
   $controller = $route[1];
   $action = $route[2];
-
-  if ($_SERVER['REQUEST_METHOD'] === $method && preg_match('#^/web/back/public'.$url.'$#', $_SERVER['REQUEST_URI'])) {
+  
+  if ($_SERVER['REQUEST_METHOD'] === $method && preg_match('#^/web/back/public'.preg_quote($url,'#').'(\?.*)?$#', $_SERVER['REQUEST_URI'])) {
     $controller = new $controller();
-    $controller->$action();
+    $controller->$action($_GET);
     break;
   }
 }
