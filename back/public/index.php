@@ -1,6 +1,7 @@
 <?php
 require_once '../app/controllers/LoginController.php';
 require_once '../app/controllers/ConstantsController.php';
+require_once '../app/controllers/UserManagementController.php';
 
 // Definir rutas
 $login_routes = [
@@ -18,7 +19,11 @@ $constants_routes = [
   '/cookies' => ['GET', ConstantsController::class, 'cookies']
 ];
 
-$routes = array_merge($login_routes, $constants_routes);
+$user_management_routes = [
+  '/createuser' => ['POST', UserManagementController::class, 'createuser'],
+];
+
+$routes = array_merge($login_routes, $constants_routes, $user_management_routes);
 
 // Enrutamiento
 foreach ($routes as $url => $route) {

@@ -58,38 +58,6 @@ h2 {
 	color: #666;
 }
 
-
-/* Estilo para los formularios*/
-form {
-	/* Definimos como se va a ordenar y desplegar*/	
-	margin-top: 4em;
-	display: flex;
-	flex-direction: column;
-	text-align: center;	
-	/* Definimos las características visuales*/			
-	color: black;
-}
-
-
-/* Estilo para el botón de los formularios*/
-form button {
-	/* Definimos el tamaño */	
-	padding: 0.5em 1em;	
-	/* Definimos las características visuales*/
-	background-color: RGB(180, 0, 0);
-	color: white;
-	border: none;
-	font-weight: bold;
-}
-
-
-/* Estilo para el botón de los formularios*/
-form button:active {
-	/* Definimos las características visuales*/	
-	background-color: RGB(210, 0, 0);
-}
-
-
 /* Estilo para la sección hoteles*/
 .hoteles {
 	/* Definimos el tamaño */		

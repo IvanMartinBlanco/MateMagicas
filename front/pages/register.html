@@ -14,9 +14,9 @@
    <link href="../Styles/register.css" type="text/css" rel="stylesheet" />
    <!-- Links a los archivos JS -->
    <script type="module" src="../Resources/js/users.js"></script>
+   <script type="module" src="../Resources/js/register.js"></script>
 </head>
 <!-- Cuerpo de la web -->
-
 <body>
    <!-- Cabecera de la web -->
    <header>
@@ -26,7 +26,7 @@
       <div class="name">
          <h1>MateMágicas</h1>
       </div>
-      <div class="access" onclick="window.location.href='https://www.ejemplo.com'">
+      <div class="access" id="access">
          <img id="avatar" alt="Acceso a socios o registro" />
          <p id="login"></p>
       </div>
@@ -70,54 +70,94 @@
       <!-- Formulario de registro de usuario -->
       <section class="register">
          <h2>Registro de usuario</h2>
-         <form>
-            <div class="user-name">
-               <label for="user-name">Nombre:</label>
-               <input type="text" id="user-name" name="user-name" required>
-            </div>
-            <div class="surnames">
-               <label for="surnames">Apellidos:</label>
-               <input type="text" id="surnames" name="surnames" required>
-            </div>
-            <div class="age">
-               <label for="age">Edad:</label>
-               <input type="number" id="age" name="age" required>
-            </div>
-            <div class="email">
-               <label for="email">Correo electrónico:</label>
-               <input type="email" id="email" name="email" required>
-            </div>
-            <div class="email-repeat">
-               <label for="email-repeat">Repetir correo electrónico:</label>
-               <input type="email" id="email-repeat" name="email-repeat" required>
-            </div>
-            <div class="password">
-               <label for="password">Contraseña:</label>
-               <input type="password" id="password" name="password" required>
-            </div>
-            <div class="password-repeat">
-               <label for="password-repeat">Repetir contraseña:</label>
-               <input type="password" id="password-repeat" name="password-repeat" required>
-            </div>
-            <div class="rol">
-               <label for="rol">Tipo de usuario:</label>
-               <select id="rol" name="rol" id="rol">
-                  <option value="alumno">Alumno</option>
-                  <option value="tutor">Tutor</option>
-                  <option value="administrador">Administrador</option>
-               </select>
-            </div>
-            <div class="course">
-               <label for="course">Curso:</label>
-               <input type="text" id="course" name="course">
-            </div>
-            <div class="tutor">
-               <label for="tutor">Código de tutor:</label>
-               <input type="text" id="tutor" name="tutor">
-            </div>
-            <div class="button-container">
+         <form class="registration-form">
+            <fieldset>
+               <legend>Datos personales</legend>
+               <div>
+                  <label for="user-name">Nombre:</label>
+                  <span class="input-container">
+                     <input type="text" id="user-name" name="user-name" required>
+                     <span class="error-message"></span>
+                  </span>
+               </div>
+               <div>
+                  <label for="surnames">Apellidos:</label>
+                  <span class="input-container">
+                     <input type="text" id="surnames" name="surnames" required>
+                     <div class="error-message"></div>
+                  </span>
+               </div>
+               <div>
+                  <label for="age">Edad:</label>
+                  <span class="input-container">
+                     <input type="number" id="age" class="little-input" name="age" required>
+                     <div class="error-message"></div>
+                  </span>
+               </div>
+            </fieldset>
+            <fieldset>
+               <legend>Datos de acceso</legend>
+               <div>
+                  <label for="email">Correo electrónico:</label>
+                  <span class="input-container">
+                     <input type="email" id="email" name="email" required>
+                     <div class="error-message"></div>
+                  </span>
+               </div>
+               <div>
+                  <label for="email-repeat">Repetir correo electrónico:</label>
+                  <span class="input-container">
+                     <input type="email" id="email-repeat" name="email-repeat" required>
+                     <div class="error-message"></div>
+                  </span>
+               </div>
+               <div>
+                  <label for="password">Contraseña:</label>
+                  <span class="input-container">
+                     <input type="password" id="password" name="password" required>
+                     <div class="error-message"></div>
+                  </span>
+               </div>
+               <div>
+                  <label for="password-repeat">Repetir contraseña:</label>
+                  <span class="input-container">
+                     <input type="password" id="password-repeat" name="password-repeat" required>
+                     <div class="error-message"></div>
+                  </span>
+               </div>
+            </fieldset>
+            <fieldset>
+               <legend>Datos de usuario</legend>
+               <div>
+                  <label for="rol">Tipo de usuario:</label>
+                  <span class="input-container">
+                     <select id="rol" name="rol">
+                        <option value="alumno">Alumno</option>
+                        <option value="tutor">Tutor</option>
+                        <option value="administrador">Administrador</option>
+                     </select>
+                     <div class="error-message"></div>
+                  </span>
+               </div>
+               <div>
+                  <label for="tutor">Código de tutor:</label>
+                  <span class="input-container">
+                     <input type="number" class="little-input" id="tutor" name="tutor">
+                     <div class="error-message"></div>
+                  </span>
+               </div>
+               <div>
+                  <label for="course">Curso:</label>
+                  <span class="input-container">
+                     <input type="text" id="course" class="little-input" name="course">
+                     <div class="error-message"></div>
+                  </span>
+               </div>
+            </fieldset>
+            <div id="button-container" class="button-container">
                <button type="submit">Registrarse</button>
             </div>
+            <div class="server-message"></div>
          </form>
       </section>
    </main>
