@@ -5,15 +5,16 @@
 <head>
    <meta charset="UTF-8" />
    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <title>index</title>
+   <title>Ayuda</title>
    <!-- Link a la imagen de la pestaña -->
-   <link rel="shortcut icon" href="Resources/images/logoMates.png" />
+   <link rel="shortcut icon" href="../Resources/images/logoMates.png" />
    <!-- Link a la hoja de estilos general-->
-   <link href="Styles/styles.css" type="text/css" rel="stylesheet" />
-      <!-- Link a la hoja de estilos de las condiciones de uso-->
-      <link href="Styles/help.css" type="text/css" rel="stylesheet" />
+   <link href="../Styles/styles.css" type="text/css" rel="stylesheet" />
+   <!-- Link a la hoja de estilos de las condiciones de uso-->
+   <link href="../Styles/help.css" type="text/css" rel="stylesheet" />
    <!-- Links a los archivos JS -->
-   <script type="module" src="Resources/js/users.js"></script>
+   <script type="module" src="../Resources/js/users.js"></script>
+   <script type="module" src="../Resources/js/help.js"></script>
 </head>
 <!-- Cuerpo de la web -->
 
@@ -21,7 +22,7 @@
    <!-- Cabecera de la web -->
    <header>
       <a href="index.html">
-         <img src="Resources/images/logoMates.png" alt="Logotipo de MateMágicas" />
+         <img src="../Resources/images/logoMates.png" alt="Logotipo de MateMágicas" />
       </a>
       <div class="name">
          <h1>MateMágicas</h1>
@@ -69,7 +70,8 @@
    <main>
       <!-- Texto de Ayuda -->
       <section class="help">
-         <h1>Texto en el que se proporcionará ayuda sobre cómo utilizar el sitio web en función del tipo de usuario que lo visite</h1>
+         <h1 id="title"></h1>
+         <article id="message"></article>
       </section>
    </main>
    <!-- Pié de la página -->
@@ -89,7 +91,9 @@
       </div>
       <!-- Redes sociales -->
       <div class="rrss">
-         <img src="Resources/images/redes/linkedin.jpg" alt="Icono de LinkedIn" />
+         <a href="https://www.linkedin.com/in/iv%C3%A1n-mart%C3%ADn-blanco-3b166522/">
+            <img src="../Resources/images/networks/linkedin.jpg" alt="Icono de LinkedIn" />
+         </a>
       </div>
       <p class="copy">Iván Martín Blanco &COPY; 2023</p>
    </footer>

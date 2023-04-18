@@ -1,40 +1,46 @@
 .register {
-  width: 850px;
-  margin: 50px auto auto auto;
+  width: 40%;
+  min-width: 500px;
+  margin: 50px auto;
   border: 2px solid #ccc;
   border-radius: 10px;
   padding: 20px;
-  text-align: center;
+  
 }
 
 .register h2 {
   margin: 0 auto 25px auto;
 }
+.registration-form fieldset div {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* establece dos columnas con el mismo ancho */
+  grid-gap: 10px; /* añade un espacio entre cada elemento */
 
-.register form {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  row-gap: 20px;
+  
 }
 
-.register label {
+.registration-form fieldset div label {
+  width: 100%;
   font-weight: bold;
-  margin-top: 10px;
+  text-align: right;
+  
 }
 
-.register input {
+.registration-form fieldset div input:not(.little-input) {
+  width: 175px;
   padding: 5px;
   border-radius: 5px;
   border: 1px solid #ccc;
   margin-top: 5px;
+  
 }
+.registration-form fieldset{text-align: center}
+
 .button-container {
   display: flex;
   justify-content: flex-start;
   margin-top: 20px;
-  width: 850px
+  width: 100%
 }
 
 .register button {
@@ -50,63 +56,18 @@
   background-color: #8f8303;
   color: white;
 }
+.little-input{
 
-.register p {
-  margin-top: 20px;
-}
-.user-name{
-  width: 330px;
-}
-#user-name{
-  width: 200px;
-}
-.surnames{
-  width: 350px;
-}
-#surnames{
-  width: 250px;
-}
-.age{
-  width: 170PX;
-}
-#age{
   width: 40px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-top: 5px;
 }
-.email{
-  width: 370px;
-}
-#email{
-  width: 175px;
-}
-.email-repeat{
-  width: 450px;
-}
-#email-repeat{
-  width: 175px;
-}
-.password{
-  width: 355px;
-}
-.password label{
-  margin-right: 55px;
-}
-#password{
-  width: 175px;
-}
-.password-repeat{
-  width: 435px;
-}
-.password-repeat label{
-  margin-right: 55px;
-}
-#password-repeat{
-  width: 175px;
-}
-.rol{
-  width: 300;
-}
-.rol label{
-  margin-left: 5px;
+
+.input-container{
+  width: 100%;
+  text-align: left;
 }
 #rol{
   width: 187px;
@@ -114,27 +75,16 @@
   border-radius: 5px;
   border: 1px solid #ccc;
   margin-top: 5px;
-  margin-left: 20px;
 }
-.tutor{
-  width: 388px;
-  margin-left: 0px;
+.registration-form fieldset div span div{
+  display: flex;
+  color:red;
+  font-size: 12px;
 }
-.tutor label{
-  margin-right: 20px;
-}
-#tutor{
-  width: 175px;
-}
-.course{
-  width: 425px;
-}
-.course label{
-  margin-left: 2px;
-  margin-right: 153px;
-}
-#course{
-  width: 175px;
+
+.server-message{
+  color:red;
+  text-align: center;
 }
 /** ESTILOS CUANDO LA PÁGINA SE REPRODUCE MÁS PEQUEÑA DE 768PX**/
 @media (max-width: 768px) {

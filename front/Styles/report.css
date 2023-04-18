@@ -3,7 +3,7 @@
   /* Definimos como se va a ordenar y desplegar*/
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
-  margin-top: 2em;
+  margin: 50px auto;
   /* Definimos las características visuales*/
   text-align: center;
 }
