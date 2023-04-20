@@ -7,7 +7,9 @@ const emailInput = document.querySelector('#email');
 const emailRepeatInput = document.querySelector('#email-repeat');
 const passwordInput = document.querySelector('#password');
 const passwordRepeatInput = document.querySelector('#password-repeat');
-const button = document.querySelector('#button-container');
+const rolInput = document.querySelector('#rol');
+const tutorInput = document.querySelector('#tutor');
+const courseInput = document.querySelector('#course');
 
 const showError = (input, message) => {
   const errorContainer = input.parentElement;
@@ -39,6 +41,9 @@ const checkInputs = () => {
   }
   if (ageInput.value.trim() === '') {
     showError(ageInput, '*La edad es obligatoria');
+    isValid = false;
+  } else if (ageInput.value.trim()<1 || ageInput.value.trim() >120) {
+    showError(ageInput, '*La edad debe estar comprendida entre 1 y 120');
     isValid = false;
   } else {
     hideError(ageInput);
@@ -76,6 +81,12 @@ const checkInputs = () => {
   } else {
     hideError(passwordRepeatInput);
   }
+  if (tutorInput.value.trim() !== '' && tutorInput.value.trim() < 1) {
+    showError(tutorInput, '*El número debe ser mayor o igual a 1');
+    isValid = false;
+  } else {
+    hideError(tutorInput);
+  }
   return isValid;
 };
 
@@ -84,16 +95,16 @@ form.addEventListener('submit', (e) => {
   e.preventDefault();
   if (checkInputs()) {
     const formData = {
-      'user-name': document.getElementById('user-name').value,
-      'surnames': document.getElementById('surnames').value,
-      'age': document.getElementById('age').value,
-      'email': document.getElementById('email').value,
-      'email-repeat': document.getElementById('email').value,
-      'password': document.getElementById('password').value,
-      'password-repeat': document.getElementById('password').value,
-      'rol': document.getElementById('rol').value,
-      'tutor': document.getElementById('tutor').value,
-      'course': document.getElementById('course').value
+      'user-name': userNameInput.value.trim(),
+      'surnames': surnamesInput.value.trim(),
+      'age': ageInput.value.trim() !== '' ? ageInput.value.trim() : null, // Si está vacío, se envía null
+      'email': emailInput.value.trim(),
+      'email-repeat': emailRepeatInput.value.trim(),
+      'password': passwordInput.value.trim(),
+      'password-repeat': passwordRepeatInput.value.trim(),
+      'rol': rolInput.value.trim(),
+      'tutor': tutorInput.value.trim() !== '' ? tutorInput.value.trim() : null, // Si está vacío, se envía null
+      'course': courseInput.value.trim()
     };
     fetch("http://localhost/web/back/public/createuser", {
       method: 'POST',
@@ -101,16 +112,18 @@ form.addEventListener('submit', (e) => {
     })
     .then(response => response.json())
     .then(data => {
+      const serverMessage = document.querySelector('.server-message');
       if(data.success){
-
+        serverMessage.textContent = "";
       }else{
-        const serverMessage = document.querySelector('.server-message');
+        serverMessage = document.querySelector('.server-message');
         serverMessage.textContent = data.message;
     isValid = false;
       }
       form.reset();
     })
-    .catch(() => {
+    .catch((error) => {
+      console.log(error)
       alert('Ha ocurrido un error al crear el usuario');
     });
   }
