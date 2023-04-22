@@ -10,6 +10,7 @@
 
 .register h2 {
   margin: 0 auto 25px auto;
+  text-align: center;
 }
 .registration-form fieldset div {
   display: grid;

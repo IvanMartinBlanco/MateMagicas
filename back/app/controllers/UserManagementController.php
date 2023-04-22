@@ -68,7 +68,7 @@ class UserManagementController
       if (isset($result['error'])) {
         $mensaje = 'Error al crear usuario: ' . $result['error'];
       } else {
-        $mensaje = 'Error al crear usuario: No se ha podido insertar el usuario en base de datos.';
+        $mensaje = 'Error al crear usuario: No se ha podido borrar el usuario en base de datos.';
       }
       $response = [
         'success' => false,
@@ -79,5 +79,60 @@ class UserManagementController
     }
 
     echo json_encode($response);
+  }
+
+  public function editUser()
+  {
+    $data = json_decode(file_get_contents('php://input'), true);
+
+    $result = $this->userManagement->editUser(
+      $data['id'],
+      $data['user-name'],
+      $data['surnames'],
+      $data['age'],
+      $data['email'],
+      $data['password'],
+      $data['password-repeat'],
+      $data['tutor'],
+      $data['course']
+    );
+
+    if (isset($result['success']) && $result['success']) {
+      $response = [
+        'success' => true,
+        'message' => 'Usuario modificado exitosamente'
+      ];
+      header('Content-Type: application/json');
+      http_response_code(201);
+    } else {
+      if (isset($result['error'])) {
+        $mensaje = 'Error al modificar usuario: ' . $result['error'];
+      } else {
+        $mensaje = 'Error al modificar usuario: No se ha podido editar el usuario en base de datos.';
+      }
+      $response = [
+        'success' => false,
+        'message' => $mensaje
+      ];
+      header('Content-Type: application/json');
+      http_response_code(400);
+    }
+
+    echo json_encode($response);
+  }
+
+  public function getUserById()
+  {
+      // Obtener el ID del usuario desde los parámetros de la URL
+      $userId = $_GET['id'];
+    
+      // Realizar la llamada al modelo para obtener los datos del usuario
+      $userData = $this->userManagement->getUserById($userId);
+  
+      // Convertir el array en un objeto
+      $userObj = (object) $userData;
+  
+      // Devolver los datos del usuario como respuesta en formato JSON
+      echo json_encode($userObj);
   }
 }

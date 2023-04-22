@@ -101,7 +101,8 @@ class UserManagementModel
         return ['success' => $result];
     }
 
-    public function deleteUser($idPersona, $email) {
+    public function deleteUser($idPersona, $email)
+    {
         // Validar que el campo de idPersona no esté vacío
         if (empty($idPersona)) {
             return ['error' => 'El id es obligatorio'];
@@ -111,7 +112,7 @@ class UserManagementModel
         }
         // Conectar a la base de datos
         $conn = connect();
-    
+
         // Verificar si el usuario es un alumno
         $stmt = $conn->prepare("SELECT IdAlumno FROM Alumno WHERE IdPersona = ?");
         $stmt->bindParam(1, $idPersona);
@@ -120,7 +121,7 @@ class UserManagementModel
             // El usuario no es un alumno
             return ['error' => 'El usuario no es un alumno'];
         }
-    
+
         // Verificar que el correo electrónico es correcto
         $stmt = $conn->prepare("SELECT CorreoElectronico FROM Persona WHERE IdPersona = ?");
         $stmt->bindParam(1, $idPersona);
@@ -130,12 +131,12 @@ class UserManagementModel
             // El correo electrónico no es correcto
             return ['error' => 'El correo electrónico no es el del usuario'];
         }
-        
+
         // Eliminar el usuario
         $stmt = $conn->prepare("DELETE FROM Persona WHERE IdPersona = ?");
         $stmt->bindParam(1, $idPersona);
         $stmt->execute();
-    
+
         // Verificar si se ha eliminado el registro en la tabla Persona
         if ($stmt->rowCount() > 0) {
             // El usuario se ha eliminado correctamente
@@ -144,5 +145,98 @@ class UserManagementModel
             // No se ha eliminado ningún registro
             return ['error' => 'No se ha podido eliminar el usuario'];
         }
+    }
+
+    public function editUser($idPersona, $userName, $surnames, $age, $email, $password, $passwordRepeat, $tutor, $course)
+    {
+        // Validar que los campos obligatorios no estén vacíos
+        if (empty($idPersona)) {
+            return ['error' => 'El id es obligatorio'];
+        }
+        if (empty($email)) {
+            return ['error' => 'El email es obligatorio'];
+        }
+
+        $conn = connect();
+
+        // Verificar si el usuario es un alumno
+        $stmt = $conn->prepare("SELECT IdAlumno FROM Alumno WHERE IdPersona = ?");
+        $stmt->bindParam(1, $idPersona);
+        $stmt->execute();
+        if ($stmt->rowCount() == 0) {
+            // El usuario no es un alumno
+            return ['error' => 'El usuario no es un alumno'];
+        }
+
+        // Verificar que el correo electrónico es correcto
+        $stmt = $conn->prepare("SELECT CorreoElectronico FROM Persona WHERE IdPersona = ?");
+        $stmt->bindParam(1, $idPersona);
+        $stmt->execute();
+        $row = $stmt->fetch();
+        if ($row['CorreoElectronico'] != $email) {
+            // El correo electrónico no es correcto
+            return ['error' => 'Se está intentando modificar un usuario diferente.'];
+        }
+
+        // Comprobar que las contraseñas son iguales
+        if ($password != $passwordRepeat) {
+            return ['error' => 'Las contraseñas no coinciden'];
+        }
+
+// Comprobar que el tutor existe
+$stmt = $conn->prepare("SELECT IdTutor FROM Tutor WHERE IdTutor = ?");
+$stmt->bindParam(1, $tutor);
+$stmt->execute();
+if ($stmt->rowCount() == 0) {
+    // El tutor no existe
+    return ['error' => 'El tutor no existe'];
+}
+
+// Actualizar los datos del usuario
+$stmt = $conn->prepare("UPDATE Persona 
+    INNER JOIN Alumno ON Persona.IdPersona = Alumno.IdPersona 
+    SET Persona.Nombre = ?, 
+        Persona.Apellidos = ?, 
+        Persona.Edad = ?, 
+        Persona.Password = ?, 
+        Alumno.IdTutor = ?, 
+        Alumno.Curso = ? 
+    WHERE Persona.IdPersona = ?;");
+$stmt->bindParam(1, $userName);
+$stmt->bindParam(2, $surnames);
+$stmt->bindParam(3, $age);
+$stmt->bindParam(4, $password); // Hash de la contraseña
+$stmt->bindParam(5, $tutor);
+$stmt->bindParam(6, $course);
+$stmt->bindParam(7, $idPersona);
+$stmt->execute();
+
+        // Verificar si se han actualizado los datos en la tabla Persona
+        if ($stmt->rowCount() > 0) {
+            // Los datos se han actualizado correctamente
+            return ['success' => true];
+        } else {
+            // No se ha actualizado ningún registro
+            return ['error' => 'No se ha podido editar el usuario'];
+        }
+    }
+
+    public static function getUserById($userId) {
+        $conn = connect();
+        
+        // Consulta SQL para obtener el usuario con el ID específico y sus datos de alumno o tutor, si corresponde
+        $query = "
+            SELECT p.*, a.*, t.*
+            FROM PERSONA p
+            LEFT JOIN ALUMNO a ON p.idPersona = a.idPersona
+            LEFT JOIN TUTOR t ON p.idPersona = t.idPersona
+            WHERE p.idPersona = :userId
+        ";
+        
+        $stmt = $conn->prepare($query);
+        $stmt->bindParam(':userId', $userId);
+        $stmt->execute();
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $user; // Retorna el usuario encontrado o un valor nulo si no se encuentra
     }
 }

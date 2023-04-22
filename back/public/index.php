@@ -17,10 +17,12 @@ $constants_routes = [
   '/terms' => ['GET', ConstantsController::class, 'terms'],
   '/cookies' => ['GET', ConstantsController::class, 'cookies']
 ];
-
 $user_management_routes = [
   '/createuser' => ['POST', UserManagementController::class, 'createuser'],
   '/deleteuser' => ['DELETE', UserManagementController::class, 'deleteuser'],
+  '/edituser' => ['PUT', UserManagementController::class, 'edituser'],
+  '/user' => ['GET', UserManagementController::class, 'getUserById'],
+
 ];
 
 $routes = array_merge($login_routes, $constants_routes, $user_management_routes);
@@ -30,10 +32,11 @@ foreach ($routes as $url => $route) {
   $method = $route[0];
   $controller = $route[1];
   $action = $route[2];
-  
+
   if ($_SERVER['REQUEST_METHOD'] === $method && preg_match('#^/web/back/public'.preg_quote($url,'#').'(\?.*)?$#', $_SERVER['REQUEST_URI'])) {
     $controller = new $controller();
-    $controller->$action($_GET);
+    $params = isset($route[3]) ? $route[3] : [];
+    $controller->$action($params);
     break;
   }
 }

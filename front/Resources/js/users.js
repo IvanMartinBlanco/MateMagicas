@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	} else {
 		document.getElementById("login").textContent = "Login/Register";
 	}
-	access.addEventListener("click", function() {
+	access.addEventListener("click", function () {
 		const userType = getSessionData().rol; // Reemplaza con la lógica para determinar el tipo de usuario
 		console.log(getSessionData().rol)
 		if (userType === "administrador") {
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		} else {
 			window.location.href = "./login.html";
 		}
-	  });
+	});
 
 
 })
