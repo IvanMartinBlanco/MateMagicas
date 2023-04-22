@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		} else if (userType === "alumno") {
 			window.location.href = "./student.html";
 		} else {
-			window.location.href = "./register.html";
+			window.location.href = "./login.html";
 		}
 	  });
 

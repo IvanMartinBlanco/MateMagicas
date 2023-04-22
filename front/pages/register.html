@@ -17,6 +17,7 @@
    <script type="module" src="../Resources/js/register.js"></script>
 </head>
 <!-- Cuerpo de la web -->
+
 <body>
    <!-- Cabecera de la web -->
    <header>
@@ -157,9 +158,17 @@
             <div id="button-container" class="button-container">
                <button type="submit">Registrarse</button>
             </div>
-            <div class="server-message"></div>
+            <div id="server-message"></div>
          </form>
       </section>
+      <!-- Ventana modal oculta por defecto -->
+      <div class="modal" id="modal">
+         <div class="modal-contenido">
+            <h2>¡Éxito!</h2>
+            <p>El usuario ha sido creado correctamente.</p>
+            <button id="cerrarModal">Cerrar</button>
+         </div>
+      </div>
    </main>
    <!-- Pié de la página -->
    <footer>

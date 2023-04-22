@@ -160,12 +160,12 @@ nav ul li img:hover {
   /* Definimos como se va a ordenar y desplegar*/
   max-width: 300px;
   margin: 2em 4em;
-  padding: 10px 0px;
+  padding: 10px 10px;
   position: relative;
   /* Definimos las características visuales*/
   background-color: white;
   border-radius: 20%;
-  height: auto;
+  height: 480px;
   color: #666;
   box-shadow: -1px 3px 9px #282c38;
 }
@@ -304,6 +304,13 @@ footer a:hover {
   /* Definimos las características visuales*/
   filter: saturate(300%);
   cursor: pointer;
+}
+#server-message{
+  color:red;
+  text-align: center;
+  font-size: 80%;
+  margin-top: 5px;
+
 }
 
 /** ESTILOS CUANDO LA PÁGINA SE REPRODUCE MÁS PEQUEÑA DE 768PX**/
