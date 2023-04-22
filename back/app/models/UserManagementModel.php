@@ -51,10 +51,10 @@ class UserManagementModel
 
         // Validar que el campo de email no esté vacío y sea una dirección de email válida
         if ($rol !== 'alumno') {
-            if ($rol !== 'tutor' && !empty($tutor)) {
+            if ($rol === 'tutor' && !empty($tutor)) {
                 return ['error' => 'El tutor no puede elegir un código de tutor.'];
             }
-            if ($rol !== 'administrador' && !empty($tutor) || !empty($course)) {
+            if ($rol === 'administrador' && (!empty($tutor) || !empty($course))) {
                 return ['error' => 'El administrador no puede elegir un código de tutor ni un curso.'];
             }
         }
@@ -113,15 +113,6 @@ class UserManagementModel
         // Conectar a la base de datos
         $conn = connect();
 
-        // Verificar si el usuario es un alumno
-        $stmt = $conn->prepare("SELECT IdAlumno FROM Alumno WHERE IdPersona = ?");
-        $stmt->bindParam(1, $idPersona);
-        $stmt->execute();
-        if ($stmt->rowCount() == 0) {
-            // El usuario no es un alumno
-            return ['error' => 'El usuario no es un alumno'];
-        }
-
         // Verificar que el correo electrónico es correcto
         $stmt = $conn->prepare("SELECT CorreoElectronico FROM Persona WHERE IdPersona = ?");
         $stmt->bindParam(1, $idPersona);
@@ -147,6 +138,63 @@ class UserManagementModel
         }
     }
 
+    function deleteAnotherUser($idPersona, $email)
+    {
+        // Validar que el campo de idPersona no esté vacío
+        if (empty($idPersona)) {
+            return ['error' => 'El id es obligatorio'];
+        }
+        if (empty($email)) {
+            return ['error' => 'El email es obligatorio'];
+        }
+        // Conectar a la base de datos
+        $conn = connect();
+
+        // Comprobar si el usuario que pide la eliminación es administrador o tutor
+        $stmt = $conn->prepare("SELECT IdPersona FROM Administrador WHERE IdPersona = ?");
+        $stmt->bindParam(1, $idPersona);
+        $stmt->execute();
+        $isAdmin = ($stmt->rowCount() === 1);
+
+        $stmt = $conn->prepare("SELECT IdPersona FROM Tutor WHERE IdPersona = ?");
+        $stmt->bindParam(1, $idPersona);
+        $stmt->execute();
+        $isTutor = ($stmt->rowCount() === 1);
+
+        if (!$isAdmin && !$isTutor) {
+            return ['error' => 'El usuario no tiene permisos para borrar a otro usuario.'];
+        }
+
+        // Si es tutor, comprobar que la persona a borrar es uno de sus alumnos
+        if ($isTutor) {
+            $stmt = $conn->prepare("SELECT IdAlumno FROM Alumno WHERE IdTutor = (SELECT IdTutor FROM Tutor WHERE IdPersona = ?) AND IdPersona = (SELECT IdPersona FROM Persona WHERE CorreoElectronico = ?)");
+            $stmt->bindParam(1, $idPersona);
+            $stmt->bindParam(2, $email);
+            $stmt->execute();
+            if ($stmt->rowCount() !== 1) {
+                return ['error' => 'El usuario no es uno de los alumnos del tutor que realiza la acción.'];
+            }
+        }
+
+        // Si es administrador, comprobar que la persona a borrar es tutor o alumno, pero no otro administrador
+        if ($isAdmin) {
+            $stmt = $conn->prepare("SELECT IdPersona FROM Administrador WHERE IdPersona = (SELECT IdPersona FROM Persona WHERE CorreoElectronico = ?)");
+            $stmt->bindParam(1, $email);
+            $stmt->execute();
+            if ($stmt->rowCount() === 1) {
+                return ['error' => 'El administrador no tiene permisos para borrar a otro administrador.'];
+            }
+        }
+
+        // Borrar el usuario
+        $stmt = $conn->prepare("DELETE FROM Persona WHERE CorreoElectronico = ?");
+        $stmt->bindParam(1, $email);
+        $stmt->execute();
+
+        return ['success' => 'Usuario borrado correctamente.'];
+    }
+
+
     public function editUser($idPersona, $userName, $surnames, $age, $email, $password, $passwordRepeat, $tutor, $course)
     {
         // Validar que los campos obligatorios no estén vacíos
@@ -164,7 +212,7 @@ class UserManagementModel
         $stmt->bindParam(1, $idPersona);
         $stmt->execute();
         if ($stmt->rowCount() == 0) {
-            // El usuario no es un alumno
+            // El usuario no es un alumno 
             return ['error' => 'El usuario no es un alumno'];
         }
 
@@ -183,17 +231,17 @@ class UserManagementModel
             return ['error' => 'Las contraseñas no coinciden'];
         }
 
-// Comprobar que el tutor existe
-$stmt = $conn->prepare("SELECT IdTutor FROM Tutor WHERE IdTutor = ?");
-$stmt->bindParam(1, $tutor);
-$stmt->execute();
-if ($stmt->rowCount() == 0) {
-    // El tutor no existe
-    return ['error' => 'El tutor no existe'];
-}
+        // Comprobar que el tutor existe
+        $stmt = $conn->prepare("SELECT IdTutor FROM Tutor WHERE IdTutor = ?");
+        $stmt->bindParam(1, $tutor);
+        $stmt->execute();
+        if ($stmt->rowCount() == 0) {
+            // El tutor no existe
+            return ['error' => 'El tutor no existe'];
+        }
 
-// Actualizar los datos del usuario
-$stmt = $conn->prepare("UPDATE Persona 
+        // Actualizar los datos del usuario
+        $stmt = $conn->prepare("UPDATE Persona 
     INNER JOIN Alumno ON Persona.IdPersona = Alumno.IdPersona 
     SET Persona.Nombre = ?, 
         Persona.Apellidos = ?, 
@@ -202,14 +250,14 @@ $stmt = $conn->prepare("UPDATE Persona
         Alumno.IdTutor = ?, 
         Alumno.Curso = ? 
     WHERE Persona.IdPersona = ?;");
-$stmt->bindParam(1, $userName);
-$stmt->bindParam(2, $surnames);
-$stmt->bindParam(3, $age);
-$stmt->bindParam(4, $password); // Hash de la contraseña
-$stmt->bindParam(5, $tutor);
-$stmt->bindParam(6, $course);
-$stmt->bindParam(7, $idPersona);
-$stmt->execute();
+        $stmt->bindParam(1, $userName);
+        $stmt->bindParam(2, $surnames);
+        $stmt->bindParam(3, $age);
+        $stmt->bindParam(4, $password); // Hash de la contraseña
+        $stmt->bindParam(5, $tutor);
+        $stmt->bindParam(6, $course);
+        $stmt->bindParam(7, $idPersona);
+        $stmt->execute();
 
         // Verificar si se han actualizado los datos en la tabla Persona
         if ($stmt->rowCount() > 0) {
@@ -221,9 +269,10 @@ $stmt->execute();
         }
     }
 
-    public static function getUserById($userId) {
+    public static function getUserById($userId)
+    {
         $conn = connect();
-        
+
         // Consulta SQL para obtener el usuario con el ID específico y sus datos de alumno o tutor, si corresponde
         $query = "
             SELECT p.*, a.*, t.*
@@ -232,7 +281,7 @@ $stmt->execute();
             LEFT JOIN TUTOR t ON p.idPersona = t.idPersona
             WHERE p.idPersona = :userId
         ";
-        
+
         $stmt = $conn->prepare($query);
         $stmt->bindParam(':userId', $userId);
         $stmt->execute();

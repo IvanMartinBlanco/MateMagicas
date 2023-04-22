@@ -20,6 +20,7 @@ $constants_routes = [
 $user_management_routes = [
   '/createuser' => ['POST', UserManagementController::class, 'createuser'],
   '/deleteuser' => ['DELETE', UserManagementController::class, 'deleteuser'],
+  '/deletestudent' => ['DELETE', UserManagementController::class, 'deleteanotheruser'],
   '/edituser' => ['PUT', UserManagementController::class, 'edituser'],
   '/user' => ['GET', UserManagementController::class, 'getUserById'],
 

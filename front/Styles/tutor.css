@@ -1,3 +1,6 @@
+main{
+  min-height: 50vh;
+}
 .tutor {
   display: flex;
   flex-direction: column;
@@ -16,6 +19,12 @@
 }
 .tutor hr {
   width: 100%;
+}
+
+a, a:visited{
+  cursor:pointer;
+  text-decoration:none;
+  color:white;
 }
 /** ESTILOS CUANDO LA PÁGINA SE REPRODUCE MÁS PEQUEÑA DE 768PX**/
 @media (max-width: 768px) {

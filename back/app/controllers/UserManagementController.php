@@ -66,9 +66,39 @@ class UserManagementController
       http_response_code(200);
     } else {
       if (isset($result['error'])) {
-        $mensaje = 'Error al crear usuario: ' . $result['error'];
+        $mensaje = 'Error al borrar usuario: ' . $result['error'];
       } else {
-        $mensaje = 'Error al crear usuario: No se ha podido borrar el usuario en base de datos.';
+        $mensaje = 'Error al borrar usuario: No se ha podido borrar el usuario en base de datos.';
+      }
+      $response = [
+        'success' => false,
+        'message' => $mensaje
+      ];
+      header('Content-Type: application/json');
+      http_response_code(400);
+    }
+
+    echo json_encode($response);
+  }
+
+  public function deleteAnotherUser()
+  {
+    $data = json_decode(file_get_contents('php://input'), true);
+
+    $result = $this->userManagement->deleteAnotherUser($data['id'], $data['email']);
+
+    if (isset($result['success']) && $result['success']) {
+      $response = [
+        'success' => true,
+        'message' => 'Usuario eliminado exitosamente'
+      ];
+      header('Content-Type: application/json');
+      http_response_code(200);
+    } else {
+      if (isset($result['error'])) {
+        $mensaje = 'Error al borrar usuario: ' . $result['error'];
+      } else {
+        $mensaje = 'Error al borrar usuario: No se ha podido borrar el usuario en base de datos.';
       }
       $response = [
         'success' => false,

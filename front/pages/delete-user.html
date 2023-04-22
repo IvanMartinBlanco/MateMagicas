@@ -5,16 +5,16 @@
 <head>
    <meta charset="UTF-8" />
    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <title>Alumno</title>
+   <title>Borrar cuenta</title>
    <!-- Link a la imagen de la pestaña -->
    <link rel="shortcut icon" href="../Resources/images/logoMates.png" />
    <!-- Link a la hoja de estilos general-->
    <link href="../Styles/styles.css" type="text/css" rel="stylesheet" />
-      <!-- Link a la hoja de estilos del student-->
-      <link href="../Styles/student.css" type="text/css" rel="stylesheet" />
+   <!-- Link a la hoja de estilos del delete-cuenta-->
+   <link href="../Styles/delete-user.css" type="text/css" rel="stylesheet" />
    <!-- Links a los archivos JS -->
    <script type="module" src="../Resources/js/users.js"></script>
-   <script type="module" src="../Resources/js/student.js"></script>
+   <script type="module" src="../Resources/js/delete-user.js"></script>
 </head>
 <!-- Cuerpo de la web -->
 
@@ -27,7 +27,7 @@
       <div class="name">
          <h1>MateMágicas</h1>
       </div>
-      <div class="access" id="access">
+      <div class="access" onclick="window.location.href='https://www.ejemplo.com'">
          <img id="avatar" alt="Acceso a socios o registro" />
          <p id="login"></p>
       </div>
@@ -68,14 +68,28 @@
    </nav>
    <!-- Zona de contenido -->
    <main>
-      <!-- Opciones de student -->
-      <section class="student">
-         <h2>Alumno</h2>
-         <hr>
-    <a href="./edit-student.html">Modificar perfil</a>
-    <a href="./delete-user.html">Eliminar cuenta</a>
-    <a id="close">Cerrar sesión</a>
+      <!-- Formulario de delete-user -->
+      <section class="delete-user">
+         <h2>Borrar Cuenta</h2>
+         <p>Introduce el correo electrónico de tu cuenta para confirmar que quieres borrarla.</p>
+         <form>
+            <label for="email">Correo electrónico:</label>
+            <span class="input-container">
+               <input type="email" id="email" name="email" required>
+               <div class="error-message"></div>
+            </span>
+            <button type="submit">Borrar</button>
+            <div id="server-message"></div>
+         </form>
       </section>
+            <!-- Ventana modal oculta por defecto -->
+            <div class="modal" id="modal">
+               <div class="modal-contenido">
+                  <h2>¡Éxito!</h2>
+                  <p>El usuario ha sido borrado correctamente.</p>
+                  <button id="cerrarModal">Cerrar</button>
+               </div>
+            </div>
    </main>
    <!-- Pié de la página -->
    <footer>

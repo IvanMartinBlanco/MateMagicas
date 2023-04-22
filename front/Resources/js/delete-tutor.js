@@ -1,7 +1,7 @@
 import { setSessionData, getSessionData } from '../js/session.js';
 
 document.addEventListener("DOMContentLoaded", function () {
-    if (getSessionData()?.rol !== 'tutor' && getSessionData()?.rol !== 'administrador') {
+    if (getSessionData()?.rol !== 'administrador') {
         // Redirigir a otra página
         window.location.replace("../../../front/pages/index.html");
     }
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 'id': getSessionData().id,
                 'email': emailInput.value.trim()
             };
-            fetch("http://localhost/web/back/public/deletestudent", {
+            fetch("http://localhost/web/back/public/deleteuser", {
                 method: 'DELETE',
                 body: JSON.stringify(formData)
             })
@@ -72,7 +72,14 @@ document.addEventListener("DOMContentLoaded", function () {
     closeModal.addEventListener("click", function () {
         const miModal = document.getElementById("modal");
         miModal.style.display = "none";
+        closeSession();
+
     });
+
+    function closeSession() {
+        setSessionData(null, null, null, false);
+        window.location.replace('../pages/index.html');
+    }
 
 
 });
