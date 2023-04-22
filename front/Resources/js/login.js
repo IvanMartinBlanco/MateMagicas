@@ -1,6 +1,10 @@
-import { setSessionData } from '../js/session.js';
+import { setSessionData, getSessionData } from '../js/session.js';
 
 $(document).ready(function() {
+  if (getSessionData()?.registeredUser) {
+    // Redirigir a otra página
+    window.location.replace("../../../front/pages/index.html");
+  }
   // Escuchar el evento submit del formulario de inicio de sesión
   $('#login-form').submit(function(event) {
     event.preventDefault(); // Evitar el comportamiento por defecto del formulario
@@ -31,7 +35,7 @@ $(document).ready(function() {
       setSessionData(data.id, data.name, data.rol);
       window.location.replace('../pages/index.html');
     })
-    .catch(error => {
+    .catch(() => {
       // Hubo un error al recibir la respuesta
       document.getElementById("unauthorized").textContent = "*Usuario o contraseña incorrectos";
     });

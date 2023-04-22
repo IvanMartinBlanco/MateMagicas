@@ -17,6 +17,7 @@
    <script type="module" src="../Resources/js/register.js"></script>
 </head>
 <!-- Cuerpo de la web -->
+
 <body>
    <!-- Cabecera de la web -->
    <header>
@@ -90,7 +91,7 @@
                <div>
                   <label for="age">Edad:</label>
                   <span class="input-container">
-                     <input type="number" id="age" class="little-input" name="age" required>
+                     <input type="number" id="age" class="little-input" name="age" min="1" max="120" required>
                      <div class="error-message"></div>
                   </span>
                </div>
@@ -142,7 +143,7 @@
                <div>
                   <label for="tutor">Código de tutor:</label>
                   <span class="input-container">
-                     <input type="number" class="little-input" id="tutor" name="tutor">
+                     <input type="number" class="little-input" id="tutor" name="tutor" min="1">
                      <div class="error-message"></div>
                   </span>
                </div>
@@ -157,9 +158,17 @@
             <div id="button-container" class="button-container">
                <button type="submit">Registrarse</button>
             </div>
-            <div class="server-message"></div>
+            <div id="server-message"></div>
          </form>
       </section>
+      <!-- Ventana modal oculta por defecto -->
+      <div class="modal" id="modal">
+         <div class="modal-contenido">
+            <h2>¡Éxito!</h2>
+            <p>El usuario ha sido creado correctamente.</p>
+            <button id="cerrarModal">Cerrar</button>
+         </div>
+      </div>
    </main>
    <!-- Pié de la página -->
    <footer>

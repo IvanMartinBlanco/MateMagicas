@@ -7,7 +7,6 @@ require_once '../app/controllers/UserManagementController.php';
 $login_routes = [
   '/' => ['GET', LoginController::class, 'index'],
   '/login' => ['POST', LoginController::class, 'login'],
-  '/logout' => ['GET', LoginController::class, 'logout']
 ];
 
 $constants_routes = [
@@ -21,6 +20,7 @@ $constants_routes = [
 
 $user_management_routes = [
   '/createuser' => ['POST', UserManagementController::class, 'createuser'],
+  '/deleteuser' => ['DELETE', UserManagementController::class, 'deleteuser'],
 ];
 
 $routes = array_merge($login_routes, $constants_routes, $user_management_routes);

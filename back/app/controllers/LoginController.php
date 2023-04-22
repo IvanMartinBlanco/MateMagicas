@@ -56,19 +56,5 @@ class LoginController {
         }
     }
 
-    /**
-     * Cierra la sesión actual del usuario.
-     *
-     * @return void
-     */
-    public function logout() {
-        // Devuelve una respuesta en formato JSON
-        $response = [
-            'success' => true,
-            'message' => 'Cierre de sesión exitoso'
-        ];
-        header('Content-Type: application/json');
-        echo json_encode($response);
-    }
 }
 

@@ -18,11 +18,11 @@ function getSessionData() {
   }
 }
 
-function setSessionData(id, name, rol) {
+function setSessionData(id, name, rol, registeredUser=true) {
   user.id = id;
   user.name = name;
   user.rol = rol;
-  registeredUser = true;
+  registeredUser = registeredUser;
   // Guardar los datos de sesión en una cookie con una duración de 1 día
   document.cookie = `session=${JSON.stringify({ id, name, rol })};max-age=${60*60*24};path=/`;
 }
