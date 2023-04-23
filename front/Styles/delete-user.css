@@ -1,6 +1,9 @@
 main{
-    min-height: 50vh;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+}
   .delete-user {
     width: 400px;
     margin: 50px auto 50px auto;

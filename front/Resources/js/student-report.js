@@ -1,7 +1,7 @@
 import { getSessionData } from '../js/session.js';
 
 document.addEventListener("DOMContentLoaded", function () {
-    if (getSessionData()?.rol !== 'tutor' && getSessionData()?.rol !== 'administrador') {
+    if (getSessionData()?.rol !== 'tutor') {
         // Redirigir a otra página
         window.location.replace("../../../front/pages/index.html");
     }

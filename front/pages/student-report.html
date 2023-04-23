@@ -14,6 +14,7 @@
       <link href="../Styles/student-report.css" type="text/css" rel="stylesheet" />
    <!-- Links a los archivos JS -->
    <script type="module" src="../Resources/js/users.js"></script>
+   <script type="module" src="../Resources/js/student-report.js"></script>
 </head>
 <!-- Cuerpo de la web -->
 
@@ -73,8 +74,12 @@
          <p>Introduce el correo electrónico del alumno del que quieres generar el informe.</p>
   <form>
     <label for="email">Correo electrónico:</label>
-    <input type="email" id="email" name="email" required>
+    <span class="input-container">
+      <input type="email" id="email" name="email" required>
+      <div class="error-message"></div>
+   </span>
     <button type="submit">Generar</button>
+    <div id="server-message"></div>
   </form>
       </section>
    </main>
