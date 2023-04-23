@@ -22,8 +22,10 @@ $user_management_routes = [
   '/deleteuser' => ['DELETE', UserManagementController::class, 'deleteuser'],
   '/deletestudent' => ['DELETE', UserManagementController::class, 'deleteanotheruser'],
   '/searchstudent' => ['GET', UserManagementController::class, 'searchstudent'],
+  '/createstudent' => ['POST', UserManagementController::class, 'createstudent'],
   '/edituser' => ['PUT', UserManagementController::class, 'edituser'],
   '/user' => ['GET', UserManagementController::class, 'getUserById'],
+  '/student' => ['GET', UserManagementController::class, 'getStudentByEmail'],
 ];
 
 $routes = array_merge($login_routes, $constants_routes, $user_management_routes);

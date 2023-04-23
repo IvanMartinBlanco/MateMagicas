@@ -1,213 +1,335 @@
 <!DOCTYPE html>
 <html lang="es">
-  <!-- Cabecera del documento -->
+<!-- Cabecera del documento -->
 
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Informe</title>
-    <!-- Link a la imagen de la pestaña -->
-    <link rel="shortcut icon" href="../Resources/images/logoMates.png" />
-    <!-- Link a la hoja de estilos general-->
-    <link href="../Styles/styles.css" type="text/css" rel="stylesheet" />
-    <!-- Link a la hoja de estilos del report-->
-    <link href="../Styles/report.css" type="text/css" rel="stylesheet" />
-    <!-- Links a los archivos JS -->
-    <script type="module" src="../Resources/js/users.js"></script>
-  </head>
-  <!-- Cuerpo de la web -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Informe</title>
+  <!-- Link a la imagen de la pestaña -->
+  <link rel="shortcut icon" href="../Resources/images/logoMates.png" />
+  <!-- Link a la hoja de estilos general-->
+  <link href="../Styles/styles.css" type="text/css" rel="stylesheet" />
+  <!-- Link a la hoja de estilos del report-->
+  <link href="../Styles/report.css" type="text/css" rel="stylesheet" />
+  <!-- Links a los archivos JS -->
+  <script type="module" src="../Resources/js/users.js"></script>
+  <script type="module" src="../Resources/js/report.js"></script>
+</head>
+<!-- Cuerpo de la web -->
 
-  <body>
-    <!-- Cabecera de la web -->
-    <header>
-      <a href="index.html">
-        <img
-          src="../Resources/images/logoMates.png"
-          alt="Logotipo de MateMágicas"
-        />
-      </a>
-      <div class="name">
-        <h1>MateMágicas</h1>
-      </div>
-      <div
-        class="access"
-        onclick="window.location.href='https://www.ejemplo.com'"
-      >
-        <img id="avatar" alt="Acceso a socios o registro" />
-        <p id="login"></p>
-      </div>
-    </header>
-    <!-- Menú de navegación -->
-    <nav>
-      <!-- Menú textual -->
-      <ul class="nav-text">
-        <li>
-          <a
-            href="https://www.juntadeandalucia.es/educacion/eaprendizaje/"
-            target="_blank"
-            >Primaria</a
-          >
-        </li>
-        <li>
-          <a href="#">Secundaria</a>
-          <ul>
-            <li><a href="informacion.html" target="_blank">Información</a></li>
-            <li>
-              <a
-                href="https://www.educacionyfp.gob.es/portada.html"
-                target="_blank"
-                >Contratación de servicios</a
-              >
-            </li>
-          </ul>
-        </li>
-        <li><a href="https://www.is4k.es/" target="_blank">Avanzadas</a></li>
-      </ul>
-      <!-- Menú hamburguesa -->
-      <ul class="nav-mov">
-        <input type="checkbox" id="ham" />
-        <label for="ham"> ☰ </label>
-        <li>
-          <a
-            href="https://www.juntadeandalucia.es/educacion/eaprendizaje/"
-            target="_blank"
-            >Ofertas</a
-          >
-        </li>
-        <li>
-          <a href="#">Hoteles</a>
-          <ul>
-            <li><a href="informacion.html" target="_blank">Información</a></li>
-            <li>
-              <a
-                href="https://www.educacionyfp.gob.es/portada.html"
-                target="_blank"
-                >Contratación de servicios</a
-              >
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a href="https://www.is4k.es/" target="_blank">Ciudades históricas</a>
-        </li>
-        <li>
-          <a href="https://www.osi.es/es" target="_blank"
-            >Fines de semanas activos</a
-          >
-        </li>
-      </ul>
-    </nav>
-    <!-- Zona de contenido -->
-    <main>
-      <!-- Estadísticas de alumno -->
-      <section class="statistics">
-        <h2 class="name">Nombre del alumno</h2>
+<body>
+  <!-- Cabecera de la web -->
+  <header>
+    <a href="index.html">
+      <img src="../Resources/images/logoMates.png" alt="Logotipo de MateMágicas" />
+    </a>
+    <div class="name">
+      <h1>MateMágicas</h1>
+    </div>
+    <div class="access" id="access">
+      <img id="avatar" alt="Acceso a socios o registro" />
+      <p id="login"></p>
+    </div>
+  </header>
+  <!-- Menú de navegación -->
+  <nav>
+    <!-- Menú textual -->
+    <ul class="nav-text">
+      <li>
+        <a href="https://www.juntadeandalucia.es/educacion/eaprendizaje/" target="_blank">Primaria</a>
+      </li>
+      <li>
+        <a href="#">Secundaria</a>
+        <ul>
+          <li><a href="informacion.html" target="_blank">Información</a></li>
+          <li>
+            <a href="https://www.educacionyfp.gob.es/portada.html" target="_blank">Contratación de servicios</a>
+          </li>
+        </ul>
+      </li>
+      <li><a href="https://www.is4k.es/" target="_blank">Avanzadas</a></li>
+    </ul>
+    <!-- Menú hamburguesa -->
+    <ul class="nav-mov">
+      <input type="checkbox" id="ham" />
+      <label for="ham"> ☰ </label>
+      <li>
+        <a href="https://www.juntadeandalucia.es/educacion/eaprendizaje/" target="_blank">Ofertas</a>
+      </li>
+      <li>
+        <a href="#">Hoteles</a>
+        <ul>
+          <li><a href="informacion.html" target="_blank">Información</a></li>
+          <li>
+            <a href="https://www.educacionyfp.gob.es/portada.html" target="_blank">Contratación de servicios</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="https://www.is4k.es/" target="_blank">Ciudades históricas</a>
+      </li>
+      <li>
+        <a href="https://www.osi.es/es" target="_blank">Fines de semanas activos</a>
+      </li>
+    </ul>
+  </nav>
+  <!-- Zona de contenido -->
+  <main>
+    <!-- Estadísticas de alumno -->
+    <section class="statistics">
+      <h2 class="name" id="name">Nombre del alumno</h2>
+      <div>
         <table class="statistics-table">
-         <caption>Primaria</caption>
-         <thead>
-           <tr>
-            <th scope="col"></th>
-             <th scope="col">Nivel 1</th>
-             <th scope="col">Nivel 2</th>
-             <th scope="col">Nivel 3</th>
-           </tr>
-         </thead>
-         <tbody>
+          <caption>Primaria</caption>
+          <thead>
             <tr>
-               <th scope="row" colspan="4" class="table-course">Números</th>
+              <th scope="col"></th>
+              <th scope="col">Nivel 1</th>
+              <th scope="col">Nivel 2</th>
+              <th scope="col">Nivel 3</th>
             </tr>
-           <tr>
-             <th scope="row" >Ejercicio1</th>
-             <td></td>
-             <td></td>
-             <td></td>
-
-           </tr>
-           <tr>
-            <th scope="row" >Ejercicio2</th>
-            <td></td>
-            <td></td>
-            <td></td>
-
-          </tr>
-          <tr>
-            <th scope="row" >Ejercicio3</th>
-            <td></td>
-            <td></td>
-            <td></td>
-
-          </tr>
-          <tr>
-            <th scope="row" colspan="4" class="table-course">Figuras</th>
-         </tr>
-        <tr>
-          <th scope="row" >Ejercicio1</th>
-          <td></td>
-          <td></td>
-          <td></td>
-
-        </tr>
-        <tr>
-         <th scope="row" >Ejercicio2</th>
-         <td></td>
-         <td></td>
-         <td></td>
-
-       </tr>
-       <tr>
-         <th scope="row" >Ejercicio3</th>
-         <td></td>
-         <td></td>
-         <td></td>
-
-       </tr>
-       <tr>
-         <th scope="row" colspan="4" class="table-course">Cálculo</th>
-      </tr>
-     <tr>
-       <th scope="row" >Ejercicio1</th>
-       <td></td>
-       <td></td>
-       <td></td>
-
-     </tr>
-     <tr>
-      <th scope="row" >Ejercicio2</th>
-      <td></td>
-      <td></td>
-      <td></td>
-
-    </tr>
-    <tr>
-      <th scope="row" >Ejercicio3</th>
-      <td></td>
-      <td></td>
-      <td></td>
-
-    </tr>
-         </tbody>
-       </table>
-      </section>
-    </main>
-    <!-- Pié de la página -->
-    <footer>
-      <div class="footer-links">
-        <h2>Enlaces de interés:</h2>
-        <p>Contacto</p>
-        <p>Sobre MateMágicas</p>
-        <p>Ayuda</p>
-        <p>Aviso de privacidad</p>
-        <p>Condiciones de Uso</p>
-        <p>Cookies</p>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row" colspan="4" class="table-course">Números</th>
+            </tr>
+            <tr>
+              <th scope="row">Ejercicio1</th>
+              <td id="1"></td>
+              <td id="2"></td>
+              <td id="3"></td>
+            </tr>
+            <tr>
+              <th scope="row">Ejercicio2</th>
+              <td id="4"></td>
+              <td id="5"></td>
+              <td id="6"></td>
+            </tr>
+            <tr>
+              <th scope="row">Ejercicio3</th>
+              <td id="7"></td>
+              <td id="8"></td>
+              <td id="9"></td>
+            </tr>
+            <tr>
+              <th scope="row" colspan="4" class="table-course">Figuras</th>
+            </tr>
+            <tr>
+              <th scope="row">Ejercicio1</th>
+              <td id="10"></td>
+              <td id="11"></td>
+              <td id="12"></td>
+            </tr>
+            <tr>
+              <th scope="row">Ejercicio2</th>
+              <td id="13"></td>
+              <td id="14"></td>
+              <td id="15"></td>
+            </tr>
+            <tr>
+              <th scope="row">Ejercicio3</th>
+              <td id="16"></td>
+              <td id="17"></td>
+              <td id="18"></td>
+            </tr>
+            <tr>
+              <th scope="row" colspan="4" class="table-course">Cálculo</th>
+            </tr>
+            <tr>
+              <th scope="row">Ejercicio1</th>
+              <td id="19"></td>
+              <td id="20"></td>
+              <td id="21"></td>
+            </tr>
+            <tr>
+              <th scope="row">Ejercicio2</th>
+              <td id="22"></td>
+              <td id="23"></td>
+              <td id="24"></td>
+            </tr>
+            <tr>
+              <th scope="row">Ejercicio3</th>
+              <td id="25"></td>
+              <td id="26"></td>
+              <td id="27"></td>
+            </tr>
+          </tbody>
+        </table>
+        <table class="statistics-table">
+          <caption>Secundaria</caption>
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">Nivel 1</th>
+              <th scope="col">Nivel 2</th>
+              <th scope="col">Nivel 3</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row" colspan="4" class="table-course">Aritmética</th>
+            </tr>
+            <tr>
+              <th scope="row">Ejercicio1</th>
+              <td id="28"></td>
+              <td id="29"></td>
+              <td id="30"></td>
+            </tr>
+            <tr>
+              <th scope="row">Ejercicio2</th>
+              <td id="31"></td>
+              <td id="32"></td>
+              <td id="33"></td>
+            </tr>
+            <tr>
+              <th scope="row">Ejercicio3</th>
+              <td id="34"></td>
+              <td id="35"></td>
+              <td id="36"></td>
+            </tr>
+            <tr>
+              <th scope="row" colspan="4" class="table-course">Álgebra</th>
+            </tr>
+            <tr>
+              <th scope="row">Ejercicio1</th>
+              <td id="37"></td>
+              <td id="38"></td>
+              <td id="39"></td>
+            </tr>
+            <tr>
+              <th scope="row">Ejercicio2</th>
+              <td id="40"></td>
+              <td id="41"></td>
+              <td id="42"></td>
+            </tr>
+            <tr>
+              <th scope="row">Ejercicio3</th>
+              <td id="43"></td>
+              <td id="44"></td>
+              <td id="45"></td>
+            </tr>
+            <tr>
+              <th scope="row" colspan="4" class="table-course">Geometría</th>
+            </tr>
+            <tr>
+              <th scope="row">Ejercicio1</th>
+              <td id="46"></td>
+              <td id="47"></td>
+              <td id="48"></td>
+            </tr>
+            <tr>
+              <th scope="row">Ejercicio2</th>
+              <td id="49"></td>
+              <td id="50"></td>
+              <td id="51"></td>
+            </tr>
+            <tr>
+              <th scope="row">Ejercicio3</th>
+              <td id="52"></td>
+              <td id="53"></td>
+              <td id="54"></td>
+            </tr>
+          </tbody>
+        </table>
+        <table class="statistics-table">
+          <caption>Avanzadas</caption>
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">Nivel 1</th>
+              <th scope="col">Nivel 2</th>
+              <th scope="col">Nivel 3</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row" colspan="4" class="table-course">Análisis</th>
+            </tr>
+            <tr>
+              <th scope="row">Ejercicio1</th>
+              <td id="55"></td>
+              <td id="56"></td>
+              <td id="57"></td>
+            </tr>
+            <tr>
+              <th scope="row">Ejercicio2</th>
+              <td id="58"></td>
+              <td id="59"></td>
+              <td id="60"></td>
+            </tr>
+            <tr>
+              <th scope="row">Ejercicio3</th>
+              <td id="61"></td>
+              <td id="62"></td>
+              <td id="63"></td>
+            </tr>
+            <tr>
+              <th scope="row" colspan="4" class="table-course">Álgebra lineal</th>
+            </tr>
+            <tr>
+              <th scope="row">Ejercicio1</th>
+              <td id="64"></td>
+              <td id="65"></td>
+              <td id="66"></td>
+            </tr>
+            <tr>
+              <th scope="row">Ejercicio2</th>
+              <td id="67"></td>
+              <td id="68"></td>
+              <td id="69"></td>
+            </tr>
+            <tr>
+              <th scope="row">Ejercicio3</th>
+              <td id="70"></td>
+              <td id="71"></td>
+              <td id="72"></td>
+            </tr>
+            <tr>
+              <th scope="row" colspan="4" class="table-course">Geometría</th>
+            </tr>
+            <tr>
+              <th scope="row">Ejercicio1</th>
+              <td id="73"></td>
+              <td id="74"></td>
+              <td id="75"></td>
+            </tr>
+            <tr>
+              <th scope="row">Ejercicio2</th>
+              <td id="76"></td>
+              <td id="77"></td>
+              <td id="78"></td>
+            </tr>
+            <tr>
+              <th scope="row">Ejercicio3</th>
+              <td id="79"></td>
+              <td id="80"></td>
+              <td id="81"></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <!-- Redes sociales -->
-      <div class="rrss">
-        <img
-          src="Resources/images/networks/linkedin.jpg"
-          alt="Icono de LinkedIn"
-        />
-      </div>
-      <p class="copy">Iván Martín Blanco &COPY; 2023</p>
-    </footer>
-  </body>
+      <div id="server-message"></div>
+    </section>
+
+  </main>
+  <!-- Pié de la página -->
+  <footer>
+    <div class="footer-links">
+      <h2>Enlaces de interés:</h2>
+      <p>Contacto</p>
+      <p>Sobre MateMágicas</p>
+      <p>Ayuda</p>
+      <p>Aviso de privacidad</p>
+      <p>Condiciones de Uso</p>
+      <p>Cookies</p>
+    </div>
+    <!-- Redes sociales -->
+    <div class="rrss">
+      <img src="../Resources/images/networks/linkedin.jpg" alt="Icono de LinkedIn" />
+    </div>
+    <p class="copy">Iván Martín Blanco &COPY; 2023</p>
+  </footer>
+</body>
+
 </html>

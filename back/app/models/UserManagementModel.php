@@ -8,7 +8,7 @@ require_once __DIR__ . '/../../tools/Connection.php';
 class UserManagementModel
 {
 
-    public function createUser($userName, $surnames, $age, $email, $emailRepeat, $password, $passwordRepeat, $rol, $tutor = null, $course = null)
+    public function createUser($userName, $surnames, $age, $email, $emailRepeat, $password, $passwordRepeat, $rol, $idTutor = null, $course = null)
     {
         // Validar que el campo de nombre de usuario no esté vacío
         if (empty($userName)) {
@@ -51,10 +51,10 @@ class UserManagementModel
 
         // Validar que el campo de email no esté vacío y sea una dirección de email válida
         if ($rol !== 'alumno') {
-            if ($rol === 'tutor' && !empty($tutor)) {
+            if ($rol === 'tutor' && !empty($idTutor)) {
                 return ['error' => 'El tutor no puede elegir un código de tutor.'];
             }
-            if ($rol === 'administrador' && (!empty($tutor) || !empty($course))) {
+            if ($rol === 'administrador' && (!empty($idTutor) || !empty($course))) {
                 return ['error' => 'El administrador no puede elegir un código de tutor ni un curso.'];
             }
         }
@@ -69,6 +69,17 @@ class UserManagementModel
             // El correo electrónico ya está en uso
             return ['error' => 'El correo electrónico ya está en uso'];
         }
+        // Primero, prepara una consulta a la tabla Tutor para verificar si existe un registro con el ID especificado
+$stmt = $conn->prepare("SELECT COUNT(*) FROM Tutor WHERE IdTutor = ?");
+$stmt->bindParam(1, $idTutor);
+$stmt->execute();
+
+// Luego, obtén el resultado de la consulta y verifica si hay algún registro
+$result = $stmt->fetchColumn();
+if ($result == 0) {
+    // Si no hay ningún registro con ese ID, muestra un mensaje de error y detén la ejecución del código
+    return ['error' => " El tutor especificado no existe."];
+}
         // Insertar el nuevo usuario en la tabla Persona
         $stmt = $conn->prepare("INSERT INTO Persona (Nombre, Apellidos, Edad, CorreoElectronico, `Password`) VALUES (?, ?, ?, ?, ?)");
         $stmt->bindParam(1, $userName);
@@ -272,7 +283,6 @@ class UserManagementModel
     public static function getUserById($userId)
     {
         $conn = connect();
-
         // Consulta SQL para obtener el usuario con el ID específico y sus datos de alumno o tutor, si corresponde
         $query = "
             SELECT p.*, a.*, t.*
@@ -281,13 +291,47 @@ class UserManagementModel
             LEFT JOIN TUTOR t ON p.idPersona = t.idPersona
             WHERE p.idPersona = :userId
         ";
-
         $stmt = $conn->prepare($query);
         $stmt->bindParam(':userId', $userId);
         $stmt->execute();
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
         return $user; // Retorna el usuario encontrado o un valor nulo si no se encuentra
     }
+
+    public static function getStudentByEmail($email)
+    {
+        $conn = connect();
+    
+        // Consulta SQL para obtener el id del alumno a partir del correo electrónico
+        $query = "SELECT a.idAlumno FROM ALUMNO a INNER JOIN PERSONA p ON a.idPersona = p.idPersona WHERE p.correoelectronico = :email";
+        $stmt = $conn->prepare($query);
+        $stmt->bindParam(':email', $email);
+        $stmt->execute();
+        $idAlumno = $stmt->fetch(PDO::FETCH_COLUMN);
+    
+        if (!$idAlumno) {
+            return ['error' => 'No se encuentra el alumno.'];
+        }
+    
+        // Consulta SQL para obtener todos los registros de ejercicio realizado correspondientes al id de alumno obtenido anteriormente
+        $query = "SELECT * FROM EJERCICIOREALIZADO WHERE idAlumno = :idAlumno";
+        $stmt = $conn->prepare($query);
+        $stmt->bindParam(':idAlumno', $idAlumno);
+        $stmt->execute();
+        $ejercicios = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+        // Consulta SQL para obtener los datos de persona y alumno correspondientes al correo electrónico especificado
+        $query = "SELECT p.Nombre, p.Apellidos FROM PERSONA p INNER JOIN ALUMNO a ON p.idPersona = a.idPersona WHERE p.correoelectronico = :email";
+        $stmt = $conn->prepare($query);
+        $stmt->bindParam(':email', $email);
+        $stmt->execute();
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+        $user['Ejercicios'] = $ejercicios; // Añadir los datos de ejercicio realizado al arreglo $user
+    
+        return $user; // Retorna el alumno encontrado con sus datos de persona y ejercicio realizado
+    }
+
 
     public function searchStudent($email, $idPersona)
     {

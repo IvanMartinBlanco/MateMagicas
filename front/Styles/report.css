@@ -1,22 +1,27 @@
+main{
+  min-height: 50vh;
+}
 /* Estilo general para las estadísticas */
 .statistics {
   /* Definimos como se va a ordenar y desplegar*/
-  display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
   margin: 50px auto;
   /* Definimos las características visuales*/
   text-align: center;
 }
+/* Estilo general para las estadísticas */
+.statistics div{
+display: flex;
+justify-content: center; /* Centrar horizontalmente */
+  align-items: center; /* Centrar verticalmente */
+}
 
 .statistics h2 {
   margin-top: 0;
-  grid-column: 2;
   padding: 0px;
 }
 
 .statistics-table{
-  margin-top: 2em;
-  grid-column: 2;
+  margin-top: 1em;
   border: #6938EF 1px solid;
  }
 
@@ -29,35 +34,10 @@
   font-weight: bold;
  }
 
-.report label {
-  font-weight: bold;
-  margin-top: 10px;
-}
-
-.report input {
-  padding: 5px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  margin-top: 5px;
-}
-
-.report button {
-  background-color: #DBCD30;
-  border: none;
-  border-radius: 5px;
-  padding: 10px;
-  margin-top: 10px;
-  cursor: pointer;
-}
-
-.report button:hover {
-  background-color: #8f8303;
-  color: white;
-}
-
-.report p {
-  margin-top: 20px;
-}
+ td img{
+  vertical-align: middle;
+  max-height: 20px;
+ }
 /** ESTILOS CUANDO LA PÁGINA SE REPRODUCE MÁS PEQUEÑA DE 768PX**/
 @media (max-width: 768px) {
   

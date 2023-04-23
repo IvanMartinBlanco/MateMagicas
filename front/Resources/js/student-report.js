@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     if (!response.ok) {
                         serverMessage.textContent = "Error en la respuesta del servidor";
                     }
-                    window.location.href = `./report.html?${formData.email}`;
+                    window.location.href = `./report.html?email=${formData.email}`;
                 })
                 .then(data => {
                     if (data.success) {
