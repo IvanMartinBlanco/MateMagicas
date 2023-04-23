@@ -288,4 +288,56 @@ class UserManagementModel
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
         return $user; // Retorna el usuario encontrado o un valor nulo si no se encuentra
     }
+
+    public function searchStudent($email, $idPersona)
+    {
+        // Conexión a la base de datos
+        $conn = connect();
+
+        $query = "
+SELECT IdTutor FROM Tutor WHERE IdPersona = :idPersona;
+";
+
+$stmt = $conn->prepare($query);
+$stmt->bindParam(':idPersona', $idPersona);
+$stmt->execute();
+$tutorData = $stmt->fetch(PDO::FETCH_ASSOC);
+
+// Verificar si el tutor existe
+if (!$tutorData) {
+    // Retornar un mensaje de error
+    return ['error' => 'El tutor no existe.'];
+}
+
+// Obtener el código del tutor
+$idTutor = $tutorData['IdTutor'];
+    
+        // Consulta SQL para obtener los datos del alumno con el correo electrónico proporcionado que está asignado al tutor con el ID proporcionado
+        $query = "
+        SELECT Persona.Nombre, Persona.Apellidos, Persona.Edad, Persona.CorreoElectronico, Alumno.Curso, Alumno.IdTutor
+        FROM Persona
+        INNER JOIN Alumno ON Persona.IdPersona = Alumno.IdPersona
+        WHERE Persona.CorreoElectronico = :email;
+        ";
+    
+        $stmt = $conn->prepare($query);
+        $stmt->bindParam(':email', $email);
+        $stmt->execute();
+        $userData = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+        // Verificar si el usuario encontrado es un alumno
+        if (!$userData) {
+            // Retornar un mensaje de error
+            return ['error' => 'El correo electrónico proporcionado no pertenece a un alumno.'];
+        }
+    
+        // Verificar si el alumno encontrado está asignado al tutor con el ID proporcionado
+        if ($userData['IdTutor'] != $idTutor) {
+            // Retornar un mensaje de error
+            return ['error' => 'No es alumno de este tutor.'];
+        }
+    
+            // Los datos se han actualizado correctamente
+            return ['success' => true];
+    }
 }

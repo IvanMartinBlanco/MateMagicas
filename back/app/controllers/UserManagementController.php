@@ -165,4 +165,38 @@ class UserManagementController
       // Devolver los datos del usuario como respuesta en formato JSON
       echo json_encode($userObj);
   }
+
+  public function searchStudent()
+  {
+      // Obtener el ID del usuario desde los parámetros de la URL
+      $email = $_GET['email'];
+            // Obtener el ID del usuario desde los parámetros de la URL
+            $idTutor = $_GET['id'];
+    
+      // Realizar la llamada al modelo para obtener los datos del usuario
+      $result = $this->userManagement->searchStudent($email, $idTutor);
+  
+      if (isset($result['success']) && $result['success']) {
+        $response = [
+          'success' => true,
+          'message' => 'El correo corresponde a un alumno del tutor.'
+        ];
+        header('Content-Type: application/json');
+        http_response_code(201);
+      } else {
+        if (isset($result['error'])) {
+          $mensaje = 'Error al buscar usuario: ' . $result['error'];
+        } else {
+          $mensaje = 'Error al buscar usuario: No se ha podido acceder a la base de datos.';
+        }
+        $response = [
+          'success' => false,
+          'message' => $mensaje
+        ];
+        header('Content-Type: application/json');
+        http_response_code(400);
+      }
+  
+      echo json_encode($response);
+  }
 }

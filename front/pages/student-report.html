@@ -10,8 +10,8 @@
    <link rel="shortcut icon" href="../Resources/images/logoMates.png" />
    <!-- Link a la hoja de estilos general-->
    <link href="../Styles/styles.css" type="text/css" rel="stylesheet" />
-      <!-- Link a la hoja de estilos del student-report-->
-      <link href="../Styles/student-report.css" type="text/css" rel="stylesheet" />
+   <!-- Link a la hoja de estilos del student-report-->
+   <link href="../Styles/student-report.css" type="text/css" rel="stylesheet" />
    <!-- Links a los archivos JS -->
    <script type="module" src="../Resources/js/users.js"></script>
    <script type="module" src="../Resources/js/student-report.js"></script>
@@ -27,7 +27,7 @@
       <div class="name">
          <h1>MateMágicas</h1>
       </div>
-      <div class="access" onclick="window.location.href='https://www.ejemplo.com'">
+      <div class="access" id="access">
          <img id="avatar" alt="Acceso a socios o registro" />
          <p id="login"></p>
       </div>
@@ -72,15 +72,15 @@
       <section class="student-report">
          <h2>Informe de alumno</h2>
          <p>Introduce el correo electrónico del alumno del que quieres generar el informe.</p>
-  <form>
-    <label for="email">Correo electrónico:</label>
-    <span class="input-container">
-      <input type="email" id="email" name="email" required>
-      <div class="error-message"></div>
-   </span>
-    <button type="submit">Generar</button>
-    <div id="server-message"></div>
-  </form>
+         <form>
+            <label for="email">Correo electrónico:</label>
+            <span class="input-container">
+               <input type="email" id="email" name="email" required>
+               <div class="error-message"></div>
+            </span>
+            <button type="submit">Generar</button>
+            <div id="server-message"></div>
+         </form>
       </section>
    </main>
    <!-- Pié de la página -->

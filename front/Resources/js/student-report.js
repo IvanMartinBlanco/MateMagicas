@@ -37,6 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return isValid;
     };
 
+
     form.addEventListener('submit', (e) => {
         e.preventDefault();
         serverMessage.textContent = "";
@@ -45,34 +46,24 @@ document.addEventListener("DOMContentLoaded", function () {
                 'id': getSessionData().id,
                 'email': emailInput.value.trim()
             };
-            fetch("http://localhost/web/back/public/deletestudent", {
-                method: 'DELETE',
-                body: JSON.stringify(formData)
-            })
-                .then(response => response.json())
+            fetch(`http://localhost/web/back/public/searchstudent?id=${formData.id}&email=${formData.email}`)
+                .then(response => {
+                    if (!response.ok) {
+                        serverMessage.textContent = "Error en la respuesta del servidor";
+                    }
+                    window.location.href = `./report.html?${formData.email}`;
+                })
                 .then(data => {
                     if (data.success) {
                         serverMessage.textContent = "";
-                        // Si la respuesta del servidor es exitosa, se muestra la ventana modal
-                        const miModal = document.getElementById("modal");
-                        miModal.style.display = "block";
                     } else {
                         serverMessage.textContent = data.message;
                     }
                 })
-                .catch((error) => {
-                    console.log(error)
-                    alert('Ha ocurrido un error al borrar el usuario');
+                .catch(error => {
+                    console.error(error);
                 });
         }
     });
-
-    // Evento para cerrar la ventana modal al hacer clic en el botón "Cerrar"
-    const closeModal = document.getElementById("cerrarModal");
-    closeModal.addEventListener("click", function () {
-        const miModal = document.getElementById("modal");
-        miModal.style.display = "none";
-    });
-
 
 });
