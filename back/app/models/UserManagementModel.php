@@ -69,17 +69,20 @@ class UserManagementModel
             // El correo electrónico ya está en uso
             return ['error' => 'El correo electrónico ya está en uso'];
         }
-        // Primero, prepara una consulta a la tabla Tutor para verificar si existe un registro con el ID especificado
-$stmt = $conn->prepare("SELECT COUNT(*) FROM Tutor WHERE IdTutor = ?");
-$stmt->bindParam(1, $idTutor);
-$stmt->execute();
 
-// Luego, obtén el resultado de la consulta y verifica si hay algún registro
-$result = $stmt->fetchColumn();
-if ($result == 0) {
-    // Si no hay ningún registro con ese ID, muestra un mensaje de error y detén la ejecución del código
-    return ['error' => " El tutor especificado no existe."];
-}
+        if($idTutor!=null){
+        // Primero, prepara una consulta a la tabla Tutor para verificar si existe un registro con el ID especificado
+        $stmt = $conn->prepare("SELECT COUNT(*) FROM Tutor WHERE IdTutor = ?");
+        $stmt->bindParam(1, $idTutor);
+        $stmt->execute();
+
+        // Luego, obtén el resultado de la consulta y verifica si hay algún registro
+        $result = $stmt->fetchColumn();
+        if ($result == 0) {
+            // Si no hay ningún registro con ese ID, muestra un mensaje de error y detén la ejecución del código
+            return ['error' => " El tutor especificado no existe."];
+        }
+    }
         // Insertar el nuevo usuario en la tabla Persona
         $stmt = $conn->prepare("INSERT INTO Persona (Nombre, Apellidos, Edad, CorreoElectronico, `Password`) VALUES (?, ?, ?, ?, ?)");
         $stmt->bindParam(1, $userName);
@@ -242,13 +245,14 @@ if ($result == 0) {
             return ['error' => 'Las contraseñas no coinciden'];
         }
 
-        // Comprobar que el tutor existe
-        $stmt = $conn->prepare("SELECT IdTutor FROM Tutor WHERE IdTutor = ?");
-        $stmt->bindParam(1, $tutor);
-        $stmt->execute();
-        if ($stmt->rowCount() == 0) {
-            // El tutor no existe
-            return ['error' => 'El tutor no existe'];
+        if ($tutor != null) {
+            $stmt = $conn->prepare("SELECT IdTutor FROM Tutor WHERE IdTutor = ?");
+            $stmt->bindParam(1, $tutor);
+            $stmt->execute();
+            if ($stmt->rowCount() == 0) {
+                // El tutor no existe
+                return ['error' => 'El tutor no existe'];
+            }
         }
 
         // Actualizar los datos del usuario
@@ -280,55 +284,163 @@ if ($result == 0) {
         }
     }
 
-    public static function getUserById($userId)
+    public function editTutor($idPersona, $userName, $surnames, $age, $email, $password, $passwordRepeat, $tutor, $course)
     {
+        // Validar que los campos obligatorios no estén vacíos
+        if (empty($idPersona)) {
+            return ['error' => 'El id es obligatorio'];
+        }
+        if (empty($email)) {
+            return ['error' => 'El email es obligatorio'];
+        }
+
         $conn = connect();
-        // Consulta SQL para obtener el usuario con el ID específico y sus datos de alumno o tutor, si corresponde
+
+        // Verificar si el usuario es un alumno
+        $stmt = $conn->prepare("SELECT IdTutor FROM Tutor WHERE IdPersona = ?");
+        $stmt->bindParam(1, $idPersona);
+        $stmt->execute();
+        if ($stmt->rowCount() == 0) {
+            // El usuario no es un alumno 
+            return ['error' => 'El usuario no es un tutor'];
+        }
+        // Verificar que el correo electrónico es correcto
+        $stmt = $conn->prepare("SELECT CorreoElectronico FROM Persona WHERE IdPersona = ?");
+        $stmt->bindParam(1, $idPersona);
+        $stmt->execute();
+        $row = $stmt->fetch();
+        if ($row['CorreoElectronico'] != $email) {
+            // El correo electrónico no es correcto
+            return ['error' => 'Se está intentando modificar un usuario diferente.'];
+        }
+
+        // Comprobar que las contraseñas son iguales
+        if ($password != $passwordRepeat) {
+            return ['error' => 'Las contraseñas no coinciden'];
+        }
+
+        if ($tutor != null) {
+            $stmt = $conn->prepare("SELECT IdTutor FROM Tutor WHERE IdTutor = ?");
+            $stmt->bindParam(1, $tutor);
+            $stmt->execute();
+            if ($stmt->rowCount() == 0) {
+                // El tutor no existe
+                return ['error' => 'El tutor no existe'];
+            }
+        }
+
+        // Actualizar los datos del usuario
+        $stmt = $conn->prepare("UPDATE Persona 
+    INNER JOIN Tutor ON Persona.IdPersona = Tutor.IdPersona 
+    SET Persona.Nombre = ?, 
+        Persona.Apellidos = ?, 
+        Persona.Edad = ?, 
+        Persona.Password = ?, 
+        Tutor.IdTutor = ?, 
+        Tutor.Curso = ? 
+    WHERE Persona.IdPersona = ?;");
+        $stmt->bindParam(1, $userName);
+        $stmt->bindParam(2, $surnames);
+        $stmt->bindParam(3, $age);
+        $stmt->bindParam(4, $password); // Hash de la contraseña
+        $stmt->bindParam(5, $tutor);
+        $stmt->bindParam(6, $course);
+        $stmt->bindParam(7, $idPersona);
+        $stmt->execute();
+
+        // Verificar si se han actualizado los datos en la tabla Persona
+        if ($stmt->rowCount() > 0) {
+            // Los datos se han actualizado correctamente
+            return ['success' => true];
+        } else {
+            // No se ha actualizado ningún registro
+            return ['error' => 'No se ha podido editar el tutor'];
+        }
+    }
+
+    public static function getUserById($userId)
+{
+    $conn = connect();
+    $query = "
+        SELECT p.*, a.IdTutor, a.Curso
+        FROM PERSONA p
+        LEFT JOIN ALUMNO a ON p.IdPersona = a.IdPersona
+        WHERE p.IdPersona = :userId
+    ";
+    $stmt = $conn->prepare($query);
+    $stmt->bindParam(':userId', $userId);
+    $stmt->execute();
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    if (!empty($user['IdTutor'])) {
+        // El usuario es alumno, devolver los campos de la tabla ALUMNO
+        return array(
+            'IdPersona' => $user['IdPersona'],
+            'Nombre' => $user['Nombre'],
+            'Apellidos' => $user['Apellidos'],
+            'Edad' => $user['Edad'],
+            'CorreoElectronico' => $user['CorreoElectronico'],
+            'Contrasena' => $user['Password'],
+            'Rol' => 'alumno',
+            'IdTutor' => $user['IdTutor'],
+            'Curso' => $user['Curso']
+        );
+    } else {
+        // El usuario es tutor, devolver los campos de la tabla TUTOR
         $query = "
-            SELECT p.*, a.*, t.*
+            SELECT p.*, t.IdTutor, t.Curso
             FROM PERSONA p
-            LEFT JOIN ALUMNO a ON p.idPersona = a.idPersona
-            LEFT JOIN TUTOR t ON p.idPersona = t.idPersona
-            WHERE p.idPersona = :userId
+            LEFT JOIN TUTOR t ON p.IdPersona = t.IdPersona
+            WHERE p.IdPersona = :userId
         ";
         $stmt = $conn->prepare($query);
         $stmt->bindParam(':userId', $userId);
         $stmt->execute();
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $user; // Retorna el usuario encontrado o un valor nulo si no se encuentra
+        return array(
+            'IdPersona' => $user['IdPersona'],
+            'Nombre' => $user['Nombre'],
+            'Apellidos' => $user['Apellidos'],
+            'Edad' => $user['Edad'],
+            'CorreoElectronico' => $user['CorreoElectronico'],
+            'Contrasena' => $user['Password'],
+            'Rol' => 'tutor',
+            'IdTutor' => $user['IdTutor'],
+            'Curso' => $user['Curso']
+        );
     }
+}
 
     public static function getStudentByEmail($email)
     {
         $conn = connect();
-    
+
         // Consulta SQL para obtener el id del alumno a partir del correo electrónico
-        $query = "SELECT a.idAlumno FROM ALUMNO a INNER JOIN PERSONA p ON a.idPersona = p.idPersona WHERE p.correoelectronico = :email";
+        $query = "SELECT a.idAlumno FROM ALUMNO a INNER JOIN PERSONA p ON a.IdPersona = p.IdPersona WHERE p.correoelectronico = :email";
         $stmt = $conn->prepare($query);
         $stmt->bindParam(':email', $email);
         $stmt->execute();
         $idAlumno = $stmt->fetch(PDO::FETCH_COLUMN);
-    
+
         if (!$idAlumno) {
             return ['error' => 'No se encuentra el alumno.'];
         }
-    
+
         // Consulta SQL para obtener todos los registros de ejercicio realizado correspondientes al id de alumno obtenido anteriormente
         $query = "SELECT * FROM EJERCICIOREALIZADO WHERE idAlumno = :idAlumno";
         $stmt = $conn->prepare($query);
         $stmt->bindParam(':idAlumno', $idAlumno);
         $stmt->execute();
         $ejercicios = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
+
         // Consulta SQL para obtener los datos de persona y alumno correspondientes al correo electrónico especificado
         $query = "SELECT p.Nombre, p.Apellidos FROM PERSONA p INNER JOIN ALUMNO a ON p.idPersona = a.idPersona WHERE p.correoelectronico = :email";
         $stmt = $conn->prepare($query);
         $stmt->bindParam(':email', $email);
         $stmt->execute();
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
-    
+
         $user['Ejercicios'] = $ejercicios; // Añadir los datos de ejercicio realizado al arreglo $user
-    
+
         return $user; // Retorna el alumno encontrado con sus datos de persona y ejercicio realizado
     }
 
@@ -337,25 +449,23 @@ if ($result == 0) {
     {
         // Conexión a la base de datos
         $conn = connect();
-
         $query = "
-SELECT IdTutor FROM Tutor WHERE IdPersona = :idPersona;
-";
+        SELECT IdTutor FROM Tutor WHERE IdPersona = :idPersona;
+        ";
+        $stmt = $conn->prepare($query);
+        $stmt->bindParam(':idPersona', $idPersona);
+        $stmt->execute();
+        $tutorData = $stmt->fetch(PDO::FETCH_ASSOC);
 
-$stmt = $conn->prepare($query);
-$stmt->bindParam(':idPersona', $idPersona);
-$stmt->execute();
-$tutorData = $stmt->fetch(PDO::FETCH_ASSOC);
+        // Verificar si el tutor existe
+        if (!$tutorData) {
+            // Retornar un mensaje de error
+            return ['error' => 'El tutor no existe.'];
+        }
 
-// Verificar si el tutor existe
-if (!$tutorData) {
-    // Retornar un mensaje de error
-    return ['error' => 'El tutor no existe.'];
-}
+        // Obtener el código del tutor
+        $idTutor = $tutorData['IdTutor'];
 
-// Obtener el código del tutor
-$idTutor = $tutorData['IdTutor'];
-    
         // Consulta SQL para obtener los datos del alumno con el correo electrónico proporcionado que está asignado al tutor con el ID proporcionado
         $query = "
         SELECT Persona.Nombre, Persona.Apellidos, Persona.Edad, Persona.CorreoElectronico, Alumno.Curso, Alumno.IdTutor
@@ -363,25 +473,25 @@ $idTutor = $tutorData['IdTutor'];
         INNER JOIN Alumno ON Persona.IdPersona = Alumno.IdPersona
         WHERE Persona.CorreoElectronico = :email;
         ";
-    
+
         $stmt = $conn->prepare($query);
         $stmt->bindParam(':email', $email);
         $stmt->execute();
         $userData = $stmt->fetch(PDO::FETCH_ASSOC);
-    
+
         // Verificar si el usuario encontrado es un alumno
         if (!$userData) {
             // Retornar un mensaje de error
             return ['error' => 'El correo electrónico proporcionado no pertenece a un alumno.'];
         }
-    
+
         // Verificar si el alumno encontrado está asignado al tutor con el ID proporcionado
         if ($userData['IdTutor'] != $idTutor) {
             // Retornar un mensaje de error
             return ['error' => 'No es alumno de este tutor.'];
         }
-    
-            // Los datos se han actualizado correctamente
-            return ['success' => true];
+
+        // Los datos se han actualizado correctamente
+        return ['success' => true];
     }
 }

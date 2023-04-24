@@ -1,7 +1,7 @@
 import { setSessionData, getSessionData } from '../js/session.js';
 
 document.addEventListener("DOMContentLoaded", function () {
-    if (getSessionData()?.rol !== 'alumno') {
+    if (getSessionData()?.rol !== 'tutor') {
         // Redirigir a otra página
         window.location.replace("../../../front/pages/index.html");
     }
@@ -110,10 +110,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 'email': emailInput.value.trim(),
                 'password': passwordInput.value.trim(),
                 'password-repeat': passwordRepeatInput.value.trim(),
-                'tutor': tutorInput.value.trim() !== '' ? tutorInput.value.trim() : null, // Si está vacío, se envía null
+                'tutor': tutorInput.value.trim(), // Si está vacío, se envía null
                 'course': courseInput.value.trim()
             };
-            fetch("http://localhost/web/back/public/edituser", {
+            fetch("http://localhost/web/back/public/edittutor", {
                 method: 'PUT',
                 body: JSON.stringify(formData)
             })

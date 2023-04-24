@@ -126,7 +126,45 @@ class UserManagementController
       $data['tutor'],
       $data['course']
     );
+    if (isset($result['success']) && $result['success']) {
+      $response = [
+        'success' => true,
+        'message' => 'Usuario modificado exitosamente'
+      ];
+      header('Content-Type: application/json');
+      http_response_code(201);
+    } else {
+      if (isset($result['error'])) {
+        $mensaje = 'Error al modificar usuario: ' . $result['error'];
+      } else {
+        $mensaje = 'Error al modificar usuario: No se ha podido editar el usuario en base de datos.';
+      }
+      $response = [
+        'success' => false,
+        'message' => $mensaje
+      ];
+      header('Content-Type: application/json');
+      http_response_code(400);
+    }
 
+    echo json_encode($response);
+  }
+
+  public function editTutor()
+  {
+    $data = json_decode(file_get_contents('php://input'), true);
+
+    $result = $this->userManagement->editTutor(
+      $data['id'],
+      $data['user-name'],
+      $data['surnames'],
+      $data['age'],
+      $data['email'],
+      $data['password'],
+      $data['password-repeat'],
+      $data['tutor'],
+      $data['course']
+    );
     if (isset($result['success']) && $result['success']) {
       $response = [
         'success' => true,
