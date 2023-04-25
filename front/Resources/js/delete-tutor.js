@@ -1,13 +1,15 @@
 import { setSessionData, getSessionData } from '../js/session.js';
 
 document.addEventListener("DOMContentLoaded", function () {
-    if (getSessionData()?.rol !== 'administrador') {
+    if (getSessionData()?.rol !== 'tutor' && getSessionData()?.rol !== 'administrador') {
         // Redirigir a otra página
         window.location.replace("../../../front/pages/index.html");
     }
     const form = document.querySelector('form');
     const emailInput = document.querySelector('#email');
     const serverMessage = document.querySelector('#server-message');
+    const apiURL = getSessionData()?.rol === 'administrador' ? "http://localhost/web/back/public/deletetutor" : "http://localhost/web/back/public/deleteuser";
+
 
     const showError = (input, message) => {
         const errorContainer = input.parentElement;
@@ -45,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 'id': getSessionData().id,
                 'email': emailInput.value.trim()
             };
-            fetch("http://localhost/web/back/public/deleteuser", {
+            fetch(apiURL, {
                 method: 'DELETE',
                 body: JSON.stringify(formData)
             })

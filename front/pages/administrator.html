@@ -5,7 +5,7 @@
 <head>
    <meta charset="UTF-8" />
    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <title>administrator</title>
+   <title>Administrator</title>
    <!-- Link a la imagen de la pestaña -->
    <link rel="shortcut icon" href="../Resources/images/logoMates.png" />
    <!-- Link a la hoja de estilos general-->
@@ -13,7 +13,8 @@
       <!-- Link a la hoja de estilos del administrator-->
       <link href="../Styles/administrator.css" type="text/css" rel="stylesheet" />
    <!-- Links a los archivos JS -->
-   <script type="module" src="Resources/js/users.js"></script>
+   <script type="module" src="../Resources/js/users.js"></script>
+   <script type="module" src="../Resources/js/administrator.js"></script>
 </head>
 <!-- Cuerpo de la web -->
 
@@ -21,7 +22,7 @@
    <!-- Cabecera de la web -->
    <header>
       <a href="index.html">
-         <img src="Resources/images/logoMates.png" alt="Logotipo de MateMágicas" />
+         <img src="../Resources/images/logoMates.png" alt="Logotipo de MateMágicas" />
       </a>
       <div class="name">
          <h1>MateMágicas</h1>
@@ -71,11 +72,12 @@
       <section class="administrator">
          <h2>Administrator</h2>
          <hr>
-    <a>Crear ejercicio</a>
+    <a href="./add-work.html">Crear ejercicio</a>
     <a>Modificar ejercicio</a>
     <a>Eliminar ejercicio</a>
-    <a>Eliminar tutor</a>
-    <a>Eliminar alumno</a>
+    <a href="./delete-tutor.html">Eliminar tutor</a>
+    <a href="./delete-student.html">Eliminar alumno</a>
+    <a id="close">Cerrar sesión</a>
       </section>
    </main>
    <!-- Pié de la página -->
@@ -105,7 +107,7 @@
       </div>
       <!-- Redes sociales -->
       <div class="rrss">
-         <img src="Resources/images/networks/linkedin.jpg" alt="Icono de LinkedIn" />
+         <img src="../Resources/images/networks/linkedin.jpg" alt="Icono de LinkedIn" />
       </div>
       <p class="copy">Iván Martín Blanco &COPY; 2023</p>
    </footer>

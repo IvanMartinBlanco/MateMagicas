@@ -1,3 +1,10 @@
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+}
+
 .administrator {
   display: flex;
   flex-direction: column;
@@ -16,6 +23,12 @@
 }
 .administrator hr {
   width: 100%;
+}
+
+a, a:visited{
+  cursor:pointer;
+  text-decoration:none;
+  color:white;
 }
 /** ESTILOS CUANDO LA PÁGINA SE REPRODUCE MÁS PEQUEÑA DE 768PX**/
 @media (max-width: 768px) {
