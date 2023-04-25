@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (stage === "primary") {
             subjectInput.title = "Seleccione la asignatura de primaria.";
             subjectInput.innerHTML = `
+      <option value="start">Seleccione asignatura</option>            
       <option value="numeros">Números</option>
       <option value="figuras">Figuras</option>
       <option value="calculo">Cálculo</option>
@@ -32,6 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } else if (stage === "secondary") {
             subjectInput.title = "Seleccione la asignatura de secundaria.";
             subjectInput.innerHTML = `
+            <option value="start">Seleccione asignatura</option>                    
     <option value="arithmetic">Aritmética</option>
     <option value="algebra">Álgebra</option>
     <option value="geometry">Geometría</option>
@@ -39,6 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } else if (stage === "advanced") {
             subjectInput.title = "Seleccione la asignatura avanzada.";
             subjectInput.innerHTML = `
+            <option value="start">Seleccione asignatura</option>                    
     <option value="analysis">Análisis</option>
     <option value="linear-algebra">Álgebra lineal</option>
     <option value="advanced-geometry">Geometría</option>
@@ -46,9 +49,12 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             subjectInput.disabled = true;
             nameInput.disabled = true;
+            levelInput.disabled = true;
+            nameInput.value="";
             subjectInput.title = "Seleccione primero una etapa.";
             nameInput.title = "Seleccione primero la asignatura.";
             levelInput.title = "Seleccione primero el nombre del ejercicio.";
+            levelInput.value = 1;
             subjectInput.innerHTML = `
     <option value="">Seleccione asignatura</option>
   `;
@@ -56,13 +62,17 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     // Agregar evento de escucha al selector de etapas
     subjectInput.addEventListener("change", function () {
-        if (subjectInput.value !== "Seleccione asignatura") {
+        if (subjectInput.value !== "start") {
 
             nameInput.title = "Seleccione un nombre para el ejercicio.";
             nameInput.disabled = false;
         } else {
             nameInput.title = "Seleccione primero la asignatura.";
             nameInput.disabled = true;
+            nameInput.value="";
+            levelInput.title = "Seleccione primero el nombre del ejercicio.";
+            levelInput.disabled = true;
+            levelInput.value = 1;
         }
     });
     nameInput.addEventListener("change", function () {
