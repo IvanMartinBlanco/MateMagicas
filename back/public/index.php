@@ -2,6 +2,7 @@
 require_once '../app/controllers/LoginController.php';
 require_once '../app/controllers/ConstantsController.php';
 require_once '../app/controllers/UserManagementController.php';
+require_once '../app/controllers/WorkManagementController.php';
 
 // Definir rutas
 $login_routes = [
@@ -28,10 +29,13 @@ $user_management_routes = [
   '/edittutor' => ['PUT', UserManagementController::class, 'edittutor'],
   '/user' => ['GET', UserManagementController::class, 'getUserById'],
   '/student' => ['GET', UserManagementController::class, 'getStudentByEmail'],
-  '/creatework' => ['GET', UserManagementController::class, 'creatework'],
 ];
 
-$routes = array_merge($login_routes, $constants_routes, $user_management_routes);
+$work_management_routes = [
+  '/creatework' => ['POST', WorkManagementController::class, 'creatework'],
+];
+
+$routes = array_merge($login_routes, $constants_routes, $user_management_routes, $work_management_routes);
 
 // Enrutamiento
 foreach ($routes as $url => $route) {

@@ -75,6 +75,13 @@
             <fieldset>
                <legend>Datos del ejercicio</legend>
                <div>
+                  <label for="id">Id:</label>
+                  <span class="input-container">
+                     <input type="number" id="id" name="id" title="Seleccione primero la asignatura." required>
+                     <div class="error-message"></div>
+                  </span>
+               </div>
+               <div>
                   <label for="stage">Etapa:</label>
                   <span class="input-container">
                      <select id="stage" name="stage" title="Seleccione la etapa del ejercicio.">
@@ -98,14 +105,14 @@
                <div>
                   <label for="name">Nombre:</label>
                   <span class="input-container">
-                     <input type="name" id="name" name="name" title="Seleccione primero la asignatura." required disabled>
+                     <input type="name" id="name" name="name" title="Inserte el nombre del ejercicio." min="1" required>
                      <div class="error-message"></div>
                   </span>
                </div>
                <div>
                   <label for="level">Nivel:</label>
                   <span class="input-container">
-                     <select id="level" name="level" title="Seleccione primero el nombre del ejercicio." disabled>
+                     <select id="level" name="level" title="Seleccione el nivel del ejercicio.">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -124,7 +131,7 @@
       <div class="modal" id="modal">
          <div class="modal-contenido">
             <h2>¡Éxito!</h2>
-            <p>El usuario ha sido creado correctamente.</p>
+            <p>El ejercicio ha sido añadido correctamente.</p>
             <button id="cerrarModal">Cerrar</button>
          </div>
       </div>

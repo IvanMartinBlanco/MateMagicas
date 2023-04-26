@@ -70,8 +70,15 @@
   width: 100%;
   text-align: left;
 }
-#nivel{
+#level{
   width: 50px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+}
+#id{
+  width: 40px;
   padding: 5px;
   border-radius: 5px;
   border: 1px solid #ccc;

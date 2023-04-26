@@ -5,7 +5,7 @@
 <head>
    <meta charset="UTF-8" />
    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <title>index</title>
+   <title>Modificar ejercicio</title>
    <!-- Link a la imagen de la pestaña -->
    <link rel="shortcut icon" href="../Resources/images/logoMates.png" />
    <!-- Link a la hoja de estilos general-->
@@ -13,7 +13,8 @@
    <!-- Link a la hoja de estilos del login-->
    <link href="../Styles/edit-work.css" type="text/css" rel="stylesheet" />
    <!-- Links a los archivos JS -->
-   <script type="module" src="Resources/js/users.js"></script>
+   <script type="module" src="../Resources/js/users.js"></script>
+   <script type="module" src="../Resources/js/edit-work.js"></script>
 </head>
 <!-- Cuerpo de la web -->
 
@@ -21,12 +22,12 @@
    <!-- Cabecera de la web -->
    <header>
       <a href="index.html">
-         <img src="Resources/images/logoMates.png" alt="Logotipo de MateMágicas" />
+         <img src="../Resources/images/logoMates.png" alt="Logotipo de MateMágicas" />
       </a>
       <div class="name">
          <h1>MateMágicas</h1>
       </div>
-      <div class="access" onclick="window.location.href='https://www.ejemplo.com'">
+      <div class="access" id="access">
          <img id="avatar" alt="Acceso a socios o registro" />
          <p id="login"></p>
       </div>
@@ -70,22 +71,15 @@
       <!-- Formulario de modificación de usuario -->
       <section class="edit-work">
          <h2>Modificación de ejercicio</h2>
-         <form>
-            <div class="variable-a">
-               <label for="variable-a">Variable A:</label>
-               <input type="text" id="variable-a" name="variable-a" required>
+         <form class="edit-form">
+            <fieldset>
+               <legend>Datos del ejercicio</legend>
+               <div id="variables-container"></div>
+            </fieldset>
+            <div id="button-container" class="button-container">
+               <button type="submit">Añadir</button>
             </div>
-            <div class="variable-b">
-               <label for="variable-b">Variable B:</label>
-               <input type="text" id="variable-b" name="variable-b" required>
-            </div>
-            <div class="result">
-               <label for="result">Resultados:</label>
-               <input type="number" id="result" name="result" required readonly>
-            </div>
-            <div class="button-container">
-               <button type="submit">Modificar</button>
-            </div>
+            <div id="server-message"></div>
          </form>
       </section>
    </main>
@@ -116,7 +110,7 @@
       </div>
       <!-- Redes sociales -->
       <div class="rrss">
-         <img src="Resources/images/networks/linkedin.jpg" alt="Icono de LinkedIn" />
+         <img src="../Resources/images/networks/linkedin.jpg" alt="Icono de LinkedIn" />
       </div>
       <p class="copy">Iván Martín Blanco &COPY; 2023</p>
    </footer>

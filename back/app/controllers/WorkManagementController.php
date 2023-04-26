@@ -17,29 +17,25 @@ class WorkManagementController
     
         $result = $this->workManagement->createWork(
           $data['id'],
-          $data['surnames'],
-          $data['age'],
-          $data['email'],
-          $data['email-repeat'],
-          $data['password'],
-          $data['password-repeat'],
-          "alumno",
-          $data['tutor'],
-          $data['course']
+          $data['idEjercicio'],
+          $data['stage'],
+          $data['subject'],
+          $data['name'],
+          $data['level']
         );
     
         if (isset($result['success']) && $result['success']) {
           $response = [
             'success' => true,
-            'message' => 'Usuario creado exitosamente'
+            'message' => 'Ejercicio creado exitosamente'
           ];
           header('Content-Type: application/json');
           http_response_code(201);
         } else {
           if (isset($result['error'])) {
-            $mensaje = 'Error al crear usuario: ' . $result['error'];
+            $mensaje = 'Error al añadir ejercicio: ' . $result['error'];
           } else {
-            $mensaje = 'Error al crear usuario: No se ha podido insertar el usuario en base de datos.';
+            $mensaje = 'Error al añadir ejercicio: No se ha podido insertar el ejercicio en base de datos.';
           }
           $response = [
             'success' => false,

@@ -6,26 +6,24 @@ document.addEventListener("DOMContentLoaded", function () {
         window.location.replace("../../../front/pages/index.html");
     }
     const form = document.querySelector('form');
-    const workInput = document.querySelector('#work');
     const serverMessage = document.querySelector('#server-message');
-    const etapaInput = document.getElementById("stage");
+    const idInput = document.getElementById("id");
+    const stageInput = document.getElementById("stage");
     const subjectInput = document.getElementById("subject");
     const nameInput = document.getElementById("name");
     const levelInput = document.getElementById("level");
 
     // Agregar evento de escucha al selector de etapas
-    etapaInput.addEventListener("change", function () {
+    stageInput.addEventListener("change", function () {
         // Obtener valor seleccionado
-        const stage = etapaInput.value;
+        const stage = stageInput.value;
         // Habilitar el selector de asignaturas
         subjectInput.disabled = false;
-
-
         // Rellenar el selector de asignaturas según la etapa seleccionada
         if (stage === "primary") {
             subjectInput.title = "Seleccione la asignatura de primaria.";
             subjectInput.innerHTML = `
-      <option value="start">Seleccione asignatura</option>            
+      <option value="start">Seleccione asignatura</option>
       <option value="numeros">Números</option>
       <option value="figuras">Figuras</option>
       <option value="calculo">Cálculo</option>
@@ -33,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } else if (stage === "secondary") {
             subjectInput.title = "Seleccione la asignatura de secundaria.";
             subjectInput.innerHTML = `
-            <option value="start">Seleccione asignatura</option>                    
+            <option value="start">Seleccione asignatura</option>
     <option value="arithmetic">Aritmética</option>
     <option value="algebra">Álgebra</option>
     <option value="geometry">Geometría</option>
@@ -41,47 +39,17 @@ document.addEventListener("DOMContentLoaded", function () {
         } else if (stage === "advanced") {
             subjectInput.title = "Seleccione la asignatura avanzada.";
             subjectInput.innerHTML = `
-            <option value="start">Seleccione asignatura</option>                    
+            <option value="start">Seleccione asignatura</option>
     <option value="analysis">Análisis</option>
     <option value="linear-algebra">Álgebra lineal</option>
     <option value="advanced-geometry">Geometría</option>
     `;
         } else {
             subjectInput.disabled = true;
-            nameInput.disabled = true;
-            levelInput.disabled = true;
-            nameInput.value="";
             subjectInput.title = "Seleccione primero una etapa.";
-            nameInput.title = "Seleccione primero la asignatura.";
-            levelInput.title = "Seleccione primero el nombre del ejercicio.";
-            levelInput.value = 1;
             subjectInput.innerHTML = `
     <option value="">Seleccione asignatura</option>
   `;
-        }
-    });
-    // Agregar evento de escucha al selector de etapas
-    subjectInput.addEventListener("change", function () {
-        if (subjectInput.value !== "start") {
-
-            nameInput.title = "Seleccione un nombre para el ejercicio.";
-            nameInput.disabled = false;
-        } else {
-            nameInput.title = "Seleccione primero la asignatura.";
-            nameInput.disabled = true;
-            nameInput.value="";
-            levelInput.title = "Seleccione primero el nombre del ejercicio.";
-            levelInput.disabled = true;
-            levelInput.value = 1;
-        }
-    });
-    nameInput.addEventListener("change", function () {
-        if (nameInput.value !== "") {
-            levelInput.title = "Selecciona un nivel de dificultad.";
-            levelInput.disabled = false;
-        } else {
-            levelInput.title = "Seleccione primero el nombre del ejercicio.";
-            levelInput.disabled = true;
         }
     });
     const showError = (input, message) => {
@@ -100,14 +68,38 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const checkInputs = () => {
         let isValid = true;
-        if (workInput.value.trim() !== '' && workInput.value.trim() < 1) {
-            showError(workInput, '*El número debe ser mayor o igual a 1');
+        if (idInput.value.trim() !== '' && idInput.value.trim() < 1) {
+            showError(idInput, '*El número debe ser mayor o igual a 1');
             isValid = false;
+          } else {
+            hideError(idInput);
+          }
+        if (stageInput.selectedOptions[0].textContent === 'Selecciona etapa') {
+          showError(stageInput, '*La etapa es obligatoria');
+          isValid = false;
         } else {
-            hideError(workInput);
+          hideError(stageInput);
+        }
+        if (subjectInput.selectedOptions[0].textContent === 'Selecciona asignatura') {
+          showError(subjectInput, '*La asignatura es obligatoria');
+          isValid = false;
+        } else {
+          hideError(subjectInput);
+        }
+        if (nameInput.value.trim() === '') {
+          showError(nameInput, '*El nombre es obligatorio');
+          isValid = false;
+        }  else {
+          hideError(nameInput);
+        }
+        if (levelInput.selectedOptions[0].textContent !== '1' && levelInput.value.trim!== '2' && levelInput.value.trim!== '3') {
+          showError(levelInput, '*El nivel debe ser 1, 2 o 3');
+          isValid = false;
+        } else {
+          hideError(levelInput);
         }
         return isValid;
-    };
+      };
 
     form.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -115,7 +107,11 @@ document.addEventListener("DOMContentLoaded", function () {
         if (checkInputs()) {
             const formData = {
                 'id': getSessionData().id,
-                'work': workInput.value.trim()
+                'idEjercicio': parseInt(idInput.value.trim()),
+                'stage': stageInput.selectedOptions[0].textContent,
+                'subject': subjectInput.selectedOptions[0].textContent,
+                'name': nameInput.value.trim(),
+                'level': parseInt(levelInput.selectedOptions[0].textContent),
             };
             fetch("http://localhost/web/back/public/creatework", {
                 method: 'POST',
@@ -134,7 +130,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 })
                 .catch((error) => {
                     console.log(error)
-                    alert('Ha ocurrido un error al borrar el usuario');
+                    alert('Ha ocurrido un error al añadir el ejercicio');
                 });
         }
     });
@@ -144,7 +140,7 @@ document.addEventListener("DOMContentLoaded", function () {
     closeModal.addEventListener("click", function () {
         const miModal = document.getElementById("modal");
         miModal.style.display = "none";
+        form.reset();
+        subjectInput.disabled = true;
     });
-
-
 });
