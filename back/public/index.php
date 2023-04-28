@@ -33,6 +33,7 @@ $user_management_routes = [
 
 $work_management_routes = [
   '/creatework' => ['POST', WorkManagementController::class, 'creatework'],
+  '/editablework' => ['GET', WorkManagementController::class, 'getvariable'],
 ];
 
 $routes = array_merge($login_routes, $constants_routes, $user_management_routes, $work_management_routes);
