@@ -448,13 +448,14 @@ footer a:hover {
     /* Estilo para el menú de las páginas */
 
     /* Definimos las características visuales*/
-    background-color: RGB(180, 0, 0);
+    background-color: #5E30DB;
     line-height: 2rem;
   }
   /* Estilo para el menú en móvil */
   .nav-mov {
     /* Definimos como se va a ordenar y desplegar*/
     width: 100%;
+    z-index: 1;
   }
   /* Estilo para cada enlace dentro de una lista en la versión móvil*/
   nav ul li a {
@@ -480,6 +481,7 @@ footer a:hover {
     height: 30px;
     line-height: 30px;
     font-weight: bold;
+    color: white
   }
 
   /* Estilo para la zona del menú cuando no está pulsado el botón */
@@ -509,11 +511,13 @@ footer a:hover {
     position: relative;
     display: block;
     /* Definimos las características visuales*/
-    background-color: rgb(80, 0, 0);
+    background-color: #1d0464;
     line-height: 2rem;
     /* Definimos el tamaño */
     width: 100%;
+    
   }
+  
 }
 /** ESTILOS CUANDO LA PÁGINA SE REPRODUCE MÁS GRANDE DE 768PX**/
 @media (min-width: 769px) {
