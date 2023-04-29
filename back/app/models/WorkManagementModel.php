@@ -67,7 +67,7 @@ class WorkManagementModel
         $result =  $stmt->rowCount() > 0 ? true : false;
         return ['success' => $result];
     }
-    public static function getVariable($userId,$workId)
+    public static function getVariable($userId, $workId)
     {
         $conn = connect();
 
@@ -77,35 +77,147 @@ class WorkManagementModel
         $stmt->bindParam(':userId', $userId);
         $stmt->execute();
         $isAdmin = $stmt->fetchColumn();
-    
+
         if (!$isAdmin) {
             return ['error' => 'El usuario no tiene permiso para realizar esta acción'];
         }
-    
+
         // Consulta SQL para obtener el id del ejercicio
         $query = "SELECT idEjercicio FROM Ejercicio WHERE idEjercicio = :id";
         $stmt = $conn->prepare($query);
         $stmt->bindParam(':id', $workId);
         $stmt->execute();
         $work = $stmt->fetch(PDO::FETCH_COLUMN);
-    
+
         if (!$work) {
             return ['error' => 'No existe el ejercicio'];
         }
 
 
-        $query = "SELECT COUNT(*) FROM ejercicioVariable WHERE idEjercicio = :id";
+        $query = "SELECT COUNT(*) FROM ejercicioVariable WHERE idEjercicio = :id AND valor REGEXP '^[0-9]+$'";
         $stmt = $conn->prepare($query);
         $stmt->bindParam(':id', $workId);
         $stmt->execute();
         $count = $stmt->fetch(PDO::FETCH_COLUMN);
 
-        if ($count==0) {
+        if ($count == 0) {
             return ['error' => 'Este ejercicio no permite cambiar sus variables'];
         }
-    
+
         return $count;
     }
+
+    public static function getWorkById($workId)
+    {
+        $conn = connect();
+        $query = "SELECT IdVariable, Valor FROM EjercicioVariable WHERE idEjercicio = :workId";
+        $stmt = $conn->prepare($query);
+        $stmt->bindParam(':workId', $workId);
+        $stmt->execute();
+        $results = $stmt->fetchAll(PDO::FETCH_KEY_PAIR);
+
+        if (empty($results)) {
+            return ['error' => 'No se encontraron valores para el ejercicio.'];
+        }
+
+        $filtered_results = array_filter($results, function ($value) {
+            return is_numeric($value);
+        });
+
+        if (empty($filtered_results)) {
+            return ['error' => 'No se encontraron valores numéricos para el ejercicio.'];
+        }
+
+        return $filtered_results;
+    }
+
+    public function editVariable($variable, $workId)
+    {
+        if (empty($workId)) {
+            return ['error' => 'El Id es obligatorio'];
+        }
+
+        $conn = connect();
+
+        // Verificar si el ejercicio existe
+        $stmt = $conn->prepare("SELECT * FROM Ejercicio WHERE idEjercicio = ?");
+        $stmt->bindParam(1, $workId);
+        $stmt->execute();
+
+        if ($stmt->rowCount() == 0) {
+            // El trabajo no existe
+            return ['error' => 'El ejercicio no existe'];
+        }
+
+        $rowCount = 0; // Variable para llevar la cuenta de filas actualizadas
+
+        foreach ($variable as $variableId => $variableValue) {
+            // Comprobar si la variable ya existe
+            $stmt1 = $conn->prepare("SELECT * FROM EjercicioVariable WHERE idEjercicio = :workId AND idVariable = :variableId");
+            $stmt1->bindParam(':workId', $workId);
+            $stmt1->bindParam(':variableId', $variableId);
+            $stmt1->execute();
+
+            // La variable ya existe, se actualiza su valor
+            $stmt2 = $conn->prepare("UPDATE EjercicioVariable SET Valor = :variableValue WHERE idEjercicio = :workId AND idVariable = :variableId");
+            $stmt2->bindParam(':variableValue', $variableValue);
+            $stmt2->bindParam(':workId', $workId);
+            $stmt2->bindParam(':variableId', $variableId);
+            $stmt2->execute();
+
+            $rowCount += $stmt2->rowCount(); // Sumar al contador el número de filas actualizadas en cada consulta
+        }
+
+        if ($rowCount > 0) {
+            // Los datos se han actualizado correctamente
+            return ['success' => true];
+        } else {
+            // No se ha actualizado ningún registro
+            return ['error' => 'No se ha modificado ningún valor'];
+        }
+    }
+
+    public function deleteWork($idUser, $workId)
+    {
+        // Validar que el campo de idPersona no esté vacío
+        if (empty($idUser)) {
+            return ['error' => 'El id es obligatorio'];
+        }
+        if (empty($workId)) {
+            return ['error' => 'El id del ejercicio es obligatorio'];
+        }
+        // Conectar a la base de datos
+        $conn = connect();
+
+        // Verificar que el correo electrónico es correcto
+        $stmt = $conn->prepare("SELECT idPersona FROM Administrador WHERE idPersona = :idUser");
+        $stmt->bindParam(':idUser', $idUser);
+        $stmt->execute();
+        $row = $stmt->fetch();
+        if ($row === null) {
+            return ['error' => 'El usuario no es un administrador y no tiene permiso para eliminar el ejercicio'];
+        }
+
+ // Verificar si el ejercicio existe
+ $stmt = $conn->prepare("SELECT * FROM Ejercicio WHERE idEjercicio = :workId");
+ $stmt->bindParam(':workId', $workId);
+ $stmt->execute();
+ $row = $stmt->fetch();
+ if (!$row) {
+     return ['error' => 'El ejercicio no existe'];
+ }
+
+ // Borrar el ejercicio
+ $stmt = $conn->prepare("DELETE FROM Ejercicio WHERE idEjercicio = :workId");
+ $stmt->bindParam(':workId', $workId);
+ $stmt->execute();
+
+ if ($stmt->rowCount() > 0) {
+     // Los datos se han borrado correctamente
+     return ['success' => true];
+ } else {
+     // No se ha borrado ningún registro
+     return ['error' => 'No se ha podido borrar el ejercicio'];
+ }
 }
-
-
+    }

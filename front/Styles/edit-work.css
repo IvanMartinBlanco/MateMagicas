@@ -12,7 +12,7 @@
   margin: 0 auto 25px auto;
   text-align: center;
 }
-.edit-form fieldset div {
+.edit-form fieldset div div{
   display: grid;
   grid-template-columns: 1fr 1fr; /* establece dos columnas con el mismo ancho */
   grid-gap: 10px; /* añade un espacio entre cada elemento */
@@ -20,14 +20,14 @@
   
 }
 
-.edit-form fieldset div label {
+.edit-form fieldset div div label {
   width: 100%;
   font-weight: bold;
   text-align: right;
   
 }
 
-.edit-form fieldset div input:not(.little-input) {
+.edit-form fieldset div div input:not(.little-input) {
   width: 175px;
   padding: 5px;
   border-radius: 5px;
@@ -70,8 +70,9 @@
   width: 100%;
   text-align: left;
 }
-.registration-form fieldset div span div{
+.error-message{
   display: flex;
+  width: unset;
   color:red;
   font-size: 12px;
 }

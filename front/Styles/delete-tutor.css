@@ -55,6 +55,10 @@ main{
   width: 100%;
   text-align: center;
 }
+.delete-form span div{
+  color:red;
+  font-size: 12px;
+}
 
 .modal {
   display: none; /* La ventana modal está oculta por defecto */

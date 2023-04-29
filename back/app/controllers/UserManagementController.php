@@ -111,7 +111,7 @@ class UserManagementController
     echo json_encode($response);
   }
 
-  public function editUser()
+  public function editWork()
   {
     $data = json_decode(file_get_contents('php://input'), true);
 

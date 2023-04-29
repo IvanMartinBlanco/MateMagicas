@@ -107,7 +107,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (checkInputs()) {
             const formData = {
                 'id': getSessionData().id,
-                'idEjercicio': parseInt(idInput.value.trim()),
+                'workId': parseInt(idInput.value.trim()),
                 'stage': stageInput.selectedOptions[0].textContent,
                 'subject': subjectInput.selectedOptions[0].textContent,
                 'name': nameInput.value.trim(),
