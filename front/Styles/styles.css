@@ -155,6 +155,10 @@ nav ul li img:hover {
   grid-column: 1/4;
   grid-template-columns: 33.33% 33.33% 33.33%;
 }
+
+.branch a{
+  text-decoration: none;
+}
 /* Estilo para los artículos de las ramas */
 .branch article {
   /* Definimos como se va a ordenar y desplegar*/
@@ -305,6 +309,7 @@ footer a:hover {
   filter: saturate(300%);
   cursor: pointer;
 }
+
 #server-message{
   color:red;
   text-align: center;
