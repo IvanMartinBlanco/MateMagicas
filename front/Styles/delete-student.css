@@ -1,4 +1,7 @@
 main{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   min-height: 50vh;
 }
 .delete-student {
@@ -47,6 +50,10 @@ main{
 
 .delete-student p {
   margin-top: 20px;
+}
+.delete-form span div{
+  color:red;
+  font-size: 12px;
 }
 .modal {
   display: none; /* La ventana modal está oculta por defecto */

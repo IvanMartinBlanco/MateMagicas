@@ -1,4 +1,4 @@
-import { getSessionData } from '../js/session.js';
+import { setSessionData, getSessionData } from '../js/session.js';
 
 document.addEventListener("DOMContentLoaded", function () {
     if (getSessionData()?.rol !== 'tutor' && getSessionData()?.rol !== 'administrador') {
@@ -8,6 +8,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const form = document.querySelector('form');
     const emailInput = document.querySelector('#email');
     const serverMessage = document.querySelector('#server-message');
+    const apiURL = getSessionData()?.rol === 'administrador' ? "http://localhost/web/back/public/deletetutor" : "http://localhost/web/back/public/deleteuser";
+
 
     const showError = (input, message) => {
         const errorContainer = input.parentElement;
@@ -45,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 'id': getSessionData().id,
                 'email': emailInput.value.trim()
             };
-            fetch("http://localhost/web/back/public/deletestudent", {
+            fetch(apiURL, {
                 method: 'DELETE',
                 body: JSON.stringify(formData)
             })
@@ -72,7 +74,14 @@ document.addEventListener("DOMContentLoaded", function () {
     closeModal.addEventListener("click", function () {
         const miModal = document.getElementById("modal");
         miModal.style.display = "none";
+        closeSession();
+
     });
+
+    function closeSession() {
+        setSessionData(null, null, null, false);
+        window.location.replace('../pages/index.html');
+    }
 
 
 });

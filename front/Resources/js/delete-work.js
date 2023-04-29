@@ -1,13 +1,14 @@
-import { getSessionData } from '../js/session.js';
+import { setSessionData, getSessionData } from '../js/session.js';
 
 document.addEventListener("DOMContentLoaded", function () {
-    if (getSessionData()?.rol !== 'tutor' && getSessionData()?.rol !== 'administrador') {
+    if (getSessionData()?.rol !== 'administrador') {
         // Redirigir a otra página
         window.location.replace("../../../front/pages/index.html");
     }
     const form = document.querySelector('form');
-    const emailInput = document.querySelector('#email');
+    const workInput = document.querySelector('#code');
     const serverMessage = document.querySelector('#server-message');
+    const userId = getSessionData().id;
 
     const showError = (input, message) => {
         const errorContainer = input.parentElement;
@@ -25,14 +26,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const checkInputs = () => {
         let isValid = true;
-        if (emailInput.value.trim() === '') {
-            showError(emailInput, '*El correo electrónico es obligatorio');
-            isValid = false;
-        } else if (!/\S+@\S+\.\S+/.test(emailInput.value.trim())) {
-            showError(emailInput, '*El correo electrónico no es válido');
+        const codeValue = Number(workInput.value.trim()); // convierte el valor de la entrada a un número
+        if (isNaN(codeValue) || codeValue < 1) {
+            showError(workInput, '*El número debe ser un número mayor o igual a 1');
             isValid = false;
         } else {
-            hideError(emailInput);
+            hideError(workInput);
         }
         return isValid;
     };
@@ -42,10 +41,10 @@ document.addEventListener("DOMContentLoaded", function () {
         serverMessage.textContent = "";
         if (checkInputs()) {
             const formData = {
-                'id': getSessionData().id,
-                'email': emailInput.value.trim()
+                'id': userId,
+                'workId': parseInt(workInput.value.trim()),
             };
-            fetch("http://localhost/web/back/public/deletestudent", {
+            fetch("http://localhost/web/back/public/deletework", {
                 method: 'DELETE',
                 body: JSON.stringify(formData)
             })
@@ -62,17 +61,16 @@ document.addEventListener("DOMContentLoaded", function () {
                 })
                 .catch((error) => {
                     console.log(error)
-                    alert('Ha ocurrido un error al borrar el usuario');
+                    alert('Ha ocurrido un error al borrar el ejercicio');
                 });
         }
     });
-
     // Evento para cerrar la ventana modal al hacer clic en el botón "Cerrar"
     const closeModal = document.getElementById("cerrarModal");
     closeModal.addEventListener("click", function () {
         const miModal = document.getElementById("modal");
         miModal.style.display = "none";
+        location.reload();
     });
-
 
 });

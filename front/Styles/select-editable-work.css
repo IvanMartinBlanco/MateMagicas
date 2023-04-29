@@ -4,7 +4,7 @@ main{
   align-items: center;
   min-height: 50vh;
 }
-  .delete-work {
+  .edit-work {
     width: 400px;
     margin: 50px auto 50px auto;
     border: 2px solid #ccc;
@@ -13,28 +13,28 @@ main{
     text-align: center;
   }
   
-  .delete-work h2 {
+  .edit-work h2 {
     margin-top: 0;
   }
   
-  .delete-work form {
+  .edit-work form {
     display: flex;
     flex-direction: column;
   }
   
-  .delete-work label {
+  .edit-work label {
     font-weight: bold;
     margin-top: 10px;
   }
   
-  .delete-work input {
+  .edit-work input {
     padding: 5px;
     border-radius: 5px;
     border: 1px solid #ccc;
     margin-top: 5px;
   }
   
-  .delete-work button {
+  .edit-work button {
     background-color: #DBCD30;
     border: none;
     border-radius: 5px;
@@ -43,52 +43,21 @@ main{
     cursor: pointer;
   }
   
-  .delete-work button:hover {
+  .edit-work button:hover {
     background-color: #8f8303;
     color: white;
   }
   
-  .delete-work p {
+  .edit-work p {
     margin-top: 20px;
   }
   .input-container{
     width: 100%;
     text-align: center;
   }
-  .little-input{
-
-    width: 40px;
-    padding: 5px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    margin-top: 5px;
-  }
-  .delete-form span div{
-    color:red;
-    font-size: 12px;
-  }
-  .modal {
-    display: none; /* La ventana modal está oculta por defecto */
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.4);
-  }
   
-  .modal-contenido {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid black;
-    width: 30%;
-  }
-  #cerrarModal {
-    display: flex;
-    margin-top: 10px;
+  .input-container input{
+    width: 40px;
   }
   /** ESTILOS CUANDO LA PÁGINA SE REPRODUCE MÁS PEQUEÑA DE 768PX**/
   @media (max-width: 768px) {

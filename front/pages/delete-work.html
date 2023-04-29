@@ -13,7 +13,8 @@
       <!-- Link a la hoja de estilos del delete-work-->
       <link href="../Styles/delete-work.css" type="text/css" rel="stylesheet" />
    <!-- Links a los archivos JS -->
-   <script type="module" src="Resources/js/users.js"></script>
+   <script type="module" src="../Resources/js/users.js"></script>
+   <script type="module" src="../Resources/js/delete-work.js"></script>
 </head>
 <!-- Cuerpo de la web -->
 
@@ -26,7 +27,7 @@
       <div class="name">
          <h1>MateMágicas</h1>
       </div>
-      <div class="access" onclick="window.location.href='https://www.ejemplo.com'">
+      <div class="access" id="access">
          <img id="avatar" alt="Acceso a socios o registro" />
          <p id="login"></p>
       </div>
@@ -71,12 +72,24 @@
       <section class="delete-work">
          <h2>Borrar Ejercicio</h2>
          <p>Introduce el código del ejercicio que quieres eliminar.</p>
-  <form>
-    <label for="code">Código:</label>
-    <input type="code" id="code" name="code" required>
-    <button type="submit">Eliminar</button>
-  </form>
-      </section>
+    <form class="delete-form">
+      <label for="code">Código:</label>      
+      <span class="input-container">
+         <input type="number" id="code" name="code" class="little-input" min="1" required>
+         <div class="error-message"></div>
+      </span>
+      <button type="submit">Borrar</button>
+      <div id="server-message"></div>
+   </form>
+</section>
+      <!-- Ventana modal oculta por defecto -->
+      <div class="modal" id="modal">
+         <div class="modal-contenido">
+            <h2>¡Éxito!</h2>
+            <p>El ejercicio ha sido borrado correctamente.</p>
+            <button id="cerrarModal">Cerrar</button>
+         </div>
+      </div>
    </main>
    <!-- Pié de la página -->
    <footer>
@@ -84,29 +97,21 @@
          <h2>
             Enlaces de interés:
          </h2>
-         <p>
-            Contacto
-         </p>
-         <p>
-            Sobre MateMágicas
-         </p>
-         <p>
-            Ayuda
-         </p>
-         <p>
-            Aviso de privacidad
-         </p>
-         <p>
-            Condiciones de Uso
-         </p>
-         <p>
-            Cookies
-         </p>
+         <ul>
+            <li><a href="contact.html">Contacto</a></li>
+            <li><a href="about.html">Sobre MateMágicas</a></li>
+            <li><a href="help.html">Ayuda</a></li>
+            <li><a href="privacy.html">Aviso de privacidad</a></li>
+            <li><a href="terms.html">Condiciones de Uso</a></li>
+            <li><a href="cookies.html">Cookies</a></li>
+         </ul>
       </div>
       <!-- Redes sociales -->
       <div class="rrss">
-         <img src="Resources/images/networks/linkedin.jpg" alt="Icono de LinkedIn" />
-      </div>
+         <a href="https://www.linkedin.com/in/iv%C3%A1n-mart%C3%ADn-blanco-3b166522/">
+            <img src="../Resources/images/networks/linkedin.jpg" alt="Icono de LinkedIn" />
+         </a>
+      </div>>
       <p class="copy">Iván Martín Blanco &COPY; 2023</p>
    </footer>
 </body>
