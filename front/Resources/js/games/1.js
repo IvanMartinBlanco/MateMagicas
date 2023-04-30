@@ -1,7 +1,7 @@
 gameZone = document.querySelector(".game-zone");
 modal = document.querySelector(".modal");
 
-const resultados = {};
+resultados = {};
 
 // Llamada al primer fetch
 fetch(`http://localhost/web/back/public/work?id=1`)
@@ -20,9 +20,9 @@ fetch(`http://localhost/web/back/public/work?id=1`)
     return resultados;
   })
   .then(resultados => {
-    const num1 = Math.min(parseInt(resultados[0]), parseInt(resultados[1]));
-    const num2 = Math.max(parseInt(resultados[0]), parseInt(resultados[1]));
-  
+    num1 = Math.min(parseInt(resultados[0]), parseInt(resultados[1]));
+    num2 = Math.max(parseInt(resultados[0]), parseInt(resultados[1]));
+
     gameZone.innerHTML = `
       <h1>¿Qué números faltan entre ${num1} y ${num2}? Rellénalos con espacios entre los números.</h1>
       <h2>${num1} ... ${num2}</h2>
@@ -34,65 +34,78 @@ fetch(`http://localhost/web/back/public/work?id=1`)
         </div>
       </form>
     `;
-  
-    const answerForm = document.getElementById("answer-form");
+
+    answerForm = document.getElementById("answer-form");
     answerForm.addEventListener("submit", (event) => {
       event.preventDefault(); // Evita que el formulario se envíe
-    
-      const userAnswer = document.getElementById("answer").value;
-      const expectedNumbers = [];
-    
-      if (userAnswer === "" && num1 === num2) { // Verifica si userAnswer es una cadena vacía y num1 y num2 son iguales
-        modal.innerHTML=`
-        <div class="modal-contenido">
-        <h2>¡Éxito!</h2>
-        <p>El resultado es correcto.</p>
-        <button id="cerrarModal">Cerrar</button>
-     </div>
-      `;
-      const miModal = document.getElementById("modal");
-      miModal.style.display = "block";
+
+      userAnswer = document.getElementById("answer").value;
+      expectedNumbers = [];
+
+      if (userAnswer === "" && (num1 === num2 || num1 === num2-1)) { // Verifica si userAnswer es una cadena vacía y num1 y num2 son iguales
+        result(true);
+      
         return;
       }
-    
+
       for (let i = num1 + 1; i < num2; i++) {
         expectedNumbers.push(i.toString());
       }
-    
-      const userNumbers = userAnswer.split(" ");
-    
+
+      userNumbers = userAnswer.split(" ");
+
       if (userNumbers.length !== expectedNumbers.length) {
-        alert("El número de elementos no coincide");
+        result(false, true);
         return;
       }
-    
+
       for (let i = 0; i < userNumbers.length; i++) {
         if (userNumbers[i] !== expectedNumbers[i]) {
-          alert("Respuesta incorrecta");
+          result(false);
           return;
         }
       }
-    
-      modal.innerHTML=`
-      <div class="modal-contenido">
-      <h2>¡Éxito!</h2>
-      <p>El resultado es correcto.</p>
-      <button id="cerrarModal">Cerrar</button>
-   </div>
-    `;
-    const miModal = document.getElementById("modal");
-    miModal.style.display = "block";
-      return;
-    });
 
-    const closeModal = document.getElementById("cerrarModal");
-    closeModal.addEventListener("click", function () {
-      const miModal = document.getElementById("modal");
-      miModal.style.display = "none";
-      
+      result(true);
+      return;
     });
   })
   .catch(error => {
     console.error(error);
     serverMessage.textContent = "Error en la respuesta del servidor";
   });
+
+  function result(success, amountExcess=null){
+    if(success){
+    modal.innerHTML = `
+    <div class="modal-contenido">
+    <h2>¡Éxito!</h2>
+    <p>El resultado es correcto.</p>
+    <button id="cerrarModal">Cerrar</button>
+ </div>
+  `;  }else{
+    if(amountExcess===null){
+    modal.innerHTML = `
+    <div class="modal-contenido">
+    <h2>¡Error!</h2>
+    <p>El resultado es incorrecto.</p>
+    <button id="cerrarModal">Cerrar</button>
+ </div>`;
+  }else{
+    modal.innerHTML = `
+    <div class="modal-contenido">
+    <h2>¡Error!</h2>
+    <p>La cantidad de números introducida es incorrecta.</p>
+    <button id="cerrarModal">Cerrar</button>
+ </div>`;
+  }
+}
+    miModal = document.getElementById("modal");
+    miModal.style.display = "block";
+    closeModal = document.querySelector("#cerrarModal");
+    closeModal.addEventListener("click", function () {
+      modal.style.display = "none";
+
+    });
+
+  }
