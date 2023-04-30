@@ -33,11 +33,13 @@ $user_management_routes = [
 
 $work_management_routes = [
   '/creatework' => ['POST', WorkManagementController::class, 'creatework'],
-  '/editablework' => ['GET', WorkManagementController::class, 'getvariable'],
-  '/work' => ['GET', WorkManagementController::class, 'getWorksById'],
+  '/editablework' => ['GET', WorkManagementController::class, 'getnumbervariable'],
+  '/work' => ['GET', WorkManagementController::class, 'getvariablevaluebyid'],
   '/editvariable' => ['PUT', WorkManagementController::class, 'editvariable'],
   '/deletework' => ['DELETE', WorkManagementController::class, 'deletework'],
   '/getworksbysubject' => ['GET', WorkManagementController::class, 'getworksbysubject'],
+  '/gamevariable' => ['GET', WorkManagementController::class, 'getvariablevaluebyid'],
+
 ];
 
 $routes = array_merge($login_routes, $constants_routes, $user_management_routes, $work_management_routes);

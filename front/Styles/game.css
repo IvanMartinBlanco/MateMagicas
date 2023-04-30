@@ -6,20 +6,25 @@
 	margin-bottom: 1em;
 }
 .game-zone{
+  display: flex;
+  flex-direction: column;
   width: 500px; 
   height: 500px; 
   border: 1px solid black;
-  display: flex; 
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
-.game-zone h1{
-  font-size: 200%;
-  margin: 0; 
-  padding: 0; 
-  text-align: center; /* Centra el texto horizontalmente */
-  display: flex; /* Alinea verticalmente el contenido */
-  align-items: center; /* Alinea el contenido verticalmente */
+.game-zone h2{
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+.game-zone h3{
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 250px;
+  margin: 0 auto;
 }
 .game-level {
   width: 300px; 
@@ -41,6 +46,61 @@ select{
   border-radius: 5px;
   border: 1px solid #ccc;
   margin-top: 5px;
+}
+.game-zone input{
+  width: 175px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+}
+.game-zone form {
+  margin: 10px auto auto auto; /* Agregar margen automático para centrado vertical */
+}
+.game-zone .button-container button {
+  background-color: #DBCD30;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+.game-zone button {
+  background-color: #DBCD30;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.game-zone button:hover {
+  background-color: #8f8303;
+  color: white;
+}
+.modal {
+  display: none; /* La ventana modal está oculta por defecto */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-contenido {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid black;
+  width: 30%;
+}
+
+#cerrarModal {
+  display: flex;
+  margin-top: 10px;
 }
 /** ESTILOS CUANDO LA PÁGINA SE REPRODUCE MÁS PEQUEÑA DE 768PX**/
 @media (max-width: 768px) {

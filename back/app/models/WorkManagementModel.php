@@ -67,7 +67,7 @@ class WorkManagementModel
         $result =  $stmt->rowCount() > 0 ? true : false;
         return ['success' => $result];
     }
-    public static function getVariable($userId, $workId)
+    public static function getNumberVariable($userId, $workId)
     {
         $conn = connect();
 
@@ -107,7 +107,7 @@ class WorkManagementModel
         return $count;
     }
 
-    public static function getWorkById($workId)
+    public static function getVariableValueById($workId)
     {
         $conn = connect();
         $query = "SELECT IdVariable, Valor FROM EjercicioVariable WHERE idEjercicio = :workId";

@@ -48,12 +48,12 @@ class WorkManagementController
     echo json_encode($response);
   }
 
-  public function getVariable()
+  public function getNumberVariable()
   {
     $userId = $_GET['id'];
     $workId = $_GET['workId'];
     // Realizar la llamada al modelo para obtener los datos del alumno
-    $workVariable = $this->workManagement->getVariable(
+    $workVariable = $this->workManagement->getNumberVariable(
       $userId,
       $workId
     );
@@ -80,13 +80,13 @@ class WorkManagementController
     echo json_encode($userObj);
   }
 
-  public function getWorksById()
+  public function getVariableValueById()
   {
     // Obtener el ID del usuario desde los parámetros de la URL
     $workId = $_GET['id'];
 
     // Realizar la llamada al modelo para obtener los datos del usuario
-    $workData = $this->workManagement->getWorkById($workId);
+    $workData = $this->workManagement->getVariableValueById($workId);
 
     // Convertir el array en un objeto
     $userObj = (object) $workData;
