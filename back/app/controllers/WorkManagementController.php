@@ -80,7 +80,7 @@ class WorkManagementController
     echo json_encode($userObj);
   }
 
-  public function workById()
+  public function getWorksById()
   {
     // Obtener el ID del usuario desde los parámetros de la URL
     $workId = $_GET['id'];
@@ -98,6 +98,45 @@ class WorkManagementController
     // Devolver los datos del usuario como respuesta en formato JSON
     echo json_encode($userObj);
   }
+
+  public function getWorksBySubject()
+  {
+      // Obtener el ID del usuario desde los parámetros de la URL
+      $workStage = $_GET['stage'];
+      $workSubject = $_GET['subject'];
+      if($workSubject == 'algebralineal'){
+        $workSubject='algebra lineal';
+      };
+  
+      // Realizar la llamada al modelo para obtener los datos del usuario
+      $workData = $this->workManagement->getWorksBySubject($workStage, $workSubject);
+  
+      // Crear un array asociativo para almacenar los datos
+      $result = [];
+  
+      // Recorrer el array devuelto por la función getWorksBySubject()
+      foreach ($workData as $work) {
+          $id = $work['idEjercicio'];
+          $name = $work['nombre'];
+          $level = $work['nivel'];
+  
+          // Si el nombre no existe en el array asociativo, agregarlo con un array vacío
+          if (!isset($result[$name])) {
+              $result[$name] = [];
+          }
+  
+          // Agregar el id del ejercicio y el nivel al array correspondiente al nombre de la asignatura
+          $result[$name][] = ['id' => $id, 'level' => $level, 'exerciseId' => $id];
+      }
+  
+      // Establecer las cabeceras y código de respuesta
+      header('Content-Type: application/json');
+      http_response_code(201);
+  
+      // Devolver los datos en formato JSON
+      echo json_encode($result);
+  }
+  
 
   public function editVariable()
   {

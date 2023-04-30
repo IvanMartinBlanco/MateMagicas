@@ -34,18 +34,23 @@ document.addEventListener("DOMContentLoaded", function () {
       return response.json();
     })
     .then(data => {
-      for (const gameName in data) {
-        if (data.hasOwnProperty(gameName)) {
-          const option = document.createElement("option");
-          option.value = gameName;
-          option.text = gameName;
-          gameSelector.appendChild(option);
+      Object.keys(data).forEach(gameName => {
+        const option = document.createElement("option");
+        option.value = gameName;
+        option.text = gameName;
+        gameSelector.add(option);
 
-          // Almacenar los niveles disponibles de cada juego
-          const levels = data[gameName].map(work => work.level);
-          gameLevels[gameName] = levels.filter((level, index, arr) => arr.indexOf(level) === index);
-        }
-      }
+        // Obtener el array de niveles para el juego actual
+        const levels = data[gameName];
+        // Asignar un valor específico a cada nivel usando el índice
+        // 0 -> fácil, 1 -> medio, 2 -> difícil
+        gameLevels[gameName] = {};
+        levels.forEach(levelObj => {
+          const level = Object.keys(levelObj)[0];
+          const levelId = levelObj[level];
+          gameLevels[gameName][level] = levelId;
+        });
+      });
 
       // Actualizar los niveles de dificultad al seleccionar un juego
       gameSelector?.addEventListener("change", () => {
@@ -53,23 +58,18 @@ document.addEventListener("DOMContentLoaded", function () {
         const selectedGame = gameSelector.value;
         if (selectedGame) {
           const levels = gameLevels[selectedGame];
+          console.log(selectedGame)
           gameLevel.innerHTML = "<label for='nivel'>Elige un nivel:</label>";
-          levels.forEach(level => {
+          Object.keys(levels).forEach(level => {
             const input = document.createElement("input");
             input.type = "radio";
             input.name = "nivel";
-            const ejercicios = data[selectedGame].filter(work => work.level === level);
-            input.id = ejercicios[0].exerciseId;
-
             input.value = level;
             const label = document.createElement("label");
-            label.textContent = levelNames[level];
+            label.textContent = levelNames[levels[level]];
             const div = document.createElement("div");
             div.appendChild(input);
             div.appendChild(label);
-
-            // Agregar el atributo data-ejercicio al elemento in
-
             gameLevel.appendChild(div);
           });
         } else {
@@ -79,18 +79,17 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
       gameLevel.addEventListener("change", () => {
+        currentScript?.parentNode?.removeChild(currentScript);
+        currentScript = null;
+
         const selectedGame = gameSelector.value;
         const selectedLevel = document.querySelector("input[name=nivel]:checked")?.value;
-        const selectedInput = window.event.target;
-        const idEjercicio = selectedInput.getAttribute("id");
 
         if (selectedGame && selectedLevel) {
+          const selectedId = gameLevels[selectedGame][selectedLevel]; // Obtenemos el ID del juego según el nivel seleccionado
           const script = document.createElement("script");
-          script.src = `../Resources/js/games/${idEjercicio}.js`;
+          script.src = `../Resources/js/games/${selectedId}.js`;
           script.setAttribute("data-level", selectedLevel); // Usamos el nivel seleccionado
-          script.addEventListener("error", () => {
-            gameZone.innerHTML = "<h1>El juego no está disponible</h1>";
-          });
           gameZone.innerHTML = "";
           gameZone.appendChild(script);
           currentScript = script; // guarda el script cargado
