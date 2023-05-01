@@ -33,9 +33,9 @@ if (selectedFigure.name === "Triángulo") {
 
 if(selectedFigure.name === "Cuadrado"){
 gameZone.innerHTML = `
-  <h1>Calcula el área de la siguiente figura:</h1>
+  <h1>¿Cuál es el área de la siguiente figura?</h1>
   <img class="figura" src="${selectedFigure.image}" alt="${selectedFigure.name}">
-  <p>Lado:${side}</p>
+  <p>Lado: ${side}</p>
   <form id="answer-form">
     <label for="answer">Ingresa el área:</label>
     <input type="number" name="answer" id="answer"><br>
@@ -45,7 +45,7 @@ gameZone.innerHTML = `
   </form>
 `;}else{
     gameZone.innerHTML = `
-  <h1>Calcula el área de la siguiente figura:</h1>
+  <h1>¿Cuál es el área de la siguiente figura?</h1>
   <img class="figura" src="${selectedFigure.image}" alt="${selectedFigure.name}">
   <p>Base: ${base}   Altura: ${height}</p>
   <form id="answer-form">
@@ -69,8 +69,8 @@ answerForm.addEventListener("submit", (event) => {
   }
 
   // Comprobar el resultado
-  isCorrect = (answerValue === area);
-  result(isCorrect);
+  success = (answerValue === area);
+  result(success);
 });
 
 function result(success, isNumber=true) {
