@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const gameLevel = document.querySelector(".game-level");
   const gameLevels = {};
   const queryString = window.location.search;
+  const userId=getSessionData().id;
 
   // Analizar la cadena de consulta para obtener los parámetros
   const params = new URLSearchParams(queryString);
@@ -86,8 +87,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (selectedGame && selectedLevel) {
           const script = document.createElement("script");
-          script.src = `../Resources/js/games/${idEjercicio}.js`;
+          script.src = `../Resources/js/games/${idEjercicio}.js?id=${userId}`;
           script.setAttribute("data-level", selectedLevel); // Usamos el nivel seleccionado
+          window.userId = userId;
           script.addEventListener("error", () => {
             gameZone.innerHTML = "<h1>El juego no está disponible</h1>";
           });

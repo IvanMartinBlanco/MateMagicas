@@ -27,7 +27,7 @@ class WorkManagementController
     if (isset($result['success']) && $result['success']) {
       $response = [
         'success' => true,
-        'message' => 'Ejercicio creado exitosamente'
+        'message' => 'Ejercicio creado con éxito'
       ];
       header('Content-Type: application/json');
       http_response_code(201);
@@ -155,7 +155,7 @@ class WorkManagementController
     if (isset($result['success']) && $result['success']) {
       $response = [
         'success' => true,
-        'message' => 'Variables modificadas exitosamente'
+        'message' => 'Variables modificadas con éxito'
       ];
       header('Content-Type: application/json');
       http_response_code(201);
@@ -185,7 +185,7 @@ class WorkManagementController
     if (isset($result['success']) && $result['success']) {
       $response = [
         'success' => true,
-        'message' => 'Ejercicio eliminado exitosamente'
+        'message' => 'Ejercicio eliminado con éxito'
       ];
       header('Content-Type: application/json');
       http_response_code(200);

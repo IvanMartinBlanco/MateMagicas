@@ -29,6 +29,7 @@ $user_management_routes = [
   '/edittutor' => ['PUT', UserManagementController::class, 'edittutor'],
   '/user' => ['GET', UserManagementController::class, 'getUserById'],
   '/student' => ['GET', UserManagementController::class, 'getStudentByEmail'],
+  '/editresult' => ['PUT', UserManagementController::class, 'editresult'],
 ];
 
 $work_management_routes = [

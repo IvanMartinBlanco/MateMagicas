@@ -284,6 +284,60 @@ class UserManagementModel
         }
     }
 
+
+    public function editResult($idPersona, $success, $idEjercicio)
+    {
+        // Validar que los campos obligatorios no estén vacíos
+        if (empty($idPersona)) {
+            return ['error' => 'El id es obligatorio'];
+        }
+        if (!isset($success)) {
+            return ['error' => 'El resultado es obligatorio'];
+        }
+        if (empty($idEjercicio)) {
+            return ['error' => 'El id del ejercicio es obligatorio'];
+        }
+    
+        $conn = connect();
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
+        // Verificar si la persona es un alumno
+        $query = "SELECT IdAlumno FROM Alumno WHERE IdPersona = :idPersona";
+        $stmt = $conn->prepare($query);
+        $stmt->bindParam(':idPersona', $idPersona);
+        $stmt->execute();
+        $idAlumno = $stmt->fetchColumn();
+    
+        if ($stmt->rowCount() == 0) {
+            // Si la persona no es un alumno, devolver un error
+            return ['unauthorized' => 'Este tipo de usuario no guarda sus resultados'];
+        }
+    
+        // Comprobar si el resultado ya existe
+        $query = "SELECT * FROM EjercicioRealizado WHERE IdAlumno = :idAlumno AND IdEjercicio = :idEjercicio";
+        $stmt = $conn->prepare($query);
+        $stmt->bindParam(':idAlumno', $idAlumno);
+        $stmt->bindParam(':idEjercicio', $idEjercicio);
+        $stmt->execute();
+    
+        if ($stmt->rowCount() == 0) {
+            // Si no existe, insertar un nuevo resultado
+            $query = "INSERT INTO EjercicioRealizado (Exito, IdAlumno, IdEjercicio) VALUES (:success, :idAlumno, :idEjercicio)";
+        } else {
+            // Si ya existe, actualizar el resultado existente
+            $query = "UPDATE EjercicioRealizado SET Exito = :success WHERE IdAlumno = :idAlumno AND IdEjercicio = :idEjercicio";
+        }
+        $success_bool = ($success == 1) ? true : false;
+        $stmt = $conn->prepare($query);
+        $stmt->bindParam(':success', $success_bool, PDO::PARAM_BOOL);
+        $stmt->bindParam(':idAlumno', $idAlumno);
+        $stmt->bindParam(':idEjercicio', $idEjercicio);
+        $stmt->execute();
+    
+        return ['success' => true];
+    }
+
+
     public function editTutor($idPersona, $userName, $surnames, $age, $email, $password, $passwordRepeat, $tutor, $course)
     {
         // Validar que los campos obligatorios no estén vacíos

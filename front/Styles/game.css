@@ -14,17 +14,24 @@
   justify-content: space-between;
   align-items: center;
 }
+
+.game-zone h1{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto 10px;
+}
+.game-zone h1 span{
+  font-size: 70%;
+  color: #5E30DB;
+}
 .game-zone h2{
   display: flex;
   justify-content: center;
   margin: 0 auto;
 }
-.game-zone h3{
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  height: 250px;
-  margin: 0 auto;
+.game-zone p{
+  margin-top: 0px;
 }
 .game-level {
   width: 300px; 

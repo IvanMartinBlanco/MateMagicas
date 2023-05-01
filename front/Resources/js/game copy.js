@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (selectedGame && selectedLevel) {
           const selectedId = gameLevels[selectedGame][selectedLevel]; // Obtenemos el ID del juego según el nivel seleccionado
           const script = document.createElement("script");
-          script.src = `../Resources/js/games/${selectedId}.js`;
+          script.src = `../Resources/js/games/${selectedId}.js?id=$userId`;
           script.setAttribute("data-level", selectedLevel); // Usamos el nivel seleccionado
           gameZone.innerHTML = "";
           gameZone.appendChild(script);
