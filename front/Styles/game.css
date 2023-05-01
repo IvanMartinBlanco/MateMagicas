@@ -85,6 +85,9 @@ select{
   background-color: #8f8303;
   color: white;
 }
+.figura{
+  height: 200px;
+}
 .modal {
   display: none; /* La ventana modal está oculta por defecto */
   position: fixed;

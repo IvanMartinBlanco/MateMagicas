@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const email = queryParams.get('email');
     const name = document.querySelector('#name');
     const serverMessage = document.querySelector('#server-message');
+    const tds = document.getElementsByTagName('td');
     fetch(`http://localhost/web/back/public/student?email=${email}`)
         .then(response => {
             if (!response.ok) {
@@ -35,9 +36,12 @@ document.addEventListener("DOMContentLoaded", function () {
                             td.appendChild(img);
                         }
                     });
-                } else {
-                    td.textContent = "-";
-                }
+                } 
+            }
+            for (let i = 0; i < tds.length; i++) {
+              if (tds[i].childNodes.length === 0) {
+                tds[i].textContent = '-';
+              }
             }
         })
         .catch(error => {
