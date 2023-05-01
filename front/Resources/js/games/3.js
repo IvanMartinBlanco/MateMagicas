@@ -35,7 +35,7 @@ fetch(`http://localhost/web/back/public/work?id=3`)
       <h2>${num1} ... ${num2}</h2>
       <form id="answer-form">
         <label for="answer">Resultado:</label>
-        <input type="text" name="answer" id="answer">
+        <input type="number" name="answer" id="answer">
         <div id="button-container" class="button-container">
           <button type="submit">Comprobar</button>
         </div>

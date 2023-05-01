@@ -31,7 +31,7 @@ fetch(`http://localhost/web/back/public/work?id=1`)
       <h1>¿Qué números faltan entre ${num1} y ${num2}? Rellénalos con espacios entre los números.<span>(Si no hay ningún número deja el campo vacío)</span></h1>
       <h2>${num1} ... ${num2}</h2>
       <form id="answer-form">
-        <label for="answer">Resultado:</label>
+        <label for="number">Resultado:</label>
         <input type="text" name="answer" id="answer">
         <div id="button-container" class="button-container">
           <button type="submit">Comprobar</button>
