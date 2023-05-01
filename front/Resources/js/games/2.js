@@ -2,7 +2,7 @@ gameZone = document.querySelector(".game-zone");
 modal = document.querySelector(".modal");
 userId = window.userId;
 
-resultados = {};
+results = {};
 
 // Llamada al primer fetch
 fetch(`http://localhost/web/back/public/work?id=2`)
@@ -15,15 +15,15 @@ fetch(`http://localhost/web/back/public/work?id=2`)
   .then(data => {
     let i = 0;
     for (let key in data) {
-      resultados[i] = data[key];
+      results[i] = data[key];
       i++;
     }
-    return resultados;
+    return results;
   })
-  .then(resultados => {
-    num1 = Math.min(parseInt(resultados[0]), parseInt(resultados[1]));
+  .then(results => {
+    num1 = Math.min(parseInt(results[0]), parseInt(results[1]));
     num1 -= Math.floor(Math.random() * 6);
-    num2 = Math.max(parseInt(resultados[0]), parseInt(resultados[1]));
+    num2 = Math.max(parseInt(results[0]), parseInt(results[1]));
     num2 += Math.floor(Math.random() * 6);
     gameZone.innerHTML = `
       <h1>¿Qué números faltan entre ${num2} y ${num1}? Rellénalos con espacios entre los números.<span>(Si no hay ningún número deja el campo vacío)</span></h1>
@@ -41,7 +41,7 @@ fetch(`http://localhost/web/back/public/work?id=2`)
     answerForm.addEventListener("submit", (event) => {
       event.preventDefault(); // Evita que el formulario se envíe
     
-      userAnswer = document.getElementById("answer").value;
+      userAnswer = document.getElementById("answer").value.trim();
       expectedNumbers = [];
     
       if (userAnswer === "" && (num1 === num2 || num1 + 1 === num2)) {

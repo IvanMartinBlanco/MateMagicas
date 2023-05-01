@@ -39,7 +39,7 @@ gameZone.innerHTML = `
 answerForm = document.getElementById("answer-form");
 answerForm.addEventListener("submit", (event) => {
     event.preventDefault(); // Evitar que el formulario se envíe
-    userAnswer = document.getElementById("answer").value.toUpperCase(); // Convertir la respuesta a mayúsculas para evitar errores
+    userAnswer = document.getElementById("answer").value.toUpperCase().trim(); // Convertir la respuesta a mayúsculas para evitar errores
 
     // Convertir la respuesta a un número entero
     userDecimalValue = parseInt(userAnswer);

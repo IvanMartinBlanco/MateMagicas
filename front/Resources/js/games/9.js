@@ -1,5 +1,3 @@
-
-
 gameZone = document.querySelector(".game-zone");
 modal = document.querySelector(".modal");
 userId = window.userId;
@@ -7,7 +5,7 @@ userId = window.userId;
 results = {};
 
 // Llamada al primer fetch
-fetch(`http://localhost/web/back/public/work?id=1`)
+fetch(`http://localhost/web/back/public/work?id=9`)
   .then(response => {
     if (!response.ok) {
       serverMessage.textContent = "Error en la respuesta del servidor";
@@ -23,16 +21,16 @@ fetch(`http://localhost/web/back/public/work?id=1`)
     return results;
   })
   .then(results => {
-    num1 = Math.max(parseInt(results[0]), parseInt(results[1]));
-    num1 -= Math.floor(Math.random() * 6);
-    num2 = Math.max(parseInt(results[0]), parseInt(results[1]));
-    num2 += Math.floor(Math.random() * 6);
+    num1 = parseInt(results[0]);
+    num1 -= Math.floor(Math.random() * 5);
+    num2 = parseInt(results[1]);
+    num2 += Math.floor(Math.random() * 5);
+    expectedResult = num1 + num2;
     gameZone.innerHTML = `
-      <h1>¿Qué números faltan entre ${num1} y ${num2}? Rellénalos con espacios entre los números.<span>(Si no hay ningún número deja el campo vacío)</span></h1>
-      <h2>${num1} ... ${num2}</h2>
+      <h1>¿Cuánto es ${num1} + ${num2}?</h1>
       <form id="answer-form">
         <label for="number">Resultado:</label>
-        <input type="text" name="answer" id="answer">
+        <input type="number" name="answer" id="answer">
         <div id="button-container" class="button-container">
           <button type="submit">Comprobar</button>
         </div>
@@ -43,35 +41,17 @@ fetch(`http://localhost/web/back/public/work?id=1`)
     answerForm.addEventListener("submit", (event) => {
       event.preventDefault(); // Evita que el formulario se envíe
 
-      userAnswer = document.getElementById("answer").value.trim();
-      expectedNumbers = [];
+      userAnswer = parseInt(document.getElementById("answer").value.trim());
+      if (isNaN(userAnswer)) {
+        result(userAnswer, false);
+        return;
+    }
 
-      if (userAnswer === "" && (num1 === num2 || num1 === num2 - 1)) { // Verifica si userAnswer es una cadena vacía y num1 y num2 son iguales
+      if (userAnswer === expectedResult) {
         result(true);
-
-        return;
+      } else {
+        result(false);
       }
-
-      for (let i = num1 + 1; i < num2; i++) {
-        expectedNumbers.push(i.toString());
-      }
-
-      userNumbers = userAnswer.split(" ");
-
-      if (userNumbers.length !== expectedNumbers.length) {
-        result(false, true);
-        return;
-      }
-
-      for (let i = 0; i < userNumbers.length; i++) {
-        if (userNumbers[i] !== expectedNumbers[i]) {
-          result(false);
-          return;
-        }
-      }
-
-      result(true);
-      return;
     });
   })
   .catch(error => {
@@ -79,7 +59,7 @@ fetch(`http://localhost/web/back/public/work?id=1`)
     serverMessage.textContent = "Error en la respuesta del servidor";
   });
 
-function result(success, amountExcess = null) {
+function result(success, isNumber=true) {
   if (success) {
     modal.innerHTML = `
     <div class="modal-contenido">
@@ -89,22 +69,22 @@ function result(success, amountExcess = null) {
  </div>
   `;
   } else {
-    if (amountExcess === null) {
-      modal.innerHTML = `
-    <div class="modal-contenido">
-    <h2>¡Error!</h2>
-    <p>El resultado es incorrecto.</p>
-    <button id="cerrarModal">Cerrar</button>
- </div>`;
+    if (isNumber === true) {
+        modal.innerHTML = `
+  <div class="modal-contenido">
+  <h2>¡Error!</h2>
+  <p>El resultado es incorrecto.</p>
+  <button id="cerrarModal">Cerrar</button>
+</div>`;
     } else {
-      modal.innerHTML = `
-    <div class="modal-contenido">
-    <h2>¡Error!</h2>
-    <p>La cantidad de números introducida es incorrecta.</p>
-    <button id="cerrarModal">Cerrar</button>
- </div>`;
+        modal.innerHTML = `
+  <div class="modal-contenido">
+  <h2>¡Error!</h2>
+  <p>No se ha introducido un número.</p>
+  <button id="cerrarModal">Cerrar</button>
+</div>`;
     }
-  }
+}
   miModal = document.getElementById("modal");
   miModal.style.display = "block";
   closeModal = document.querySelector("#cerrarModal");
@@ -116,7 +96,7 @@ function result(success, amountExcess = null) {
   userResult = {
     'id': userId,
     'success': success ? 1 : 0,
-    'idEjercicio': 1,
+    'idEjercicio': 9,
   };
   fetch("http://localhost/web/back/public/editresult", {
     method: 'PUT',
@@ -127,5 +107,4 @@ function result(success, amountExcess = null) {
       console.log(error)
       alert('Ha ocurrido un error al modificar el resultado');
     });
-
 }

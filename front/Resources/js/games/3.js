@@ -2,7 +2,7 @@ gameZone = document.querySelector(".game-zone");
 modal = document.querySelector(".modal");
 userId = window.userId;
 
-resultados = {};
+results = {};
 
 // Llamada al primer fetch
 fetch(`http://localhost/web/back/public/work?id=3`)
@@ -15,15 +15,15 @@ fetch(`http://localhost/web/back/public/work?id=3`)
   .then(data => {
     let i = 0;
     for (let key in data) {
-      resultados[i] = data[key];
+      results[i] = data[key];
       i++;
     }
-    return resultados;
+    return results;
   })
-  .then(resultados => {
-    num1 = Math.max(parseInt(resultados[0]), parseInt(resultados[1]));
+  .then(results => {
+    num1 = Math.max(parseInt(results[0]), parseInt(results[1]));
     num1 -= Math.floor(Math.random() * 6);
-    num2 = Math.max(parseInt(resultados[0]), parseInt(resultados[1]));
+    num2 = Math.max(parseInt(results[0]), parseInt(results[1]));
     num2 += Math.floor(Math.random() * 6);
 
     // Redondear los números al múltiplo de 2 más cercano
@@ -46,7 +46,7 @@ fetch(`http://localhost/web/back/public/work?id=3`)
     answerForm.addEventListener("submit", (event) => {
       event.preventDefault(); // Evita que el formulario se envíe
 
-      userAnswer = document.getElementById("answer").value;
+      userAnswer = document.getElementById("answer").value.trim();
       expectedNumbers = [];
 
       if (userAnswer === "" && (num1 === num2 || num1 === num2 - 2)) { // Verifica si userAnswer es una cadena vacía y num1 y num2 son iguales
