@@ -5,7 +5,7 @@ window.addEventListener('load', getSessionData);
 //Carga solamente cuando ya se haya creado el DOM.
 document.addEventListener("DOMContentLoaded", function () {
 	const access = document.getElementById("access");
-	const imageUrl = getSessionData().registeredUser ? `../../../front/Resources/Images/${getSessionData().rol}.png` : "../../../front/Resources/Images/avatar.png";
+	const imageUrl = getSessionData().registeredUser ? `../Resources/Images/${getSessionData().rol}.png` : "../Resources/Images/avatar.png";
 	const myImage = document.getElementById("avatar");
 	myImage.src = imageUrl;
 
