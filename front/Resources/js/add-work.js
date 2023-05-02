@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }  else {
           hideError(nameInput);
         }
-        if (levelInput.selectedOptions[0].textContent !== '1' && levelInput.value.trim!== '2' && levelInput.value.trim!== '3') {
+        if (levelInput.selectedOptions[0].textContent !== '1' && levelInput.selectedOptions[0].textContent!== '2' && levelInput.selectedOptions[0].textContent!== '3') {
           showError(levelInput, '*El nivel debe ser 1, 2 o 3');
           isValid = false;
         } else {

@@ -30,7 +30,7 @@ class UserManagementController
     if (isset($result['success']) && $result['success']) {
       $response = [
         'success' => true,
-        'message' => 'Usuario creado exitosamente'
+        'message' => 'Usuario creado con éxito'
       ];
       header('Content-Type: application/json');
       http_response_code(201);
@@ -60,7 +60,7 @@ class UserManagementController
     if (isset($result['success']) && $result['success']) {
       $response = [
         'success' => true,
-        'message' => 'Usuario eliminado exitosamente'
+        'message' => 'Usuario eliminado con éxito'
       ];
       header('Content-Type: application/json');
       http_response_code(200);
@@ -90,7 +90,7 @@ class UserManagementController
     if (isset($result['success']) && $result['success']) {
       $response = [
         'success' => true,
-        'message' => 'Usuario eliminado exitosamente'
+        'message' => 'Usuario eliminado con éxito'
       ];
       header('Content-Type: application/json');
       http_response_code(200);
@@ -111,7 +111,7 @@ class UserManagementController
     echo json_encode($response);
   }
 
-  public function editWork()
+  public function editUser()
   {
     $data = json_decode(file_get_contents('php://input'), true);
 
@@ -129,7 +129,7 @@ class UserManagementController
     if (isset($result['success']) && $result['success']) {
       $response = [
         'success' => true,
-        'message' => 'Usuario modificado exitosamente'
+        'message' => 'Usuario modificado con éxito'
       ];
       header('Content-Type: application/json');
       http_response_code(201);
@@ -138,6 +138,38 @@ class UserManagementController
         $mensaje = 'Error al modificar usuario: ' . $result['error'];
       } else {
         $mensaje = 'Error al modificar usuario: No se ha podido editar el usuario en base de datos.';
+      }
+      $response = [
+        'success' => false,
+        'message' => $mensaje
+      ];
+      header('Content-Type: application/json');
+      http_response_code(400);
+    }
+
+    echo json_encode($response);
+  }
+
+  public function editResult()
+  {
+    $data = json_decode(file_get_contents('php://input'), true);
+    $result = $this->userManagement->editResult(
+      $data['id'],
+      $data['success'],
+      $data['idEjercicio']
+    );
+    if (isset($result['success']) && $result['success']) {
+      $response = [
+        'success' => true,
+        'message' => 'Resultado modificado con éxito'
+      ];
+      header('Content-Type: application/json');
+      http_response_code(201);
+    } else {
+      if (isset($result['error'])) {
+        $mensaje = 'Error al modificar resultado: ' . $result['error'];
+      } else {
+        $mensaje = 'Error al modificar resultado: No se ha podido editar el resultado en base de datos';
       }
       $response = [
         'success' => false,
@@ -168,7 +200,7 @@ class UserManagementController
     if (isset($result['success']) && $result['success']) {
       $response = [
         'success' => true,
-        'message' => 'Usuario modificado exitosamente'
+        'message' => 'Usuario modificado con éxito'
       ];
       header('Content-Type: application/json');
       http_response_code(201);
@@ -292,7 +324,7 @@ class UserManagementController
     if (isset($result['success']) && $result['success']) {
       $response = [
         'success' => true,
-        'message' => 'Usuario creado exitosamente'
+        'message' => 'Usuario creado con éxito'
       ];
       header('Content-Type: application/json');
       http_response_code(201);

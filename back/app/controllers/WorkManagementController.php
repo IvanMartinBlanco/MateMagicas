@@ -27,7 +27,7 @@ class WorkManagementController
     if (isset($result['success']) && $result['success']) {
       $response = [
         'success' => true,
-        'message' => 'Ejercicio creado exitosamente'
+        'message' => 'Ejercicio creado con éxito'
       ];
       header('Content-Type: application/json');
       http_response_code(201);
@@ -48,12 +48,12 @@ class WorkManagementController
     echo json_encode($response);
   }
 
-  public function getVariable()
+  public function getNumberVariable()
   {
     $userId = $_GET['id'];
     $workId = $_GET['workId'];
     // Realizar la llamada al modelo para obtener los datos del alumno
-    $workVariable = $this->workManagement->getVariable(
+    $workVariable = $this->workManagement->getNumberVariable(
       $userId,
       $workId
     );
@@ -80,13 +80,13 @@ class WorkManagementController
     echo json_encode($userObj);
   }
 
-  public function workById()
+  public function getVariableValueById()
   {
     // Obtener el ID del usuario desde los parámetros de la URL
     $workId = $_GET['id'];
 
     // Realizar la llamada al modelo para obtener los datos del usuario
-    $workData = $this->workManagement->getWorkById($workId);
+    $workData = $this->workManagement->getVariableValueById($workId);
 
     // Convertir el array en un objeto
     $userObj = (object) $workData;
@@ -98,6 +98,45 @@ class WorkManagementController
     // Devolver los datos del usuario como respuesta en formato JSON
     echo json_encode($userObj);
   }
+
+  public function getWorksBySubject()
+  {
+      // Obtener el ID del usuario desde los parámetros de la URL
+      $workStage = $_GET['stage'];
+      $workSubject = $_GET['subject'];
+      if($workSubject == 'algebralineal'){
+        $workSubject='algebra lineal';
+      };
+  
+      // Realizar la llamada al modelo para obtener los datos del usuario
+      $workData = $this->workManagement->getWorksBySubject($workStage, $workSubject);
+  
+      // Crear un array asociativo para almacenar los datos
+      $result = [];
+  
+      // Recorrer el array devuelto por la función getWorksBySubject()
+      foreach ($workData as $work) {
+          $id = $work['idEjercicio'];
+          $name = $work['nombre'];
+          $level = $work['nivel'];
+  
+          // Si el nombre no existe en el array asociativo, agregarlo con un array vacío
+          if (!isset($result[$name])) {
+              $result[$name] = [];
+          }
+  
+          // Agregar el id del ejercicio y el nivel al array correspondiente al nombre de la asignatura
+          $result[$name][] = ['id' => $id, 'level' => $level, 'exerciseId' => $id];
+      }
+  
+      // Establecer las cabeceras y código de respuesta
+      header('Content-Type: application/json');
+      http_response_code(201);
+  
+      // Devolver los datos en formato JSON
+      echo json_encode($result);
+  }
+  
 
   public function editVariable()
   {
@@ -116,7 +155,7 @@ class WorkManagementController
     if (isset($result['success']) && $result['success']) {
       $response = [
         'success' => true,
-        'message' => 'Variables modificadas exitosamente'
+        'message' => 'Variables modificadas con éxito'
       ];
       header('Content-Type: application/json');
       http_response_code(201);
@@ -146,7 +185,7 @@ class WorkManagementController
     if (isset($result['success']) && $result['success']) {
       $response = [
         'success' => true,
-        'message' => 'Ejercicio eliminado exitosamente'
+        'message' => 'Ejercicio eliminado con éxito'
       ];
       header('Content-Type: application/json');
       http_response_code(200);

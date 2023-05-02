@@ -14,6 +14,7 @@
    <link href="../Styles/game.css" type="text/css" rel="stylesheet" />
    <!-- Links a los archivos JS -->
    <script type="module" src="../Resources/js/users.js"></script>
+   <script type="module" src="../Resources/js/game.js"></script>
 </head>
 <!-- Cuerpo de la web -->
 
@@ -21,7 +22,7 @@
    <!-- Cabecera de la web -->
    <header>
       <a href="index.html">
-         <img src="Resources/images/logoMates.png" alt="Logotipo de MateMágicas" />
+         <img src="../Resources/images/logoMates.png" alt="Logotipo de MateMágicas" />
       </a>
       <div class="name">
          <h1>MateMágicas</h1>
@@ -52,10 +53,10 @@
                </li>
             </ul>
          </li>
-         <li><a href="#" target="_blank">Avanzadas</a>
+         <li><a href="#">Avanzadas</a>
             <ul>
                <li><a href="./game.html?stage=avanzada&subject=analisis">Aritmética</a></li>
-               <li><a href="./game.html?stage=avanzada&subject=alebralineal">Álgebra</a>
+               <li><a href="./game.html?stage=avanzada&subject=algebralineal">Álgebra</a>
                   <li><a href="./game.html?stage=avanzada&subject=geometria">Geometría</a>
                </li>
             </ul></li>
@@ -81,10 +82,10 @@
                </li>
             </ul>
          </li>
-         <li><a href="#" target="_blank">Avanzadas</a>
+         <li><a href="#">Avanzadas</a>
             <ul>
                <li><a href="./game.html?stage=avanzada&subject=analisis">Aritmética</a></li>
-               <li><a href="./game.html?stage=avanzada&subject=alebralineal">Álgebra</a>
+               <li><a href="./game.html?stage=avanzada&subject=algebralineal">Álgebra</a>
                   <li><a href="./game.html?stage=avanzada&subject=geometria">Geometría</a>
                </li>
             </ul></li>
@@ -95,26 +96,24 @@
       <!-- Sección de juego -->
       <section class="game">
          <!-- Selector -->
-         <label for="nivel">Elegir juego:</label>
-         <select name="Selecciona el juego">
-            <option value="Selecciona el juego" label="Selecciona el juego">Selecciona el juego</option>
-            <option value="Números" label="Fácil">Juego</option>
-            <option value="medio" label="Medio">Medio</option>
-            <option value="dificil" label="Difícil">Difícil</option>
+         <label for="game-selector">Elegir juego:</label>
+         <select name="game-selector" id="game-selector">
+            <option value="" label="Selecciona el juego">Selecciona el juego</option>
          </select>
 
          <!-- Cuadro de juego en CSS/JS -->
          <div class="game-zone">
-            <h1>Aquí se reproducirá el juego, el tamaño del cuadro puede variar dependiendo del juego.</h1>
          </div>
          <div class="game-level">
-            <!-- Niveles del juego -->
-            <label for="nivel">Elegir Nivel:</label>
-            <input type="radio" name="nivel" value="facil" checked> Fácil<br>
-            <input type="radio" name="nivel" value="medio"> Medio<br>
-            <input type="radio" name="nivel" value="dificil"> Difícil
          </div>
       </section>
+      <div class="modal" id="modal">
+         <div class="modal-contenido">
+            <h2>¡Éxito!</h2>
+            <p>El usuario ha sido creado correctamente.</p>
+            <button id="cerrarModal">Cerrar</button>
+         </div>
+      </div>
    </main>
    <!-- Pié de la página -->
    <footer>
@@ -136,7 +135,8 @@
          <a href="https://www.linkedin.com/in/iv%C3%A1n-mart%C3%ADn-blanco-3b166522/">
             <img src="../Resources/images/networks/linkedin.jpg" alt="Icono de LinkedIn" />
          </a>
-      </div>>
+      </div>
+      
       <p class="copy">Iván Martín Blanco &COPY; 2023</p>
    </footer>
 </body>

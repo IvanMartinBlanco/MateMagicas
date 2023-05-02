@@ -67,7 +67,7 @@ class WorkManagementModel
         $result =  $stmt->rowCount() > 0 ? true : false;
         return ['success' => $result];
     }
-    public static function getVariable($userId, $workId)
+    public static function getNumberVariable($userId, $workId)
     {
         $conn = connect();
 
@@ -107,7 +107,7 @@ class WorkManagementModel
         return $count;
     }
 
-    public static function getWorkById($workId)
+    public static function getVariableValueById($workId)
     {
         $conn = connect();
         $query = "SELECT IdVariable, Valor FROM EjercicioVariable WHERE idEjercicio = :workId";
@@ -130,6 +130,35 @@ class WorkManagementModel
 
         return $filtered_results;
     }
+
+    public function getWorksBySubject($stage, $subject)
+    {
+        if (empty($stage)) {
+            return ['error' => 'La etapa es obligatoria'];
+        }
+        if (empty($subject)) {
+            return ['error' => 'La asignatura es obligatoria'];
+        }
+    
+        $conn = connect();
+    
+        // Preparar la consulta SQL para obtener los ejercicios que coincidan con el nombre, etapa y asignatura dadas
+        $stmt = $conn->prepare("SELECT idEjercicio, nombre, nivel FROM ejercicio WHERE etapa = :stage AND asignatura = :subject");
+    
+        // Asignar valores a los parámetros de la consulta
+        $stmt->bindParam(':stage', $stage);
+        $stmt->bindParam(':subject', $subject);
+        $stmt->execute();
+    
+        // Obtener los resultados de la consulta en forma de array asociativo
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+        // Devolver los resultados como un array
+        return $result;
+    }
+
+
+
 
     public function editVariable($variable, $workId)
     {
