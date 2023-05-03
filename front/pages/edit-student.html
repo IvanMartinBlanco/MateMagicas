@@ -1,23 +1,20 @@
 <!DOCTYPE html>
 <html lang="es">
 <!-- Cabecera del documento -->
-
 <head>
    <meta charset="UTF-8" />
    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
    <title>Editar alumno</title>
    <!-- Link a la imagen de la pestaña -->
    <link rel="shortcut icon" href="../Resources/images/logoMates.png" />
-   <!-- Link a la hoja de estilos general-->
+   <!-- Links de las hojas de estilos -->
    <link href="../Styles/styles.css" type="text/css" rel="stylesheet" />
-   <!-- Link a la hoja de estilos del login-->
    <link href="../Styles/edit-student.css" type="text/css" rel="stylesheet" />
    <!-- Links a los archivos JS -->
    <script type="module" src="../Resources/js/users.js"></script>
    <script type="module" src="../Resources/js/edit-user.js"></script>
 </head>
 <!-- Cuerpo de la web -->
-
 <body>
    <!-- Cabecera de la web -->
    <header>
@@ -41,7 +38,7 @@
             <ul>
                <li><a href="./game.html?stage=primaria&subject=numeros">Números</a></li>
                <li><a href="./game.html?stage=primaria&subject=figuras">Figuras</a>
-                  <li><a href="./game.html?stage=primaria&subject=calculo">Cálculo</a>
+               <li><a href="./game.html?stage=primaria&subject=calculo">Cálculo</a>
                </li>
             </ul>
          </li>
@@ -49,7 +46,7 @@
             <ul>
                <li><a href="./game.html?stage=secundaria&subject=aritmetica">Aritmética</a></li>
                <li><a href="./game.html?stage=secundaria&subject=algebra">Álgebra</a>
-                  <li><a href="./game.html?stage=secundaria&subject=geometria">Geometría</a>
+               <li><a href="./game.html?stage=secundaria&subject=geometria">Geometría</a>
                </li>
             </ul>
          </li>
@@ -57,9 +54,10 @@
             <ul>
                <li><a href="./game.html?stage=avanzada&subject=analisis">Aritmética</a></li>
                <li><a href="./game.html?stage=avanzada&subject=algebralineal">Álgebra</a>
-                  <li><a href="./game.html?stage=avanzada&subject=geometria">Geometría</a>
+               <li><a href="./game.html?stage=avanzada&subject=geometria">Geometría</a>
                </li>
-            </ul></li>
+            </ul>
+         </li>
       </ul>
       <!-- Menú hamburguesa -->
       <ul class="nav-mov">
@@ -70,7 +68,7 @@
             <ul>
                <li><a href="./game.html?stage=primaria&subject=numeros">Números</a></li>
                <li><a href="./game.html?stage=primaria&subject=figuras">Figuras</a>
-                  <li><a href="./game.html?stage=primaria&subject=calculo">Cálculo</a>
+               <li><a href="./game.html?stage=primaria&subject=calculo">Cálculo</a>
                </li>
             </ul>
          </li>
@@ -78,7 +76,7 @@
             <ul>
                <li><a href="./game.html?stage=secundaria&subject=aritmetica">Aritmética</a></li>
                <li><a href="./game.html?stage=secundaria&subject=algebra">Álgebra</a>
-                  <li><a href="./game.html?stage=secundaria&subject=geometria">Geometría</a>
+               <li><a href="./game.html?stage=secundaria&subject=geometria">Geometría</a>
                </li>
             </ul>
          </li>
@@ -86,82 +84,83 @@
             <ul>
                <li><a href="./game.html?stage=avanzada&subject=analisis">Aritmética</a></li>
                <li><a href="./game.html?stage=avanzada&subject=algebralineal">Álgebra</a>
-                  <li><a href="./game.html?stage=avanzada&subject=geometria">Geometría</a>
+               <li><a href="./game.html?stage=avanzada&subject=geometria">Geometría</a>
                </li>
-            </ul></li>
+            </ul>
+         </li>
       </ul>
    </nav>
    <!-- Zona de contenido -->
    <main>
-      <!-- Formulario de modificación de usuario -->
+      <!-- Formulario de modificación de alumno -->
       <section class="edit-student">
          <h2>Modificación de alumno</h2>
          <form class="edit-form">
             <fieldset>
                <legend>Datos personales</legend>
                <div>
-                 <label for="user-name">Nombre:</label>
-                 <span class="input-container">
-                   <input type="text" id="user-name" name="user-name" required>
-                   <div class="error-message"></div>
-                 </span>
+                  <label for="user-name">Nombre:</label>
+                  <span class="input-container">
+                     <input type="text" id="user-name" name="user-name" required>
+                     <div class="error-message"></div>
+                  </span>
                </div>
                <div>
-                 <label for="surnames">Apellidos:</label>
-                 <span class="input-container">
-                   <input type="text" id="surnames" name="surnames" required>
-                   <div class="error-message"></div>
-                 </span>
+                  <label for="surnames">Apellidos:</label>
+                  <span class="input-container">
+                     <input type="text" id="surnames" name="surnames" required>
+                     <div class="error-message"></div>
+                  </span>
                </div>
                <div>
-                 <label for="age">Edad:</label>
-                 <span class="input-container">
-                   <input type="number" id="age" class="little-input" name="age" min="1" max="120" required>
-                   <div class="error-message"></div>
-                 </span>
+                  <label for="age">Edad:</label>
+                  <span class="input-container">
+                     <input type="number" id="age" class="little-input" name="age" min="1" max="120" required>
+                     <div class="error-message"></div>
+                  </span>
                </div>
-             </fieldset>
-             <fieldset>
+            </fieldset>
+            <fieldset>
                <legend>Datos de acceso</legend>
                <div>
-                 <label for="email">Correo electrónico:</label>
-                 <span class="input-container">
-                   <input type="email" id="email" name="email" required disabled>
-                   <div class="error-message"></div>
-                 </span>
+                  <label for="email">Correo electrónico:</label>
+                  <span class="input-container">
+                     <input type="email" id="email" name="email" required disabled>
+                     <div class="error-message"></div>
+                  </span>
                </div>
                <div>
-                 <label for="password">Contraseña:</label>
-                 <span class="input-container">
-                   <input type="password" id="password" name="password" required>
-                   <div class="error-message"></div>
-                 </span>
+                  <label for="password">Contraseña:</label>
+                  <span class="input-container">
+                     <input type="password" id="password" name="password" required>
+                     <div class="error-message"></div>
+                  </span>
                </div>
                <div>
-                 <label for="password-repeat">Repetir contraseña:</label>
-                 <span class="input-container">
-                   <input type="password" id="password-repeat" name="password-repeat" required>
-                   <div class="error-message"></div>
-                 </span>
+                  <label for="password-repeat">Repetir contraseña:</label>
+                  <span class="input-container">
+                     <input type="password" id="password-repeat" name="password-repeat" required>
+                     <div class="error-message"></div>
+                  </span>
                </div>
-             </fieldset>
-             <fieldset>
+            </fieldset>
+            <fieldset>
                <legend>Datos de usuario</legend>
                <div>
-                 <label for="tutor">Código de tutor:</label>
-                 <span class="input-container">
-                   <input type="number" class="little-input" id="tutor" name="tutor" min="1">
-                   <div class="error-message"></div>
-                 </span>
+                  <label for="tutor">Código de tutor:</label>
+                  <span class="input-container">
+                     <input type="number" class="little-input" id="tutor" name="tutor" min="1">
+                     <div class="error-message"></div>
+                  </span>
                </div>
                <div>
-                 <label for="course">Curso:</label>
-                 <span class="input-container">
-                   <input type="text" id="course" class="little-input" name="course">
-                   <div class="error-message"></div>
-                 </span>
+                  <label for="course">Curso:</label>
+                  <span class="input-container">
+                     <input type="text" id="course" class="little-input" name="course">
+                     <div class="error-message"></div>
+                  </span>
                </div>
-             </fieldset>
+            </fieldset>
             <div class="button-container">
                <button type="submit">Modificar</button>
             </div>
@@ -201,5 +200,4 @@
       <p class="copy">Iván Martín Blanco &COPY; 2023</p>
    </footer>
 </body>
-
 </html>

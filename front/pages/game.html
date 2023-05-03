@@ -1,23 +1,20 @@
 <!DOCTYPE html>
 <html lang="es">
 <!-- Cabecera del documento -->
-
 <head>
    <meta charset="UTF-8" />
    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
    <title>juego</title>
    <!-- Link a la imagen de la pestaña -->
    <link rel="shortcut icon" href="../Resources/images/logoMates.png" />
-   <!-- Link a la hoja de estilos general-->
+   <!-- Links de las hojas de estilos -->
    <link href="../Styles/styles.css" type="text/css" rel="stylesheet" />
-   <!-- Link a la hoja de estilos de los juegos-->
    <link href="../Styles/game.css" type="text/css" rel="stylesheet" />
    <!-- Links a los archivos JS -->
    <script type="module" src="../Resources/js/users.js"></script>
    <script type="module" src="../Resources/js/game.js"></script>
 </head>
 <!-- Cuerpo de la web -->
-
 <body>
    <!-- Cabecera de la web -->
    <header>
@@ -97,17 +94,17 @@
    <main>
       <!-- Sección de juego -->
       <section class="game">
-         <!-- Selector -->
          <label for="game-selector">Elegir juego:</label>
          <select name="game-selector" id="game-selector">
             <option value="" label="Selecciona el juego">Selecciona el juego</option>
          </select>
-         <!-- Cuadro de juego en CSS/JS -->
+         <!-- Cuadro de juego en JS -->
          <div class="game-zone">
          </div>
          <div class="game-level">
          </div>
       </section>
+      <!-- Ventana modal oculta por defecto -->
       <div class="modal" id="modal">
          <div class="modal-contenido">
             <h2>¡Éxito!</h2>
@@ -137,9 +134,7 @@
             <img src="../Resources/images/networks/linkedin.jpg" alt="Icono de LinkedIn" />
          </a>
       </div>
-
       <p class="copy">Iván Martín Blanco &COPY; 2023</p>
    </footer>
 </body>
-
 </html>
