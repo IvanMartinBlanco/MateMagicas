@@ -3,7 +3,7 @@ import { setSessionData, getSessionData } from '../js/session.js';
 $(document).ready(function() {
   if (getSessionData()?.registeredUser) {
     // Redirigir a otra página
-    window.location.replace("../../../front/pages/index.html");
+    window.location.replace("http://localhost/web/front/pages/index.html");
   }
   // Escuchar el evento submit del formulario de inicio de sesión
   $('#login-form').submit(function(event) {

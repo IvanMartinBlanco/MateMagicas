@@ -3,7 +3,7 @@ import { getSessionData } from '../js/session.js';
 document.addEventListener("DOMContentLoaded", function () {
   if (getSessionData()?.rol !== 'administrador') {
     // Redirigir a otra página
-    window.location.replace("../../../front/pages/index.html");
+    window.location.replace("http://localhost/web/front/pages/index.html");
   }
   const form = document.querySelector('form');
   // Obtener el número de resultados de la base de datos

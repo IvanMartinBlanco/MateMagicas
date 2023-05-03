@@ -237,7 +237,6 @@ nav ul li img:hover {
   text-align: center;
   font-size: 80%;
   margin-top: 5px;
-
 }
 
 /** ESTILOS DEL FOOTER**/
@@ -324,86 +323,58 @@ footer a:hover {
 /** ESTILOS CUANDO LA PÁGINA SE REPRODUCE MÁS PEQUEÑA DE 768PX**/
 @media (max-width: 768px) {
 
-  /* Estilo para la zona del menú */
-  .nav-text {
-    /* Definimos como se va a ordenar y desplegar*/
-    display: none;
-  }
-
-  /* Estilo para el nombre de la web */
-  .name {
-    /* Definimos el tamaño*/
-    width: 100%;
-    /* Definimos como se va a ordenar y desplegar*/
-    font-size: 120%;
-  }
-
-  /* Estilo para el título del nombre de la web */
-  .name h1 {
-    /* Definimos las características visuales*/
-    text-align: left;
-  }
-
   /* Estilo para la cabecera */
   header {
-    /* Definimos como se va a ordenar y desplegar*/
     grid-template-columns: 15% 65% 20%;
   }
 
-  /* Estilo para las imágenes de la cabecera */
+  /* Estilo para los enlaces con imágenes de la cabecera */
   header a img {
-    /* Definimos el tamaño*/
     width: auto;
     max-height: 50px;
-    /* Definimos como se va a ordenar y desplegar*/
     padding: 5px;
   }
 
   /* Estilo para las imágenes de la zona de acceso en la cabecera */
   .access img {
-    /* Definimos el tamaño*/
     width: auto;
     max-height: 30px;
   }
 
-  /* Estilo para la zona del menú en dispositivos móviles*/
-  nav ul {
-    /* Definimos como se va a ordenar y desplegar*/
-    display: block;
-    position: absolute;
-    /* Estilo para el menú de las páginas */
-
-    /* Definimos las características visuales*/
-    background-color: #5E30DB;
-    line-height: 2rem;
-  }
-
-  /* Estilo para el menú en móvil */
+  /* Estilo para la zona del navegador */
   .nav-mov {
-    /* Definimos como se va a ordenar y desplegar*/
     width: 100%;
     z-index: 1;
   }
 
-  /* Estilo para cada enlace dentro de una lista en la versión móvil*/
+  /* Estilo para los textos de la zona del navegador */
+  .nav-text {
+    display: none;
+  }
+
+  /* Estilo para las listas de la zona del navegador */
+  nav ul {
+    display: block;
+    position: absolute;
+    background-color: #5E30DB;
+    line-height: 2rem;
+  }
+
+  /* Estilo para cada uno de los elementos de la lista de la zona del navegador */
   nav ul li a {
-    /* Definimos como se va a ordenar y desplegar*/
     justify-content: left;
     padding-left: 15px;
-    /* Definimos las características visuales*/
     text-decoration: none;
     color: white;
   }
 
-  /* Estilo para el checkbox del menú */
+  /* Estilo para los input de la zona del navegador */
   .nav-mov input {
-    /* Definimos como se va a ordenar y desplegar*/
     display: none;
   }
 
-  /* Estilo para la imagen del menú */
+  /* Estilo para las etiquetas de la zona del navegador */
   .nav-mov label {
-    /* Definimos como se va a ordenar y desplegar*/
     display: inline-block;
     padding-left: 15px;
     width: 30px;
@@ -413,42 +384,51 @@ footer a:hover {
     color: white
   }
 
-  /* Estilo para la zona del menú cuando no está pulsado el botón */
+  /* Estilo para los elementos de la lista que no están pulsados de la zona del navegador */
   .nav-mov :not(input:checked)~li {
-    /* Definimos como se va a ordenar y desplegar*/
     display: none;
   }
 
-  /* Estilo para la zona del menú cuando está pulsado el botón */
+  /* Estilo para los elementos de la lista que están pulsados de la zona del navegador */
   .nav-mov input:checked~li {
-    /* Definimos como se va a ordenar y desplegar*/
     display: block;
   }
 
-  /* Estilo para la zona del segundo menú cuando está pulsado el botón */
+  /* Estilo para los elementos de la lista del submenú de la zona del navegador cuando tenga encima el ratón */
+  nav ul li:hover ul {
+    position: relative;
+    display: block;
+    background-color: #1d0464;
+    line-height: 2rem;
+    width: 100%;
+  }
+
+  /* Estilo para los inputs de elementos de la lista del submenú de la zona del navegador cuando han sido pulsados */
   .nav-mov input:checked~li ul li {
-    /* Definimos como se va a ordenar y desplegar*/
     display: block;
   }
 
-  /* Estilo para los enlaces de la zona del segundo menú */
+  /* Estilo para los enlaces de los elementos de la lista del submenú de la zona del navegador */
   nav ul li ul li a {
-    /* Definimos como se va a ordenar y desplegar*/
     padding-left: 2em;
   }
 
-  /* Estilo para cada enlace de segundo nivel dentro de una lista cuando se pasa por encima del primer nivel */
-  nav ul li:hover ul {
-    /* Definimos como se va a ordenar y desplegar*/
-    position: relative;
-    display: block;
-    /* Definimos las características visuales*/
-    background-color: #1d0464;
-    line-height: 2rem;
-    /* Definimos el tamaño */
+  /* Estilo para los nombres de las etapas educativas */
+  .name {
     width: 100%;
-
+    font-size: 120%;
   }
+
+  /* Estilo para el título de los nombres de las etapas educativas */
+  .name h1 {
+    text-align: center;
+  }
+
+  /* Estilo para las secciones principales de los apartados de las ramas */
+.branch {
+  display: flex;
+  flex-direction: column;
+}
 
   /* Estilo para la zona de footer */
   footer {
@@ -458,10 +438,12 @@ footer a:hover {
     line-height: 25px;
     background-color: black;
   }
+
   /* Estilo para las listras de la zona de footer */
   footer ul {
     text-align: center;
   }
+
   /* Estilo para el copy */
   .copy {
     grid-column: 1 / 4;
@@ -472,21 +454,18 @@ footer a:hover {
   .rrss {
     margin-top: -15px;
   }
-
 }
 
 /** ESTILOS CUANDO LA PÁGINA SE REPRODUCE MÁS GRANDE DE 768PX**/
 @media (min-width: 769px) {
 
-  /* Estilo para la zona del menú */
+  /* Estilo para la zona del navegador */
   .nav-mov {
-    /* Definimos como se va a ordenar y desplegar*/
     display: none;
   }
 
   /* Estilo para el botón de hamburguesa */
   #ham {
-    /* Definimos como se va a ordenar y desplegar*/
     display: none;
   }
 }
