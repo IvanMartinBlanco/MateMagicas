@@ -1,11 +1,4 @@
 /** ESTILOS DE LA PÁGINA SOBRE MATEMÁGICAS **/
-/* Estilo para los títulos */
-h1 {
-	margin: 0 0 20px 0;
-	font-size: 28px;
-	text-align: center;
-}
-
 /* Estilo para la zona principal */
 .about {
 	background-color: #FFF;
@@ -16,8 +9,15 @@ h1 {
 }
 
 /* Estilo para los párrafos y las listas */
-p, ul {
+main p, ul {
 	margin-bottom: 20px;
+}
+
+/* Estilo para los títulos */
+h1 {
+	margin: 0 0 20px 0;
+	font-size: 28px;
+	text-align: center;
 }
 
 /* Estilo para subtitulos */

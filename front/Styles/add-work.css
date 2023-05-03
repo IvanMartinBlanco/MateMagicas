@@ -1,3 +1,5 @@
+/** ESTILOS DE LA PÁGINA PARA AÑADIR EJERCICIOS **/
+/* Estilo para la zona principal */
 .add-work {
   width: 40%;
   margin: 50px auto;
@@ -6,71 +8,13 @@
   padding: 20px;
 }
 
+/* Estilo para los subtitulos */
 .add-work h2 {
   margin: 0 auto 25px auto;
   text-align: center;
 }
 
-.add-form fieldset div {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 10px;
-}
-
-.add-form fieldset div label {
-  width: 100%;
-  font-weight: bold;
-  text-align: right;
-}
-
-.add-form fieldset div input:not(.little-input) {
-  width: 175px;
-  padding: 5px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  margin-top: 5px;
-
-}
-
-.add-form fieldset {
-  text-align: center
-}
-
-.button-container {
-  display: flex;
-  justify-content: flex-start;
-  margin-top: 20px;
-  width: 100%
-}
-
-.add-work button {
-  background-color: #DBCD30;
-  border: none;
-  border-radius: 5px;
-  padding: 10px;
-  margin-top: 10px;
-  cursor: pointer;
-}
-
-.add-work button:hover {
-  background-color: #8f8303;
-  color: white;
-}
-
-.little-input {
-
-  width: 40px;
-  padding: 5px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  margin-top: 5px;
-}
-
-.input-container {
-  width: 100%;
-  text-align: left;
-}
-
+/* Estilo para el campo nivel */
 #level {
   width: 50px;
   padding: 5px;
@@ -79,6 +23,7 @@
   margin-top: 5px;
 }
 
+/* Estilo para el campo id */
 #id {
   width: 40px;
   padding: 5px;
@@ -87,6 +32,7 @@
   margin-top: 5px;
 }
 
+/* Estilo para los campos de selección */
 select {
   width: 187px;
   padding: 5px;
@@ -95,42 +41,30 @@ select {
   margin-top: 5px;
 }
 
-.add-form fieldset div span div {
-  display: flex;
-  color: red;
-  font-size: 12px;
-}
-
-.modal {
-  display: none;
-  /* La ventana modal está oculta por defecto */
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4);
-}
-
-.modal-contenido {
-  background-color: #fefefe;
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid black;
-  width: 30%;
-}
-
-#cerrarModal {
-  display: flex;
-  margin-top: 10px;
-}
-
 /** ESTILOS CUANDO LA PÁGINA SE REPRODUCE MÁS PEQUEÑA DE 768PX**/
 @media (max-width: 768px) {
+
+  /* Estilo para la zona principal */
   .add-work {
     width: 80%;
     min-width: none;
+  }
+
+  /* Estilo para los campos normales de los div dentro de los apartados del formulario */
+  fieldset div input:not(.little-input) {
+    width: 150px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-top: 5px;
+  }
+
+  /* Estilo para los campos de selección */
+  select {
+    width: 162px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-top: 5px;
   }
 }

@@ -1,41 +1,52 @@
+/** ESTILOS DE LA PÁGINA PARA ADMINISTRADOR **/
+/* Estilo para la zona principal */
 main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 50vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 50vh;
 }
+
+/* Estilo para el contenido principal */
 .contact-info {
 	background-color: #FFF;
-	box-shadow: 0 0 10px rgba(0,0,0,0.2);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 	padding: 5em;
 	max-width: 500px;
 	text-align: center;
 	margin: 50px auto;
 }
+
+/* Estilo para los títulos */
 h1 {
 	margin: 0 0 20px 0;
 	font-size: 28px;
 	text-align: center;
 }
 
+/* Estilo para los subtítulos */
 .contact-info h2 {
 	font-size: 32px;
 	margin: 0px auto 10px auto;
 }
 
+/* Estilo para los párrafos */
 .contact-info p {
 	font-size: 18px;
 	margin: 10px 0;
 }
+
 /** ESTILOS CUANDO LA PÁGINA SE REPRODUCE MÁS PEQUEÑA DE 768PX**/
 @media (max-width: 768px) {
-  .contact-info {
-    margin: 5em auto;
-    max-width: 80%;
-  }
 
-}
-/** ESTILOS CUANDO LA PÁGINA SE REPRODUCE MÁS GRANDE DE 768PX**/
-@media (min-width: 769px) {
+	/* Estilo para la zona principal */
+	main {
+		max-width: 80%;
+	}
 
+	/* Estilo para el contenido principal */
+	.contact-info {
+		margin: 5em auto;
+		max-width: 80%;
+	}
 }
