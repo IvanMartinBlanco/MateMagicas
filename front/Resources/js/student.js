@@ -3,7 +3,7 @@ import { setSessionData, getSessionData } from '../js/session.js';
 document.addEventListener("DOMContentLoaded", function () {
     if (getSessionData()?.rol!=='alumno') {
       // Redirigir a otra página
-      window.location.replace("../../../front/pages/index.html");
+      window.location.replace("http://localhost/web/front/pages/index.html");
     }
     const closeSessionLink = document.querySelector('#close');
 

@@ -1,27 +1,26 @@
+/** ESTILOS DE LA PÁGINA PARA ADMINISTRADOR **/
+/* Estilo para la zona principal */
 .cookies-info {
 	background-color: #FFF;
-	box-shadow: 0 0 10px rgba(0,0,0,0.2);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 	padding: 1em;
 	max-width: 80%;
-    margin: 50px auto;
+	margin: 50px auto;
 }
+
+/* Estilo para los títulos */
 h1 {
 	margin: 0 0 20px 0;
 	font-size: 28px;
-  text-align: center;
+	text-align: center;
 }
+
+/* Estilo de la zona del mensaje */
 #message section {
 	margin-bottom: 30px;
 }
 
-#message section h2{
+/* Estilo de los subtítulos del mensaje */
+#message section h2 {
 	margin-bottom: 10px;
-}
-/** ESTILOS CUANDO LA PÁGINA SE REPRODUCE MÁS PEQUEÑA DE 768PX**/
-@media (max-width: 768px) {
-  
-}
-/** ESTILOS CUANDO LA PÁGINA SE REPRODUCE MÁS GRANDE DE 768PX**/
-@media (min-width: 769px) {
-
 }

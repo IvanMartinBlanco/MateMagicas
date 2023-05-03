@@ -1,9 +1,13 @@
-main{
+/** ESTILOS DE LA PÁGINA PARA ADMINISTRADOR **/
+/* Estilo para la zona principal */
+main {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 50vh;
 }
+
+/* Estilo para el contenido principal */
 .tutor {
   display: flex;
   flex-direction: column;
@@ -17,23 +21,19 @@ main{
   color: white;
 }
 
+/* Estilo para los títulos de la zona principal */
 .tutor h2 {
   margin-top: 0;
 }
+
+/* Estilo para las líneas horizontales */
 .tutor hr {
   width: 100%;
 }
 
-a, a:visited{
-  cursor:pointer;
-  text-decoration:none;
-  color:white;
-}
-/** ESTILOS CUANDO LA PÁGINA SE REPRODUCE MÁS PEQUEÑA DE 768PX**/
-@media (max-width: 768px) {
-  
-}
-/** ESTILOS CUANDO LA PÁGINA SE REPRODUCE MÁS GRANDE DE 768PX**/
-@media (min-width: 769px) {
-
+/* Estilo para los enlaces visitados */
+a, a:visited {
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
 }

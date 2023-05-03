@@ -10,14 +10,13 @@
    <link rel="shortcut icon" href="../Resources/images/logoMates.png" />
    <!-- Link a la hoja de estilos general-->
    <link href="../Styles/styles.css" type="text/css" rel="stylesheet" />
-      <!-- Link a la hoja de estilos del delete-work-->
-      <link href="../Styles/delete-work.css" type="text/css" rel="stylesheet" />
+   <!-- Link a la hoja de estilos del delete-work-->
+   <link href="../Styles/delete-work.css" type="text/css" rel="stylesheet" />
    <!-- Links a los archivos JS -->
    <script type="module" src="../Resources/js/users.js"></script>
    <script type="module" src="../Resources/js/delete-work.js"></script>
 </head>
 <!-- Cuerpo de la web -->
-
 <body>
    <!-- Cabecera de la web -->
    <header>
@@ -41,7 +40,7 @@
             <ul>
                <li><a href="./game.html?stage=primaria&subject=numeros">Números</a></li>
                <li><a href="./game.html?stage=primaria&subject=figuras">Figuras</a>
-                  <li><a href="./game.html?stage=primaria&subject=calculo">Cálculo</a>
+               <li><a href="./game.html?stage=primaria&subject=calculo">Cálculo</a>
                </li>
             </ul>
          </li>
@@ -49,7 +48,7 @@
             <ul>
                <li><a href="./game.html?stage=secundaria&subject=aritmetica">Aritmética</a></li>
                <li><a href="./game.html?stage=secundaria&subject=algebra">Álgebra</a>
-                  <li><a href="./game.html?stage=secundaria&subject=geometria">Geometría</a>
+               <li><a href="./game.html?stage=secundaria&subject=geometria">Geometría</a>
                </li>
             </ul>
          </li>
@@ -57,9 +56,10 @@
             <ul>
                <li><a href="./game.html?stage=avanzada&subject=analisis">Aritmética</a></li>
                <li><a href="./game.html?stage=avanzada&subject=algebralineal">Álgebra</a>
-                  <li><a href="./game.html?stage=avanzada&subject=geometria">Geometría</a>
+               <li><a href="./game.html?stage=avanzada&subject=geometria">Geometría</a>
                </li>
-            </ul></li>
+            </ul>
+         </li>
       </ul>
       <!-- Menú hamburguesa -->
       <ul class="nav-mov">
@@ -70,7 +70,7 @@
             <ul>
                <li><a href="./game.html?stage=primaria&subject=numeros">Números</a></li>
                <li><a href="./game.html?stage=primaria&subject=figuras">Figuras</a>
-                  <li><a href="./game.html?stage=primaria&subject=calculo">Cálculo</a>
+               <li><a href="./game.html?stage=primaria&subject=calculo">Cálculo</a>
                </li>
             </ul>
          </li>
@@ -78,7 +78,7 @@
             <ul>
                <li><a href="./game.html?stage=secundaria&subject=aritmetica">Aritmética</a></li>
                <li><a href="./game.html?stage=secundaria&subject=algebra">Álgebra</a>
-                  <li><a href="./game.html?stage=secundaria&subject=geometria">Geometría</a>
+               <li><a href="./game.html?stage=secundaria&subject=geometria">Geometría</a>
                </li>
             </ul>
          </li>
@@ -86,9 +86,10 @@
             <ul>
                <li><a href="./game.html?stage=avanzada&subject=analisis">Aritmética</a></li>
                <li><a href="./game.html?stage=avanzada&subject=algebralineal">Álgebra</a>
-                  <li><a href="./game.html?stage=avanzada&subject=geometria">Geometría</a>
+               <li><a href="./game.html?stage=avanzada&subject=geometria">Geometría</a>
                </li>
-            </ul></li>
+            </ul>
+         </li>
       </ul>
    </nav>
    <!-- Zona de contenido -->
@@ -97,16 +98,16 @@
       <section class="delete-work">
          <h2>Borrar Ejercicio</h2>
          <p>Introduce el código del ejercicio que quieres eliminar.</p>
-    <form class="delete-form">
-      <label for="code">Código:</label>      
-      <span class="input-container">
-         <input type="number" id="code" name="code" class="little-input" min="1" required>
-         <div class="error-message"></div>
-      </span>
-      <button type="submit">Borrar</button>
-      <div id="server-message"></div>
-   </form>
-</section>
+         <form class="delete-form">
+            <label for="code">Código:</label>
+            <span class="input-container">
+               <input type="number" id="code" name="code" class="little-input" min="1" required>
+               <div class="error-message"></div>
+            </span>
+            <button type="submit">Borrar</button>
+            <div id="server-message"></div>
+         </form>
+      </section>
       <!-- Ventana modal oculta por defecto -->
       <div class="modal" id="modal">
          <div class="modal-contenido">
@@ -136,7 +137,7 @@
          <a href="https://www.linkedin.com/in/iv%C3%A1n-mart%C3%ADn-blanco-3b166522/">
             <img src="../Resources/images/networks/linkedin.jpg" alt="Icono de LinkedIn" />
          </a>
-      </div>>
+      </div>
       <p class="copy">Iván Martín Blanco &COPY; 2023</p>
    </footer>
 </body>

@@ -1,52 +1,46 @@
 /** ESTILOS GENERALES **/
 /* Fuente Yusei Magic importada desde la API de Google */
 @import url("https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap");
+
 /* Estilo base para todo tipo de elementos */
 * {
-  /* Definimos como se va a ordenar y desplegar*/
   margin: auto;
-  /* Definimos las características visuales*/
   font-family: "Yusei Magic";
 }
+
 /* Estilo para los span */
 span {
-  /* Definimos las características visuales*/
   color: black;
 }
+
 /* Estilo para el cuerpo de las páginas */
 body {
   /* Definimos el tamaño */
   width: 100%;
   height: 100%;
-  /* Definimos las características visuales*/
   color: #5E30DB;
   background-color: RGB(240, 240, 240);
 }
+
 /** ESTILOS GENERALES DE LA CABECERA**/
 /* Estilo para la cabecera de las páginas */
 header {
-  /* Definimos como se va a ordenar y desplegar*/
   display: grid;
   grid-template-columns: 5% 85% 10%;
-  /* Definimos las características visuales*/
   background-color: #8052FF;
   color: white;
 }
+
+/* Estilo para los enlaces con imágenes */
 header a img {
-  /* Definimos como se va a ordenar y desplegar*/
   justify-self: start;
-  max-height: 90px;
-  width: auto;
   padding: 5px;
+  width: auto;
+  max-height: 90px;
 }
-.name {
-  /* Definimos como se va a ordenar y desplegar*/
-  padding-left: 5%;
-  /* Definimos las características visuales*/
-  font-size: 200%;
-}
+
+/* Estilo para el apartado de acceso en el header */
 .access {
-  /* Definimos donde se va a colocar y como se va a desplegar*/
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -54,145 +48,148 @@ header a img {
   cursor: pointer;
 }
 
+/* Estilo para las imágenes del apartado de acceso en el header */
 .access img {
-  /* Definimos como se va a ordenar y desplegar*/
   max-height: 50px;
   width: auto;
 }
+
+/* Estilo para los párrafos del apartado de acceso en el header */
 .access p {
-  /* Definimos las características visuales */
   font-size: 90%;
 }
+
 /** ESTILOS DEL MENÚ**/
 /* Estilo para el menú de las páginas */
 nav {
-  /* Definimos las características visuales*/
   background-color: #6938EF;
   line-height: 2rem;
 }
+
 /* Estilo para la lista del menú */
 nav ul {
-  /* Definimos como se va a ordenar y desplegar*/
   display: flex;
   padding: 0;
-  /* Definimos las características visuales*/
   list-style: none;
 }
+
 /* Estilo para cada elemento de la lista del menú */
 nav ul li {
-  /* Definimos el tamaño */
   width: 100%;
 }
+
 /* Estilo para cada enlace dentro de una lista */
 nav ul li a {
-  /* Definimos como se va a ordenar y desplegar*/
   display: flex;
   justify-content: center;
-  /* Definimos las características visuales*/
   text-decoration: none;
   color: white;
 }
+
 /* Estilo para cada enlace de segundo nivel dentro de una lista */
 nav ul li ul {
-  /* Definimos como se va a ordenar y desplegar*/
   display: none;
 }
+
 /* Estilo para cada enlace de segundo nivel dentro de una lista cuando se pasa por encima del primer nivel */
 nav ul li:hover ul {
-  /* Definimos como se va a ordenar y desplegar*/
   position: absolute;
   display: block;
-  /* Definimos las características visuales*/
   background-color: #6938EF;
   line-height: 2rem;
-  /* Definimos el tamaño */
   width: 33.33%;
 }
+
 /* Estilo para cada enlace dentro de una lista cuando el ratón pasa por encima */
 nav ul li a:hover {
-  /* Definimos las características visuales*/
   background-color: #8052FF;
 }
+
 /* Estilo para cada imagen dentro de una lista */
 nav ul li img {
-  /* Definimos como se va a ordenar y desplegar*/
   display: flex;
   justify-content: center;
   padding: 3px 0px 3px 0px;
 }
+
 /* Estilo para cada imagen dentro de una lista cuando el ratón pasa por encima */
 nav ul li img:hover {
-  /* Definimos las características visuales*/
   background-color: RGB(210, 0, 0);
 }
+
 /** ESTILOS GENERALES DEL CONTENIDO**/
-/* Estilo general para las ramas */
+/* Estilo para los distintos niveles de las etapas educativas */
 .level {
-  /* Definimos como se va a ordenar y desplegar*/
   display: grid;
   margin-top: 4em;
-  /* Definimos las características visuales*/
   text-align: center;
 }
+
 /* Estilo para el título de las ramas */
 .level h2 {
-  /* Definimos como se va a ordenar y desplegar*/
   grid-column: 2;
 }
+
 /* Estilo para los apartados de las ramas */
 .level div {
-  /* Definimos como se va a ordenar y desplegar*/
   display: grid;
   grid-column: 1/4;
   grid-row: 2;
   row-gap: 0.8em;
   padding-bottom: 4em;
 }
+
+/* Estilo para los nombres de las etapas educativas */
+.name {
+  padding-left: 5%;
+  font-size: 200%;
+}
+
 /* Estilo para las secciones principales de los apartados de las ramas */
 .branch {
-  /* Definimos como se va a ordenar y desplegar*/
   display: grid;
   grid-column: 1/4;
   grid-template-columns: 33.33% 33.33% 33.33%;
 }
 
-.branch a{
+/* Estilo para los enlaces de las secciones principales de los apartados de las ramas */
+.branch a {
   text-decoration: none;
 }
+
 /* Estilo para los artículos de las ramas */
 .branch article {
-  /* Definimos como se va a ordenar y desplegar*/
   max-width: 300px;
   margin: 2em 4em;
   padding: 10px 10px;
   position: relative;
-  /* Definimos las características visuales*/
   background-color: white;
   border-radius: 20%;
   height: 480px;
   color: #666;
   box-shadow: -1px 3px 9px #282c38;
 }
+
 /* Estilo para las imágenes de las ramas */
 .branch article img {
-  /* Definimos como se va a ordenar y desplegar*/
   margin: 10px 0px 20px;
-  /* Definimos las características visuales*/
   border-radius: 20%;
 }
+
 /* Estilo para el subtítulo de los artículos de las ramas */
 .branch article h3 {
-  position: relative; /* agregar posición relativa para usar las posiciones absolutas */
+  position: relative;
   width: 100%;
-  right:10px;
+  right: 10px;
   padding: 10px 10px;
   font-size: 140%;
   color: white;
   background-image: linear-gradient(#DBCD30, #8f8303);
   border-radius: 10%;
-    box-shadow: -1px 3px 9px #282c38;
+  box-shadow: -1px 3px 9px #282c38;
 }
 
+/* Estilo para los flecos de los ribetes de los artículos de las ramas */
 .branch article h3::before,
 .branch article h3::after {
   z-index: -1;
@@ -204,37 +201,47 @@ nav ul li img:hover {
   top: 4px;
 }
 
+/* Estilo para el fleco izquierdo de los ribetes de los artículos de las ramas */
 .branch article h3::before {
-  left: -35px; /* ajuste horizontal para que esté alineado con el texto */
+  left: -35px;
   border-right-color: #8f8303;
   border-top-color: #8f8303;
   border-bottom-color: #8f8303;
 }
 
+/* Estilo para el fleco derecho de los ribetes de los artículos de las ramas */
 .branch article h3::after {
-  right: -35px; /* ajuste horizontal para que esté alineado con el texto */
+  right: -35px;
   border-left-color: #8f8303;
   border-top-color: #8f8303;
   border-bottom-color: #8f8303;
 }
 
-/* Estilo para el subtítulo de los artículos de las ramas */
-.branch article h4{
-  /* Definimos como se va a ordenar y desplegar*/
+/* Estilo para el segundo subtítulo de los artículos de las ramas */
+.branch article h4 {
   width: 90%;
   margin: 1em auto;
 }
+
 /* Estilo para los párrafos de los artículos de las ramas */
-.branch article p{
-  /* Definimos como se va a ordenar y desplegar*/
+.branch article p {
   display: inline-block;
   max-width: 80%;
   margin: 5px 0px 10px 0px;
   text-align: center;
 }
+
+/* Estilo para los mensajes de error enviados desde el servidor */
+#server-message {
+  color: red;
+  text-align: center;
+  font-size: 80%;
+  margin-top: 5px;
+}
+
+/** ESTILOS DEL FOOTER**/
 /* Estilo general para la zona footer */
 footer {
-  /* Definimos como se va a ordenar y desplegar*/
   display: grid;
   grid-template-columns: 33% 33% 15% 19%;
   grid-template-rows: auto 1fr;
@@ -242,244 +249,243 @@ footer {
   justify-content: center;
   align-items: center;
   padding: 2em 2em 0.2em 2em;
-  /* Definimos las características visuales*/
   line-height: 30px;
   color: white;
   background-color: black;
 }
+
 /* Estilo para el enlaces del footer */
 .footer-links {
-  /* Definimos como se va a ordenar y desplegar*/
   grid-column: 1 / -1;
   text-align: left;
   margin-bottom: 20px;
   font-size: 120%;
 }
-/* Estilo para el título de los enlaces del footer */
-.footer-links h2{
-  /* Definimos como se va a ordenar y desplegar*/
+
+/* Estilo para los títulos de los enlaces del footer */
+.footer-links h2 {
   margin-bottom: 1em;
 }
+
+/* Estilo para las listas del footer */
 .footer-links ul {
-  list-style: none; /* para quitar los puntos de la lista */
+  list-style: none;
   margin: 0;
   padding: 0;
 }
 
+/* Estilo para cada elemento de las listas del footer */
 .footer-links li {
   margin: 0;
   line-height: 1;
-  padding: 5px 0; /* para dar espacio entre los elementos */
+  padding: 5px 0;
 }
-/* Estilo para el título de los enlaces del footer */
+
+/* Estilo para los enlaces del footer */
 footer a {
   text-decoration: none;
   color: white;
   cursor: pointer;
+}
 
-}
+/* Estilo para los enlaces del footer al pasar el ratón por encima */
 footer a:hover {
-  text-decoration: underline; /* Agrega un subrayado cuando el ratón está encima */
+  text-decoration: underline;
 }
+
 /* Estilo para el copy */
 .copy {
-  /* Definimos como se va a ordenar y desplegar*/
   grid-column: 4;
   grid-row: 2;
   margin-right: 30px;
-    /* Definimos las características visuales*/
   font-size: 14px;
   color: white;
 }
+
 /* Estilo para las redes sociales de la zona footer */
 .rrss {
-    /* Definimos como se va a ordenar y desplegar*/
-    grid-column: 1 / -1;
-    grid-row: 2;
-    text-align: center;
+  grid-column: 1 / -1;
+  grid-row: 2;
+  text-align: center;
 }
+
 /* Estilo para las imágenes de las redes sociales de la zona footer */
 .rrss img {
-  /* Definimos el tamaño*/
   height: 40px;
 }
+
 /* Estilo para las imágenes de las redes sociales de la zona footer cuando se pasa el ratón por encima */
 .rrss img:hover {
-  /* Definimos las características visuales*/
   filter: saturate(300%);
   cursor: pointer;
 }
 
-#server-message{
-  color:red;
-  text-align: center;
-  font-size: 80%;
-  margin-top: 5px;
+/* Estilo para los contenedores de los botones */
+.button-container {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 20px;
+  width: 100%
+}
 
+/* Estilo para los botones */
+button {
+  background-color: #DBCD30;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+/* Estilo para los botones cuando el ratón está encima */
+button:hover {
+  background-color: #8f8303;
+  color: white;
+}
+
+/* Estilo para los campos pequeños de formulario */
+.little-input {
+  width: 40px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+}
+
+/* Estilo para los contenedores de los campos de formulario */
+.input-container {
+  width: 100%;
+  text-align: left;
+}
+
+/* Estilo para los apartados del formulario */
+fieldset {
+  text-align: center
+}
+
+/* Estilo para los div dentro de los apartados del formulario */
+fieldset div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+}
+
+/* Estilo para las etiquetas de los div dentro de los apartados del formulario */
+fieldset div label {
+  width: 100%;
+  font-weight: bold;
+  text-align: right;
+}
+
+/* Estilo para los campos normales de los div dentro de los apartados del formulario */
+fieldset div input:not(.little-input) {
+  width: 175px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+}
+
+/* Estilo para los divs de los span dentro de los apartados del formulario */
+fieldset div span div {
+  display: flex;
+  color: red;
+  font-size: 12px;
+}
+
+/* Estilo para los campos de selección */
+select {
+  width: 187px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+}
+
+/* Estilo para las modales */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Estilo para los contenidos de las modales */
+.modal-contenido {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid black;
+  width: 30%;
+}
+
+/* Estilo para el botón de las modales */
+#cerrarModal {
+  display: flex;
+  margin-top: 10px;
 }
 
 /** ESTILOS CUANDO LA PÁGINA SE REPRODUCE MÁS PEQUEÑA DE 768PX**/
 @media (max-width: 768px) {
-  /* Estilo para la zona de promoción */
-  .promocion {
-    /* Definimos como se va a ordenar y desplegar*/
-    display: block;
-  }
-  /* Estilo para las imágenes de los añadidos de la zona de promoción */
-  .promocion aside a img {
-    /* Definimos el tamaño*/
-    width: 35%;
-  }
-  /* Estilo para primaria */
-  .primary {
-    /* Definimos como se va a ordenar y desplegar*/
-    display: block;
-    margin-top: 1.5em;
-  }
-  /* Estilo para los artículos de primaria */
-  .primary article {
-    /* Definimos el tamaño*/
-    width: 60%;
-    height: 90%;
-    /* Definimos como se va a ordenar y desplegar*/
-    margin-top: 2em;
-    /* Definimos las características visuales*/
-    background-color: white;
-    border: solid black;
-    border-radius: 20%;
-  }
-  /* Estilo para los apartados de primaria */
-  .primary div {
-    /* Definimos el tamaño*/
-    width: 100%;
-    height: 100%;
-    /* Definimos como se va a ordenar y desplegar*/
-    display: block;
-    padding: 0.1em 0px 2em 0px;
-    /* Definimos las características visuales*/
-    background-image: url("../Resources/images/rebajas.jpg");
-    background-size: 100% 50%;
-  }
-  /* Estilo para la zona de los cursos de primaria */
-  .primary div .branch {
-    /* Definimos como se va a ordenar y desplegar*/
-    display: block;
-  }
-    /* Estilo para la zona de las fichas de primaria */
-    .primary .branch {
-      /* Definimos como se va a ordenar y desplegar*/
-      display: block;
-    }
-  /* Estilo para la zona de servicios */
-  .servicios {
-    /* Definimos como se va a ordenar y desplegar*/
-    display: block;
-    margin-top: 0em;
-    /* Definimos las características visuales*/
-    color: white;
-  }
-  /* Estilo para los artículos de la zona de servicios */
-  .servicios article {
-    /* Definimos el tamaño*/
-    width: 100%;
-    /* Definimos como se va a ordenar y desplegar*/
-    margin-top: 0em;
-    padding-bottom: 20px;
-    /* Definimos las características visuales*/
-    border-top: solid black;
-    background-color: rgba(184, 183, 143, 1);
-  }
-  /* Estilo para los artículos de la zona de servicios en una posición par */
-  .servicios article:nth-child(even) {
-    /* Definimos las características visuales*/
-    background-color: rgba(158, 175, 184, 1);
-  }
-  /* Estilo para la zona de footer */
-  footer {
-    /* Definimos como se va a ordenar y desplegar*/
-    margin-top: 0em;
-    padding: 1em 2em 0.2em 2em;
-    /* Definimos las características visuales*/
-    text-align: center;
-    line-height: 25px;
-    background-color: black;
-  }
-  /* Estilo para el copy */
-  .copy {
-    /* Definimos como se va a ordenar y desplegar*/
-    padding-top: 10px;
-  }
-  /* Estilo para la zona del menú */
-  .nav-text {
-    /* Definimos como se va a ordenar y desplegar*/
-    display: none;
-  }
-  /* Estilo para el nombre de la web */
-  .name {
-    /* Definimos el tamaño*/
-    width: 100%;
-    /* Definimos como se va a ordenar y desplegar*/
-    font-size: 120%;
-  }
-  /* Estilo para el título del nombre de la web */
-  .name h1 {
-    /* Definimos las características visuales*/
-    text-align: left;
-  }
+
   /* Estilo para la cabecera */
   header {
-    /* Definimos como se va a ordenar y desplegar*/
     grid-template-columns: 15% 65% 20%;
   }
-  /* Estilo para las imágenes de la cabecera */
+
+  /* Estilo para los enlaces con imágenes de la cabecera */
   header a img {
-    /* Definimos el tamaño*/
     width: auto;
     max-height: 50px;
-    /* Definimos como se va a ordenar y desplegar*/
     padding: 5px;
   }
+
   /* Estilo para las imágenes de la zona de acceso en la cabecera */
   .access img {
-    /* Definimos el tamaño*/
     width: auto;
     max-height: 30px;
   }
-  /* Estilo para la zona del menú en dispositivos móviles*/
-  nav ul {
-    /* Definimos como se va a ordenar y desplegar*/
-    display: block;
-    position: absolute;
-    /* Estilo para el menú de las páginas */
 
-    /* Definimos las características visuales*/
-    background-color: #5E30DB;
-    line-height: 2rem;
-  }
-  /* Estilo para el menú en móvil */
+  /* Estilo para la zona del navegador */
   .nav-mov {
-    /* Definimos como se va a ordenar y desplegar*/
     width: 100%;
     z-index: 1;
   }
-  /* Estilo para cada enlace dentro de una lista en la versión móvil*/
-  nav ul li a {
-    /* Definimos como se va a ordenar y desplegar*/
-    justify-content: left;
-    padding-left: 15px;
-    /* Definimos las características visuales*/
-    text-decoration: none;
-    color: white;
-  }
-  /* Estilo para el checkbox del menú */
-  .nav-mov input {
-    /* Definimos como se va a ordenar y desplegar*/
+
+  /* Estilo para los textos de la zona del navegador */
+  .nav-text {
     display: none;
   }
 
-  /* Estilo para la imagen del menú */
+  /* Estilo para las listas de la zona del navegador */
+  nav ul {
+    display: block;
+    position: absolute;
+    background-color: #5E30DB;
+    line-height: 2rem;
+  }
+
+  /* Estilo para cada uno de los elementos de la lista de la zona del navegador */
+  nav ul li a {
+    justify-content: left;
+    padding-left: 15px;
+    text-decoration: none;
+    color: white;
+  }
+
+  /* Estilo para los input de la zona del navegador */
+  .nav-mov input {
+    display: none;
+  }
+
+  /* Estilo para las etiquetas de la zona del navegador */
   .nav-mov label {
-    /* Definimos como se va a ordenar y desplegar*/
     display: inline-block;
     padding-left: 15px;
     width: 30px;
@@ -489,51 +495,97 @@ footer a:hover {
     color: white
   }
 
-  /* Estilo para la zona del menú cuando no está pulsado el botón */
-  .nav-mov :not(input:checked) ~ li {
-    /* Definimos como se va a ordenar y desplegar*/
+  /* Estilo para los elementos de la lista que no están pulsados de la zona del navegador */
+  .nav-mov :not(input:checked)~li {
     display: none;
   }
-  /* Estilo para la zona del menú cuando está pulsado el botón */
-  .nav-mov input:checked ~ li {
-    /* Definimos como se va a ordenar y desplegar*/
-    display: block;
-  }
-  /* Estilo para la zona del segundo menú cuando está pulsado el botón */
-  .nav-mov input:checked ~ li ul li {
-    /* Definimos como se va a ordenar y desplegar*/
+
+  /* Estilo para los elementos de la lista que están pulsados de la zona del navegador */
+  .nav-mov input:checked~li {
     display: block;
   }
 
-  /* Estilo para los enlaces de la zona del segundo menú */
-  nav ul li ul li a {
-    /* Definimos como se va a ordenar y desplegar*/
-    padding-left: 2em;
-  }
-  /* Estilo para cada enlace de segundo nivel dentro de una lista cuando se pasa por encima del primer nivel */
+  /* Estilo para los elementos de la lista del submenú de la zona del navegador cuando tenga encima el ratón */
   nav ul li:hover ul {
-    /* Definimos como se va a ordenar y desplegar*/
     position: relative;
     display: block;
-    /* Definimos las características visuales*/
     background-color: #1d0464;
     line-height: 2rem;
-    /* Definimos el tamaño */
     width: 100%;
-    
   }
-  
+
+  /* Estilo para los inputs de elementos de la lista del submenú de la zona del navegador cuando han sido pulsados */
+  .nav-mov input:checked~li ul li {
+    display: block;
+  }
+
+  /* Estilo para los enlaces de los elementos de la lista del submenú de la zona del navegador */
+  nav ul li ul li a {
+    padding-left: 2em;
+  }
+
+  /* Estilo para los nombres de las etapas educativas */
+  .name {
+    width: 100%;
+    font-size: 120%;
+  }
+
+  /* Estilo para el título de los nombres de las etapas educativas */
+  .name h1 {
+    text-align: center;
+  }
+
+  /* Estilo para las secciones principales de los apartados de las ramas */
+  .branch {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Estilo para los campos de selección */
+  select {
+    width: 162px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-top: 5px;
+  }
+
+  /* Estilo para la zona de footer */
+  footer {
+    margin-top: 0em;
+    padding: 1em 2em 0.2em 2em;
+    text-align: center;
+    line-height: 25px;
+    background-color: black;
+  }
+
+  /* Estilo para las listras de la zona de footer */
+  footer ul {
+    text-align: center;
+  }
+
+  /* Estilo para el copy */
+  .copy {
+    grid-column: 1 / 4;
+    grid-row: 3;
+  }
+
+  /* Estilo para las redes sociales de la zona footer */
+  .rrss {
+    margin-top: -15px;
+  }
 }
+
 /** ESTILOS CUANDO LA PÁGINA SE REPRODUCE MÁS GRANDE DE 768PX**/
 @media (min-width: 769px) {
-  /* Estilo para la zona del menú */
+
+  /* Estilo para la zona del navegador */
   .nav-mov {
-    /* Definimos como se va a ordenar y desplegar*/
     display: none;
   }
+
   /* Estilo para el botón de hamburguesa */
   #ham {
-    /* Definimos como se va a ordenar y desplegar*/
     display: none;
   }
 }

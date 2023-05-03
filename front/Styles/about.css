@@ -1,32 +1,27 @@
+/** ESTILOS DE LA PÁGINA SOBRE MATEMÁGICAS **/
+/* Estilo para la zona principal */
+.about {
+	background-color: #FFF;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+	padding: 1em;
+	max-width: 80%;
+	margin: 50px auto;
+}
 
+/* Estilo para los párrafos y las listas */
+main p, ul {
+	margin-bottom: 20px;
+}
 
+/* Estilo para los títulos */
 h1 {
 	margin: 0 0 20px 0;
 	font-size: 28px;
 	text-align: center;
 }
 
-.about {
-	background-color: #FFF;
-	box-shadow: 0 0 10px rgba(0,0,0,0.2);
-	padding: 1em;
-	max-width: 80%;
-  margin: 50px auto;
-}
-
-p, ul {
-	margin-bottom: 20px;
-}
-
+/* Estilo para subtitulos */
 h2 {
 	font-size: 24px;
 	margin-bottom: 10px;
-}
-/** ESTILOS CUANDO LA PÁGINA SE REPRODUCE MÁS PEQUEÑA DE 768PX**/
-@media (max-width: 768px) {
-  
-}
-/** ESTILOS CUANDO LA PÁGINA SE REPRODUCE MÁS GRANDE DE 768PX**/
-@media (min-width: 769px) {
-
 }
