@@ -41,12 +41,12 @@ h1 {
 
 	/* Estilo para la zona principal */
 	main {
-		max-width: 80%;
+		width: 80%;
 	}
 
 	/* Estilo para el contenido principal */
 	.contact-info {
 		margin: 5em auto;
-		max-width: 80%;
+		width: 80%;
 	}
 }

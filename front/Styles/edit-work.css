@@ -1,110 +1,30 @@
+/** ESTILOS DE LA PÁGINA PARA EDITAR EJERCICIOS **/
+/* Estilo para la zona principal */
 .edit-work {
   width: 40%;
-  min-width: 500px;
   margin: 50px auto;
   border: 2px solid #ccc;
   border-radius: 10px;
   padding: 20px;
-  
 }
 
+/* Estilo para los subtítulos */
 .edit-work h2 {
   margin: 0 auto 25px auto;
   text-align: center;
 }
-.edit-form fieldset div div{
-  display: grid;
-  grid-template-columns: 1fr 1fr; /* establece dos columnas con el mismo ancho */
-  grid-gap: 10px; /* añade un espacio entre cada elemento */
 
-  
-}
-
-.edit-form fieldset div div label {
-  width: 100%;
-  font-weight: bold;
-  text-align: right;
-  
-}
-
-.edit-form fieldset div div input:not(.little-input) {
-  width: 175px;
-  padding: 5px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  margin-top: 5px;
-  
-}
-.edit-form fieldset{text-align: center}
-
-.button-container {
+/* Estilo para el contenedor de las variables */
+#variables-container {
   display: flex;
-  justify-content: flex-start;
-  margin-top: 20px;
-  width: 100%
+  flex-direction: column;
 }
 
-.edit-work button {
-  background-color: #DBCD30;
-  border: none;
-  border-radius: 5px;
-  padding: 10px;
-  margin-top: 10px;
-  cursor: pointer;
-}
-
-.edit-work button:hover {
-  background-color: #8f8303;
-  color: white;
-}
-.little-input{
-
-  width: 40px;
-  padding: 5px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  margin-top: 5px;
-}
-
-.input-container{
-  width: 100%;
-  text-align: left;
-}
-.error-message{
-  display: flex;
-  width: unset;
-  color:red;
-  font-size: 12px;
-}
-.modal {
-  display: none; /* La ventana modal está oculta por defecto */
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.4);
-}
-
-.modal-contenido {
-  background-color: #fefefe;
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid black;
-  width: 30%;
-}
-
-#cerrarModal {
-  display: flex;
-  margin-top: 10px;
-}
 /** ESTILOS CUANDO LA PÁGINA SE REPRODUCE MÁS PEQUEÑA DE 768PX**/
 @media (max-width: 768px) {
-  
-}
-/** ESTILOS CUANDO LA PÁGINA SE REPRODUCE MÁS GRANDE DE 768PX**/
-@media (min-width: 769px) {
 
+  /* Estilo para la zona principal */
+  .edit-work {
+    width: 80%;
+  }
 }

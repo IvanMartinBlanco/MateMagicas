@@ -1,48 +1,56 @@
-main{
+/** ESTILOS DE LA PÁGINA PARA LAS ESTADÍSTICAS **/
+/* Estilo para la zona principal */
+main {
   min-height: 50vh;
 }
-/* Estilo general para las estadísticas */
+
+/* Estilo para las estadísticas */
 .statistics {
-  /* Definimos como se va a ordenar y desplegar*/
   margin: 50px auto;
-  /* Definimos las características visuales*/
   text-align: center;
 }
-/* Estilo general para las estadísticas */
-.statistics div{
-display: flex;
-justify-content: center; /* Centrar horizontalmente */
-  align-items: center; /* Centrar verticalmente */
+
+/* Estilo para los divs de las estadísticas */
+.statistics div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+/* Estilo para los subtítulos */
 .statistics h2 {
   margin-top: 0;
   padding: 0px;
 }
 
-.statistics-table{
+/* Estilo para las tablas */
+.statistics-table {
   margin-top: 1em;
   border: #6938EF 1px solid;
- }
-
-.statistics-table td, th, caption{
- border: #6938EF 1px solid;
 }
 
-.statistics-table caption{
+/* Estilo para los títulos de las tablas */
+.statistics-table caption {
   border: #6938EF 1px solid;
   font-weight: bold;
- }
+}
 
- td img{
+/* Estilo para los elementos interiores de las tablas */
+.statistics-table td, th, caption {
+  border: #6938EF 1px solid;
+}
+
+/* Estilo para las imágenes interiores de las tablas */
+td img {
   vertical-align: middle;
   max-height: 20px;
- }
+}
+
 /** ESTILOS CUANDO LA PÁGINA SE REPRODUCE MÁS PEQUEÑA DE 768PX**/
 @media (max-width: 768px) {
-  
-}
-/** ESTILOS CUANDO LA PÁGINA SE REPRODUCE MÁS GRANDE DE 768PX**/
-@media (min-width: 769px) {
 
+  /* Estilo para los divs de las estadísticas */
+  .statistics div {
+    flex-direction: column;
+  }
 }

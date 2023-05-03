@@ -1,122 +1,85 @@
-.game{
-	text-align: center;
+/** ESTILOS DE LA PÁGINA PARA EL JUEGO **/
+/* Estilo para la zona principal */
+.game {
+  text-align: center;
   margin: 50px auto;
 }
-.game select{
-	margin-bottom: 1em;
+
+/* Estilo para los select */
+.game select {
+  margin-bottom: 1em;
 }
-.game-zone{
+
+/* Estilo para la zona de juego */
+.game-zone {
   display: flex;
   flex-direction: column;
-  width: 500px; 
-  height: 500px; 
+  width: 500px;
+  height: 500px;
   border: 1px solid black;
   justify-content: space-between;
   align-items: center;
 }
 
-.game-zone h1{
+/* Estilo para los títulos de la zona de juego */
+.game-zone h1 {
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin: auto 10px;
 }
-.game-zone h1 span{
+
+/* Estilo para span de los títulos de la zona de juego */
+.game-zone h1 span {
   font-size: 70%;
   color: #5E30DB;
 }
-.game-zone h2{
+
+/* Estilo para los subtítulos de la zona de juego */
+.game-zone h2 {
   display: flex;
   justify-content: center;
   margin: 0 auto;
 }
-.game-zone p{
+
+/* Estilo para los párrafos */
+.game-zone p {
   margin-top: 0px;
 }
+
+/* Estilo para la zona de niveles */
 .game-level {
-  width: 300px; 
+  width: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 auto; /* Centrado horizontal */
-}
-select{
-  width: 187px;
-  padding: 5px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  margin-top: 5px;
-}
-.game-zone input{
-  width: 175px;
-  padding: 5px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  margin-top: 5px;
-}
-.game-zone input{
-  width: 175px;
-  padding: 5px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  margin-top: 5px;
-}
-.game-zone form {
-  margin: 10px auto auto auto; /* Agregar margen automático para centrado vertical */
-}
-.game-zone .button-container button {
-  background-color: #DBCD30;
-  border: none;
-  border-radius: 5px;
-  padding: 10px;
-  margin-top: 10px;
-  cursor: pointer;
-}
-.game-zone button {
-  background-color: #DBCD30;
-  border: none;
-  border-radius: 5px;
-  padding: 10px;
-  margin-top: 10px;
-  cursor: pointer;
+  margin: 0 auto;
 }
 
-.game-zone button:hover {
-  background-color: #8f8303;
-  color: white;
+/* Estilo para los inputs de la zona de juego */
+.game-zone input {
+  width: 175px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-top: 5px;
 }
-.figura{
+
+/* Estilo para los formularios de la zona de juego */
+.game-zone form {
+  margin: 10px auto auto auto;
+}
+
+/* Estilo para las figuras de la zona de juego */
+.figura {
   height: 200px;
 }
-.modal {
-  display: none; /* La ventana modal está oculta por defecto */
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.4);
-}
 
-.modal-contenido {
-  background-color: #fefefe;
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid black;
-  width: 30%;
-}
-
-#cerrarModal {
-  display: flex;
-  margin-top: 10px;
-}
 /** ESTILOS CUANDO LA PÁGINA SE REPRODUCE MÁS PEQUEÑA DE 768PX**/
 @media (max-width: 768px) {
-  
-}
-/** ESTILOS CUANDO LA PÁGINA SE REPRODUCE MÁS GRANDE DE 768PX**/
-@media (min-width: 769px) {
 
+  /* Estilo para la zona de juego */
+  .game-zone {
+    width: 90%;
+  }
 }

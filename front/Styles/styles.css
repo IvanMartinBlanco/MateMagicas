@@ -394,6 +394,15 @@ fieldset div span div {
   font-size: 12px;
 }
 
+/* Estilo para los campos de selección */
+select {
+  width: 187px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+}
+
 /* Estilo para las modales */
 .modal {
   display: none;
@@ -530,6 +539,15 @@ fieldset div span div {
   .branch {
     display: flex;
     flex-direction: column;
+  }
+
+  /* Estilo para los campos de selección */
+  select {
+    width: 162px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-top: 5px;
   }
 
   /* Estilo para la zona de footer */

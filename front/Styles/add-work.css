@@ -32,15 +32,6 @@
   margin-top: 5px;
 }
 
-/* Estilo para los campos de selección */
-select {
-  width: 187px;
-  padding: 5px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  margin-top: 5px;
-}
-
 /** ESTILOS CUANDO LA PÁGINA SE REPRODUCE MÁS PEQUEÑA DE 768PX**/
 @media (max-width: 768px) {
 
@@ -53,15 +44,6 @@ select {
   /* Estilo para los campos normales de los div dentro de los apartados del formulario */
   fieldset div input:not(.little-input) {
     width: 150px;
-    padding: 5px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    margin-top: 5px;
-  }
-
-  /* Estilo para los campos de selección */
-  select {
-    width: 162px;
     padding: 5px;
     border-radius: 5px;
     border: 1px solid #ccc;
