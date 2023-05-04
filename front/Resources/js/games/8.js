@@ -1,18 +1,18 @@
-// Obtener referencias a los elementos HTML necesarios
+// Seleccionamos los elementos del DOM con la clase "game-zone" y "modal", y asignamos el valor de la variable global "userId" al identificador de usuario.
 gameZone = document.querySelector('.game-zone');
 modal = document.querySelector('.modal');
 userId = window.userId;
 
-// Definir las medidas del rectángulo
+// Definimos las medidas del rectángulo.
 rectHeight = Math.floor(Math.random() * 1) + 1;
 rectWidth = Math.floor(Math.random() * 5) + 1;
 
-// Definir las medidas de la regla
+// Definimos las medidas de la regla.
 ruleWidth = 500;
 lineHeight = 50;
 lineWidth = ruleWidth / 10;
 
-// Crear el rectángulo
+// Creamos el rectángulo.
 rectangle = document.createElement('div');
 rectangle.style.width = `${rectWidth * lineWidth}px`;
 rectangle.style.height = `${rectHeight * lineHeight}px`;
@@ -21,26 +21,26 @@ rectangle.style.position = 'absolute';
 rectangle.style.top = `${lineHeight * -1}px`;
 rectangle.style.left = `${lineWidth * 2}px`;
 
-// Crear la regla
+// Creamos la regla.
 rule = document.createElement('div');
 rule.style.width = `${ruleWidth}px`;
 rule.style.height = `${lineHeight}px`;
 rule.style.position = 'relative';
 rule.style.borderTop = 'solid 2px black';
 
-// Agregar las líneas verticales a la regla
+// Añadimos las líneas de medida en la regla.
 for (let i = 0; i < 10; i++) {
-    line = document.createElement('div');
-    line.style.width = `${lineWidth}px`;
-    line.style.height = `${lineHeight}px`;
-    line.style.position = 'absolute';
-    line.style.top = `0`;
-    line.style.left = `${i * lineWidth}px`;
-    line.style.borderLeft = 'solid 2px black';
-    rule.appendChild(line);
+  line = document.createElement('div');
+  line.style.width = `${lineWidth}px`;
+  line.style.height = `${lineHeight}px`;
+  line.style.position = 'absolute';
+  line.style.top = `0`;
+  line.style.left = `${i * lineWidth}px`;
+  line.style.borderLeft = 'solid 2px black';
+  rule.appendChild(line);
 }
 
-// Mostrar el rectángulo y la regla en pantalla
+//Usamos el rectángulo y la regla para generar el juego.
 gameZone.innerHTML = `
   <h1>¿Cuánto mide?</h1>
   <div style="margin-top: ${lineHeight * 3}px; position: relative;">
@@ -56,71 +56,76 @@ gameZone.innerHTML = `
   </form>
 `;
 
-// Manejar el envío del formulario
+// Agregamos un event listener al formulario que se activa cuando se envía el formulario.
 answerForm = document.getElementById('answer-form');
 answerForm.addEventListener('submit', (event) => {
-    event.preventDefault(); // Evitar que el formulario se envíe
-    userWidth = parseInt(document.getElementById('answer').value);
-    if (isNaN(userWidth)) {
-        result(false, false);
-        return;
-    }
-    success = userWidth === rectWidth;
-    result(success);
+  // Evitar que el formulario se envíe  
+  event.preventDefault();
+
+  // Obtenemos la respuesta del usuario y la limpiamos de espacios en blanco al principio y al final.
+  userWidth = parseInt(document.getElementById('answer').value.trim());
+
+  // Si el usuario ha ingresado algo que no es un número, mostramos un mensaje de error en la pantalla y salimos de la función.
+  if (isNaN(userWidth)) {
+    result(false, false);
+    return;
+  }
+
+  // Comparamos el valor introducido por el usuario con el valor esperado.
+  success = userWidth === rectWidth;
+
+  // Se envía el resultado.
+  result(success);
 });
 
-function result(success , isNumber = true) {
-    if (success) {
-        modal.innerHTML = `
+// La función "result" muestra el mensaje de éxito o error en un modal y actualiza el resultado del usuario en la base de datos.
+function result(success, isNumber = true) {
+  if (success) {
+    modal.innerHTML = `
       <div class="modal-contenido">
         <h2>¡Éxito!</h2>
         <p>Has acertado el área del rectángulo.</p>
         <button id="cerrarModal">Cerrar</button>
       </div>
     `;
-    } else {
-        if (isNumber === true) {
-            modal.innerHTML = `
+  } else {
+    if (isNumber === true) {
+      modal.innerHTML = `
       <div class="modal-contenido">
       <h2>¡Error!</h2>
       <p>El resultado es incorrecto.</p>
       <button id="cerrarModal">Cerrar</button>
    </div>`;
-        } else {
-            modal.innerHTML = `
+    } else {
+      modal.innerHTML = `
       <div class="modal-contenido">
       <h2>¡Error!</h2>
       <p>No se ha introducido un número.</p>
       <button id="cerrarModal">Cerrar</button>
    </div>`;
-        }
     }
-
-    // Mostrar el modal
-    miModal = document.getElementById('modal');
-    miModal.style.display = 'block';
-
-    // Manejar el evento para cerrar el modal
-    closeModal = document.querySelector('#cerrarModal');
-    closeModal.addEventListener('click', () => {
-        modal.style.display = 'none';
-        //location.reload();
+  }
+  // Mostramos el modal y recargamos la página cuando se cierra.
+  miModal = document.getElementById('modal');
+  miModal.style.display = 'block';
+  closeModal = document.querySelector('#cerrarModal');
+  closeModal.addEventListener('click', () => {
+    modal.style.display = 'none';
+    location.reload();
+  });
+  // Actualizamos el resultado del usuario en la base de datos.
+  userResult = {
+    id: userId,
+    success: success ? 1 : 0,
+    idEjercicio: 8
+  };
+  fetch("http://localhost/web/back/public/editresult", {
+    method: 'PUT',
+    body: JSON.stringify(userResult)
+  })
+    .then(response => response.json())
+    .catch((error) => {
+      console.log(error)
+      alert('Ha ocurrido un error al modificar el resultado');
     });
-
-    // Enviar los datos del resultado al servidor
-    userResult = {
-        id: userId,
-        success: success ? 1 : 0,
-        idEjercicio: 8
-    };
-    fetch("http://localhost/web/back/public/editresult", {
-        method: 'PUT',
-        body: JSON.stringify(userResult)
-    })
-        .then(response => response.json())
-        .catch((error) => {
-            console.log(error)
-            alert('Ha ocurrido un error al modificar el resultado');
-        });
-
 }

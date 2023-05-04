@@ -1,9 +1,9 @@
-
-
+// Seleccionamos los elementos del DOM con la clase "game-zone" y "modal", y asignamos el valor de la variable global "userId" al identificador de usuario.
 gameZone = document.querySelector(".game-zone");
 modal = document.querySelector(".modal");
 userId = window.userId;
 
+// Definimos la tabla de conversión de números romanos a decimales.
 romanToDecimal = {
     "I": 1,
     "V": 5,
@@ -13,9 +13,10 @@ romanToDecimal = {
     "D": 500,
     "M": 1000
 };
+// Elegimos los números romanos disponibles para el juego y seleccionamos uno de forma aleatoria.
 romanNumerals = ["I", "V", "X", "L", "C", "D", "M"];
 randomRomanNumeral = romanNumerals[Math.floor(Math.random() * romanNumerals.length)];
-
+//Usamos el número para generar el juego.
 gameZone.innerHTML = `
       <h1>Sabiendo que es un número romano, ¿qué número representa ${randomRomanNumeral}?</h1>
       <h2>${randomRomanNumeral}</h2>
@@ -27,36 +28,31 @@ gameZone.innerHTML = `
         </div>
       </form>
     `;
-// Manejar el envío del formulario
+// Agregamos un event listener al formulario que se activa cuando se envía el formulario.
 answerForm = document.getElementById("answer-form");
 answerForm.addEventListener("submit", (event) => {
-    event.preventDefault(); // Evitar que el formulario se envíe
-    userAnswer = document.getElementById("answer").value.toUpperCase().trim(); // Convertir la respuesta a mayúsculas para evitar errores
+    // Evita que el formulario se envíe.
+    event.preventDefault();
 
-    // Convertir el número romano a decimal
-    romanValues = {
-        I: 1,
-        V: 5,
-        X: 10,
-        L: 50,
-        C: 100,
-        D: 500,
-        M: 1000,
-    };
+    // Obtenemos la respuesta del usuario y la limpiamos de espacios en blanco al principio y al final.
+    userAnswer = document.getElementById("answer").value.trim();
+    // Obtenemos el valor decimal que tiene el número romano que salió aleatoriamente.
+    decimalValue = romanToDecimal[randomRomanNumeral];
 
-    decimalValue = romanValues[randomRomanNumeral];
-
+    // Si el usuario ha ingresado algo que no es un número, mostramos un mensaje de error en la pantalla y salimos de la función.
     userDecimalValue = parseInt(userAnswer);
     if (isNaN(userDecimalValue)) {
         result(false, false);
         return;
     }
+
+    // Comparamos el valor introducido por el usuario con el valor esperado.
     success = userDecimalValue === decimalValue;
 
+    // Se envía el resultado.
     result(success);
-    return;
 });
-
+// La función "result" muestra el mensaje de éxito o error en un modal y actualiza el resultado del usuario en la base de datos.
 function result(success, isNumber = true) {
     if (success) {
         modal.innerHTML = `
@@ -83,14 +79,15 @@ function result(success, isNumber = true) {
    </div>`;
         }
     }
+    // Mostramos el modal y recargamos la página cuando se cierra.
     miModal = document.getElementById("modal");
     miModal.style.display = "block";
     closeModal = document.querySelector("#cerrarModal");
     closeModal.addEventListener("click", function () {
         modal.style.display = "none";
         location.reload();
-
     });
+    // Actualizamos el resultado del usuario en la base de datos.
     userResult = {
         'id': userId,
         'success': success ? 1 : 0,
@@ -105,5 +102,4 @@ function result(success, isNumber = true) {
             console.log(error)
             alert('Ha ocurrido un error al modificar el resultado');
         });
-
 }

@@ -1,23 +1,22 @@
+// Seleccionamos los elementos del DOM con la clase "game-zone" y "modal", y asignamos el valor de la variable global "userId" al identificador de usuario.
 gameZone = document.querySelector(".game-zone");
 modal = document.querySelector(".modal");
 userId = window.userId;
 
-// Definir las figuras geométricas y sus áreas
+// Elegimos las figuras disponibles para el juego y seleccionamos una de forma aleatoria.
 figures = {
   triangle: { name: "Triángulo", formula: (base, height) => (base * height) / 2, image: "../Resources/images/games/triangulo.png" },
   square: { name: "Cuadrado", formula: (side) => side ** 2, image: "../Resources/images/games/cuadrado.png" },
   rectangle: { name: "Rectángulo", formula: (base, height) => base * height, image: "../Resources/images/games/rectangulo.png" }
 };
-
-// Seleccionar una figura aleatoria
 figureKeys = Object.keys(figures);
 selectedFigure = figures[figureKeys[Math.floor(Math.random() * figureKeys.length)]];
 
-// Generar datos aleatorios para las dimensiones de la figura
-base=null;
-height=null;
- side=null; 
- area = null;
+// Generamos datos aleatorios para las dimensiones de la figura y los usamos para generar el juego.
+base = null;
+height = null;
+side = null;
+area = null;
 if (selectedFigure.name === "Triángulo") {
   base = Math.floor(Math.random() * 10) + 1;
   height = Math.floor(Math.random() * 10) + 1;
@@ -30,9 +29,8 @@ if (selectedFigure.name === "Triángulo") {
   height = Math.floor(Math.random() * 10) + 1;
   area = selectedFigure.formula(base, height);
 }
-
-if(selectedFigure.name === "Cuadrado"){
-gameZone.innerHTML = `
+if (selectedFigure.name === "Cuadrado") {
+  gameZone.innerHTML = `
   <h1>¿Cuál es el área de la siguiente figura?</h1>
   <img class="figura" src="${selectedFigure.image}" alt="${selectedFigure.name}">
   <p>Lado: ${side}</p>
@@ -43,8 +41,9 @@ gameZone.innerHTML = `
       <button type="submit">Comprobar</button>
     </div>
   </form>
-`;}else{
-    gameZone.innerHTML = `
+`;
+} else {
+  gameZone.innerHTML = `
   <h1>¿Cuál es el área de la siguiente figura?</h1>
   <img class="figura" src="${selectedFigure.image}" alt="${selectedFigure.name}">
   <p>Base: ${base}   Altura: ${height}</p>
@@ -57,68 +56,73 @@ gameZone.innerHTML = `
   </form>
 `;
 }
-
+// Agregamos un event listener al formulario que se activa cuando se envía el formulario.
 answerForm = document.getElementById("answer-form");
 answerForm.addEventListener("submit", (event) => {
-  event.preventDefault(); // Evita que el formulario se envíe
+  // Evita que el formulario se envíe.
+  event.preventDefault();
 
+  // Obtenemos la respuesta del usuario y la limpiamos de espacios en blanco al principio y al final.
   answerValue = Number(document.getElementById("answer").value.trim());
+
+  // Si el usuario ha ingresado algo que no es un número, mostramos un mensaje de error en la pantalla y salimos de la función.
   if (isNaN(answerValue)) {
     result(false, false);
     return;
   }
 
-  // Comprobar el resultado
+  // Comparamos el valor introducido por el usuario con el esperado y se envía el resultado.
   success = (answerValue === area);
   result(success);
 });
-
-function result(success, isNumber=true) {
-    if (success) {
-      modal.innerHTML = `
+// La función "result" muestra el mensaje de éxito o error en un modal y actualiza el resultado del usuario en la base de datos.
+function result(success, isNumber = true) {
+  if (success) {
+    modal.innerHTML = `
         <div class="modal-contenido">
           <h2>¡Éxito!</h2>
           <p>El resultado es correcto.</p>
           <button id="cerrarModal">Cerrar</button>
         </div>
       `;
-    } else {
-      if (isNumber === true) {
-        modal.innerHTML = `
+  } else {
+    if (isNumber === true) {
+      modal.innerHTML = `
           <div class="modal-contenido">
             <h2>¡Error!</h2>
             <p>El resultado es incorrecto.</p>
             <button id="cerrarModal">Cerrar</button>
           </div>`;
-      } else {
-        modal.innerHTML = `
+    } else {
+      modal.innerHTML = `
           <div class="modal-contenido">
             <h2>¡Error!</h2>
             <p>No has introducido un número.</p>
             <button id="cerrarModal">Cerrar</button>
           </div>`;
-      }
     }
-  
-    miModal = document.getElementById("modal");
-    miModal.style.display = "block";
-    closeModal = document.querySelector("#cerrarModal");
-    closeModal.addEventListener("click", function () {
-      modal.style.display = "none";
-      location.reload();
-    });
-    userResult = {
-      'id': userId,
-      'success': success ? 1 : 0,
-      'idEjercicio': 18,
-    };
-    fetch("http://localhost/web/back/public/editresult", {
-      method: 'PUT',
-      body: JSON.stringify(userResult)
-    })
-      .then(response => response.json())
-      .catch((error) => {
-        console.log(error)
-        alert('Ha ocurrido un error al modificar el resultado');
-      });
   }
+  // Mostramos el modal y recargamos la página cuando se cierra.
+  miModal = document.getElementById("modal");
+  miModal.style.display = "block";
+  closeModal = document.querySelector("#cerrarModal");
+  closeModal.addEventListener("click", function () {
+    modal.style.display = "none";
+    location.reload();
+  });
+  // Actualizamos el resultado del usuario en la base de datos.
+  userResult = {
+    'id': userId,
+    'success': success ? 1 : 0,
+    'idEjercicio': 18,
+  };
+  fetch("http://localhost/web/back/public/editresult", {
+    method: 'PUT',
+    body: JSON.stringify(userResult)
+  })
+    .then(response => response.json())
+    .catch((error) => {
+      console.log(error)
+      alert('Ha ocurrido un error al modificar el resultado');
+    });
+}

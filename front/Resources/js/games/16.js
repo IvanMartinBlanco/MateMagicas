@@ -1,15 +1,12 @@
+// Seleccionamos los elementos del DOM con la clase "game-zone" y "modal", y asignamos el valor de la variable global "userId" al identificador de usuario.
 gameZone = document.querySelector(".game-zone");
 modal = document.querySelector(".modal");
 userId = window.userId;
 
-// Generar coeficiente y término aleatorios
+// Preparamos los números aleatorios del ejercicio y los usamos para generar el juego.
 coef = Math.floor(Math.random() * 10) + 1;
 term = Math.floor(Math.random() * 10) + 1;
-
-// Calcular solución
-solution = term / coef;
-
-// Mostrar la ecuación al usuario
+expectedResult = term / coef;
 gameZone.innerHTML = `
   <h1>Resuelve la siguiente ecuación:<span>(El resultado se espera en decimal con 2 decimales)</span></h1>
   <p>${coef}x = ${term}</p>
@@ -21,25 +18,29 @@ gameZone.innerHTML = `
     </div>
   </form>
 `;
-
+// Agregamos un event listener al formulario que se activa cuando se envía el formulario.
 answerForm = document.getElementById("answer-form");
 answerForm.addEventListener("submit", (event) => {
-  event.preventDefault(); // Evita que el formulario se envíe
+  // Evita que el formulario se envíe.
+  event.preventDefault();
 
-  userX = Number(document.getElementById("x").value.trim());
+  // Obtenemos la respuesta del usuario y la limpiamos de espacios en blanco al principio y al final.
+  userAnswer = Number(document.getElementById("x").value.trim());
 
-  if (isNaN(userX)) {
+  // Si el usuario ha ingresado algo que no es un número, mostramos un mensaje de error en la pantalla y salimos de la función.
+  if (isNaN(userAnswer)) {
     result(false, false);
     return;
   }
 
-  if (Math.abs(userX - solution) < 0.01) {
+  // Comparamos el valor introducido por el usuario con el esperado y se envía el resultado.
+  if (Math.abs(userAnswer - expectedResult) < 0.01) {
     result(true);
   } else {
     result(false, true);
   }
 });
-
+// La función "result" muestra el mensaje de éxito o error en un modal y actualiza el resultado del usuario en la base de datos.
 function result(success, isDecimal = true) {
   if (success) {
     modal.innerHTML = `
@@ -66,7 +67,7 @@ function result(success, isDecimal = true) {
         </div>`;
     }
   }
-
+  // Mostramos el modal y recargamos la página cuando se cierra.
   miModal = document.getElementById("modal");
   miModal.style.display = "block";
   closeModal = document.querySelector("#cerrarModal");
@@ -74,6 +75,7 @@ function result(success, isDecimal = true) {
     modal.style.display = "none";
     location.reload();
   });
+  // Actualizamos el resultado del usuario en la base de datos.
   userResult = {
     'id': userId,
     'success': success ? 1 : 0,

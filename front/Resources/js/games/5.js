@@ -1,8 +1,9 @@
+// Seleccionamos los elementos del DOM con la clase "game-zone" y "modal", y asignamos el valor de la variable global "userId" al identificador de usuario.
 gameZone = document.querySelector(".game-zone");
 modal = document.querySelector(".modal");
 userId = window.userId;
 
-// Definir los números romanos y la operación a realizar
+// Definimos la tabla de conversión de números romanos a decimales.
 romanToDecimal = {
     "I": 1,
     "V": 5,
@@ -12,17 +13,14 @@ romanToDecimal = {
     "D": 500,
     "M": 1000
 };
+// Elegimos los números romanos disponibles para el juego y seleccionamos dos de forma aleatoria.
 romanNumerals = ["I", "V", "X", "L", "C", "D", "M"];
 randomRomanNumeral1 = romanNumerals[Math.floor(Math.random() * romanNumerals.length)];
 randomRomanNumeral2 = romanNumerals[Math.floor(Math.random() * romanNumerals.length)];
+// Elegimos de forma aleatoria si la operación será de suma o de resta.
 operation = Math.random() < 0.5 ? "sumar" : "restar";
 
-// Calcular el resultado de la operación
-decimalValue1 = romanToDecimal[randomRomanNumeral1];
-decimalValue2 = romanToDecimal[randomRomanNumeral2];
-expectedResult = operation === "sumar" ? decimalValue1 + decimalValue2 : decimalValue1 - decimalValue2;
-
-// Mostrar la información en la pantalla
+//Usamos los números para generar el juego.
 gameZone.innerHTML = `
       <h1>Sabiendo que es un número romano, ${operation} ${randomRomanNumeral1} y ${randomRomanNumeral2}, ¿qué número representa el resultado?</h1>
       <h2>${randomRomanNumeral1} ${operation === "sumar" ? "+" : "-"} ${randomRomanNumeral2}</h2>
@@ -35,25 +33,33 @@ gameZone.innerHTML = `
       </form>
     `;
 
-// Manejar el envío del formulario
+// Agregamos un event listener al formulario que se activa cuando se envía el formulario.
 answerForm = document.getElementById("answer-form");
 answerForm.addEventListener("submit", (event) => {
-    event.preventDefault(); // Evitar que el formulario se envíe
-    userAnswer = document.getElementById("answer").value.toUpperCase().trim(); // Convertir la respuesta a mayúsculas para evitar errores
+    // Evitar que el formulario se envíe.
+    event.preventDefault();
 
-    // Convertir la respuesta a un número entero
+    // Obtenemos la respuesta del usuario y la limpiamos de espacios en blanco al principio y al final.
+    userAnswer = document.getElementById("answer").value.trim();
+    // Calculamos el resultado de la operación que salió de forma aleatoria.
+    decimalValue1 = romanToDecimal[randomRomanNumeral1];
+    decimalValue2 = romanToDecimal[randomRomanNumeral2];
+    expectedResult = operation === "sumar" ? decimalValue1 + decimalValue2 : decimalValue1 - decimalValue2;
+
+    // Si el usuario ha ingresado algo que no es un número, mostramos un mensaje de error en la pantalla y salimos de la función.
     userDecimalValue = parseInt(userAnswer);
     if (isNaN(userDecimalValue)) {
         result(false, false);
         return;
     }
 
-    // Comprobar si la respuesta es correcta
+    // Comparamos el valor introducido por el usuario con el valor esperado.
     success = userDecimalValue === expectedResult;
-    result(success);
-    return;
-});
 
+    // Se envía el resultado.
+    result(success);
+});
+// La función "result" muestra el mensaje de éxito o error en un modal y actualiza el resultado del usuario en la base de datos.
 function result(success, isNumber = true) {
     if (success) {
         modal.innerHTML = `
@@ -80,14 +86,15 @@ function result(success, isNumber = true) {
    </div>`;
         }
     }
+    // Mostramos el modal y recargamos la página cuando se cierra.
     miModal = document.getElementById("modal");
     miModal.style.display = "block";
     closeModal = document.querySelector("#cerrarModal");
     closeModal.addEventListener("click", function () {
         modal.style.display = "none";
         location.reload();
-
     });
+    // Actualizamos el resultado del usuario en la base de datos.
     userResult = {
         'id': userId,
         'success': success ? 1 : 0,
@@ -102,5 +109,4 @@ function result(success, isNumber = true) {
             console.log(error)
             alert('Ha ocurrido un error al modificar el resultado');
         });
-
 }

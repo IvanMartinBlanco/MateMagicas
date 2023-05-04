@@ -1,29 +1,28 @@
+// Seleccionamos los elementos del DOM con la clase "game-zone" y "modal", y asignamos el valor de la variable global "userId" al identificador de usuario.
 gameZone = document.querySelector(".game-zone");
 modal = document.querySelector(".modal");
 userId = window.userId;
 
-// Generar vectores aleatorios
+// Creamos dos array vacíos para representar los vectores.
 vectorA = [];
 vectorB = [];
-n = Math.floor(Math.random() * 5) + 2; // Tamaño de los vectores
+
+// Preparamos los números aleatorios del ejercicio y los usamos para generar el juego.
+n = Math.floor(Math.random() * 5) + 2;
 for (i = 0; i < n; i++) {
-    vectorA.push(Math.floor(Math.random() * 10) + 1); // Elementos aleatorios entre 1 y 10
-    vectorB.push(Math.floor(Math.random() * 10) + 1);
+  vectorA.push(Math.floor(Math.random() * 10) + 1);
+  vectorB.push(Math.floor(Math.random() * 10) + 1);
 }
-
-// Definir la función
 function productoPunto(vectorA, vectorB) {
-    if (vectorA.length != vectorB.length) {
-        return null;
-    }
-    producto = 0;
-    for (i = 0; i < vectorA.length; i++) {
-        producto += vectorA[i] * vectorB[i];
-    }
-    return producto;
+  if (vectorA.length != vectorB.length) {
+    return null;
+  }
+  producto = 0;
+  for (i = 0; i < vectorA.length; i++) {
+    producto += vectorA[i] * vectorB[i];
+  }
+  return producto;
 }
-
-// Mostrar los vectores al usuario
 vectorAStr = vectorA.join(" ");
 vectorBStr = vectorB.join(" ");
 gameZone.innerHTML = `
@@ -38,71 +37,76 @@ gameZone.innerHTML = `
     </div>
   </form>
 `;
-
+// Agregamos un event listener al formulario que se activa cuando se envía el formulario.
 answerForm = document.getElementById("answer-form");
 answerForm.addEventListener("submit", (event) => {
-    event.preventDefault(); // Evita que el formulario se envíe
+  // Evita que el formulario se envíe.
+  event.preventDefault();
 
-    userResult = Number(document.getElementById("result").value.trim());
+  // Obtenemos la respuesta del usuario y la limpiamos de espacios en blanco al principio y al final.
+  userResult = Number(document.getElementById("result").value.trim());
 
-    if (isNaN(userResult)) {
-        result(false, false);
-        return;
-    }
+  // Si el usuario ha ingresado algo que no es un número, mostramos un mensaje de error en la pantalla y salimos de la función.
+  if (isNaN(userResult)) {
+    result(false, false);
+    return;
+  }
 
-    if (userResult === productoPunto(vectorA, vectorB)) {
-        result(true);
-    } else {
-        result(false);
-    }
+  // Comparamos el valor introducido por el usuario con el esperado y se envía el resultado.
+  if (userResult === productoPunto(vectorA, vectorB)) {
+    result(true);
+  } else {
+    result(false);
+  }
 });
+// La función "result" muestra el mensaje de éxito o error en un modal y actualiza el resultado del usuario en la base de datos.
 function result(success, isDecimal = true) {
-    if (success) {
-        modal.innerHTML = `
+  if (success) {
+    modal.innerHTML = `
         <div class="modal-contenido">
           <h2>¡Éxito!</h2>
           <p>El resultado es correcto.</p>
           <button id="cerrarModal">Cerrar</button>
         </div>
       `;
-    } else {
-        if (isDecimal === true) {
-            modal.innerHTML = `
+  } else {
+    if (isDecimal === true) {
+      modal.innerHTML = `
           <div class="modal-contenido">
             <h2>¡Error!</h2>
             <p>El resultado es incorrecto.</p>
             <button id="cerrarModal">Cerrar</button>
           </div>`;
-        } else {
-            modal.innerHTML = `
+    } else {
+      modal.innerHTML = `
           <div class="modal-contenido">
             <h2>¡Error!</h2>
             <p>No has introducido un número.</p>
             <button id="cerrarModal">Cerrar</button>
           </div>`;
-        }
     }
-
-    miModal = document.getElementById("modal");
-    miModal.style.display = "block";
-    closeModal = document.querySelector("#cerrarModal");
-    closeModal.addEventListener("click", function () {
-        modal.style.display = "none";
-        location.reload();
-
+  }
+  // Mostramos el modal y recargamos la página cuando se cierra.
+  miModal = document.getElementById("modal");
+  miModal.style.display = "block";
+  closeModal = document.querySelector("#cerrarModal");
+  closeModal.addEventListener("click", function () {
+    modal.style.display = "none";
+    location.reload();
+  });
+  // Actualizamos el resultado del usuario en la base de datos.
+  userResult = {
+    'id': userId,
+    'success': success ? 1 : 0,
+    'idEjercicio': 22,
+  };
+  fetch("http://localhost/web/back/public/editresult", {
+    method: 'PUT',
+    body: JSON.stringify(userResult)
+  })
+    .then(response => response.json())
+    .catch((error) => {
+      console.log(error)
+      alert('Ha ocurrido un error al modificar el resultado');
     });
-    userResult = {
-        'id': userId,
-        'success': success ? 1 : 0,
-        'idEjercicio': 22,
-    };
-    fetch("http://localhost/web/back/public/editresult", {
-        method: 'PUT',
-        body: JSON.stringify(userResult)
-    })
-        .then(response => response.json())
-        .catch((error) => {
-            console.log(error)
-            alert('Ha ocurrido un error al modificar el resultado');
-        });
 }

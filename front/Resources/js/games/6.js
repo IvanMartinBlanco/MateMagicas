@@ -1,9 +1,9 @@
-// Obtener referencias a los elementos HTML necesarios
+// Seleccionamos los elementos del DOM con la clase "game-zone" y "modal", y asignamos el valor de la variable global "userId" al identificador de usuario.
 gameZone = document.querySelector('.game-zone');
 modal = document.querySelector('.modal');
 userId = window.userId;
 
-// Definir los datos de las figuras
+// Elegimos las figuras disponibles para el juego y seleccionamos una de forma aleatoria.
 figures = [
   {
     name: 'círculo',
@@ -22,11 +22,9 @@ figures = [
     src: '../Resources/images/games/cuadrado.png'
   }
 ];
-
-// Seleccionar una figura aleatoria
 randomFigure = figures[Math.floor(Math.random() * figures.length)];
 
-// Mostrar la figura en pantalla
+//Usamos la figura para generar el juego.
 gameZone.innerHTML = `
   <h1>¿Qué figura es?</h1>
   <img class="figura" src="${randomFigure.src}" alt="Figura misteriosa">
@@ -39,18 +37,23 @@ gameZone.innerHTML = `
   </form>
 `;
 
-// Manejar el envío del formulario
+// Agregamos un event listener al formulario que se activa cuando se envía el formulario.
 answerForm = document.getElementById('answer-form');
 answerForm.addEventListener('submit', (event) => {
-  event.preventDefault(); // Evitar que el formulario se envíe
-  userAnswer = document.getElementById('answer').value.toLowerCase(); // Convertir la respuesta a minúsculas para evitar errores
+  // Evitar que el formulario se envíe.
+  event.preventDefault();
 
-  // Comprobar si la respuesta es correcta
+  // Obtenemos la respuesta del usuario, la ponemos en minúsculas y la limpiamos de espacios en blanco al principio y al final.
+  userAnswer = document.getElementById('answer').value.toLowerCase().trim();
+
+  // Comparamos el valor introducido por el usuario con el valor esperado.
   success = userAnswer === randomFigure.name;
+
+  // Se envía el resultado.  
   result(success);
 });
 
-// Función para mostrar el resultado en pantalla
+// La función "result" muestra el mensaje de éxito o error en un modal y actualiza el resultado del usuario en la base de datos.
 function result(success) {
   if (success) {
     modal.innerHTML = `
@@ -69,19 +72,15 @@ function result(success) {
       </div>
     `;
   }
-
-  // Mostrar el modal
+  // Mostramos el modal y recargamos la página cuando se cierra.
   miModal = document.getElementById('modal');
   miModal.style.display = 'block';
-
-  // Manejar el evento para cerrar el modal
   closeModal = document.querySelector('#cerrarModal');
   closeModal.addEventListener('click', () => {
     modal.style.display = 'none';
     location.reload();
   });
-
-  // Enviar los datos del resultado al servidor
+  // Actualizamos el resultado del usuario en la base de datos.
   userResult = {
     id: userId,
     success: success ? 1 : 0,
@@ -90,11 +89,10 @@ function result(success) {
   fetch("http://localhost/web/back/public/editresult", {
     method: 'PUT',
     body: JSON.stringify(userResult)
-})
+  })
     .then(response => response.json())
     .catch((error) => {
-        console.log(error)
-        alert('Ha ocurrido un error al modificar el resultado');
+      console.log(error)
+      alert('Ha ocurrido un error al modificar el resultado');
     });
-
 }

@@ -1,17 +1,22 @@
+// Seleccionamos los elementos del DOM con la clase "game-zone" y "modal", y asignamos el valor de la variable global "userId" al identificador de usuario.
 gameZone = document.querySelector(".game-zone");
 modal = document.querySelector(".modal");
 userId = window.userId;
 
+// Creamos un objeto vacío llamado "results".
 results = {};
 
-// Llamada al primer fetch
+// Llamamos a la API con el método fetch() para obtener los datos necesarios para generar el juego.
 fetch(`http://localhost/web/back/public/work?id=11`)
+  // Si la respuesta no es válida, muestra un mensaje de error en la pantalla.
   .then(response => {
     if (!response.ok) {
       serverMessage.textContent = "Error en la respuesta del servidor";
     }
+    // Convertimos la respuesta en formato JSON.
     return response.json();
   })
+  // Iteramos sobre los datos obtenidos de la API y los agregamos al objeto "results".
   .then(data => {
     let i = 0;
     for (let key in data) {
@@ -21,13 +26,13 @@ fetch(`http://localhost/web/back/public/work?id=11`)
     return results;
   })
   .then(results => {
+    // Preparamos los números del objeto "results", y los usamos para generar el juego.
     num1 = Math.floor(Math.random() * parseInt(results[0])) + 1;
     num2 = Math.floor(Math.random() * parseInt(results[1])) + 1;
     decimal1 = parseFloat((Math.random() * 10).toFixed(2));
     decimal2 = parseFloat((Math.random() * 10).toFixed(2));
     let sum = parseFloat((decimal1 + decimal2).toFixed(2));
     let expectedResult = sum;
-    
     gameZone.innerHTML = `
       <h1>¿Cuánto es ${decimal1} + ${decimal2}?<span>(El resultado se espera en decimal con 2 decimales)</span></h1>
       <form id="answer-form">
@@ -38,17 +43,22 @@ fetch(`http://localhost/web/back/public/work?id=11`)
         </div>
       </form>
     `;
-
+    // Agregamos un event listener al formulario que se activa cuando se envía el formulario.
     answerForm = document.getElementById("answer-form");
     answerForm.addEventListener("submit", (event) => {
-      event.preventDefault(); // Evita que el formulario se envíe
+      // Evita que el formulario se envíe.
+      event.preventDefault();
 
+      // Obtenemos la respuesta del usuario y la limpiamos de espacios en blanco al principio y al final.
       userAnswer = parseFloat(document.getElementById("answer").value.trim());
+
+      // Si el usuario ha ingresado algo que no es un número, mostramos un mensaje de error en la pantalla y salimos de la función.
       if (isNaN(userAnswer)) {
         result(false, false);
         return;
       }
-      
+
+      // Comparamos el valor introducido por el usuario con el esperado y se envía el resultado.
       if (userAnswer === expectedResult) {
         result(true);
       } else {
@@ -60,8 +70,8 @@ fetch(`http://localhost/web/back/public/work?id=11`)
     console.error(error);
     serverMessage.textContent = "Error en la respuesta del servidor";
   });
-
-function result(success, isDecimal=true) {
+// La función "result" muestra el mensaje de éxito o error en un modal y actualiza el resultado del usuario en la base de datos.
+function result(success, isDecimal = true) {
   if (success) {
     modal.innerHTML = `
       <div class="modal-contenido">
@@ -87,7 +97,7 @@ function result(success, isDecimal=true) {
         </div>`;
     }
   }
-
+  // Mostramos el modal y recargamos la página cuando se cierra.
   miModal = document.getElementById("modal");
   miModal.style.display = "block";
   closeModal = document.querySelector("#cerrarModal");
@@ -95,6 +105,7 @@ function result(success, isDecimal=true) {
     modal.style.display = "none";
     location.reload();
   });
+  // Actualizamos el resultado del usuario en la base de datos.
   userResult = {
     'id': userId,
     'success': success ? 1 : 0,
