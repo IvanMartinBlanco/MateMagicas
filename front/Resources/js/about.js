@@ -10,14 +10,14 @@ window.onload = function () {
             if (!response.ok) {
                 throw new Error("Error en la respuesta del servidor");
             }
-            // Si la respuesta es satisfactoria, la convertimos a JSON
+            // Si la respuesta es satisfactoria, la convertimos a JSON.
             return response.json();
         })
         .then(constants => {
-            // Guardamos los valores obtenidos del servidor en las variables declaradas anteriormente
+            // Guardamos los valores obtenidos del servidor en las variables declaradas anteriormente.
             title = constants.title;
             message = constants.message;
-            // Actualizamos los elementos HTML con los valores obtenidos del servidor
+            // Actualizamos los elementos HTML con los valores obtenidos del servidor.
             document.getElementById("title").innerHTML = title;
             document.getElementById("message").innerHTML = message;
         });

@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const subjectInput = document.getElementById("subject");
   const nameInput = document.getElementById("name");
   const levelInput = document.getElementById("level");
+  const closeModal = document.getElementById("cerrarModal");
 
   // Agregamos un evento de escucha al selector de etapas.
   stageInput.addEventListener("change", function () {
@@ -29,39 +30,37 @@ document.addEventListener("DOMContentLoaded", function () {
       <option value="start">Seleccione asignatura</option>
       <option value="numeros">Números</option>
       <option value="figuras">Figuras</option>
-      <option value="calculo">Cálculo</option>
-      `;
+      <option value="calculo">Cálculo</option>`;
     } else if (stage === "secondary") {
       subjectInput.title = "Seleccione la asignatura de secundaria.";
       subjectInput.innerHTML = `
       <option value="start">Seleccione asignatura</option>
       <option value="arithmetic">Aritmética</option>
       <option value="algebra">Álgebra</option>
-      <option value="geometry">Geometría</option>
-      `;
+      <option value="geometry">Geometría</option>`;
     } else if (stage === "advanced") {
       subjectInput.title = "Seleccione la asignatura avanzada.";
       subjectInput.innerHTML = `
       <option value="start">Seleccione asignatura</option>
       <option value="analysis">Análisis</option>
       <option value="linear-algebra">Álgebra lineal</option>
-      <option value="advanced-geometry">Geometría</option>
-      `;
+      <option value="advanced-geometry">Geometría</option>`;
     } else {
       subjectInput.disabled = true;
       subjectInput.title = "Seleccione primero una etapa.";
       subjectInput.innerHTML = `
-    <option value="">Seleccione asignatura</option>
-  `;
+      <option value="">Seleccione asignatura</option>`;
     }
   });
+
+  // Función para mostrar mensaje de error.
   const showError = (input, message) => {
     const errorContainer = input.parentElement;
     const errorMessage = errorContainer.querySelector('.error-message');
     input.classList.add('error');
     errorMessage.textContent = message;
   };
-
+  // Función para ocultar mensaje de error.
   const hideError = (input) => {
     const errorContainer = input.parentElement;
     const errorMessage = errorContainer.querySelector('.error-message');
@@ -69,6 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
     errorMessage.textContent = '';
   };
 
+  // Validamos los campos del formulario.
   const checkInputs = () => {
     let isValid = true;
     if (idInput.value.trim() !== '' && idInput.value.trim() < 1) {
@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     return isValid;
   };
-
+  // Agregamos un evento de escucha al botón del formulario para enviar una petición POST a la API.
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     serverMessage.textContent = "";
@@ -116,21 +116,24 @@ document.addEventListener("DOMContentLoaded", function () {
         'name': nameInput.value.trim(),
         'level': parseInt(levelInput.selectedOptions[0].textContent),
       };
+      // Realizamos una petición POST al servidor, en la URL especificada.
       fetch("http://localhost/web/back/public/creatework", {
         method: 'POST',
         body: JSON.stringify(formData)
       })
+        // Si la respuesta es satisfactoria, la convertimos a JSON.
         .then(response => response.json())
         .then(data => {
+          // Guardamos los valores obtenidos del servidor en las variables declaradas anteriormente.
           if (data.success) {
             serverMessage.textContent = "";
-            // Si la respuesta del servidor es exitosa, se muestra la ventana modal
             const miModal = document.getElementById("modal");
             miModal.style.display = "block";
           } else {
             serverMessage.textContent = data.message;
           }
         })
+        // Controlamos si ha habido un error en el servidor.
         .catch((error) => {
           console.log(error)
           alert('Ha ocurrido un error al añadir el ejercicio');
@@ -138,8 +141,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Evento para cerrar la ventana modal al hacer clic en el botón "Cerrar"
-  const closeModal = document.getElementById("cerrarModal");
+  // Agregamos un evento de escucha al botón de cerrar la modal para ocultarlo cuando se pulse.
   closeModal.addEventListener("click", function () {
     const miModal = document.getElementById("modal");
     miModal.style.display = "none";

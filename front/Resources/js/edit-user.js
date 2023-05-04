@@ -1,10 +1,13 @@
 import { setSessionData, getSessionData } from '../js/session.js';
 
+// Esperamos a que se cargue completamente el DOM antes de ejecutar la función.
 document.addEventListener("DOMContentLoaded", function () {
+    // Verificamos si el usuario tiene rol de "alumno" al cargar la página.
     if (getSessionData()?.rol !== 'alumno') {
-        // Redirigir a otra página
+        // Redirigimos a otra página.
         window.location.replace("http://localhost/web/front/pages/index.html");
     }
+    // Obtenemos elementos del formulario y otras secciones.
     const form = document.querySelector('form');
     const userNameInput = document.querySelector('#user-name');
     const surnamesInput = document.querySelector('#surnames');
@@ -16,16 +19,20 @@ document.addEventListener("DOMContentLoaded", function () {
     const courseInput = document.querySelector('#course');
     const serverMessage = document.querySelector('#server-message');
     const userId = getSessionData().id;
+    const closeModal = document.getElementById("cerrarModal");
 
-
+    // Realiza una petición GET para obtener los datos del usuario actual.
     fetch(`http://localhost/web/back/public/user?id=${userId}`)
         .then(response => {
             if (!response.ok) {
+                // Si la respuesta no es buena, lanzamos un error.
                 serverMessage.textContent = "Error en la respuesta del servidor";
             }
+            // Convierte los datos recibidos a un objeto JSON.
             return response.json();
         })
         .then(data => {
+            // Guardamos los valores obtenidos del servidor en las variables declaradas anteriormente.
             userNameInput.value = data.Nombre;
             surnamesInput.value = data.Apellidos;
             ageInput.value = data.Edad;
@@ -33,17 +40,19 @@ document.addEventListener("DOMContentLoaded", function () {
             tutorInput.value = data.IdTutor;
             courseInput.value = data.Curso;
         })
+        // Controlamos si ha habido un error en el servidor.
         .catch(error => {
             console.error(error);
         });
 
+    // Función para mostrar mensaje de error.
     const showError = (input, message) => {
         const errorContainer = input.parentElement;
         const errorMessage = errorContainer.querySelector('.error-message');
         input.classList.add('error');
         errorMessage.textContent = message;
     };
-
+    // Función para ocultar mensaje de error.
     const hideError = (input) => {
         const errorContainer = input.parentElement;
         const errorMessage = errorContainer.querySelector('.error-message');
@@ -51,6 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
         errorMessage.textContent = '';
     };
 
+    // Validamos los campos del formulario.
     const checkInputs = () => {
         let isValid = true;
         if (userNameInput.value.trim() === '') {
@@ -97,7 +107,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         return isValid;
     };
-
+    // Agregamos un evento de escucha al botón del formulario para enviar una petición PUT a la API.
     form.addEventListener('submit', (e) => {
         e.preventDefault();
         serverMessage.textContent = "";
@@ -106,41 +116,42 @@ document.addEventListener("DOMContentLoaded", function () {
                 'id': userId,
                 'user-name': userNameInput.value.trim(),
                 'surnames': surnamesInput.value.trim(),
-                'age': ageInput.value.trim() !== '' ? ageInput.value.trim() : null, // Si está vacío, se envía null
+                'age': ageInput.value.trim() !== '' ? ageInput.value.trim() : null,
                 'email': emailInput.value.trim(),
                 'password': passwordInput.value.trim(),
                 'password-repeat': passwordRepeatInput.value.trim(),
-                'tutor': tutorInput.value.trim() !== '' ? tutorInput.value.trim() : null, // Si está vacío, se envía null
+                'tutor': tutorInput.value.trim() !== '' ? tutorInput.value.trim() : null,
                 'course': courseInput.value.trim()
             };
+            // Realizamos una petición PUT al servidor, en la URL especificada.
             fetch("http://localhost/web/back/public/edituser", {
                 method: 'PUT',
                 body: JSON.stringify(formData)
             })
+                // Si la respuesta es satisfactoria, la convertimos a JSON.
                 .then(response => response.json())
                 .then(data => {
+                    // Guardamos los valores obtenidos del servidor en las variables declaradas anteriormente.
                     if (data.success) {
                         serverMessage.textContent = "";
                         setSessionData(getSessionData().id, formData['user-name'], getSessionData()?.rol);
-                        // Si la respuesta del servidor es exitosa, se muestra la ventana modal
                         const miModal = document.getElementById("modal");
                         miModal.style.display = "block";
                     } else {
                         serverMessage.textContent = data.message;
                     }
                 })
+                // Controlamos si ha habido un error en el servidor.
                 .catch((error) => {
                     console.log(error)
                     alert('Ha ocurrido un error al modificar el usuario');
                 });
         }
     });
-    // Evento para cerrar la ventana modal al hacer clic en el botón "Cerrar"
-    const closeModal = document.getElementById("cerrarModal");
+    // Agregamos un evento de escucha al botón de cerrar la modal para ocultarlo cuando se pulse.
     closeModal.addEventListener("click", function () {
         const miModal = document.getElementById("modal");
         miModal.style.display = "none";
         location.reload();
     });
-
 });

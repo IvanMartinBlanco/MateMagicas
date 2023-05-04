@@ -1,11 +1,13 @@
 import { getSessionData } from '../js/session.js';
 
+// Esperamos a que se cargue completamente el DOM antes de ejecutar la función.
 document.addEventListener("DOMContentLoaded", function () {
-    if (getSessionData()?.rol!=='tutor') {
-        // Redirigir a otra página
-        window.location.replace("http://localhost/web/front/pages/index.html");
-      }
-
+  // Verificamos si el usuario tiene rol de "tutor" al cargar la página.
+  if (getSessionData()?.rol !== 'tutor') {
+    // Redirigimos a otra página.
+    window.location.replace("http://localhost/web/front/pages/index.html");
+  }
+  // Obtenemos elementos del formulario y otras secciones.
   const form = document.querySelector('form');
   const userNameInput = document.querySelector('#user-name');
   const surnamesInput = document.querySelector('#surnames');
@@ -18,28 +20,35 @@ document.addEventListener("DOMContentLoaded", function () {
   const courseInput = document.querySelector('#course');
   const serverMessage = document.querySelector('#server-message');
   const userId = getSessionData().id;
+  const closeModal = document.getElementById("cerrarModal");
 
+  // Realiza una petición GET para obtener los datos del usuario actual.
   fetch(`http://localhost/web/back/public/user?id=${userId}`)
-  .then(response => {
+    .then(response => {
+      // Si la respuesta no es buena, lanzamos un error.
       if (!response.ok) {
-          serverMessage.textContent ="Error en la respuesta del servidor";
+        serverMessage.textContent = "Error en la respuesta del servidor";
       }
+      // Convierte los datos recibidos a un objeto JSON.
       return response.json();
-  })
-  .then(data => {
-      tutorInput.value=data.IdTutor;
-  })
-  .catch(error => {
+    })
+    .then(data => {
+      // Guardamos los valores obtenidos del servidor en la variable declarada anteriormente.
+      tutorInput.value = data.IdTutor;
+    })
+    // Controlamos si ha habido un error en el servidor.
+    .catch(error => {
       console.error(error);
-  });
+    });
 
+  // Función para mostrar mensaje de error.
   const showError = (input, message) => {
     const errorContainer = input.parentElement;
     const errorMessage = errorContainer.querySelector('.error-message');
     input.classList.add('error');
     errorMessage.textContent = message;
   };
-
+  // Función para ocultar mensaje de error.
   const hideError = (input) => {
     const errorContainer = input.parentElement;
     const errorMessage = errorContainer.querySelector('.error-message');
@@ -47,6 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
     errorMessage.textContent = '';
   };
 
+  // Validamos los campos del formulario.
   const checkInputs = () => {
     let isValid = true;
     if (userNameInput.value.trim() === '') {
@@ -105,8 +115,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     return isValid;
   };
-
-
+  // Agregamos un evento de escucha al botón del formulario para enviar una petición POST a la API.
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     serverMessage.textContent = "";
@@ -114,7 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const formData = {
         'user-name': userNameInput.value.trim(),
         'surnames': surnamesInput.value.trim(),
-        'age': ageInput.value.trim() !== '' ? ageInput.value.trim() : null, // Si está vacío, se envía null
+        'age': ageInput.value.trim() !== '' ? ageInput.value.trim() : null,
         'email': emailInput.value.trim(),
         'email-repeat': emailRepeatInput.value.trim(),
         'password': passwordInput.value.trim(),
@@ -122,21 +131,24 @@ document.addEventListener("DOMContentLoaded", function () {
         'tutor': tutorInput.value.trim(),
         'course': courseInput.value.trim()
       };
+      // Realizamos una petición POST al servidor, en la URL especificada.
       fetch("http://localhost/web/back/public/createstudent", {
         method: 'POST',
         body: JSON.stringify(formData)
       })
+        // Si la respuesta es satisfactoria, la convertimos a JSON.
         .then(response => response.json())
         .then(data => {
+          // Guardamos los valores obtenidos del servidor en las variables declaradas anteriormente.
           if (data.success) {
             serverMessage.textContent = "";
-            // Si la respuesta del servidor es exitosa, se muestra la ventana modal
             const miModal = document.getElementById("modal");
             miModal.style.display = "block";
           } else {
             serverMessage.textContent = data.message;
           }
         })
+        // Controlamos si ha habido un error en el servidor.
         .catch((error) => {
           console.log(error)
           alert('Ha ocurrido un error al crear el usuario');
@@ -144,12 +156,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Evento para cerrar la ventana modal al hacer clic en el botón "Cerrar"
-  const closeModal = document.getElementById("cerrarModal");
+  // Agregamos un evento de escucha al botón de cerrar la modal para ocultarlo cuando se pulse.
   closeModal.addEventListener("click", function () {
     const miModal = document.getElementById("modal");
     miModal.style.display = "none";
-    
   });
-
 });

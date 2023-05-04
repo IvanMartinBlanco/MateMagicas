@@ -1,99 +1,84 @@
 import { getSessionData } from '../js/session.js';
 
+// Esperamos a que se cargue completamente el DOM antes de ejecutar la función.
 document.addEventListener("DOMContentLoaded", function () {
+  // Verificamos si el usuario tiene rol de "administrador" al cargar la página.
   if (getSessionData()?.rol !== 'administrador') {
-    // Redirigir a otra página
+    // Redirigimos a otra página.
     window.location.replace("http://localhost/web/front/pages/index.html");
   }
+  // Obtenemos elementos del formulario y otras secciones.
   const form = document.querySelector('form');
-  // Obtener el número de resultados de la base de datos
-
-  // Obtener la cadena de consulta de la URL actual
   const queryString = window.location.search;
-
-  // Analizar la cadena de consulta para obtener los parámetros
   const params = new URLSearchParams(queryString);
-
-  // Obtener el valor del parámetro "variable"
   const variableValue = params.get('variable');
-
-  // Obtener el valor del parámetro "work"
   const workId = params.get('work');
   const serverMessage = document.querySelector('#server-message');
-  const formData = {};
+  const closeModal = document.getElementById("cerrarModal");
   let contenedorCampos = document.getElementById('variables-container');
-
   let variableInputs = [];
-  // Bucle para crear los campos
+
+  // Creamos los campos de forma dinámica.
   for (let i = 1; i <= variableValue; i++) {
-    // Crear el elemento div
     let variableDiv = document.createElement('div');
     let variableSpan = document.createElement('span');
     variableSpan.setAttribute('class', 'input-container')
-
-    // Crear el elemento label
     let label = document.createElement('label');
     label.innerHTML = 'Variable ' + i + ':';
     let variableName = 'variable-' + i;
     label.setAttribute('for', variableName);
-
-    // Crear el elemento input
     let input = document.createElement('input');
     input.setAttribute('type', 'number');
     input.setAttribute('id', variableName);
     input.setAttribute('name', variableName);
     input.setAttribute('required', '');
     input.setAttribute('class', 'little-input');
-
-    // Crear el elemento div para el mensaje de error
     let errorDiv = document.createElement('div');
     errorDiv.setAttribute('class', 'error-message');
-
     variableDiv.appendChild(label);
     variableSpan.appendChild(input);
     variableSpan.appendChild(errorDiv);
     variableDiv.appendChild(variableSpan);
-
-
     contenedorCampos.appendChild(variableDiv);
     const variableInput = document.querySelector('#' + variableName);
     variableInputs.push(variableInput);
-
   }
-
-
   let variableIds = [];
 
-  // Llamada al primer fetch
+  // Realiza una petición GET para obtener los datos del ejercicio actual.
   fetch(`http://localhost/web/back/public/work?id=${workId}`)
     .then(response => {
       if (!response.ok) {
+        // Si la respuesta no es buena, lanzamos un error.
         serverMessage.textContent = "Error en la respuesta del servidor";
       }
+      // Convierte los datos recibidos a un objeto JSON.
       return response.json();
     })
     .then(data => {
+      // Guardamos los valores obtenidos del servidor en las variables declaradas anteriormente.
       const sortedData = Object.entries(data)
         .sort((a, b) => a[0] - b[0])
         .map(entry => entry[1]);
       variableInputs.forEach((input, index) => {
         const inputValue = sortedData[index] || "";
         input.value = inputValue;
-
-        // Guardar el ID de la variable correspondiente en el array
         variableIds.push(Object.keys(data)[index]);
       });
     })
+    // Controlamos si ha habido un error en el servidor.
     .catch(error => {
       console.error(error);
     });
+
+  // Función para mostrar mensaje de error.
   const showError = (input, message) => {
     const errorContainer = input.parentElement;
     const errorMessage = errorContainer.querySelector('.error-message');
     input.classList.add('error');
     errorMessage.textContent = message;
   };
-
+  // Función para ocultar mensaje de error.
   const hideError = (input) => {
     const errorContainer = input.parentElement;
     const errorMessage = errorContainer.querySelector('.error-message');
@@ -101,6 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
     errorMessage.textContent = '';
   };
 
+  // Validamos los campos del formulario.
   const checkInputs = () => {
     let isValid = true;
     variableInputs.forEach(input => {
@@ -117,7 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     return isValid;
   };
-
+  // Agregamos un evento de escucha al botón del formulario para enviar una petición PUT a la API.
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     serverMessage.textContent = "";
@@ -127,6 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const id = variableIds[index];
         data[id] = input.value;
       });
+      // Realizamos una petición PUT al servidor, en la URL especificada.
       fetch('http://localhost/web/back/public/editvariable', {
         method: 'PUT',
         headers: {
@@ -137,25 +124,24 @@ document.addEventListener("DOMContentLoaded", function () {
           id: workId
         })
       })
+        // Si la respuesta es satisfactoria, la convertimos a JSON.
         .then(response => response.json())
         .then(data => {
+          // Guardamos los valores obtenidos del servidor en las variables declaradas anteriormente.
           if (data.success) {
-            serverMessage.textContent = "";                  // Si la respuesta del servidor es exitosa, se muestra la ventana modal
+            serverMessage.textContent = "";
             const miModal = document.getElementById("modal");
             miModal.style.display = "block";
           } else {
             serverMessage.textContent = data.message;
           }
         })
+        // Controlamos si ha habido un error en el servidor.
         .catch(error => console.error(error));
     }
   });
-
-
-  // Evento para cerrar la ventana modal al hacer clic en el botón "Cerrar"
-  const closeModal = document.getElementById("cerrarModal");
+  // Agregamos un evento de escucha al botón de cerrar la modal para ocultarlo cuando se pulse.
   closeModal.addEventListener("click", function () {
-    const miModal = document.getElementById("modal");
     window.location.href = './select-editable-work.html';
   });
 });

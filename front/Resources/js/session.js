@@ -1,6 +1,8 @@
+// Declaramos las variables que se usarán más adelante.
 let user = {};
 let registeredUser = false;
 
+// Esta función permitirá obtener los datos de la sesión.
 function getSessionData() {
   loadSessionDataFromCookie();
   const cookies = document.cookie.split(";").map(cookie => cookie.trim());
@@ -18,15 +20,16 @@ function getSessionData() {
   }
 }
 
-function setSessionData(id, name, rol, registeredUser=true) {
+// Esta función permitirá modificar los datos de la sesión.
+function setSessionData(id, name, rol, registeredUser = true) {
   user.id = id;
   user.name = name;
   user.rol = rol;
   registeredUser = registeredUser;
-  // Guardar los datos de sesión en una cookie con una duración de 1 día
-  document.cookie = `session=${JSON.stringify({ id, name, rol })};max-age=${60*60*24};path=/`;
+  document.cookie = `session=${JSON.stringify({ id, name, rol })};max-age=${60 * 60 * 24};path=/`;
 }
 
+// Esta función permitirá cargar los datos de la sesión.
 function loadSessionDataFromCookie() {
   // Obtener los datos de sesión desde la cookie
   const cookies = document.cookie.split(';');
@@ -42,7 +45,8 @@ function loadSessionDataFromCookie() {
   registeredUser = !!user.id && !!user.name && !!user.rol;
 }
 
-// Cargar los datos de sesión desde la cookie al cargar la página
+// Cargamos los datos de la sesión cuando se carge la página.
 window.addEventListener('load', loadSessionDataFromCookie);
 
+// Exportamos las funciones de este módulo.
 export { user, registeredUser, getSessionData, setSessionData };

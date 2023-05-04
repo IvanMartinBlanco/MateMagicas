@@ -1,17 +1,19 @@
 import { setSessionData, getSessionData } from '../js/session.js';
 
-$(document).ready(function() {
+// Usamos este .js cuando esté cargado todo el DOM.
+$(document).ready(function () {
+  // Verificamos si el usuario está registrado.
   if (getSessionData()?.registeredUser) {
-    // Redirigir a otra página
+    // Redirigimos a otra página.
     window.location.replace("http://localhost/web/front/pages/index.html");
   }
-  // Escuchar el evento submit del formulario de inicio de sesión
-  $('#login-form').submit(function(event) {
-    event.preventDefault(); // Evitar el comportamiento por defecto del formulario
-    // Obtener los datos del formulario de inicio de sesión
+  // Agregamos un evento de escucha al botón del formulario para enviar una petición POST a la API.
+  $('#login-form').submit(function (event) {
+    // Evitar el comportamiento por defecto del formulario
+    event.preventDefault();
     const username = $('#email').val();
     const password = $('#password').val();
-    // Realizar una solicitud AJAX para iniciar sesión
+    // Realizamos una petición POST al servidor, en la URL especificada.
     fetch('http://localhost/web/back/public/login', {
       method: 'POST',
       headers: {
@@ -23,21 +25,24 @@ $(document).ready(function() {
       }),
       credentials: 'include'
     })
-    .then(response => {
-      if (response.ok) {
-        document.getElementById("unauthorized").textContent = "";
-        return response.json();
-      } else {
-        throw new Error('Error en la respuesta del servidor');
-      }
-    })
-    .then(data => {
-      setSessionData(data.id, data.name, data.rol);
-      window.location.replace('../pages/index.html');
-    })
-    .catch(() => {
-      // Hubo un error al recibir la respuesta
-      document.getElementById("unauthorized").textContent = "*Usuario o contraseña incorrectos";
-    });
+      .then(response => {
+          // Si la respuesta es satisfactoria, la convertimos a JSON.
+          if (response.ok) {
+          document.getElementById("unauthorized").textContent = "";
+          return response.json();
+        } else {
+          // Si la respuesta no es buena, lanzamos un error.
+          throw new Error('Error en la respuesta del servidor');
+        }
+      })
+      .then(data => {
+        // Cargamos los valores obtenidos del servidor en las variables de sesión.
+        setSessionData(data.id, data.name, data.rol);
+        window.location.replace('../pages/index.html');
+      })
+      // Controlamos si ha habido un error en el servidor.
+      .catch(() => {
+        document.getElementById("unauthorized").textContent = "*Usuario o contraseña incorrectos";
+      });
   });
 });
