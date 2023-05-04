@@ -74,26 +74,26 @@ function result(success, isNumber = true) {
   if (success) {
     modal.innerHTML = `
     <div class="modal-contenido">
-    <h2>¡Éxito!</h2>
-    <p>El resultado es correcto.</p>
-    <button id="cerrarModal">Cerrar</button>
- </div>
+      <h2>¡Éxito!</h2>
+      <p>El resultado es correcto.</p>
+      <button id="cerrarModal">Cerrar</button>
+    </div>
   `;
   } else {
     if (isNumber === true) {
       modal.innerHTML = `
-  <div class="modal-contenido">
-  <h2>¡Error!</h2>
-  <p>El resultado es incorrecto.</p>
-  <button id="cerrarModal">Cerrar</button>
-</div>`;
+      <div class="modal-contenido">
+        <h2>¡Error!</h2>
+        <p>El resultado es incorrecto.</p>
+        <button id="cerrarModal">Cerrar</button>
+      </div>`;
     } else {
       modal.innerHTML = `
-  <div class="modal-contenido">
-  <h2>¡Error!</h2>
-  <p>No se ha introducido un número.</p>
-  <button id="cerrarModal">Cerrar</button>
-</div>`;
+      <div class="modal-contenido">
+        <h2>¡Error!</h2>
+        <p>No se ha introducido un número.</p>
+        <button id="cerrarModal">Cerrar</button>
+      </div>`;
     }
   }
   // Mostramos el modal y recargamos la página cuando se cierra.

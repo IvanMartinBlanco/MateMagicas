@@ -34,8 +34,7 @@ gameZone.innerHTML = `
     <div id="button-container" class="button-container">
       <button type="submit">Comprobar</button>
     </div>
-  </form>
-`;
+  </form>`;
 
 // Agregamos un event listener al formulario que se activa cuando se envía el formulario.
 answerForm = document.getElementById('answer-form');
@@ -61,16 +60,14 @@ function result(success) {
         <h2>¡Éxito!</h2>
         <p>Has acertado la figura.</p>
         <button id="cerrarModal">Cerrar</button>
-      </div>
-    `;
+      </div>`;
   } else {
     modal.innerHTML = `
       <div class="modal-contenido">
         <h2>¡Error!</h2>
         <p>La respuesta es incorrecta.</p>
         <button id="cerrarModal">Cerrar</button>
-      </div>
-    `;
+      </div>`;
   }
   // Mostramos el modal y recargamos la página cuando se cierra.
   miModal = document.getElementById('modal');

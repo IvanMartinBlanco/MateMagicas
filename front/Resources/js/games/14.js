@@ -51,8 +51,7 @@ function result(success, isFrac = true) {
         <h2>¡Éxito!</h2>
         <p>El resultado es correcto.</p>
         <button id="cerrarModal">Cerrar</button>
-      </div>
-    `;
+      </div>`;
   } else {
     if (isFrac === true) {
       modal.innerHTML = `

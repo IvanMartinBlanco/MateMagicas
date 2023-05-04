@@ -34,8 +34,7 @@ gameZone.innerHTML = `
     <div id="button-container" class="button-container">
       <button type="submit">Comprobar</button>
     </div>
-  </form>
-`;
+  </form>`;
 
 // Agregamos un event listener al formulario que se activa cuando se envía el formulario.
 answerForm = document.getElementById('answer-form');

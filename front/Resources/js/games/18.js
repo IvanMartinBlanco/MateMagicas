@@ -40,8 +40,7 @@ if (selectedFigure.name === "Cuadrado") {
     <div id="button-container" class="button-container">
       <button type="submit">Comprobar</button>
     </div>
-  </form>
-`;
+  </form>`;
 } else {
   gameZone.innerHTML = `
   <h1>¿Cuál es el área de la siguiente figura?</h1>
@@ -53,8 +52,7 @@ if (selectedFigure.name === "Cuadrado") {
     <div id="button-container" class="button-container">
       <button type="submit">Comprobar</button>
     </div>
-  </form>
-`;
+  </form>`;
 }
 // Agregamos un event listener al formulario que se activa cuando se envía el formulario.
 answerForm = document.getElementById("answer-form");
@@ -83,8 +81,7 @@ function result(success, isNumber = true) {
           <h2>¡Éxito!</h2>
           <p>El resultado es correcto.</p>
           <button id="cerrarModal">Cerrar</button>
-        </div>
-      `;
+        </div>`;
   } else {
     if (isNumber === true) {
       modal.innerHTML = `

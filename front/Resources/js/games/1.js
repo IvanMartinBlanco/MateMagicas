@@ -37,8 +37,7 @@ fetch(`http://localhost/web/back/public/work?id=1`)
         <div id="button-container" class="button-container">
           <button type="submit">Comprobar</button>
         </div>
-      </form>
-    `;
+      </form>`;
     // Agregamos un event listener al formulario que se activa cuando se envía el formulario.
     answerForm = document.getElementById("answer-form");
     answerForm.addEventListener("submit", (event) => {
@@ -88,26 +87,26 @@ function result(success, amountExcess = null) {
   if (success) {
     modal.innerHTML = `
     <div class="modal-contenido">
-    <h2>¡Éxito!</h2>
-    <p>El resultado es correcto.</p>
-    <button id="cerrarModal">Cerrar</button>
- </div>
+      <h2>¡Éxito!</h2>
+      <p>El resultado es correcto.</p>
+      <button id="cerrarModal">Cerrar</button>
+    </div>
   `;
   } else {
     if (amountExcess === null) {
       modal.innerHTML = `
     <div class="modal-contenido">
-    <h2>¡Error!</h2>
-    <p>El resultado es incorrecto.</p>
-    <button id="cerrarModal">Cerrar</button>
- </div>`;
+      <h2>¡Error!</h2>
+      <p>El resultado es incorrecto.</p>
+      <button id="cerrarModal">Cerrar</button>
+    </div>`;
     } else {
       modal.innerHTML = `
     <div class="modal-contenido">
-    <h2>¡Error!</h2>
-    <p>La cantidad de números introducida es incorrecta.</p>
-    <button id="cerrarModal">Cerrar</button>
- </div>`;
+      <h2>¡Error!</h2>
+      <p>La cantidad de números introducida es incorrecta.</p>
+      <button id="cerrarModal">Cerrar</button>
+    </div>`;
     }
   }
   // Mostramos el modal y recargamos la página cuando se cierra.

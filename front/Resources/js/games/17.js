@@ -19,8 +19,7 @@ gameZone.innerHTML = `
     <div id="button-container" class="button-container">
       <button type="submit">Comprobar</button>
     </div>
-  </form>
-`;
+  </form>`;
 // Agregamos un event listener al formulario que se activa cuando se envía el formulario.
 answerForm = document.getElementById("answer-form");
 answerForm.addEventListener("submit", (event) => {
@@ -51,8 +50,7 @@ function result(success, isDecimal = true) {
           <h2>¡Éxito!</h2>
           <p>El resultado es correcto.</p>
           <button id="cerrarModal">Cerrar</button>
-        </div>
-      `;
+        </div>`;
   } else {
     if (isDecimal === true) {
       modal.innerHTML = `

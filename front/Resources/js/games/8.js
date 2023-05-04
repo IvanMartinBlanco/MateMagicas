@@ -53,8 +53,7 @@ gameZone.innerHTML = `
     <div id="button-container" class="button-container">
       <button type="submit">Comprobar</button>
     </div>
-  </form>
-`;
+  </form>`;
 
 // Agregamos un event listener al formulario que se activa cuando se envía el formulario.
 answerForm = document.getElementById('answer-form');
@@ -86,23 +85,22 @@ function result(success, isNumber = true) {
         <h2>¡Éxito!</h2>
         <p>Has acertado el área del rectángulo.</p>
         <button id="cerrarModal">Cerrar</button>
-      </div>
-    `;
+      </div>`;
   } else {
     if (isNumber === true) {
       modal.innerHTML = `
       <div class="modal-contenido">
-      <h2>¡Error!</h2>
-      <p>El resultado es incorrecto.</p>
-      <button id="cerrarModal">Cerrar</button>
-   </div>`;
+        <h2>¡Error!</h2>
+        <p>El resultado es incorrecto.</p>
+        <button id="cerrarModal">Cerrar</button>
+      </div>`;
     } else {
       modal.innerHTML = `
       <div class="modal-contenido">
-      <h2>¡Error!</h2>
-      <p>No se ha introducido un número.</p>
-      <button id="cerrarModal">Cerrar</button>
-   </div>`;
+        <h2>¡Error!</h2>
+        <p>No se ha introducido un número.</p>
+        <button id="cerrarModal">Cerrar</button>
+      </div>`;
     }
   }
   // Mostramos el modal y recargamos la página cuando se cierra.
