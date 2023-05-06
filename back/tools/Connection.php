@@ -16,4 +16,3 @@ function connect() {
         throw new PDOException($errorMsg);
     }
 }
-?>

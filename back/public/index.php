@@ -1,61 +1,69 @@
 <?php
+/**
+ * Archivo principal de enrutamiento
+ * Este archivo define las rutas y las asocia con los controladores correspondientes.
+ * PHP version 7.0.0
+ */
 require_once '../app/controllers/LoginController.php';
 require_once '../app/controllers/ConstantsController.php';
 require_once '../app/controllers/UserManagementController.php';
 require_once '../app/controllers/WorkManagementController.php';
 
-// Definir rutas
+/**
+ * Definir rutas
+ */
 $login_routes = [
-  '/' => ['GET', LoginController::class, 'index'],
-  '/login' => ['POST', LoginController::class, 'login'],
+    '/' => ['GET', LoginController::class, 'index'],
+    '/login' => ['POST', LoginController::class, 'login'],
 ];
 
 $constants_routes = [
-  '/help' => ['GET', ConstantsController::class, 'help'],
-  '/contact' => ['GET', ConstantsController::class, 'contact'],
-  '/about' => ['GET', ConstantsController::class, 'about'],
-  '/privacy' => ['GET', ConstantsController::class, 'privacy'],
-  '/terms' => ['GET', ConstantsController::class, 'terms'],
-  '/cookies' => ['GET', ConstantsController::class, 'cookies']
+    '/help' => ['GET', ConstantsController::class, 'help'],
+    '/contact' => ['GET', ConstantsController::class, 'contact'],
+    '/about' => ['GET', ConstantsController::class, 'about'],
+    '/privacy' => ['GET', ConstantsController::class, 'privacy'],
+    '/terms' => ['GET', ConstantsController::class, 'terms'],
+    '/cookies' => ['GET', ConstantsController::class, 'cookies'],
 ];
 $user_management_routes = [
-  '/createuser' => ['POST', UserManagementController::class, 'createuser'],
-  '/deleteuser' => ['DELETE', UserManagementController::class, 'deleteuser'],
-  '/deletestudent' => ['DELETE', UserManagementController::class, 'deleteanotheruser'],
-  '/deletetutor' => ['DELETE', UserManagementController::class, 'deleteanotheruser'],
-  '/searchstudent' => ['GET', UserManagementController::class, 'searchstudent'],
-  '/createstudent' => ['POST', UserManagementController::class, 'createstudent'],
-  '/edituser' => ['PUT', UserManagementController::class, 'edituser'],
-  '/edittutor' => ['PUT', UserManagementController::class, 'edittutor'],
-  '/user' => ['GET', UserManagementController::class, 'getUserById'],
-  '/student' => ['GET', UserManagementController::class, 'getStudentByEmail'],
-  '/editresult' => ['PUT', UserManagementController::class, 'editresult'],
+    '/createuser' => ['POST', UserManagementController::class, 'createuser'],
+    '/deleteuser' => ['DELETE', UserManagementController::class, 'deleteuser'],
+    '/deletestudent' => ['DELETE', UserManagementController::class, 'deleteanotheruser'],
+    '/deletetutor' => ['DELETE', UserManagementController::class, 'deleteanotheruser'],
+    '/searchstudent' => ['GET', UserManagementController::class, 'searchstudent'],
+    '/createstudent' => ['POST', UserManagementController::class, 'createstudent'],
+    '/edituser' => ['PUT', UserManagementController::class, 'edituser'],
+    '/edittutor' => ['PUT', UserManagementController::class, 'edittutor'],
+    '/user' => ['GET', UserManagementController::class, 'getUserById'],
+    '/student' => ['GET', UserManagementController::class, 'getStudentByEmail'],
+    '/editresult' => ['PUT', UserManagementController::class, 'editresult'],
 ];
 
 $work_management_routes = [
-  '/creatework' => ['POST', WorkManagementController::class, 'creatework'],
-  '/editablework' => ['GET', WorkManagementController::class, 'getnumbervariable'],
-  '/work' => ['GET', WorkManagementController::class, 'getvariablevaluebyid'],
-  '/editvariable' => ['PUT', WorkManagementController::class, 'editvariable'],
-  '/deletework' => ['DELETE', WorkManagementController::class, 'deletework'],
-  '/getworksbysubject' => ['GET', WorkManagementController::class, 'getworksbysubject'],
-  '/gamevariable' => ['GET', WorkManagementController::class, 'getvariablevaluebyid'],
+    '/creatework' => ['POST', WorkManagementController::class, 'creatework'],
+    '/editablework' => ['GET', WorkManagementController::class, 'getnumbervariable'],
+    '/work' => ['GET', WorkManagementController::class, 'getvariablevaluebyid'],
+    '/editvariable' => ['PUT', WorkManagementController::class, 'editvariable'],
+    '/deletework' => ['DELETE', WorkManagementController::class, 'deletework'],
+    '/getworksbysubject' => ['GET', WorkManagementController::class, 'getworksbysubject'],
+    '/gamevariable' => ['GET', WorkManagementController::class, 'getvariablevaluebyid'],
 
 ];
 
 $routes = array_merge($login_routes, $constants_routes, $user_management_routes, $work_management_routes);
 
-// Enrutamiento
+/**
+ * Enrutamiento
+ */
 foreach ($routes as $url => $route) {
-  $method = $route[0];
-  $controller = $route[1];
-  $action = $route[2];
+    $method = $route[0];
+    $controller = $route[1];
+    $action = $route[2];
 
-  if ($_SERVER['REQUEST_METHOD'] === $method && preg_match('#^/web/back/public'.preg_quote($url,'#').'(\?.*)?$#', $_SERVER['REQUEST_URI'])) {
-    $controller = new $controller();
-    $params = isset($route[3]) ? $route[3] : [];
-    $controller->$action($params);
-    break;
-  }
+    if ($_SERVER['REQUEST_METHOD'] === $method && preg_match('#^/web/back/public' . preg_quote($url, '#') . '(\?.*)?$#', $_SERVER['REQUEST_URI'])) {
+        $controller = new $controller();
+        $params = isset($route[3]) ? $route[3] : [];
+        $controller->$action($params);
+        break;
+    }
 }
-?>
